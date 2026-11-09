@@ -6,6 +6,7 @@ const IC = {
   hoje:'<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/>',
   radar:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6-6"/>',
   mercados:'<path d="M4 19V5"/><path d="M4 19h16"/><path d="M7 15l4-4 3 3 5-6"/>',
+  transportes:'<rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/>',
   empresas:'<path d="M4 20V8l6-4v16"/><path d="M10 20V10h10v10"/><path d="M3 20h18M13 13h4M13 16h4"/>',
   tendencias:'<path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/>',
   academia:'<path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/>',
@@ -14,9 +15,9 @@ const IC = {
   pergunte:'<path d="M5 5h14v10H10l-5 4z"/>',
   mais:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'
 };
-const LBL = {hoje:'Hoje',radar:'Radar',mercados:'Mercados',empresas:'Empresas e pessoas',tendencias:'Tendências',academia:'Academia',cerebro:'Meu cérebro',carreira:'Carreira',pergunte:'Pergunte'};
-const GROUPS = [['Acompanhar',['hoje','radar','mercados','empresas','tendencias']],['Aprender',['academia','cerebro','carreira']],['Perguntar',['pergunte']]];
-const MORE = ['empresas','cerebro','carreira','tendencias','pergunte'];
+const LBL = {hoje:'Hoje',radar:'Radar',mercados:'Mercados',transportes:'Transportes',empresas:'Empresas e pessoas',tendencias:'Tendências',academia:'Academia',cerebro:'Meu cérebro',carreira:'Carreira',pergunte:'Pergunte'};
+const GROUPS = [['Acompanhar',['hoje','radar','mercados','transportes','empresas','tendencias']],['Aprender',['academia','cerebro','carreira']],['Perguntar',['pergunte']]];
+const MORE = ['transportes','empresas','cerebro','carreira','tendencias','pergunte'];
 const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 document.getElementById('nav').innerHTML = GROUPS.map(([g,ks]) => `<div class="navg"><span class="eyebrow">${g}</span>${ks.map(k => `<a href="#${k}" data-nav="${k}">${svg(k)}${LBL[k]}</a>`).join('')}</div>`).join('');
 document.getElementById('tabbar').innerHTML = ['hoje','radar','mercados','academia'].map(k => `<a href="#${k}" data-nav="${k}">${svg(k)}${LBL[k]}</a>`).join('') + `<button id="morebtn" aria-expanded="false">${svg('mais')}Mais</button>`;
@@ -67,7 +68,8 @@ const SHORT = {psi:'Subst. de importações', tributacao:'Tributação', divida:
   estado_desenv:'Estado desenv.', idh:'IDH', capficticio:'Capital fictício', tqtl:'Queda do lucro', capital_humano:'Capital humano',
   plano_real:'Plano Real', cepal:'Centro-periferia', regional:'Desig. regionais', sni:'Sist. de inovação', schumpeter:'Destruição criadora',
   ricardo:'Vant. comparativas', difeq:'Eq. em diferença', regressao:'Regressão', pesquisa:'Projeto de pesquisa', deriv:'Otimização', paridade:'Paridade de juros',
-  taylor:'Regra de Taylor', islm:'IS-LM', elast:'Elasticidade', cournot:'Oligopólio', vpl:'VPL e TIR', wacc:'WACC', giro:'Capital de giro', maisvalia:'Mais-valia'};
+  taylor:'Regra de Taylor', islm:'IS-LM', elast:'Elasticidade', cournot:'Oligopólio', vpl:'VPL e TIR', wacc:'WACC', giro:'Capital de giro', maisvalia:'Mais-valia',
+  custo_km:'Custo por km', ipk:'IPK e tarifa técnica', reajuste:'Reajuste contratual', subsidio:'Subsídio e gratuidade'};
 const short = c => SHORT[c.id] || c.name;
 const courseOf = cod => CURSOS.find(c => c.cod === cod);
 const coursesFor = id => CURSOS.filter(c => c.conc.includes(id));
@@ -246,7 +248,7 @@ const V = {};
 V.hoje = () => {
   if (!DATA.items.length) return emptyState();
   const hl = highlights(9);
-  const tick = ['selic','ipca12','usdbrl','ibov','spx','btc','brent','ust10'].map(ind).filter(Boolean);
+  const tick = ['selic','ipca12','ipca_diesel_slz','usdbrl','ibov','brent','btc','spx'].map(ind).filter(Boolean);
   const day = recent(24).length ? recent(24) : DATA.items;
   const ccount = CONC.map(c => [c, mentions('concepts', c.id, day).length]).sort((a, b) => b[1] - a[1]);
   // prefere conceitos das matérias deste semestre e gira entre os mais citados para não repetir sempre o mesmo
@@ -349,6 +351,37 @@ V.mercados = () => {
   return `${head(`Atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''} · BCB · Yahoo Finance · CoinGecko`, 'Mercados', 'Do juro ao grão, da bolsa ao bitcoin. As cotações de bolsa têm atraso de alguns minutos.')}${chips('mkt', tabs, t)}${body}`;
 };
 
+const MA_RE = /maranh[aã]o|maranhense|s[aã]o lu[ií]s|imperatriz|timon|caxias \(ma\)|\(ma\)|\bma\b|smtt|\bmob\b|nordeste/i;
+const TR_RE = /[oô]nibus|transporte|mobilidade|tarifa|passagem|rodovi[aá]ri|diesel|frota|brt/i;
+V.transportes = () => {
+  if (!DATA.items.length && !DATA.indicators.length) return emptyState();
+  const items = DATA.items.filter(i => i.area === 'transportes' || (i.area === 'regional' && TR_RE.test(i.title)));
+  const all = state.trAll === '1';
+  const shown = all ? items : items.filter(i => i.econ !== false);
+  const ma = shown.filter(i => MA_RE.test(`${i.title} ${i.summary || ''} ${i.source}`)), br = shown.filter(i => !ma.includes(i));
+  const rows = [['geral', 'IPCA geral'], ['diesel', 'Óleo diesel'], ['pneu', 'Pneu'], ['onibus_urbano', 'Ônibus urbano (tarifa)'], ['onibus_intermun', 'Ônibus intermunicipal'], ['onibus_interest', 'Ônibus interestadual']];
+  const cell = id => { const i = ind(id); return i ? `<td class="mono">${nf(i.value, 2)}% <span class="d ${i.dir}">${i.delta ? fmtDelta(i) : ''}</span></td>` : '<td class="muted">—</td>'; };
+  const dS = ind('ipca_diesel_slz'), gS = ind('ipca_geral_slz'), uS = ind('ipca_onibus_urbano_slz'), dB = ind('ipca_diesel_br');
+  const asOf = dS ? dS.as_of : '';
+  const insight = dS && gS && uS ? `Em 12 meses até ${esc(asOf)}, o diesel subiu <b>${nf(dS.value, 1)}%</b> em São Luís${dB ? ` (Brasil: ${nf(dB.value, 1)}%)` : ''}, ${nf(dS.value - gS.value, 1)} p.p. acima da inflação local (${nf(gS.value, 1)}%). A tarifa de ônibus urbano variou <b>${nf(uS.value, 1)}%</b>.` : '';
+  const trConc = CONC.filter(c => c.disc === 'transp');
+  const list = (arr, empty) => arr.length ? arr.slice(0, 15).map(itemRow).join('') : `<div class="empty">${empty}</div>`;
+  return `${head('Transporte de passageiros · Brasil e Maranhão', 'Transportes', 'Custos, tarifas, regulação e notícias do setor de ônibus, com o Maranhão em destaque.')}
+  ${insight ? `<section class="card edition"><span class="eyebrow">Custo × tarifa · IBGE</span><p style="margin:0;font-size:16px">${insight}</p><span class="tag fato" style="align-self:flex-start">Fato</span></section>` : ''}
+  <div class="two">
+   <section class="card"><div class="flexhead"><h3 class="s">Inflação de custos e tarifas (IPCA 12 meses)</h3><span class="eyebrow">IBGE · ${esc(asOf)}</span></div>
+    <div class="scroll"><table class="tb"><thead><tr><th>Item</th><th>Brasil</th><th>São Luís</th></tr></thead><tbody>
+    ${rows.map(([k, n]) => `<tr><td>${n}</td>${cell(`ipca_${k}_br`)}${cell(`ipca_${k}_slz`)}</tr>`).join('')}</tbody></table></div>
+    <span class="muted" style="font-size:12.5px">Ao lado, a variação em relação ao mês anterior. O IPCA de São Luís cobre a região metropolitana.</span></section>
+   <div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">${['ipca_diesel_slz', 'brent', 'usdbrl', 'selic'].map(ind).map(tile).join('')}</div>
+  </div>
+  <div class="chips">${[['0', 'Só economia e regulação'], ['1', 'Tudo, inclusive acidentes e ocorrências']].map(([v, l]) => `<button class="chip${(all ? '1' : '0') === v ? ' on' : ''}" data-set="trAll" data-val="${v}">${l}</button>`).join('')}</div>
+  <section class="section"><header><h2>Maranhão</h2><span class="eyebrow">${ma.length} em 72 h</span></header><div class="feed">${list(ma, 'Nenhuma notícia de transporte do Maranhão nas últimas 72 horas.')}</div></section>
+  <section class="section"><header><h2>Brasil</h2><span class="eyebrow">${br.length} em 72 h</span></header><div class="feed">${list(br, 'Nada nas últimas 72 horas.')}</div></section>
+  <section class="card"><h3 class="s">Economia do transporte</h3><p class="muted" style="margin:0;font-size:14px">Os conceitos do dia a dia da empresa, ligados às notícias e aos exercícios da Academia.</p>
+   <div class="mini">${trConc.map(c => cbtn(c.id)).join('')}</div><a class="link" href="#academia" data-acad="mat">Exercícios de tarifa técnica e reajuste →</a></section>`;
+};
+
 V.empresas = () => {
   const isCo = state.ppl === 'empresas';
   let body;
@@ -434,12 +467,21 @@ function graphSVG(){
   const seen = new Set(); let cross = '';
   CONC.forEach(c => c.links.forEach(l => { const k = [c.id, l].sort().join('-'); if (seen.has(k) || !pos[l]) return; seen.add(k); const a = pos[c.id], b = pos[l]; cross += `<path class="e2" d="M${a[0].toFixed(0)} ${a[1].toFixed(0)} Q${cx} ${cy} ${b[0].toFixed(0)} ${b[1].toFixed(0)}"/>`; }));
   const day = recent(24).length ? recent(24) : DATA.items;
+  // posiciona cada rótulo no primeiro lugar livre (abaixo, acima ou mais abaixo do ponto), para não sobrepor
+  const placed = [], lab = {};
+  CONC.forEach(c => {
+    const n = mentions('concepts', c.id, day).length, text = short(c) + (n ? ` · ${n}` : ''), w = text.length * 6.4 + 6, [x, y] = pos[c.id];
+    for (const dy of [24, -16, 38, -30, 52, -44, 66]) {
+      const r = {x: x - w / 2, y: y + dy - 11, w, h: 14};
+      if (!placed.some(p => r.x < p.x + p.w && p.x < r.x + r.w && r.y < p.y + p.h && p.y < r.y + r.h) || dy === 66) { placed.push(r); lab[c.id] = {y: y + dy, text, n}; break; }
+    }
+  });
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa de conceitos por disciplina">
    ${DISC.map(d => `<line class="e1" x1="${cx}" y1="${cy}" x2="${hubs[d[0]][0].toFixed(0)}" y2="${hubs[d[0]][1].toFixed(0)}"/>`).join('')}
    ${CONC.map(c => `<line class="e1" x1="${hubs[c.disc][0].toFixed(0)}" y1="${hubs[c.disc][1].toFixed(0)}" x2="${pos[c.id][0].toFixed(0)}" y2="${pos[c.id][1].toFixed(0)}"/>`).join('')}
    ${cross}<g class="me"><circle cx="${cx}" cy="${cy}" r="24"/><text x="${cx}" y="${cy + 6}" text-anchor="middle">você</text></g>
    ${DISC.map(d => `<g class="hub${nowDisc.has(d[0]) ? ' now' : ''}" data-disc="${d[0]}" tabindex="0" role="button" aria-label="${esc(d[1])}"><circle cx="${hubs[d[0]][0].toFixed(0)}" cy="${hubs[d[0]][1].toFixed(0)}" r="34"/><text x="${hubs[d[0]][0].toFixed(0)}" y="${(hubs[d[0]][1] + 4).toFixed(0)}" text-anchor="middle">${esc(d[2])}</text></g>`).join('')}
-   ${CONC.map(c => { const n = mentions('concepts', c.id, day).length; return `<g class="cn m${c.m}${ATUAL_CONC.has(c.id) ? ' now' : ''}" data-concept="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}, ${MLBL[c.m]}"><circle cx="${pos[c.id][0].toFixed(0)}" cy="${pos[c.id][1].toFixed(0)}" r="9"/><text class="${n ? 'hot' : ''}" x="${pos[c.id][0].toFixed(0)}" y="${(pos[c.id][1] + 24).toFixed(0)}" text-anchor="middle">${esc(short(c))}${n ? ` · ${n}` : ''}</text></g>`; }).join('')}
+   ${CONC.map(c => { const L = lab[c.id]; return `<g class="cn m${c.m}${ATUAL_CONC.has(c.id) ? ' now' : ''}" data-concept="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}, ${MLBL[c.m]}"><circle cx="${pos[c.id][0].toFixed(0)}" cy="${pos[c.id][1].toFixed(0)}" r="9"/><text class="${L.n ? 'hot' : ''}" x="${pos[c.id][0].toFixed(0)}" y="${L.y.toFixed(0)}" text-anchor="middle">${esc(L.text)}</text></g>`; }).join('')}
   </svg>`;
 }
 V.cerebro = () => {

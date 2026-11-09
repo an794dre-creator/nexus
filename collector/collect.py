@@ -142,6 +142,7 @@ AREA_RES = [(a, re.compile(rx, re.I)) for a, rx in C.AREA_RULES]
 ECON_RE = re.compile(C.ECON_FILTER, re.I)
 ECON_NO = re.compile(C.ECON_EXCLUDE, re.I)
 TECH_RE = re.compile(C.TECH_BIZ, re.I)
+PERSONAL_RE = re.compile(C.PERSONAL_BOOST, re.I)
 BOOST_RE = re.compile(C.BOOST, re.I)
 
 
@@ -161,7 +162,7 @@ def is_econ(item: dict) -> bool:
         return True
     if item["area"] in ("ia", "cripto") and TECH_RE.search(t):
         return True
-    if item["area"] == "agro" or item["kind"] == "prim":
+    if item["area"] in ("agro", "transportes") or item["kind"] == "prim":
         return True
     return len(BOOST_RE.findall(item["summary"])) >= 2  # resumo bem econômico mesmo com título vago
 
@@ -171,6 +172,8 @@ def score(item: dict) -> float:
     s += min(len(BOOST_RE.findall(item["title"] + " " + item["summary"])), 3)
     if not is_econ(item):
         s -= 2.0  # curiosidades e variedades não sobem para os destaques
+    elif PERSONAL_RE.search(item["title"]):
+        s += 1.5  # transporte de passageiros e Maranhão: o trabalho do usuário
     age_h = (NOW - datetime.fromisoformat(item["published"].replace("Z", "+00:00"))).total_seconds() / 3600
     s += max(0.0, 3.0 - age_h / 12)  # até +3 para itens das últimas horas, zera em 36 h
     if age_h > 48:
@@ -308,6 +311,33 @@ def collect_bcb() -> list[dict]:
         log(f"  ✓ BCB IGP-M 12m: {acc[-1]}")
     except Exception as e:  # noqa: BLE001
         log(f"  ✗ BCB IGP-M: {type(e).__name__}: {e}")
+    return out
+
+
+def collect_ibge() -> list[dict]:
+    """IPCA acumulado em 12 meses por subitem (diesel, pneu, ônibus...), Brasil e São Luís."""
+    out = []
+    cats = ",".join(str(c) for _, c, _ in C.IBGE_ITEMS)
+    for pid, loc, pname in C.IBGE_PLACES:
+        url = (f"https://servicodados.ibge.gov.br/api/v3/agregados/{C.IBGE_TABLE}/periodos/-24/variaveis/{C.IBGE_VAR_12M}"
+               f"?localidades={urllib.parse.quote(loc, safe='[]')}&classificacao=315[{cats}]")
+        try:
+            data = fetch_json(url, 40)
+        except Exception as e:  # noqa: BLE001
+            log(f"  ✗ IBGE {pname}: {type(e).__name__}: {e}")
+            continue
+        for res in data[0]["resultados"]:
+            cat = int(list(res["classificacoes"][0]["categoria"].keys())[0])
+            iid, iname = next((i, n) for i, c, n in C.IBGE_ITEMS if c == cat)
+            serie = res["series"][0]["serie"]
+            pts = [(k, float(v)) for k, v in sorted(serie.items()) if v not in ("-", "...", "X", "")]
+            if not pts:
+                continue
+            vals = [v for _, v in pts]
+            dates = [f"{k[4:]}/{k[:4]}" for k, _ in pts]
+            out.append(indicator(f"ipca_{iid}_{pid}", f"{iname} · {pname}", "transportes", vals[-1], "%",
+                                 change(vals, "pp"), "pp", vals, dates, "IBGE · IPCA 12 meses", {"place": pid, "item": iid}))
+        log(f"  ✓ IBGE {pname}: {len(data[0]['resultados'])} subitens até {dates[-1] if pts else '?'}")
     return out
 
 
@@ -485,7 +515,7 @@ def update_archive(items: list[dict]) -> int:
 # ---------------------------------------------------------------------------
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--only", choices=["rss", "bcb", "focus", "yahoo", "crypto", "arxiv"])
+    ap.add_argument("--only", choices=["rss", "bcb", "ibge", "focus", "yahoo", "crypto", "arxiv"])
     ap.add_argument("--archive", action="store_true", help="grava o histórico também numa execução local")
     args = ap.parse_args()
     DATA.mkdir(parents=True, exist_ok=True)
@@ -506,7 +536,7 @@ def main() -> None:
             if os.environ.get("GITHUB_ACTIONS") or args.archive:
                 log(f"  arquivo: +{update_archive(items)} itens novos")
     indicators = dict(ind_prev)
-    for part, fn in (("bcb", collect_bcb), ("yahoo", collect_yahoo), ("crypto", collect_crypto)):
+    for part, fn in (("bcb", collect_bcb), ("ibge", collect_ibge), ("yahoo", collect_yahoo), ("crypto", collect_crypto)):
         if want(part):
             log(part.upper())
             for i in fn():

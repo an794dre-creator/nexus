@@ -4,7 +4,7 @@
 const SEMESTRE_ATUAL = '2026.2';
 
 const AREAS = {
-  macro: ['Macro Brasil', 'a1'], global: ['Economia global', 'a1'], regional: ['Nordeste e MA', 'a3'],
+  transportes: ['Transportes', 'a1'], macro: ['Macro Brasil', 'a1'], global: ['Economia global', 'a1'], regional: ['Nordeste e MA', 'a3'],
   mercados: ['Mercados', ''], empresas: ['Empresas', ''], ia: ['IA e tecnologia', 'a2'], cripto: ['Cripto', 'a1'],
   agro: ['Agro', 'a3'], politica: ['Política', ''], carreira: ['Carreira', 'a2']
 };
@@ -18,7 +18,8 @@ const DISC = [
   ['marx', 'Economia política', 'Ec. política'],
   ['macro', 'Macro, moeda e internacional', 'Macro'],
   ['micro', 'Micro e organização industrial', 'Micro'],
-  ['quant', 'Métodos quantitativos e pesquisa', 'Quant.']
+  ['quant', 'Métodos quantitativos e pesquisa', 'Quant.'],
+  ['transp', 'Economia do transporte (trabalho)', 'Transporte']
 ];
 
 /* ---------- histórico: [código, nome, eixo, semestres, conceitos] ---------- */
@@ -107,6 +108,11 @@ const CONC = [
   ['deriv','Derivadas e otimização','quant',1,'A derivada mede a variação na margem. Maximizar lucro, utilidade ou bem-estar é igualar derivadas: receita marginal = custo marginal, ou usar Lagrange com restrições.','RMg = CMg   ·   ℒ = f(x) − λ·[g(x) − c]','mat',['elast','cournot'],/custo marginal|otimiza|margem bruta|ponto [oó]timo/i],
   ['difeq','Equações em diferença (teia de aranha)','quant',2,'Relacionam o valor de hoje com o de ontem. O modelo da teia de aranha mostra preços agrícolas oscilando porque o plantio reage com atraso.','Pₜ = A − k·Pₜ₋₁ (converge se |k| < 1)','lab',['elast','regressao'],/safra|plantio|colheita|ciclo de pre[cç]os?/i],
   ['regressao','Regressão e inferência','quant',1,'MQO estima a relação média entre variáveis; os testes dizem se ela é estatisticamente diferente de zero. A pergunta central da econometria é se a relação é causal.','β̂ = (XᵀX)⁻¹Xᵀy','mat',['capital_humano','pesquisa'],/econometr|correla[cç][aã]o|estudo (?:mostra|aponta|indica)|pesquisa mostra|levantamento/i],
+  // Economia do transporte (o trabalho na empresa de ônibus)
+  ['custo_km','Custo por quilômetro','transp',2,'Os custos da operação divididos pela quilometragem: variáveis (diesel, pneus, lubrificantes, peças) crescem com o km rodado; fixos (pessoal, depreciação, remuneração do capital, administração) não. É a base da planilha tarifária.','CPK = (CF + CV) / km   ·   CV = Σ consumo por km × preço','mat',['ipk','giro'],/custo por (?:km|quil[oô]metro)|custo operacional|planilha (?:de custos|tarif[aá]ria)|geipot|insumos? do transporte/i],
+  ['ipk','IPK e tarifa técnica','transp',2,'O IPK (passageiros por quilômetro) mede a produtividade da operação. A tarifa técnica é o custo por passageiro pagante: se a demanda cai ou as gratuidades sobem, ela sobe mesmo com custo estável.','Tarifa técnica = Custo total / Passageiros equivalentes   ·   IPK = Passageiros / km','mat',['custo_km','elast','subsidio'],/tarifa t[eé]cnica|\bipk\b|passageiros transportados|demanda de passageiros|queda (?:de|na) demanda/i],
+  ['reajuste','Reajuste e equilíbrio econômico-financeiro','transp',2,'Contratos de concessão garantem o equilíbrio entre encargos e remuneração. O reajuste anual costuma usar uma fórmula paramétrica que pondera a variação de cada insumo (diesel, mão de obra, veículos) pelo seu peso no custo.','Reajuste = Σ wᵢ · (Iᵢ,t / Iᵢ,0) − 1','mat',['custo_km','vpl'],/reajuste|equil[ií]brio econ[oô]mico|concess[aã]o|licita[cç][aã]o do transporte|contrato de concess[aã]o|revis[aã]o tarif[aá]ria/i],
+  ['subsidio','Subsídio, gratuidades e tarifa pública','transp',1,'Quando a tarifa pública fica abaixo da tarifa técnica, alguém paga a diferença: o poder público (subsídio), os demais passageiros (subsídio cruzado) ou a empresa (desequilíbrio). Gratuidades sem fonte de custeio aumentam a tarifa de quem paga.','Subsídio por passageiro = Tarifa técnica − Tarifa pública','teo',['ipk','bens','tributacao'],/subs[ií]dio|gratuidade|tarifa zero|passe livre|vale-transporte|marco legal do transporte/i],
   ['pesquisa','Projeto de pesquisa','quant',1,'Problema, objetivos, hipótese, referencial, método e dados. Uma boa pergunta de TCC é estreita o bastante para ser respondida com os dados disponíveis.','','teo',['regressao'],/pesquisa do ibge|ipea|dados (?:do|da) (?:ibge|pnad|caged)|levantamento in[eé]dito|estudo do/i]
 ].map(c => ({id:c[0],name:c[1],disc:c[2],m:c[3],def:c[4],f:c[5],acad:c[6],links:c[7],re:c[8]}));
 const MLBL = ['Não vi','Vi em aula','Sei explicar','Sei aplicar'];
@@ -159,6 +165,10 @@ const PROBS = [
    steps:['Ciclo operacional = PMRE + PMRV = 45 + 30 = <b>75 dias</b>','Ciclo financeiro = 75 − PMPF = 75 − 40 = <b>35 dias</b>','Leitura: por 35 dias a empresa financia a operação com recursos próprios ou empréstimos. Encurtar o prazo de clientes ou alongar o de fornecedores libera caixa.']},
   {id:'lucro',title:'Taxa de lucro e composição orgânica',conc:'tqtl',materia:'Economia Marxista II',enun:'Um capital tem c = 600 (capital constante), v = 200 (capital variável) e produz m = 200 de mais-valia. Qual a taxa de lucro, em %?',unit:'%',ans:25,tol:.1,
    steps:['Taxa de mais-valia: e = m/v = 200/200 = <b>100%</b>','Taxa de lucro: r = m/(c + v) = 200/800 = <b>25%</b>','Se a mecanização elevar c para 800 com a mesma exploração: r = 200/1000 = 20%. É a tendência à queda da taxa de lucro.']},
+  {id:'tarifa',title:'Tarifa técnica da linha',conc:'ipk',materia:'Trabalho · transporte',enun:'Um sistema de ônibus custa R$ 2,4 milhões por mês e transporta 600 mil passageiros equivalentes (pagantes mais a parcela das meia-passagens). Qual a tarifa técnica, em R$?',unit:'R$',ans:4.0,tol:.01,
+   steps:['Tarifa técnica = custo total ÷ passageiros equivalentes','2.400.000 ÷ 600.000 = <b>R$ 4,00</b>','Se as gratuidades crescerem e os equivalentes caírem para 550 mil, a tarifa técnica vai a R$ 4,36 sem nenhum aumento de custo.']},
+  {id:'param',title:'Reajuste pela fórmula paramétrica',conc:'reajuste',materia:'Trabalho · transporte',enun:'Uma fórmula de reajuste pesa 30% diesel, 50% mão de obra e 20% demais custos. Em 12 meses o diesel subiu 26,72% (IPCA São Luís), a mão de obra 6% e os demais 4,32%. Qual o reajuste, em %?',unit:'%',ans:.3*26.72+.5*6+.2*4.32,tol:.05,
+   steps:['Reajuste = Σ peso × variação','0,30 × 26,72 + 0,50 × 6 + 0,20 × 4,32','= 8,02 + 3,00 + 0,86 = <b>11,88%</b>','Leitura: com tarifa urbana parada (0% em São Luís), a diferença vira desequilíbrio que alguém precisa cobrir.']},
   {id:'vpl',title:'Vale a pena investir?',conc:'vpl',materia:'Adm. Financeira e Orçamentária I',enun:'Um projeto custa R$ 100 mil hoje e gera R$ 30 mil por ano durante 5 anos. Com taxa de desconto de 12% ao ano, qual o VPL (em R$ mil)?',unit:'R$ mil',ans:8.14,tol:.06,
    steps:['Fator de anuidade: [1 − 1,12⁻⁵] ÷ 0,12 = <b>3,6048</b>','Valor presente dos fluxos: 30 × 3,6048 = <b>108,14</b>','VPL = 108,14 − 100 = <b>8,14 mil</b>. Positivo: o projeto cria valor.']},
   {id:'uip',title:'Quanto o mercado “espera” para o dólar?',conc:'paridade',materia:'Teoria Macroeconômica III',enun:'Suponha juro de 14% ao ano no Brasil, 3,5% nos EUA e dólar a R$ 5,40 hoje. Pela paridade descoberta de juros, qual o dólar esperado daqui a um ano?',unit:'R$',ans:5.40*1.14/1.035,tol:.02,
@@ -218,6 +228,8 @@ const CERT = [
 
 /* ---------- temas acompanhados nas tendências ---------- */
 const THEMES = [
+  ['Transporte coletivo e tarifas',/[oô]nibus|transporte (?:p[uú]blico|coletivo)|tarifa|mobilidade|passagem|gratuidade/i],
+  ['Diesel e combustíveis',/diesel|combust[ií]vel|gasolina/i],
   ['Juros e Copom',/copom|\bselic\b|juros|\bfed\b|rate cut/i],
   ['Inflação',/infla[cç]|\bipca\b|\bcpi\b/i],
   ['Fiscal e dívida pública',/\bfiscal\b|d[ií]vida p[uú]blica|arcabou[cç]o|d[eé]ficit|prim[aá]rio/i],

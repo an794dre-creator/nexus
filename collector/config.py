@@ -21,6 +21,11 @@ FEEDS = [
     {"name": "G1 Maranhão", "url": "https://g1.globo.com/dynamo/ma/maranhao/rss2.xml", "kind": "imp", "area": "regional", "filter": "ECON"},
     {"name": "O Imparcial", "url": "https://oimparcial.com.br/feed/", "kind": "imp", "area": "macro", "filter": "ECON"},
     {"name": "Imirante", "url": "https://imirante.com.br/rss", "kind": "imp", "area": "macro", "filter": "ECON"},
+    # Transporte de passageiros (setor do usuário)
+    {"name": "Diário do Transporte", "url": "https://diariodotransporte.com.br/feed/", "kind": "imp", "area": "transportes"},
+    {"name": "Ônibus & Transporte", "url": "https://onibusetransporte.com/feed/", "kind": "imp", "area": "transportes"},
+    {"name": "Transporte Moderno", "url": "https://transportemoderno.com.br/feed/", "kind": "imp", "area": "transportes"},
+    {"name": "Mobilidade Sampa", "url": "https://mobilidadesampa.com.br/feed/", "kind": "imp", "area": "transportes"},
     # Bancos centrais e organismos
     {"name": "Federal Reserve", "url": "https://www.federalreserve.gov/feeds/press_all.xml", "kind": "prim", "area": "global"},
     {"name": "Banco Central Europeu", "url": "https://www.ecb.europa.eu/rss/press.html", "kind": "prim", "area": "global"},
@@ -104,11 +109,34 @@ ECON_FILTER = (r"(economi|emprego|desemprego|sal[aá]rio m[ií]nimo|investiment|
                r"|imposto|tribut|or[cç]ament|\bldo\b|\bloa\b|\bfiscal\b|d[ií]vida p[uú]blica|juros|infla[cç]|exporta|import[aã]|mineradora vale|vale3|suzano|alumar"
                r"|petr[oó]le|g[aá]s natural|ferrovia|bolsa fam[ií]lia|sudene|banco do nordeste|\bbnb\b|bndes|com[eé]rcio|varejo|turismo"
                r"|f[aá]brica|gera[cç][aã]o de empregos|arrecada[cç]|reforma tribut|previd[eê]ncia|cr[eé]dito|tarifa de energia|energia el[eé]trica"
-               r"|e[oó]lica|energia solar|hidrog[eê]nio|mercado de trabalho|portu[aá]ri|porto do itaqui)")
+               r"|e[oó]lica|energia solar|hidrog[eê]nio|mercado de trabalho|portu[aá]ri|porto do itaqui"
+               r"|[oô]nibus|transporte|mobilidade|tarifa|passagem|diesel|combust[ií]vel|rodovi[aá]ri|greve)")
+
+# Assuntos do trabalho do usuário (empresa de ônibus no Maranhão): sobem mais nos destaques
+PERSONAL_BOOST = (r"([oô]nibus|transporte (?:p[uú]blico|coletivo|urbano|rodovi[aá]rio|de passageiros|intermunicipal)|mobilidade urbana|diesel"
+                  r"|tarifa|gratuidade|vale-transporte|maranh[aã]o|s[aã]o lu[ií]s|imperatriz)")
+
+# IPCA por subitem (IBGE, tabela 7060, acumulado em 12 meses): custos e preços do transporte
+IBGE_TABLE = 7060
+IBGE_VAR_12M = 2265
+IBGE_ITEMS = [  # id, categoria (classificação 315), nome
+    ("geral", 7169, "IPCA geral"),
+    ("diesel", 7659, "Óleo diesel"),
+    ("pneu", 12411, "Pneu"),
+    ("onibus_urbano", 7628, "Ônibus urbano"),
+    ("onibus_intermun", 7631, "Ônibus intermunicipal"),
+    ("onibus_interest", 7632, "Ônibus interestadual"),
+]
+IBGE_PLACES = [("br", "N1[all]", "Brasil"), ("slz", "N6[2111300]", "São Luís")]
 ECON_EXCLUDE = (r"(mega-sena|lotof[aá]cil|loteria|quina\b|futebol|palmeiras|flamengo|corinthians|vasco|gr[eê]mio|copa do brasil|brasileir[aã]o|f-1\b|f[oó]rmula 1"
                 r"|show|turn[eê]|morre|acidente|atropel|pres[oa]\b|pol[ií]cia|assassin|bbb\b|affair|caso amoroso)")
 
+TRANSPORT_RE = (r"\b([oô]nibus|transporte (?:p[uú]blico|coletivo|urbano|rodovi[aá]rio|de passageiros|intermunicipal|interestadual)|mobilidade urbana"
+                 r"|tarifa (?:de [oô]nibus|do transporte|zero)|passagem de [oô]nibus|\bbrt\b|rodovi[aá]ria|antt|smtt|\bmob\b|agência de mobilidade"
+                 r"|frota|motoristas? de [oô]nibus|cobradores?|rodovi[aá]rios|vale-transporte|gratuidades?|marco legal do transporte|diesel|\bntu\b|fetrans)")
+
 AREA_RULES = [
+    ("transportes", TRANSPORT_RE),
     ("regional", r"\b(nordeste|nordestin[oa]s?|maranh[aã]o|maranhense|s[aã]o lu[ií]s|imperatriz|sudene|matopiba|itaqui)\b"),
     ("cripto", r"\b(bitcoin|btc|ethereum|ether|cripto|crypto|stablecoin|blockchain|solana|etf de bitcoin)\b"),
     ("agro", r"\b(soja|milho|safra|agro|agroneg[oó]cio|boi gordo|pecu[aá]ria|caf[eé] ar[aá]bica|conab|fertilizante|colheita|plantio)\b"),

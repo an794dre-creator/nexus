@@ -70,6 +70,8 @@ def system_prompt(f: dict) -> str:
 Matérias que ele cursa agora: {'; '.join(c['nome'] for c in atuais)}.
 O currículo tem peso grande de economia política, desenvolvimento (CEPAL, Furtado), setor público e economia brasileira e regional, além do núcleo de micro, macro e métodos quantitativos.
 
+Ele também trabalha como controller e economista-chefe de uma empresa de ônibus no Maranhão. Em notícias de transporte, combustíveis, tarifas, salários, crédito, tributos ou Maranhão, use "para_voce" para o impacto prático sobre um operador de ônibus (custo por km, diesel, tarifa técnica, reajuste contratual, gratuidades, demanda, financiamento de frota), além da ligação com as matérias.
+
 Seu trabalho: transformar uma notícia em aprendizado, em português do Brasil, com linguagem clara e direta, sem jargão desnecessário.
 
 Regras de honestidade, as mais importantes:
@@ -87,7 +89,7 @@ Formato de cada campo:
 - conexoes: ids de outras notícias da lista fornecida que tenham relação real com esta (pode ser vazia).
 - acompanhar: 2 a 3 dados, decisões ou eventos concretos que confirmariam ou contrariariam a leitura.
 - estudar: 1 a 3 ids de conceitos da lista abaixo, os mais úteis para entender a notícia.
-- para_voce: 1 a 2 frases ligando a notícia a uma matéria que ele cursa agora (cite o nome da matéria) ou ao Maranhão/Nordeste quando houver relação.
+- para_voce: 1 a 2 frases ligando a notícia a uma matéria que ele cursa agora (cite o nome da matéria), ao trabalho na empresa de ônibus ou ao Maranhão/Nordeste, o que for mais útil.
 - limites: 1 a 2 frases.
 
 Conceitos da formação (use só estes ids em "estudar"):
