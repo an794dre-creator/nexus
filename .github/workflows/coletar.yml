@@ -1,0 +1,52 @@
+name: Coletar e publicar
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # a cada hora, aos 17 minutos (horário UTC)
+  workflow_dispatch:        # botão "Run workflow" na aba Actions
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: nexus-coleta
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Coletar notícias, indicadores e papers
+        run: python collector/collect.py
+
+      - name: Guardar o histórico no repositório
+        run: |
+          git config user.name "nexus-coletor"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add web/data/archive
+          if git diff --cached --quiet; then
+            echo "Sem itens novos no histórico."
+          else
+            git commit -m "histórico: coleta $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,12 @@
+# gerado a cada coleta (o histórico em web/data/archive é versionado)
+web/data/latest.json
+
+.claude/
+__pycache__/
+*.pyc
+.env
+.venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
