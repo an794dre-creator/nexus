@@ -127,7 +127,8 @@ IBGE_ITEMS = [  # id, categoria (classificação 315), nome
     ("onibus_intermun", 7631, "Ônibus intermunicipal"),
     ("onibus_interest", 7632, "Ônibus interestadual"),
 ]
-IBGE_PLACES = [("br", "N1[all]", "Brasil"), ("slz", "N6[2111300]", "São Luís")]
+# id, localidade na API de agregados, localidade na API SIDRA (reserva), nome
+IBGE_PLACES = [("br", "N1[all]", "n1/all", "Brasil"), ("slz", "N6[2111300]", "n6/2111300", "São Luís")]
 ECON_EXCLUDE = (r"(mega-sena|lotof[aá]cil|loteria|quina\b|futebol|palmeiras|flamengo|corinthians|vasco|gr[eê]mio|copa do brasil|brasileir[aã]o|f-1\b|f[oó]rmula 1"
                 r"|show|turn[eê]|morre|acidente|atropel|pres[oa]\b|pol[ií]cia|assassin|bbb\b|affair|caso amoroso)")
 

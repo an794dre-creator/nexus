@@ -22,6 +22,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -181,13 +182,21 @@ def score(item: dict) -> float:
     return round(s, 2)
 
 
+def _fetch_feed(f: dict):
+    try:
+        return parse_feed(fetch(f["url"], 20))
+    except Exception as e:  # noqa: BLE001
+        return e
+
+
 def collect_rss() -> list[dict]:
     items = []
-    for f in C.FEEDS:
-        try:
-            entries = parse_feed(fetch(f["url"]))
-        except Exception as e:  # noqa: BLE001
-            log(f"  ✗ {f['name']}: {type(e).__name__}: {e}")
+    # baixa todas as fontes ao mesmo tempo: uma fonte lenta não atrasa as outras
+    with ThreadPoolExecutor(max_workers=10) as pool:
+        results = list(pool.map(_fetch_feed, C.FEEDS))
+    for f, entries in zip(C.FEEDS, results):
+        if isinstance(entries, Exception):
+            log(f"  ✗ {f['name']}: {type(entries).__name__}: {entries}")
             continue
         n = 0
         for e in entries:
@@ -314,30 +323,57 @@ def collect_bcb() -> list[dict]:
     return out
 
 
-def collect_ibge() -> list[dict]:
-    """IPCA acumulado em 12 meses por subitem (diesel, pneu, ônibus...), Brasil e São Luís."""
-    out = []
+def _ibge_series(loc: str, sidra_loc: str) -> dict[int, dict[str, float]]:
+    """{categoria: {AAAAMM: valor}}. Tenta a API de agregados e, se falhar, a API SIDRA."""
     cats = ",".join(str(c) for _, c, _ in C.IBGE_ITEMS)
-    for pid, loc, pname in C.IBGE_PLACES:
+    clean = lambda v: v not in ("-", "...", "X", "", None)  # noqa: E731
+    try:
         url = (f"https://servicodados.ibge.gov.br/api/v3/agregados/{C.IBGE_TABLE}/periodos/-24/variaveis/{C.IBGE_VAR_12M}"
                f"?localidades={urllib.parse.quote(loc, safe='[]')}&classificacao=315[{cats}]")
+        data = json.loads(fetch(url, 15, "application/json", tries=1).decode("utf-8"))
+        return {int(list(r["classificacoes"][0]["categoria"])[0]): {k: float(v) for k, v in r["series"][0]["serie"].items() if clean(v)}
+                for r in data[0]["resultados"]}
+    except Exception as e:  # noqa: BLE001
+        log(f"    agregados falhou ({type(e).__name__}); tentando SIDRA")
+    url = f"https://apisidra.ibge.gov.br/values/t/{C.IBGE_TABLE}/{sidra_loc}/v/{C.IBGE_VAR_12M}/p/last%2024/c315/{cats}"
+    rows = json.loads(fetch(url, 25, "application/json", tries=2).decode("utf-8"))[1:]
+    out: dict[int, dict[str, float]] = {}
+    for r in rows:
+        if clean(r.get("V")):
+            out.setdefault(int(r["D4C"]), {})[r["D3C"]] = float(r["V"])
+    return out
+
+
+def collect_ibge() -> list[dict]:
+    """IPCA acumulado em 12 meses por subitem (diesel, pneu, ônibus...), Brasil e São Luís.
+    Os últimos dados bons ficam em web/data/ibge_cache.json (o IBGE às vezes não responde a servidores fora do Brasil)."""
+    cache_path = DATA / "ibge_cache.json"
+    cache = json.loads(cache_path.read_text("utf-8")) if cache_path.exists() else {}
+    out = []
+    for pid, loc, sidra_loc, pname in C.IBGE_PLACES:
         try:
-            data = fetch_json(url, 40)
+            series = _ibge_series(loc, sidra_loc)
+            cache[pid] = {str(k): v for k, v in series.items()}
+            src_note = "IBGE · IPCA 12 meses"
         except Exception as e:  # noqa: BLE001
-            log(f"  ✗ IBGE {pname}: {type(e).__name__}: {e}")
-            continue
-        for res in data[0]["resultados"]:
-            cat = int(list(res["classificacoes"][0]["categoria"].keys())[0])
-            iid, iname = next((i, n) for i, c, n in C.IBGE_ITEMS if c == cat)
-            serie = res["series"][0]["serie"]
-            pts = [(k, float(v)) for k, v in sorted(serie.items()) if v not in ("-", "...", "X", "")]
+            if pid not in cache:
+                log(f"  ✗ IBGE {pname}: {type(e).__name__}: {e} (sem dados guardados)")
+                continue
+            log(f"  ✗ IBGE {pname}: {type(e).__name__}; usando os últimos dados guardados")
+            series = {int(k): v for k, v in cache[pid].items()}
+            src_note = "IBGE · IPCA 12 meses (último dado guardado)"
+        last = "?"
+        for iid, cat, iname in C.IBGE_ITEMS:
+            pts = sorted(series.get(cat, {}).items())
             if not pts:
                 continue
             vals = [v for _, v in pts]
             dates = [f"{k[4:]}/{k[:4]}" for k, _ in pts]
+            last = dates[-1]
             out.append(indicator(f"ipca_{iid}_{pid}", f"{iname} · {pname}", "transportes", vals[-1], "%",
-                                 change(vals, "pp"), "pp", vals, dates, "IBGE · IPCA 12 meses", {"place": pid, "item": iid}))
-        log(f"  ✓ IBGE {pname}: {len(data[0]['resultados'])} subitens até {dates[-1] if pts else '?'}")
+                                 change(vals, "pp"), "pp", vals, dates, src_note, {"place": pid, "item": iid}))
+        log(f"  ✓ IBGE {pname}: {len(series)} subitens até {last}")
+    cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1), "utf-8")
     return out
 
 
