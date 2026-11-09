@@ -135,7 +135,8 @@ def parse_feed(raw: bytes):
         summary = child_text(el, "description", "summary", "content", "encoded")
         date = parse_date(child_text(el, "pubDate", "published", "updated", "date"))
         if title and link:
-            out.append({"title": title, "link": link.strip(), "summary": clean(summary), "date": date})
+            out.append({"title": title, "link": link.strip(), "summary": clean(summary), "date": date,
+                        "src": clean(child_text(el, "source"), 80)})
     return out
 
 
@@ -189,19 +190,34 @@ def _fetch_feed(f: dict):
         return e
 
 
+def gnews_feeds() -> list[dict]:
+    base = "https://news.google.com/rss/search?hl=pt-BR&gl=BR&ceid=BR:pt-419&q="
+    return [{"name": f"Google Notícias · {q}", "url": base + urllib.parse.quote(f"{q} when:2d"), "kind": "imp", "area": area, "gnews": True}
+            for q, area in C.GNEWS_QUERIES]
+
+
 def collect_rss() -> list[dict]:
     items = []
+    feeds = C.FEEDS + gnews_feeds()
     # baixa todas as fontes ao mesmo tempo: uma fonte lenta não atrasa as outras
-    with ThreadPoolExecutor(max_workers=10) as pool:
-        results = list(pool.map(_fetch_feed, C.FEEDS))
-    for f, entries in zip(C.FEEDS, results):
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        results = list(pool.map(_fetch_feed, feeds))
+    outlets = set()
+    for f, entries in zip(feeds, results):
         if isinstance(entries, Exception):
             log(f"  ✗ {f['name']}: {type(entries).__name__}: {entries}")
             continue
         n = 0
         for e in entries:
-            if n >= C.MAX_PER_FEED:
+            if n >= (C.GNEWS_PER_QUERY if f.get("gnews") else C.MAX_PER_FEED):
                 break
+            if f.get("gnews"):   # título vem como "Manchete - Veículo": separa o veículo
+                if e["src"] and e["title"].endswith(" - " + e["src"]):
+                    e["title"] = e["title"][: -len(e["src"]) - 3]
+                if e["src"] in C.GNEWS_BLOCK:
+                    continue
+                e["summary"] = ""
+                e["outlet"] = e["src"] or "Google Notícias"
             d = e["date"] or NOW
             if d > NOW + timedelta(hours=2) or NOW - d > timedelta(hours=C.WINDOW_HOURS):
                 continue
@@ -213,24 +229,33 @@ def collect_rss() -> list[dict]:
                 "title": e["title"],
                 "link": e["link"],
                 "summary": e["summary"],
-                "source": f["name"],
+                "source": e.get("outlet") or f["name"],
                 "kind": f["kind"],
                 "area": classify(text, f["area"]),
                 "published": iso(d),
             }
+            if f.get("gnews"):
+                it["via"] = "Google Notícias"
             it["score"] = score(it)
             it["econ"] = is_econ(it)
             items.append(it)
+            outlets.add(it["source"])
             n += 1
-        log(f"  ✓ {f['name']}: {n} itens recentes (de {len(entries)})")
-    # remove duplicados (mesmo link ou mesmo título)
+        if not f.get("gnews"):
+            log(f"  ✓ {f['name']}: {n} itens recentes (de {len(entries)})")
+    g = [f for f, r in zip(feeds, results) if f.get("gnews") and not isinstance(r, Exception)]
+    log(f"  ✓ Google Notícias: {len(g)} de {len(C.GNEWS_QUERIES)} consultas")
+    # remove duplicados (mesmo link ou mesma manchete); a versão vinda direto da fonte tem preferência
+    norm = lambda t: re.sub(r"[^a-z0-9à-ú]+", "", t.lower())[:90]  # noqa: E731
     seen, uniq = set(), []
-    for it in sorted(items, key=lambda x: x["published"], reverse=True):
-        key = (it["id"], it["title"].lower())
+    for it in sorted(items, key=lambda x: "via" in x):
+        key = (it["id"], norm(it["title"]))
         if key[0] in seen or key[1] in seen:
             continue
         seen.update(key)
         uniq.append(it)
+    uniq.sort(key=lambda x: x["published"], reverse=True)
+    log(f"  = {len(uniq)} notícias únicas de {len({i['source'] for i in uniq})} veículos diferentes")
     return uniq[: C.MAX_ITEMS]
 
 

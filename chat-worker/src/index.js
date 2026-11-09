@@ -77,11 +77,14 @@ function buildContext(data, sources) {
 
 const SYSTEM = `Você é o "Pergunte ao NEXUS", assistente de estudos e de leitura de conjuntura de um estudante de Ciências Econômicas da UFMA (São Luís, Maranhão), na reta final do curso. Ele também é controller e economista-chefe de uma empresa de ônibus no Maranhão, então perguntas sobre custos (diesel, pneus, pessoal), tarifa técnica, reajuste contratual, gratuidades, demanda, financiamento de frota e regulação do transporte são do trabalho dele: responda com o rigor de quem precisa decidir e mostre as contas.
 
+Ele usa o NEXUS no lugar de pesquisar no Google ou perguntar a outro assistente: perguntas sobre tendências (da economia, das profissões, da gestão), sobre o que um economista, empresário ou empresa está fazendo hoje, sobre o que um autor defende, ou sobre qualquer fato recente.
+
 Como responder:
-- Português do Brasil, direto e didático. Até uns 250 palavras, salvo se ele pedir mais detalhe.
-- Use as notícias e os dados do NEXUS que vêm junto com a pergunta. Quando usar uma notícia, cite o número dela entre colchetes, como [2]. Não cite números que não estejam na lista.
-- Separe o que é fato (dito pela fonte ou pelos dados) do que é interpretação sua. Não invente números, datas ou declarações.
-- Se o acervo não cobrir o assunto, diga isso e responda com conhecimento geral consolidado, deixando claro que não vem das notícias do NEXUS.
+- Português do Brasil, direto e didático. Perguntas simples: até uns 250 palavras. Pesquisas (tendências, panoramas, "o que fulano faz hoje"): até uns 600 palavras, organizadas em tópicos curtos, terminando com o que observar a seguir.
+- Você tem busca na web (web_search) e leitura de páginas (web_fetch). Use quando a pergunta envolver acontecimentos recentes, pessoas, empresas, tendências, previsões ou qualquer coisa que o acervo do NEXUS não cubra. Prefira fontes primárias e confiáveis (órgãos oficiais, bancos centrais, universidades, centros de pesquisa, relatórios de consultorias, imprensa reconhecida, a página ou o perfil da própria pessoa) e dados recentes. Para "tendências segundo fulano", procure o que a própria pessoa escreveu ou disse.
+- Quando usar uma notícia do acervo, cite o número dela entre colchetes, como [2]. As fontes da web são numeradas automaticamente: não invente números para elas.
+- Separe o que é fato (dito pela fonte ou pelos dados) do que é interpretação sua. Não invente números, datas ou declarações. Se as fontes divergirem, diga.
+- Se não achar informação confiável, diga isso em vez de preencher com suposições.
 - Quando ajudar, explique a teoria por trás (e as leituras ortodoxa e heterodoxa quando divergirem) e ligue a uma matéria que ele cursa. O perfil dele vem a seguir.
 - Para contas, mostre os passos.`;
 
@@ -199,10 +202,12 @@ export default {
 
     // a pergunta atual vai junto com o contexto do acervo; as anteriores seguem só como texto
     const last = msgs.pop();
+    const hoje = new Date().toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo", day: "numeric", month: "long", year: "numeric" });
     msgs.push({ role: "user", content: [
-      { type: "text", text: `<acervo>\n${context}\n</acervo>` },
+      { type: "text", text: `Hoje é ${hoje}.\n<acervo>\n${context}\n</acervo>` },
       { type: "text", text: last.content },
     ] });
+    const webOn = body.web !== false;   // o app pode desligar a busca na web
 
     const model = env.MODEL || "claude-opus-5-5";
     const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 2 });
@@ -214,29 +219,70 @@ export default {
     ctx.waitUntil((async () => {
       try {
         await send("meta", { model, sources: sources.map((it, k) => ({ n: k + 1, id: it.id, title: it.title, source: it.source, link: it.link })) });
-        const stream = client.beta.messages.stream({
-          model,
-          max_tokens: 4000,
-          betas: ["server-side-fallback-2026-07-01"],
-          fallbacks: "default",            // se o modelo recusar, o servidor da Anthropic tenta o modelo indicado
-          output_config: { effort: env.EFFORT || "low" },
-          system: [
-            { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
-            { type: "text", text: `Perfil do aluno:\n${profile || "(não informado)"}` },
-          ],
-          messages: msgs,
-        });
-        for await (const ev of stream) {
-          if (ev.type === "content_block_delta" && ev.delta.type === "text_delta") await send("text", ev.delta.text);
-        }
-        const final = await stream.finalMessage();
+        const tools = webOn ? [
+          { type: "web_search_20260209", name: "web_search", max_uses: 6 },
+          { type: "web_fetch_20260209", name: "web_fetch", max_uses: 4, citations: { enabled: true }, max_content_tokens: 20000 },
+        ] : [];
+        const webNum = new Map();               // url -> número da fonte (continua depois das do acervo)
+        let nextN = sources.length + 1;
+        const tot = { in: 0, out: 0, cache_read: 0, cache_write: 0, searches: 0, fetches: 0 };
+        let final, turn = 0;
+        do {                                    // pesquisas longas podem pausar (pause_turn): o servidor continua de onde parou
+          const stream = client.beta.messages.stream({
+            model,
+            max_tokens: 8000,
+            betas: ["server-side-fallback-2026-07-01"],
+            fallbacks: "default",               // se o modelo recusar, o servidor da Anthropic tenta o modelo indicado
+            output_config: { effort: env.EFFORT || "low" },
+            system: [
+              { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
+              { type: "text", text: `Perfil do aluno:\n${profile || "(não informado)"}` },
+            ],
+            ...(tools.length ? { tools } : {}),
+            messages: msgs,
+          });
+          const blocks = {};                    // estado por bloco: tipo, json do input, citações
+          for await (const ev of stream) {
+            if (ev.type === "content_block_start") {
+              const b = ev.content_block;
+              blocks[ev.index] = { type: b.type, name: b.name, json: "", cites: [] };
+            } else if (ev.type === "content_block_delta") {
+              const b = blocks[ev.index] || {};
+              if (ev.delta.type === "text_delta") await send("text", ev.delta.text);
+              else if (ev.delta.type === "input_json_delta") b.json += ev.delta.partial_json || "";
+              else if (ev.delta.type === "citations_delta" && ev.delta.citation?.url) b.cites.push(ev.delta.citation);
+            } else if (ev.type === "content_block_stop") {
+              const b = blocks[ev.index];
+              if (!b) continue;
+              if (b.type === "server_tool_use") {
+                let input = {}; try { input = JSON.parse(b.json || "{}"); } catch {}
+                if (b.name === "web_search") { tot.searches++; await send("status", { kind: "search", text: input.query || "" }); }
+                else if (b.name === "web_fetch") { tot.fetches++; await send("status", { kind: "fetch", text: input.url || "" }); }
+              } else if (b.type === "text" && b.cites.length) {
+                const ns = [];
+                for (const c of b.cites) {
+                  if (!webNum.has(c.url)) {
+                    webNum.set(c.url, nextN);
+                    await send("source", { n: nextN, title: c.title || c.url, link: c.url, source: new URL(c.url).hostname.replace(/^www\./, ""), web: true });
+                    nextN++;
+                  }
+                  ns.push(webNum.get(c.url));
+                }
+                await send("text", ` [${[...new Set(ns)].join(", ")}]`);
+              }
+            }
+          }
+          final = await stream.finalMessage();
+          const u = final.usage || {};
+          tot.in += u.input_tokens || 0; tot.out += u.output_tokens || 0;
+          tot.cache_read += u.cache_read_input_tokens || 0; tot.cache_write += u.cache_creation_input_tokens || 0;
+          if (final.stop_reason === "pause_turn") msgs.push({ role: "assistant", content: final.content });
+        } while (final.stop_reason === "pause_turn" && ++turn < 4);
         if (final.stop_reason === "refusal") await send("text", "\n\nNão consegui responder a essa pergunta.");
         if (final.stop_reason === "max_tokens") await send("text", "\n\n(Resposta cortada por tamanho. Peça para eu continuar.)");
-        const u = final.usage || {};
         const [pi, po, pr] = PRICES[model] || PRICES["claude-opus-5-5"];
-        const usd = ((u.input_tokens || 0) * pi + (u.output_tokens || 0) * po + (u.cache_read_input_tokens || 0) * pr +
-          (u.cache_creation_input_tokens || 0) * pi * 1.25) / 1e6;
-        await send("done", { model: final.model, usage: { in: u.input_tokens, out: u.output_tokens, cache_read: u.cache_read_input_tokens, cache_write: u.cache_creation_input_tokens }, usd });
+        const usd = (tot.in * pi + tot.out * po + tot.cache_read * pr + tot.cache_write * pi * 1.25) / 1e6 + tot.searches * 0.01;
+        await send("done", { model: final.model, usage: tot, usd });
       } catch (err) {
         let msg = "Erro ao falar com a IA. Tente de novo.";
         if (err instanceof Anthropic.RateLimitError) msg = "Muitas perguntas seguidas. Espere um minuto e tente de novo.";

@@ -265,6 +265,7 @@ V.hoje = () => {
   const rev = REFORCO.map(cById).filter(c => c && c.m <= 1 && mentions('concepts', c.id, day).length).slice(0, 5);
   const td = trendData();
   return `${head(`${longDate(new Date())} · atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''}`, 'Panorama <em>do dia</em>', `${hl.length} destaques escolhidos entre ${DATA.items.length} itens das últimas 72 horas, de ${new Set(DATA.items.map(i => i.source)).size} fontes.`)}
+  <form id="quickask" class="quickask"><input id="qa" type="search" placeholder="Pergunte ao NEXUS: tendências, pessoas, empresas, conceitos… (pesquisa na web)" aria-label="Pergunte ao NEXUS" autocomplete="off"><button class="btn" type="submit">Perguntar</button></form>
   <div class="ticker">${tick.map(t => `<div class="tick"><span>${esc(t.name)}</span><strong>${fmtVal(t)}</strong><span class="d ${t.dir}">${fmtDelta(t)}</span></div>`).join('')}</div>
   ${editionCard()}
   <section class="section"><header><h2>Destaques</h2><a class="link" href="#radar">Ver tudo no radar →</a></header>
@@ -746,8 +747,10 @@ V.carreira = () => {
 
 /* ================= chat "Pergunte ao NEXUS" ================= */
 const CHAT = {cfg: load('nexus-chat-cfg', {url: '', key: ''}), hist: load('nexus-chat-hist', []), cost: load('nexus-chat-cost', {}), busy: false, editing: false};
-const SUGG = ['Por que juros altos nos EUA afetam empresas brasileiras?', 'O que mudou nas expectativas do Focus e por quê?',
-  'Explique o destaque de hoje usando Economia do Setor Público.', 'Que tema destas notícias renderia um bom TCC?'];
+const SUGG = ['Quais as tendências para a carreira de economista em 2026 e 2027?', 'O que a Mariana Mazzucato está fazendo e defendendo hoje?',
+  'Quais as tendências de gestão para 2027, segundo a McKinsey e a MIT Sloan?', 'O que esperar do preço do diesel e da Selic nos próximos 12 meses, e como isso afeta uma empresa de ônibus?',
+  'Que tema destas notícias renderia um bom TCC?'];
+CHAT.web = load('nexus-chat-web', true);
 const monthKey = () => new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'}).slice(0, 7);
 function saveChat(){ store('nexus-chat-hist', CHAT.hist.slice(-40)); }
 function chatProfile(){
@@ -770,7 +773,10 @@ function chatMsgHTML(m, i){
   if (m.role === 'user') return `<div class="msg me">${esc(m.text)}</div>`;
   const cited = [...new Set([...(m.text || '').matchAll(/\[(\d+(?:\s*,\s*\d+)*)\]/g)].flatMap(x => x[1].split(/\s*,\s*/).map(Number)))];
   const srcs = (m.sources || []).filter(s => cited.includes(s.n));
-  return `<div class="msg bot${m.error ? ' err' : ''}" data-mi="${i}">${m.text ? mdLite(m.text, m.sources, i) : '<p class="muted">Pensando…</p>'}
+  const st = m.status || [];
+  const steps = st.length ? `<details class="steps-web"${m.text ? '' : ' open'}><summary>${st.filter(s => s.kind === 'search').length} pesquisa(s) na web · ${st.filter(s => s.kind === 'fetch').length} página(s) lida(s)</summary>
+    <ul>${st.map(s => `<li>${s.kind === 'search' ? '🔎' : '📄'} ${esc(s.text)}</li>`).join('')}</ul></details>` : '';
+  return `<div class="msg bot${m.error ? ' err' : ''}" data-mi="${i}">${steps}${m.text ? mdLite(m.text, m.sources, i) : `<p class="muted">${st.length ? 'Pesquisando…' : 'Pensando…'}</p>`}
    ${srcs.length ? `<div class="refs"><span class="eyebrow">Fontes</span>${srcs.map(s => `<button class="cite-src" data-cite="${i}:${s.n}"><b>${s.n}</b> ${esc(s.source)} · ${esc(s.title.slice(0, 54))}${s.title.length > 54 ? '…' : ''}</button>`).join('')}</div>` : ''}
    ${m.usd != null ? `<span class="cost">US$ ${nf(m.usd, 3)}</span>` : ''}</div>`;
 }
@@ -786,7 +792,8 @@ V.pergunte = () => {
   if (!CHAT.cfg.url || !CHAT.cfg.key || CHAT.editing) return `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}${cfgForm}${costCard}`;
   let host = ''; try { host = new URL(CHAT.cfg.url).host; } catch (e) {}
   return `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}
-  <div class="chat"><div class="chatbar"><span class="live"><i></i>${esc(host)}</span><span class="spacer"></span><button class="link" data-chat-edit="1">Configurar</button>${CHAT.hist.length ? '<button class="link" data-chat-clear="1">Limpar conversa</button>' : ''}</div>
+  <div class="chat"><div class="chatbar"><span class="live"><i></i>${esc(host)}</span>
+   <label class="webtog"><input type="checkbox" id="webtog" ${CHAT.web ? 'checked' : ''}> pesquisar na web</label><span class="spacer"></span><button class="link" data-chat-edit="1">Configurar</button>${CHAT.hist.length ? '<button class="link" data-chat-clear="1">Limpar conversa</button>' : ''}</div>
    <div class="msgs" id="msgs">${CHAT.hist.length ? CHAT.hist.map(chatMsgHTML).join('') : `<div class="sugg"><span class="eyebrow">Experimente</span>${SUGG.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}</div>
    <form class="composer" id="composer"><textarea id="askin" rows="1" placeholder="Pergunte sobre economia, empresas, suas matérias…" aria-label="Pergunta" ${CHAT.busy ? 'disabled' : ''}></textarea><button class="btn" type="submit" ${CHAT.busy ? 'disabled' : ''}>${CHAT.busy ? '…' : 'Enviar'}</button></form></div>
   ${costCard}`;
@@ -803,6 +810,7 @@ function bindChat(){
       CHAT.cfg = {url, key}; store('nexus-chat-cfg', CHAT.cfg); CHAT.editing = false; render();
     } catch (err) { $('#cfgmsg').innerHTML = `<div class="fb no">Não consegui falar com o servidor (${esc(err.message)}). Confira o endereço.</div>`; }
   });
+  const wt = $('#webtog'); if (wt) wt.addEventListener('change', () => { CHAT.web = wt.checked; store('nexus-chat-web', CHAT.web); });
   const f = $('#composer');
   if (f) {
     const ta = $('#askin');
@@ -824,7 +832,7 @@ async function askNexus(q){
   try {
     const history = CHAT.hist.slice(0, -1).filter(m => !m.error && m.text).slice(-11).map(m => ({role: m.role, content: m.text}));
     const r = await fetch(CHAT.cfg.url + '/chat', {method: 'POST', headers: {'content-type': 'application/json', 'x-nexus-key': CHAT.cfg.key},
-      body: JSON.stringify({messages: history, profile: chatProfile()})});
+      body: JSON.stringify({messages: history, profile: chatProfile(), web: CHAT.web})});
     if (!r.ok) {
       const j = await r.json().catch(() => ({}));
       throw new Error(r.status === 401 ? 'Senha incorreta. Toque em “Configurar” para corrigir.' : (j.error || 'HTTP ' + r.status));
@@ -843,6 +851,8 @@ async function askNexus(q){
         const d = JSON.parse(data);
         if (ev === 'meta') msg.sources = d.sources;
         else if (ev === 'text') { msg.text += d; schedule(); }
+        else if (ev === 'status') { (msg.status = msg.status || []).push(d); schedule(); }
+        else if (ev === 'source') { msg.sources.push(d); }
         else if (ev === 'done') { msg.usd = d.usd; const k = monthKey(); CHAT.cost[k] = (CHAT.cost[k] || 0) + (d.usd || 0); store('nexus-chat-cost', CHAT.cost); }
         else if (ev === 'error') throw new Error(d.message);
       }
@@ -982,6 +992,8 @@ function render(){
   if (k === 'academia' && state.acad === 'lab') bindLab();
   if (k === 'pergunte') bindChat();
   if (k === 'mercados') bindMarketSearch();
+  if (k === 'hoje') { const qa = $('#quickask'); if (qa) qa.addEventListener('submit', e => { e.preventDefault(); const q = $('#qa').value.trim(); if (!q) return;
+    location.hash = '#pergunte'; setTimeout(() => { if (CHAT.cfg.url && CHAT.cfg.key) askNexus(q); }, 50); }); }
   if (k === 'radar') { const q = $('#q'); if (q) q.addEventListener('input', e => { state.q = e.target.value; state.limit = 60; const pos = e.target.selectionStart; render(); const n = $('#q'); n.focus(); n.setSelectionRange(pos, pos); }); }
 }
 function renderStatus(){

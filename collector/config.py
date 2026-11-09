@@ -47,6 +47,22 @@ FEEDS = [
     # Carreira: sem feed dedicado estável; os itens entram pela regra de palavras-chave
 ]
 
+# Google Notícias por tema: cada consulta junta dezenas de veículos (últimos 2 dias)
+GNEWS_QUERIES = [
+    ("Copom Selic juros", "macro"), ("inflação IPCA", "macro"), ("dólar câmbio real", "macro"),
+    ("reforma tributária IBS CBS", "macro"), ("arcabouço fiscal dívida pública", "macro"), ("mercado de trabalho emprego Caged", "macro"),
+    ("economia Maranhão", "regional"), ("São Luís economia investimento", "regional"), ("Nordeste economia indústria", "regional"),
+    ("transporte público ônibus tarifa", "transportes"), ("preço do diesel", "transportes"), ("mobilidade urbana transporte coletivo", "transportes"),
+    ("concessão transporte rodoviário ANTT", "transportes"),
+    ("inteligência artificial empresas produtividade", "ia"), ("startups investimento Brasil", "empresas"), ("bancos crédito inadimplência", "empresas"),
+    ("resultados trimestrais empresas lucro", "empresas"), ("gestão empresarial tendências", "empresas"),
+    ("agronegócio exportação safra", "agro"), ("Petrobras", "empresas"), ("bitcoin criptomoedas", "cripto"),
+    ("economia mundial perspectivas 2027", "global"), ("Federal Reserve juros EUA", "global"), ("China economia", "global"),
+    ("economistas tendências", "carreira"), ("vagas economistas finanças", "carreira"),
+]
+GNEWS_PER_QUERY = 25
+GNEWS_BLOCK = {"Vietnam.vn", "VietnamPlus", "MSN"}  # agregadores e traduções automáticas
+
 # Inovação: pesquisa econômica, gestão, Brasil e dados (aba Novidades; a IA escolhe e explica as melhores)
 INNOV_FEEDS = [
     {"name": "VoxEU / CEPR", "url": "https://cepr.org/rss/vox-content", "tipo": "pesquisa"},
@@ -170,5 +186,5 @@ TECH_BIZ = (r"(lan[cç]a|launch|modelo|model|funding|raises?|investiment|invest|
 
 # Janela de itens mantidos em latest.json (horas)
 WINDOW_HOURS = 72
-MAX_ITEMS = 400
+MAX_ITEMS = 900
 MAX_PER_FEED = 40
