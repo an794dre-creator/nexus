@@ -1,5 +1,5 @@
 /* Service worker do NEXUS: guarda o app para abrir offline; dados sempre tentam a rede primeiro. */
-const VERSION = 'nexus-v2';
+const VERSION = 'nexus-v3';
 const SHELL = ['./', 'index.html', 'styles.css', 'content.js', 'app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -14,8 +14,8 @@ self.addEventListener('fetch', e => {
   const isData = url.pathname.includes('/data/');
   const isShell = SHELL.some(p => url.pathname.endsWith(p.replace('./', '/')));
   if (isData || isShell) {
-    // rede primeiro (dados e código sempre atualizados), cache como reserva offline
-    e.respondWith(fetch(e.request).then(r => {
+    // rede primeiro, revalidando com o servidor (ignora a cópia de 10 min do cache HTTP); cache como reserva offline
+    e.respondWith(fetch(e.request.url, {cache: 'no-cache', credentials: 'same-origin'}).then(r => {
       const copy = r.clone();
       if (r.ok) caches.open(VERSION).then(c => c.put(e.request, copy));
       return r;
