@@ -1,0 +1,30 @@
+{
+ "manchete": "Lula reeleito reafirma compromisso fiscal sem detalhar medidas, enquanto a dívida fica mais curta e atrelada à Selic e o mercado aguarda a ata do Copom",
+ "resumo": [
+  "Em seu primeiro pronunciamento após a reeleição, Lula reafirmou o compromisso com a responsabilidade fiscal, citou preocupação com a dívida e os juros e prometeu elevar o investimento para mais de 20% do PIB, mas não detalhou medidas, segundo Valor, InfoMoney e Exame. Importa porque, sem medidas concretas, o prêmio de risco nos juros longos tende a seguir alto.",
+  "Segundo a Folha, os títulos atrelados à Selic dobraram em 12 meses e o colchão de liquidez para rolar a dívida de curto prazo diminuiu, reflexo do ceticismo dos investidores. Importa porque, com dívida pós-fixada, cada ponto da Selic pesa mais rápido nas contas públicas, que é o centro do debate de Economia do Setor Público.",
+  "G1/BBC reúnem o diagnóstico de organismos internacionais sobre a necessidade de retomar superávits primários, e o economista Tiago Cavalcanti (Cambridge) defende um ajuste fiscal 'suave', sem 'atalhos'. Importa porque mostra a leitura ortodoxa dominante: o ajuste fiscal viria antes da queda dos juros e do crescimento.",
+  "A ata do Copom sai na terça (10), às 8h, e vai explicar a manutenção da Selic em 13,75%, que interrompeu uma sequência de cinco cortes, segundo o Valor. Importa para o custo do financiamento de frota e do capital de giro da empresa.",
+  "A ANTT autorizou o reajuste dos pedágios da EPR Iguaçu no Paraná, que considera inflação de 5,76% e a primeira revisão ordinária da concessão, segundo o Diário do Transporte. Ônibus de três eixos pagarão até R$ 57,30. É um caso concreto de equilíbrio econômico-financeiro em contratos de concessão, útil como referência para reajustes contratuais.",
+  "Belo Horizonte ampliou o Bilhete de Transporte Social para mais pacientes do SUS e elevou o contrato com a Transfácil para R$ 1,88 milhão, incorporando o reajuste tarifário, segundo o Diário do Transporte. É um exemplo de gratuidade custeada pelo orçamento público, e não pela tarifa do pagante."
+ ],
+ "acompanhar_hoje": [
+  "Ata do Copom na terça (10): tom sobre o risco fiscal e sinais de quando os cortes podem ser retomados.",
+  "Reação dos juros futuros e do dólar (hoje em R$ 5,50, alta de 0,72%) à falta de detalhes no pronunciamento.",
+  "Anúncio de nomes da equipe econômica ou de medidas fiscais concretas pelo governo reeleito.",
+  "Brent em US$ 96,59: se a queda se mantiver, pode aliviar a pressão sobre o diesel no custo por km."
+ ],
+ "pergunta_estudo": "(Economia do Setor Público) Por que o aumento da participação de títulos pós-fixados (Selic) na dívida pública reduz a eficácia da política monetária e torna a sustentabilidade fiscal mais sensível aos juros? Compare a leitura ortodoxa (ajuste primário primeiro) com a heterodoxa (crescimento e investimento puxando a relação dívida/PIB).",
+ "conceito": "divida",
+ "itens": [
+  "1c8503298aac0111",
+  "b43eaab4eb9817ca",
+  "1ac2f6e609c9c880",
+  "0887df2e0c7e99e5",
+  "a0e65341e3cd2e86",
+  "98032020656821f2"
+ ],
+ "date": "2026-11-09",
+ "created": "2026-11-09T06:52:24.714381+00:00",
+ "model": "claude-opus-5-5"
+}

@@ -1,0 +1,115 @@
+{
+ "history": {
+  "2026-11-09": [
+   {
+    "ref": "72bfd0c6989106cd",
+    "titulo": "Petróleo dos EUA amorteceu choque de oferta de 2026",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo o Fed de Nova York, o conflito no Oriente Médio no início de 2026 causou uma queda sem precedentes na oferta global de petróleo, mas os preços não chegaram a níveis recordes. A análise atribui parte dessa moderação ao setor petrolífero americano, cujo aumento contínuo de perfurações criou um grande excesso de oferta antes do choque.",
+    "como_funciona": "Um excesso de oferta prévio funciona como colchão: estoques altos e produção em expansão fora da região afetada reduzem a escassez efetiva quando a oferta cai. Como a demanda por petróleo é inelástica no curto prazo, pequenas folgas de oferta mudam muito o preço. O resumo não detalha os demais fatores nem o método; é preciso ler o original.",
+    "calculo": "Variação de preço ≈ choque de oferta (%) / elasticidade-preço da demanda. Ex.: queda líquida de 2% com elasticidade -0,1 → alta de ~20%; se a folga de oferta reduz a queda líquida para 1%, a alta cai para ~10%.",
+    "por_que_importa": "O preço do diesel no Brasil acompanha o petróleo internacional e o câmbio, e é um dos maiores itens do custo por km. Entender o que amortece choques ajuda a prever se uma alta será passageira ou persistente.",
+    "como_aplicar": "Monte cenários de custo por km com diesel em alta moderada e forte, e use-os para justificar cláusulas de gatilho de reajuste no contrato de concessão.",
+    "conceito": "custo_km",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/the-u-s-oil-sectors-role-in-restraining-prices/",
+    "titulo_original": "The U.S. Oil Sector’s Role in Restraining Prices",
+    "publicado": "2026-11-05T12:00:00Z"
+   },
+   {
+    "ref": "1a108e07ca4097a2",
+    "titulo": "Poder de mercado define quanto do corte de juros chega ao cliente",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Com dados de 14 milhões de cartões novos, pesquisadores do Fed de NY examinam como a taxa oferecida muda quando cai o custo de captação do banco. O resumo indica que a posição de mercado do credor explica por que tomadores parecidos recebem taxas muito diferentes.",
+    "como_funciona": "Quando o custo de funding cai, um banco em mercado competitivo repassa a queda ao cliente; um com poder de mercado pode reter parte como margem. O grau de repasse (pass-through) depende, portanto, da concorrência local. Os números exatos do repasse não aparecem no resumo; é preciso ler o artigo.",
+    "calculo": "Pass-through = Δ taxa ao cliente / Δ custo de captação. Ex.: Selic cai 1 p.p. e a taxa do financiamento cai 0,4 p.p. → repasse de 40%.",
+    "por_que_importa": "Mostra que a política monetária não chega igual a todos: depende da estrutura do mercado de crédito. Para quem financia frota, isso explica spreads altos mesmo com juros básicos em queda.",
+    "como_aplicar": "Ao renovar financiamento de ônibus, compare cotações de vários bancos e fontes (BNDES/Finame, bancos de montadora) e calcule o repasse da Selic de cada uma para negociar.",
+    "conceito": "cournot",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/how-market-position-shapes-credit-card-interest-rates/",
+    "titulo_original": "How Market Position Shapes Credit Card Interest Rates",
+    "publicado": "2026-11-04T12:00:00Z"
+   },
+   {
+    "ref": "6ef2d79f9a2769d9",
+    "titulo": "A pergunta da pesquisa muda o efeito da inflação esperada sobre o consumo",
+    "tipo": "método",
+    "o_que_e_novo": "A coluna mostra que a forma como se pergunta sobre consumo em pesquisas pode mudar o sinal e a força da relação estimada entre expectativas de inflação e gasto das famílias. Isso ajuda a explicar por que a evidência empírica é mista.",
+    "como_funciona": "Perguntas sobre gastar em geral, sobre bens duráveis ou sobre gastos nominais versus reais captam comportamentos distintos: quem espera inflação pode antecipar compras (efeito positivo) ou cortar consumo real por perda de renda (efeito negativo). A redação da questão determina qual efeito aparece. O resumo é cortado; os detalhes das perguntas comparadas exigem ler o original.",
+    "calculo": "Consumo_i = a + b × Expectativa_inflação_i + controles + erro; o sinal de b pode mudar conforme a medida de consumo usada.",
+    "por_que_importa": "Viés de mensuração pode inverter conclusões de política monetária. É uma lição metodológica direta para qualquer TCC baseado em questionário.",
+    "como_aplicar": "No Projeto de Pesquisa, teste formulações alternativas da variável-chave e reporte a robustez; numa pesquisa com passageiros, pergunte de mais de uma forma sobre uso do ônibus.",
+    "conceito": "pesquisa",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/when-wording-changes-what-we-find-impact-inflation-expectations-spending",
+    "titulo_original": "When wording changes what we find: The impact of inflation expectations on spending",
+    "publicado": "2026-11-08T00:00:00Z"
+   },
+   {
+    "ref": "e2e94245408193ea",
+    "titulo": "Política monetária com dívida pública alta",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna argumenta que, mesmo com dívida pública elevada, bancos centrais ainda conseguem controlar a inflação. Reconhece o canal de risco: transferências financiadas por dívida elevam gasto e inflação se as famílias não as pouparem integralmente.",
+    "como_funciona": "Se as famílias não seguem a equivalência ricardiana, dívida maior aumenta demanda agregada e pressão inflacionária. O banco central compensaria reagindo com juros, mas juros maiores também encarecem a dívida. O resumo não mostra as condições exatas sob as quais o controle se mantém; é preciso ler o original.",
+    "calculo": "Dinâmica da dívida: Δd = (r − g) × d − superávit primário. Ex.: d=80% do PIB, r−g=2 p.p., primário 0 → dívida sobe 1,6 p.p. ao ano.",
+    "por_que_importa": "É o debate de dominância fiscal, central no Brasil. Conecta Economia do Setor Público com política monetária.",
+    "como_aplicar": "Use a fórmula de dinâmica da dívida com dados do Banco Central para discutir sustentabilidade fiscal brasileira em Economia do Setor Público.",
+    "conceito": "divida",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/monetary-policy-times-high-public-debt",
+    "titulo_original": "Monetary policy in times of high public debt",
+    "publicado": "2026-11-05T00:00:00Z"
+   },
+   {
+    "ref": "16e4c7d28d19aca7",
+    "titulo": "Do 'Escritório Global' à fronteira da globalização",
+    "tipo": "dado novo",
+    "o_que_e_novo": "A pesquisa documenta que cadeias globais de valor de serviços crescem mais rápido que as industriais. Sua geografia é diferente: uma estrela centrada nos EUA, e não blocos regionais como na indústria.",
+    "como_funciona": "Com dados de comércio de bens intermediários (mapa de calor), os autores comparam a 'Fábrica Global', organizada em blocos, ao 'Escritório Global', em que serviços digitais se conectam a um centro. Isso pede nova teoria e novos métodos empíricos. Detalhes das bases e medidas exigem leitura do artigo.",
+    "calculo": "",
+    "por_que_importa": "Atualiza a leitura centro-periferia: a dependência pode migrar da indústria para serviços e tecnologia. Isso é relevante para pensar estratégias de desenvolvimento do Brasil e do Nordeste.",
+    "como_aplicar": "Em Estratégias de Desenvolvimento Comparadas ou Inovação e Desenvolvimento, use o argumento para discutir se exportar serviços digitais é rota viável fora do eixo industrial.",
+    "conceito": "cepal",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/global-office-globalisations-frontier-shifting-factories-offices",
+    "titulo_original": "The Global Office: Globalisation’s frontier is shifting from factories to offices",
+    "publicado": "2026-11-09T00:00:00Z"
+   }
+  ]
+ },
+ "date": "2026-11-09",
+ "created": "2026-11-09T06:52:24.714381+00:00",
+ "model": "claude-opus-5-5",
+ "tendencias": [
+  {
+   "tema": "Bitcoin e cripto",
+   "por_que": "As manchetes misturam vários assuntos sem um fato único: volatilidade do bitcoin atribuída ao escândalo envolvendo a Nvidia e ao fracasso de negociações com o Irã, efeitos das eleições de meio de mandato nos EUA sobre o setor e mudanças na Binance (encerramento do pool de mineração e de contas em alguns países europeus). Também aparecem debates técnicos do Ethereum, a estagnação das stablecoins e um roubo bilionário por golpe de falsa entrevista. O salto de 0 para 39 pode refletir mais a cobertura recorrente de veículos especializados do que um evento isolado.",
+   "observar": "Vale acompanhar se o preço do bitcoin se mantém após as eleições americanas e se as novas regras e taxas da Binance na Europa entram mesmo em vigor no fim do ano.",
+   "ultimos7": 39,
+   "anteriores7": 0
+  },
+  {
+   "tema": "IA e agentes",
+   "por_que": "O tema cresce por notícias dispersas: a infraestrutura física da IA (a Anthropic fechando acordo de US$ 3,4 bilhões em geradores a gás para data centers, Milei apostando em data centers na Patagônia), a concorrência entre plataformas (agentes da DeepSeek com 1,54 milhão de usuários diários) e a presença da IA na cúpula climática na Turquia. Há ainda efeitos setoriais, como seguro cibernético para PMEs e a vantagem de grandes varejistas no e-commerce, segundo o UBS BB. Não há um único acontecimento central.",
+   "observar": "Observe se surgem novos contratos de energia para data centers e como a COP na Turquia trata o consumo energético da IA.",
+   "ultimos7": 36,
+   "anteriores7": 0
+  },
+  {
+   "tema": "Transporte coletivo e tarifas",
+   "por_que": "As manchetes são vagas e pouco tratam de tarifas: a maioria fala de acidentes, renovação de frota (Guimarães na Bahia), indústria de ônibus na Turquia e reforço de linhas e gratuidade para o Enem 2026 em Maceió e Suzano. O ponto mais ligado a custos é a ANTT ter autorizado aumento de pedágios da EPR Iguaçu no Paraná, inclusive para ônibus. A alta parece vir de cobertura pontual, não de uma mudança de política tarifária.",
+   "observar": "Fique atento a novos reajustes de pedágio ou de tarifa e a gratuidades em eventos como o Enem, que pesam no custo por passageiro sem contrapartida de receita.",
+   "ultimos7": 24,
+   "anteriores7": 0
+  },
+  {
+   "tema": "China",
+   "por_que": "Dois focos puxam o tema: o caso do CEO da Nvidia, que, segundo as manchetes, admitiu relacionamento com uma suposta espiã chinesa, o que levou a empresa a abrir investigação e trouxe à tona questionamentos sobre chips liberados a firmas chinesas; e o índice de preços ao produtor na China, no ritmo mais forte em mais de quatro anos, enquanto a inflação ao consumidor desacelera. Também aparecem a venda da CSN Cimentos à chinesa Huaxin por R$ 12,7 bi e a ofensiva de carros elétricos chineses na Europa.",
+   "observar": "Acompanhe os próximos dados de preços ao produtor da China, por possíveis efeitos sobre os custos de insumos importados, e o desfecho da investigação na Nvidia.",
+   "ultimos7": 19,
+   "anteriores7": 0
+  }
+ ],
+ "tendencias_date": "2026-11-09"
+}
