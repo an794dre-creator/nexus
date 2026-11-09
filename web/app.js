@@ -48,6 +48,12 @@ const longDate = d => d.toLocaleDateString('pt-BR', {weekday:'long', day:'numeri
 let DATA = {items:[], indicators:[], papers:[], focus:null, updated_at:null};
 let AN = {};        // análises com IA, por id de notícia (data/analyses.json)
 let ED = null;      // edição do dia (data/edition.json)
+let USAGE = {};     // consumo da IA por dia (data/usage.json)
+function aiCost(){
+  const month = new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'}).slice(0, 7);
+  const days = Object.entries(USAGE).filter(([d]) => d.startsWith(month));
+  return {usd: days.reduce((a, [, v]) => a + (v.usd || 0), 0), calls: days.reduce((a, [, v]) => a + (v.calls || 0), 0), days: days.length};
+}
 let ARCH = null;
 let loadError = null;
 const state = {filter:'todos', q:'', limit:60, mkt:'geral', acad:'mat', ppl:'empresas', reg:'todas', grp:'Todos', k:.8};
@@ -467,7 +473,8 @@ V.carreira = () => {
 };
 
 V.pergunte = () => `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}
-  <div class="lock"><b>Chega na versão 2.</b> O chat precisa da API do Claude, que é cobrada à parte do Claude Pro (alguns dólares por mês para uso pessoal). Quando você tiver a chave, a pergunta vai junto com as notícias, os dados e as suas notas mais relevantes, e a resposta cita de onde veio cada informação.</div>
+  <div class="lock"><b>O chat é a próxima etapa.</b> As análises com IA já funcionam, mas o chat precisa de um pequeno servidor que guarde a chave da API (o site é público). Quando estiver pronto, a pergunta vai junto com as notícias, os dados e as suas notas mais relevantes, e a resposta cita de onde veio cada informação.</div>
+  ${(() => { const c = aiCost(); return `<section class="card"><h3 class="s">Consumo da IA neste mês</h3><p style="margin:0"><span class="mono" style="font-size:22px;color:var(--accent)">US$ ${nf(c.usd, 2)}</span> <span class="muted">· ${c.calls} chamadas em ${c.days} dia(s) · ${Object.keys(AN).length} análises guardadas</span></p><p class="muted" style="margin:0;font-size:13px">Estimativa pelos preços públicos da Anthropic. O valor oficial está em console.anthropic.com.</p></section>`; })()}
   <section class="card"><h3 class="s">Perguntas que ele vai responder</h3><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
    <li>Por que juros altos nos EUA afetam empresas brasileiras?</li><li>O que mudou nas expectativas do Focus nas últimas 4 semanas, e por quê?</li>
    <li>Quais empresas mais apareceram nas notícias este mês e em que contexto?</li><li>Explique a notícia X usando o que eu estudei em Macroeconomia.</li></ul></section>`;
@@ -602,7 +609,8 @@ function renderStatus(){
   const el = $('#status');
   if (loadError || !DATA.updated_at) { el.innerHTML = `<span class="live off"><i></i>Sem dados</span>`; return; }
   const h = (Date.now() - new Date(DATA.updated_at).getTime()) / 3600e3;
-  el.innerHTML = `<span class="live ${h > 3 ? 'stale' : ''}"><i></i>${h > 3 ? 'Coleta atrasada' : 'Coletor ativo'}</span><span>Atualizado ${ago(DATA.updated_at)}</span><span>${DATA.items.length} itens · ${DATA.indicators.length} indicadores</span>${(DATA.log || []).length ? `<span title="${esc(DATA.log.join('\n'))}">${DATA.log.length} fonte(s) com erro</span>` : ''}`;
+  const c = aiCost();
+  el.innerHTML = `<span class="live ${h > 3 ? 'stale' : ''}"><i></i>${h > 3 ? 'Coleta atrasada' : 'Coletor ativo'}</span><span>Atualizado ${ago(DATA.updated_at)}</span><span>${DATA.items.length} itens · ${DATA.indicators.length} indicadores</span>${(DATA.log || []).length ? `<span title="${esc(DATA.log.join('\n'))}">${DATA.log.length} fonte(s) com erro</span>` : ''}${c.calls ? `<span title="${c.calls} chamadas à IA neste mês (estimativa pelos preços públicos)">IA no mês: US$ ${nf(c.usd, 2)}</span>` : ''}`;
 }
 function bindLab(){
   const s = $('#kslider');
@@ -674,9 +682,9 @@ async function loadData(){
     DATA = Object.assign({items: [], indicators: [], papers: []}, await r.json());
     loadError = null;
   } catch (err) { loadError = err.message; }
-  const [an, ed] = await Promise.all(['data/analyses.json', 'data/edition.json'].map(u =>
+  const [an, ed, us] = await Promise.all(['data/analyses.json', 'data/edition.json', 'data/usage.json'].map(u =>
     fetch(u, {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null)));
-  AN = an || {}; ED = ed;
+  AN = an || {}; ED = ed; USAGE = us || {};
   prepare(); renderStatus(); render();
   loadArchive();
 }

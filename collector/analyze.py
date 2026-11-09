@@ -192,7 +192,8 @@ def main() -> None:
                      if datetime.fromisoformat(v.get("created", "1970-01-01T00:00:00+00:00")).astimezone(BRT).strftime("%Y-%m-%d") == today)
 
     hl = highlights(items)
-    todo = [it for it in hl if it["id"] not in analyses][: max(0, min(MAX_PER_RUN, MAX_PER_DAY - done_today))]
+    # só analisa o que é de economia (o coletor marca "econ"); itens antigos sem a marca passam
+    todo = [it for it in hl if it["id"] not in analyses and it.get("econ", True)][: max(0, min(MAX_PER_RUN, MAX_PER_DAY - done_today))]
     edition = json.loads(epath.read_text("utf-8")) if epath.exists() else {}
     need_edition = args.force_edition or (edition.get("date") != today and NOW.astimezone(BRT).hour >= EDITION_HOUR_BRT)
 
@@ -210,9 +211,10 @@ def main() -> None:
 
     import anthropic
     client = anthropic.Anthropic(max_retries=3)
-    usage_tot = {"in": 0, "out": 0, "cache_read": 0, "cache_write": 0}
+    usage_tot = {"in": 0, "out": 0, "cache_read": 0, "cache_write": 0, "calls": 0}
 
     def add_usage(u):
+        usage_tot["calls"] += 1
         usage_tot["in"] += u.input_tokens or 0
         usage_tot["out"] += u.output_tokens or 0
         usage_tot["cache_read"] += getattr(u, "cache_read_input_tokens", 0) or 0
@@ -269,7 +271,37 @@ def main() -> None:
             print(f"  ✗ edição não gerada: {type(e).__name__}")
 
     apath.write_text(json.dumps(analyses, ensure_ascii=False, separators=(",", ":")), "utf-8")
-    print(f"tokens: entrada {usage_tot['in']} · saída {usage_tot['out']} · cache lido {usage_tot['cache_read']} · cache gravado {usage_tot['cache_write']}")
+    cost = estimate_cost(usage_tot)
+    print(f"tokens: entrada {usage_tot['in']} · saída {usage_tot['out']} · cache lido {usage_tot['cache_read']} · "
+          f"cache gravado {usage_tot['cache_write']} · custo estimado US$ {cost:.4f}")
+    record_usage(usage_tot, cost, usage_tot["calls"])
+
+
+# Preços por milhão de tokens (US$): entrada, saída, leitura de cache. Gravação de cache = 1,25 × entrada.
+PRICES = {"claude-opus-5-5": (4.0, 20.0, 0.20), "claude-sonnet-5-5": (2.0, 10.0, 0.20), "claude-haiku-5-5": (0.10, 0.50, 0.01)}
+
+
+def estimate_cost(u: dict) -> float:
+    pin, pout, pread = PRICES.get(MODEL, PRICES["claude-opus-5-5"])
+    return (u["in"] * pin + u["out"] * pout + u["cache_read"] * pread + u["cache_write"] * pin * 1.25) / 1e6
+
+
+def record_usage(u: dict, cost: float, calls: int) -> None:
+    """Acumula o consumo por dia em web/data/usage.json (o app mostra o total do mês)."""
+    if not calls:
+        return
+    path = DATA / "usage.json"
+    hist = json.loads(path.read_text("utf-8")) if path.exists() else {}
+    day = NOW.astimezone(BRT).strftime("%Y-%m-%d")
+    d = hist.setdefault(day, {"calls": 0, "in": 0, "out": 0, "cache_read": 0, "cache_write": 0, "usd": 0.0, "models": []})
+    for k in ("in", "out", "cache_read", "cache_write"):
+        d[k] += u[k]
+    d["calls"] += calls
+    d["usd"] = round(d["usd"] + cost, 4)
+    if MODEL not in d["models"]:
+        d["models"].append(MODEL)
+    keep = sorted(hist)[-120:]  # ~4 meses
+    path.write_text(json.dumps({k: hist[k] for k in keep}, ensure_ascii=False, indent=1), "utf-8")
 
 
 if __name__ == "__main__":

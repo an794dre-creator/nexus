@@ -101,11 +101,12 @@ COINS = [
 # ---------------------------------------------------------------------------
 # Feeds generalistas (regionais e Congresso): o TÍTULO precisa casar com ECON_FILTER e não casar com ECON_EXCLUDE
 ECON_FILTER = (r"(economi|emprego|desemprego|sal[aá]rio m[ií]nimo|investiment|itaqui|ind[uú]stri|agroneg|soja|milho|safra|\bpib\b"
-               r"|imposto|tribut|or[cç]ament|\bldo\b|\bloa\b|\bfiscal\b|d[ií]vida p[uú]blica|juros|infla[cç]|exporta|import[aã]|\bvale\b|suzano|alumar"
+               r"|imposto|tribut|or[cç]ament|\bldo\b|\bloa\b|\bfiscal\b|d[ií]vida p[uú]blica|juros|infla[cç]|exporta|import[aã]|mineradora vale|vale3|suzano|alumar"
                r"|petr[oó]le|g[aá]s natural|ferrovia|bolsa fam[ií]lia|sudene|banco do nordeste|\bbnb\b|bndes|com[eé]rcio|varejo|turismo"
                r"|f[aá]brica|gera[cç][aã]o de empregos|arrecada[cç]|reforma tribut|previd[eê]ncia|cr[eé]dito|tarifa de energia|energia el[eé]trica"
                r"|e[oó]lica|energia solar|hidrog[eê]nio|mercado de trabalho|portu[aá]ri|porto do itaqui)")
-ECON_EXCLUDE = r"(mega-sena|lotof[aá]cil|loteria|quina|futebol|palmeiras|flamengo|show|turn[eê]|morre|acidente|atropel|pres[oa]\b|pol[ií]cia|assassin|bbb\b)"
+ECON_EXCLUDE = (r"(mega-sena|lotof[aá]cil|loteria|quina\b|futebol|palmeiras|flamengo|corinthians|vasco|gr[eê]mio|copa do brasil|brasileir[aã]o|f-1\b|f[oó]rmula 1"
+                r"|show|turn[eê]|morre|acidente|atropel|pres[oa]\b|pol[ií]cia|assassin|bbb\b|affair|caso amoroso)")
 
 AREA_RULES = [
     ("regional", r"\b(nordeste|nordestin[oa]s?|maranh[aã]o|maranhense|s[aã]o lu[ií]s|imperatriz|sudene|matopiba|itaqui)\b"),
@@ -119,7 +120,12 @@ AREA_RULES = [
 ]
 
 # Palavras que aumentam a relevância (+1 cada, até +3)
-BOOST = r"(copom|selic|fed\b|federal reserve|juros|infla[cç][aã]o|ipca|pib|gdp|resultado trimestral|lucro|balan[cç]o|tarifa|fiscal|arcabou[cç]o|d[oó]lar|bitcoin|safra|recorde|earnings|rate cut|rate hike)"
+BOOST = r"(copom|selic|fed\b|federal reserve|juros|infla[cç][aã]o|ipca|pib|gdp|resultado trimestral|lucro|balan[cç]o|tarifa|fiscal|arcabou[cç]o|d[oó]lar|bitcoin|safra|earnings|rate cut|rate hike)"
+
+# Para IA e tecnologia, só conta como "economia" se o título falar de negócio, mercado, trabalho ou regulação
+TECH_BIZ = (r"(lan[cç]a|launch|modelo|model|funding|raises?|investiment|invest|aquisi[cç]|acquir|valuation|valor de mercado|chips?|semicondut"
+            r"|data cent|regula|\blei\b|\blaw\b|ban\b|layoffs?|demiss|emprego|jobs?|pre[cç]o|price|receita|revenue|lucro|profit|ipo|antitrust|antitruste"
+            r"|export|tarif|produtividade|productivity|automa[cç]|agentes?|agents?)")
 
 # Janela de itens mantidos em latest.json (horas)
 WINDOW_HOURS = 72

@@ -141,6 +141,7 @@ def parse_feed(raw: bytes):
 AREA_RES = [(a, re.compile(rx, re.I)) for a, rx in C.AREA_RULES]
 ECON_RE = re.compile(C.ECON_FILTER, re.I)
 ECON_NO = re.compile(C.ECON_EXCLUDE, re.I)
+TECH_RE = re.compile(C.TECH_BIZ, re.I)
 BOOST_RE = re.compile(C.BOOST, re.I)
 
 
@@ -151,9 +152,25 @@ def classify(text: str, default: str) -> str:
     return default
 
 
+def is_econ(item: dict) -> bool:
+    """A notícia tem cara de economia, negócios, mercado ou política econômica? Decide pelo título."""
+    t = item["title"]
+    if ECON_NO.search(t):
+        return False
+    if BOOST_RE.search(t) or ECON_RE.search(t):
+        return True
+    if item["area"] in ("ia", "cripto") and TECH_RE.search(t):
+        return True
+    if item["area"] == "agro" or item["kind"] == "prim":
+        return True
+    return len(BOOST_RE.findall(item["summary"])) >= 2  # resumo bem econômico mesmo com título vago
+
+
 def score(item: dict) -> float:
     s = 2.0 if item["kind"] == "prim" else 1.0
     s += min(len(BOOST_RE.findall(item["title"] + " " + item["summary"])), 3)
+    if not is_econ(item):
+        s -= 2.0  # curiosidades e variedades não sobem para os destaques
     age_h = (NOW - datetime.fromisoformat(item["published"].replace("Z", "+00:00"))).total_seconds() / 3600
     s += max(0.0, 3.0 - age_h / 12)  # até +3 para itens das últimas horas, zera em 36 h
     if age_h > 48:
@@ -190,6 +207,7 @@ def collect_rss() -> list[dict]:
                 "published": iso(d),
             }
             it["score"] = score(it)
+            it["econ"] = is_econ(it)
             items.append(it)
             n += 1
         log(f"  ✓ {f['name']}: {n} itens recentes (de {len(entries)})")
