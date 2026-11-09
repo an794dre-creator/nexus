@@ -14,7 +14,8 @@ const PRICES = { // US$ por milhão de tokens: entrada, saída, leitura de cache
 };
 const MAX_QUESTION = 2000;     // caracteres por mensagem
 const MAX_HISTORY = 10;        // mensagens anteriores enviadas ao modelo
-const MAX_SOURCES = 12;
+const MAX_SOURCES = 10;
+const MODELS = ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5"];   // o app escolhe um destes por pergunta
 const DATA_TTL_MS = 5 * 60 * 1000;
 
 let dataCache = { t: 0, data: null };
@@ -62,14 +63,16 @@ function fmtInd(i) {
 function buildContext(data, sources) {
   const L = data.latest;
   const parts = [`Dados do NEXUS, coletados em ${L.updated_at || "?"} (UTC).`];
-  if (L.indicators?.length) parts.push("Indicadores:\n" + L.indicators.map(fmtInd).join("\n"));
+  const KEY = new Set(["selic", "ipca12", "usdbrl", "ibov", "spx", "ust10", "brent", "btc", "desemprego",
+    "ipca_geral_slz", "ipca_diesel_slz", "ipca_diesel_br", "ipca_onibus_urbano_slz", "ipca_onibus_urbano_br"]);
+  if (L.indicators?.length) parts.push("Indicadores principais:\n" + L.indicators.filter((i) => KEY.has(i.id)).map(fmtInd).join("\n"));
   if (L.focus?.rows) parts.push(`Boletim Focus (${L.focus.date}), medianas para ${L.focus.years.join(" e ")}:\n` +
     L.focus.rows.map((r) => `${r.name}: ${r.now.join(" / ")} (há 4 semanas: ${r.prev.join(" / ")})`).join("\n"));
   if (data.edition?.manchete) parts.push(`Edição do dia ${data.edition.date}: ${data.edition.manchete}\n- ${data.edition.resumo.join("\n- ")}`);
   parts.push("Notícias do acervo (cite pelo número entre colchetes):\n" + sources.map((it, k) => {
     const a = data.analyses[it.id];
     let s = `[${k + 1}] ${it.title}\nFonte: ${it.source} (${it.kind === "prim" ? "fonte primária" : "imprensa"}), ${it.published}\nResumo: ${it.summary || "—"}`;
-    if (a) s += `\nAnálise do NEXUS: fato: ${a.fato} | mecanismo: ${a.mecanismo} | para o aluno: ${a.para_voce}`;
+    if (a) s += `\nAnálise do NEXUS: ${a.mecanismo.slice(0, 400)}`;
     return s;
   }).join("\n\n"));
   return parts.join("\n\n");
@@ -209,7 +212,8 @@ export default {
     ] });
     const webOn = body.web !== false;   // o app pode desligar a busca na web
 
-    const model = env.MODEL || "claude-opus-5-5";
+    const model = MODELS.includes(body.model) ? body.model : (env.MODEL || "claude-opus-5-5");
+    const isHaiku = model.startsWith("claude-haiku");
     const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 2 });
     const { readable, writable } = new TransformStream();
     const writer = writable.getWriter();
@@ -219,10 +223,14 @@ export default {
     ctx.waitUntil((async () => {
       try {
         await send("meta", { model, sources: sources.map((it, k) => ({ n: k + 1, id: it.id, title: it.title, source: it.source, link: it.link })) });
-        const tools = webOn ? [
-          { type: "web_search_20260209", name: "web_search", max_uses: 6 },
-          { type: "web_fetch_20260209", name: "web_fetch", max_uses: 4, citations: { enabled: true }, max_content_tokens: 20000 },
-        ] : [];
+        // limites enxutos: cada página lida e cada busca entram no texto cobrado
+        const tools = !webOn ? [] : isHaiku ? [
+          { type: "web_search_20250305", name: "web_search", max_uses: 4 },
+          { type: "web_fetch_20250910", name: "web_fetch", max_uses: 2, citations: { enabled: true }, max_content_tokens: 8000 },
+        ] : [
+          { type: "web_search_20260209", name: "web_search", max_uses: 4 },
+          { type: "web_fetch_20260209", name: "web_fetch", max_uses: 2, citations: { enabled: true }, max_content_tokens: 8000 },
+        ];
         const webNum = new Map();               // url -> número da fonte (continua depois das do acervo)
         let nextN = sources.length + 1;
         const tot = { in: 0, out: 0, cache_read: 0, cache_write: 0, searches: 0, fetches: 0 };
@@ -231,8 +239,9 @@ export default {
           const stream = client.beta.messages.stream({
             model,
             max_tokens: 8000,
-            betas: ["server-side-fallback-2026-07-01"],
-            fallbacks: "default",               // se o modelo recusar, o servidor da Anthropic tenta o modelo indicado
+            // se o modelo recusar, o servidor da Anthropic tenta o modelo indicado (o Haiku não tem essa opção)
+            ...(isHaiku ? {} : { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" }),
+            cache_control: { type: "ephemeral" },   // guarda a conversa em cache: nas etapas seguintes da pesquisa ela custa ~5%
             output_config: { effort: env.EFFORT || "low" },
             system: [
               { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
@@ -282,6 +291,8 @@ export default {
         if (final.stop_reason === "max_tokens") await send("text", "\n\n(Resposta cortada por tamanho. Peça para eu continuar.)");
         const [pi, po, pr] = PRICES[model] || PRICES["claude-opus-5-5"];
         const usd = (tot.in * pi + tot.out * po + tot.cache_read * pr + tot.cache_write * pi * 1.25) / 1e6 + tot.searches * 0.01;
+        console.log(`chat ${model}: ${tot.searches} buscas, ${tot.fetches} páginas, ${webNum.size} fontes web, ${turn + 1} etapa(s), ` +
+          `entrada ${tot.in} + cache lido ${tot.cache_read} + cache gravado ${tot.cache_write}, saída ${tot.out}, US$ ${usd.toFixed(3)}, fim: ${final.stop_reason}`);
         await send("done", { model: final.model, usage: tot, usd });
       } catch (err) {
         let msg = "Erro ao falar com a IA. Tente de novo.";

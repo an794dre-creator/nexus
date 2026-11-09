@@ -751,6 +751,8 @@ const SUGG = ['Quais as tendências para a carreira de economista em 2026 e 2027
   'Quais as tendências de gestão para 2027, segundo a McKinsey e a MIT Sloan?', 'O que esperar do preço do diesel e da Selic nos próximos 12 meses, e como isso afeta uma empresa de ônibus?',
   'Que tema destas notícias renderia um bom TCC?'];
 CHAT.web = load('nexus-chat-web', true);
+const CHAT_MODELS = [['claude-opus-5-5', 'Profundo · Opus'], ['claude-sonnet-5-5', 'Equilibrado · Sonnet'], ['claude-haiku-5-5', 'Econômico · Haiku']];
+CHAT.model = load('nexus-chat-model', 'claude-opus-5-5');
 const monthKey = () => new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'}).slice(0, 7);
 function saveChat(){ store('nexus-chat-hist', CHAT.hist.slice(-40)); }
 function chatProfile(){
@@ -778,7 +780,7 @@ function chatMsgHTML(m, i){
     <ul>${st.map(s => `<li>${s.kind === 'search' ? '🔎' : '📄'} ${esc(s.text)}</li>`).join('')}</ul></details>` : '';
   return `<div class="msg bot${m.error ? ' err' : ''}" data-mi="${i}">${steps}${m.text ? mdLite(m.text, m.sources, i) : `<p class="muted">${st.length ? 'Pesquisando…' : 'Pensando…'}</p>`}
    ${srcs.length ? `<div class="refs"><span class="eyebrow">Fontes</span>${srcs.map(s => `<button class="cite-src" data-cite="${i}:${s.n}"><b>${s.n}</b> ${esc(s.source)} · ${esc(s.title.slice(0, 54))}${s.title.length > 54 ? '…' : ''}</button>`).join('')}</div>` : ''}
-   ${m.usd != null ? `<span class="cost">US$ ${nf(m.usd, 3)}</span>` : ''}</div>`;
+   ${m.usd != null ? `<span class="cost">${m.model ? esc((CHAT_MODELS.find(x => m.model.startsWith(x[0])) || [0, m.model])[1]) + ' · ' : ''}US$ ${nf(m.usd, 3)}</span>` : ''}</div>`;
 }
 V.pergunte = () => {
   const c = aiCost(), chatUsd = CHAT.cost[monthKey()] || 0;
@@ -793,7 +795,8 @@ V.pergunte = () => {
   let host = ''; try { host = new URL(CHAT.cfg.url).host; } catch (e) {}
   return `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}
   <div class="chat"><div class="chatbar"><span class="live"><i></i>${esc(host)}</span>
-   <label class="webtog"><input type="checkbox" id="webtog" ${CHAT.web ? 'checked' : ''}> pesquisar na web</label><span class="spacer"></span><button class="link" data-chat-edit="1">Configurar</button>${CHAT.hist.length ? '<button class="link" data-chat-clear="1">Limpar conversa</button>' : ''}</div>
+   <label class="webtog"><input type="checkbox" id="webtog" ${CHAT.web ? 'checked' : ''}> pesquisar na web</label>
+   <select id="chatmodel" class="msel" aria-label="Modelo">${CHAT_MODELS.map(([v, l]) => `<option value="${v}"${CHAT.model === v ? ' selected' : ''}>${l}</option>`).join('')}</select><span class="spacer"></span><button class="link" data-chat-edit="1">Configurar</button>${CHAT.hist.length ? '<button class="link" data-chat-clear="1">Limpar conversa</button>' : ''}</div>
    <div class="msgs" id="msgs">${CHAT.hist.length ? CHAT.hist.map(chatMsgHTML).join('') : `<div class="sugg"><span class="eyebrow">Experimente</span>${SUGG.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}</div>
    <form class="composer" id="composer"><textarea id="askin" rows="1" placeholder="Pergunte sobre economia, empresas, suas matérias…" aria-label="Pergunta" ${CHAT.busy ? 'disabled' : ''}></textarea><button class="btn" type="submit" ${CHAT.busy ? 'disabled' : ''}>${CHAT.busy ? '…' : 'Enviar'}</button></form></div>
   ${costCard}`;
@@ -811,6 +814,7 @@ function bindChat(){
     } catch (err) { $('#cfgmsg').innerHTML = `<div class="fb no">Não consegui falar com o servidor (${esc(err.message)}). Confira o endereço.</div>`; }
   });
   const wt = $('#webtog'); if (wt) wt.addEventListener('change', () => { CHAT.web = wt.checked; store('nexus-chat-web', CHAT.web); });
+  const ms = $('#chatmodel'); if (ms) ms.addEventListener('change', () => { CHAT.model = ms.value; store('nexus-chat-model', CHAT.model); });
   const f = $('#composer');
   if (f) {
     const ta = $('#askin');
@@ -832,7 +836,7 @@ async function askNexus(q){
   try {
     const history = CHAT.hist.slice(0, -1).filter(m => !m.error && m.text).slice(-11).map(m => ({role: m.role, content: m.text}));
     const r = await fetch(CHAT.cfg.url + '/chat', {method: 'POST', headers: {'content-type': 'application/json', 'x-nexus-key': CHAT.cfg.key},
-      body: JSON.stringify({messages: history, profile: chatProfile(), web: CHAT.web})});
+      body: JSON.stringify({messages: history, profile: chatProfile(), web: CHAT.web, model: CHAT.model})});
     if (!r.ok) {
       const j = await r.json().catch(() => ({}));
       throw new Error(r.status === 401 ? 'Senha incorreta. Toque em “Configurar” para corrigir.' : (j.error || 'HTTP ' + r.status));
@@ -853,7 +857,7 @@ async function askNexus(q){
         else if (ev === 'text') { msg.text += d; schedule(); }
         else if (ev === 'status') { (msg.status = msg.status || []).push(d); schedule(); }
         else if (ev === 'source') { msg.sources.push(d); }
-        else if (ev === 'done') { msg.usd = d.usd; const k = monthKey(); CHAT.cost[k] = (CHAT.cost[k] || 0) + (d.usd || 0); store('nexus-chat-cost', CHAT.cost); }
+        else if (ev === 'done') { msg.usd = d.usd; msg.model = d.model; const k = monthKey(); CHAT.cost[k] = (CHAT.cost[k] || 0) + (d.usd || 0); store('nexus-chat-cost', CHAT.cost); }
         else if (ev === 'error') throw new Error(d.message);
       }
     }

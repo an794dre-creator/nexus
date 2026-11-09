@@ -256,6 +256,7 @@ a.row{text-decoration:none;color:var(--fg)}
 .quickask{display:flex;gap:8px}
 .quickask input{flex:1;min-width:0;font:inherit;font-size:16px;padding:13px 16px;border:1px solid rgba(247,147,26,.5);border-radius:12px;background:var(--surface);color:var(--fg)}
 .quickask input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.msel{font:inherit;font-size:12px;padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
 .webtog{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--fg)}
 .webtog input{accent-color:var(--accent)}
 .steps-web{font-size:12.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px}
