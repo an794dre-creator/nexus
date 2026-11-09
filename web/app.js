@@ -46,6 +46,8 @@ const longDate = d => d.toLocaleDateString('pt-BR', {weekday:'long', day:'numeri
 
 /* ================= estado ================= */
 let DATA = {items:[], indicators:[], papers:[], focus:null, updated_at:null};
+let AN = {};        // análises com IA, por id de notícia (data/analyses.json)
+let ED = null;      // edição do dia (data/edition.json)
 let ARCH = null;
 let loadError = null;
 const state = {filter:'todos', q:'', limit:60, mkt:'geral', acad:'mat', ppl:'empresas', reg:'todas', grp:'Todos', k:.8};
@@ -186,7 +188,7 @@ function storyCard(it, lead){
   return `<article class="card story click${lead ? ' lead' : ''}" data-item="${esc(it.id)}" tabindex="0" role="button">
    <div class="meta">${areaChip(it.area)}<span>${ago(it.published)}</span><span>${esc(it.source)}</span></div>
    <h3>${esc(it.title)}</h3>${it.summary ? `<p>${esc(it.summary)}</p>` : ''}
-   <div class="foot"><span class="meta">${it.concepts.length ? `${it.concepts.length} conceito${it.concepts.length > 1 ? 's' : ''} ligado${it.concepts.length > 1 ? 's' : ''}` : kindTag(it.kind)}</span><span class="open">Abrir →</span></div></article>`;
+   <div class="foot"><span class="meta">${AN[it.id] ? '<span class="kind ai">Análise IA</span>' : it.concepts.length ? `${it.concepts.length} conceito${it.concepts.length > 1 ? 's' : ''} ligado${it.concepts.length > 1 ? 's' : ''}` : kindTag(it.kind)}</span><span class="open">${AN[it.id] ? 'Ler análise →' : 'Abrir →'}</span></div></article>`;
 }
 function itemRow(it){
   return `<div class="row click" data-item="${esc(it.id)}" tabindex="0" role="button"><span class="t">${it.published ? hhmm(it.published) : ''}</span>
@@ -253,6 +255,7 @@ V.hoje = () => {
   const td = trendData();
   return `${head(`${longDate(new Date())} · atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''}`, 'Panorama <em>do dia</em>', `${hl.length} destaques escolhidos entre ${DATA.items.length} itens das últimas 72 horas, de ${new Set(DATA.items.map(i => i.source)).size} fontes.`)}
   <div class="ticker">${tick.map(t => `<div class="tick"><span>${esc(t.name)}</span><strong>${fmtVal(t)}</strong><span class="d ${t.dir}">${fmtDelta(t)}</span></div>`).join('')}</div>
+  ${editionCard()}
   <section class="section"><header><h2>Destaques</h2><a class="link" href="#radar">Ver tudo no radar →</a></header>
    <div class="grid">${hl.map((it, i) => storyCard(it, i === 0)).join('')}</div></section>
   <div class="two">
@@ -275,6 +278,21 @@ V.hoje = () => {
   <section class="section"><header><h2>Mais falados</h2><a class="link" href="#tendencias">Ver tendências →</a></header>
    <div class="feed">${td ? td.themes.slice(0, 4).map(trendRow).join('') : '<div class="empty">Carregando histórico…</div>'}</div></section>`;
 };
+
+function editionCard(){
+  if (!ED || !ED.manchete) return '';
+  const todayBR = new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'});
+  const old = ED.date !== todayBR;
+  const refs = (ED.itens || []).map(byItem).filter(Boolean);
+  return `<section class="card edition"><div class="flexhead"><span class="eyebrow">Edição do dia${old ? ` · de ${ED.date.split('-').reverse().join('/')}` : ''} · escrita por IA a partir das fontes</span><span class="kind ai">Claude</span></div>
+   <h2>${esc(ED.manchete)}</h2>
+   <ul class="ed-list">${(ED.resumo || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+   <div class="two" style="gap:18px">
+    <div><span class="eyebrow">Acompanhar hoje</span><ul class="ed-list small">${(ED.acompanhar_hoje || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
+    <div class="ed-q"><span class="eyebrow">Pergunta para estudar</span><p class="quote">${esc(ED.pergunta_estudo)}</p>${cbtn(ED.conceito)}</div>
+   </div>
+   ${refs.length ? `<div class="mini">${refs.slice(0, 6).map(i => `<button class="pill" data-item="${esc(i.id)}">${esc(i.source)} · ${esc(i.title.slice(0, 48))}…</button>`).join('')}</div>` : ''}</section>`;
+}
 
 V.radar = () => {
   if (!DATA.items.length && state.filter !== 'salvos') return emptyState();
@@ -483,10 +501,26 @@ function openItem(id){
    `<span class="eyebrow">${esc(it.source)}${it.published ? ' · ' + new Date(it.published).toLocaleString('pt-BR', {dateStyle:'short', timeStyle:'short'}) : ''}</span>
     <h2 id="dtitle">${esc(it.title)}</h2>${it.summary ? `<p style="margin:0">${esc(it.summary)}</p>` : ''}
     <div><a class="btn" href="${safeUrl(it.link)}" target="_blank" rel="noopener">Ler na fonte →</a></div>
-    ${concepts.length ? blk('Para estudar', `<div class="mini">${concepts.map(cbtn).join('')}</div>`) : ''}
+    ${concepts.length && !AN[it.id] ? blk('Para estudar', `<div class="mini">${concepts.map(cbtn).join('')}</div>`) : ''}
     ${cos.length || ppl.length ? blk('Empresas e pessoas citadas', `<div class="mini">${cos.map(c => `<button class="pill" data-company="${c.id}"><span class="av">${esc(c.tk.slice(0, 2))}</span>${esc(c.name)}</button>`).join('')}${ppl.map(p => `<button class="pill" data-person="${p.id}"><span class="av">${esc(p.ini)}</span>${esc(p.name)}</button>`).join('')}</div>`) : ''}
-    ${related.length ? blk('Sobre o mesmo assunto', relList(related)) : ''}
-    <div class="lock"><b>Versão 2:</b> análise com IA em 7 blocos (o que aconteceu, contexto, como funciona, consequências, conexões, o que acompanhar, o que estudar), separando fato, interpretação e hipótese.</div>`);
+    ${AN[it.id] ? analysisHTML(AN[it.id], it) : `${related.length ? blk('Sobre o mesmo assunto', relList(related)) : ''}
+    <div class="lock"><b>Sem análise de IA.</b> As análises são feitas para os destaques do dia, logo depois de cada coleta.</div>`}`);
+}
+function analysisHTML(a, it){
+  const T = {f: '<span class="tag fato">Fato</span>', i: '<span class="tag interp">Interpretação</span>', h: '<span class="tag hip">Hipótese</span>'};
+  const nb = (n, t, tag, body) => `<div class="block"><div class="bh"><span class="n">${n}</span><h3>${t}</h3>${tag}</div>${body}</div>`;
+  const ul2 = arr => `<ul>${(arr || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  const con = (a.conexoes || []).map(byItem).filter(Boolean);
+  return `<div class="ai-head"><span class="kind ai">Análise IA</span><span class="muted">Gerada por Claude a partir do título e do resumo da fonte, ${ago(a.created)}. Confira os fatos na fonte.</span></div>
+   ${nb(1, 'O que aconteceu', T.f, `<p>${esc(a.fato)}</p>`)}
+   ${nb(2, 'Contexto', T.f, `<p>${esc(a.contexto)}</p>`)}
+   ${nb(3, 'Como funciona', T.i, `<p>${esc(a.mecanismo)}</p>`)}
+   ${nb(4, 'Possíveis consequências', T.h, ul2(a.consequencias))}
+   ${con.length ? nb(5, 'Conexões', T.i, relList(con)) : ''}
+   ${nb(6, 'O que acompanhar', '', ul2(a.acompanhar))}
+   ${nb(7, 'Para estudar', '', `<div class="mini">${(a.estudar || []).map(cbtn).join('')}</div>`)}
+   ${a.para_voce ? `<div class="foryou"><span class="eyebrow">Para você</span><p>${esc(a.para_voce)}</p></div>` : ''}
+   ${a.limites ? `<p class="muted" style="margin:0;font-size:13.5px"><b>Limites da análise:</b> ${esc(a.limites)}</p>` : ''}`;
 }
 function openCompany(id){
   const c = coById(id); if (!c) return;
@@ -640,6 +674,9 @@ async function loadData(){
     DATA = Object.assign({items: [], indicators: [], papers: []}, await r.json());
     loadError = null;
   } catch (err) { loadError = err.message; }
+  const [an, ed] = await Promise.all(['data/analyses.json', 'data/edition.json'].map(u =>
+    fetch(u, {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null)));
+  AN = an || {}; ED = ed;
   prepare(); renderStatus(); render();
   loadArchive();
 }

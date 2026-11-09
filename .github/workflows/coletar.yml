@@ -32,11 +32,29 @@ jobs:
       - name: Coletar notícias, indicadores e papers
         run: python collector/collect.py
 
+      - name: Analisar destaques com IA (só se a chave estiver configurada)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NEXUS_MODEL: ${{ vars.NEXUS_MODEL }}
+          NEXUS_EFFORT: ${{ vars.NEXUS_EFFORT }}
+          NEXUS_MAX_PER_RUN: ${{ vars.NEXUS_MAX_PER_RUN }}
+          NEXUS_MAX_PER_DAY: ${{ vars.NEXUS_MAX_PER_DAY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            pip install --quiet "anthropic>=1.0"
+            python collector/analyze.py || echo "Análise com IA falhou; o app segue sem as análises novas."
+          else
+            echo "Sem ANTHROPIC_API_KEY: análises com IA desligadas."
+          fi
+
       - name: Guardar o histórico no repositório
         run: |
           git config user.name "nexus-coletor"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add web/data/archive
+          for f in web/data/analyses.json web/data/edition.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
           if git diff --cached --quiet; then
             echo "Sem itens novos no histórico."
           else

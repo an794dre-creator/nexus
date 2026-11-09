@@ -1,5 +1,5 @@
 /* Service worker do NEXUS: guarda o app para abrir offline; dados sempre tentam a rede primeiro. */
-const VERSION = 'nexus-v3';
+const VERSION = 'nexus-v4';
 const SHELL = ['./', 'index.html', 'styles.css', 'content.js', 'app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {

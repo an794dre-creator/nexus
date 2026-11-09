@@ -74,9 +74,31 @@ tools/       make_icons.py (gera os ícones)
 .github/workflows/coletar.yml   agendamento + publicação
 ```
 
+## Análises com IA (versão 2)
+
+`collector/analyze.py` roda depois da coleta, no GitHub. Para cada destaque novo ele pede ao Claude
+uma análise em 7 blocos (fato, contexto, mecanismo, consequências, conexões, o que acompanhar,
+o que estudar) ligada aos conceitos da grade em `web/content.js`. A partir das 7h (Brasília),
+gera também a edição do dia. Os resultados ficam em `web/data/analyses.json` e `web/data/edition.json`.
+
+**Para ligar:** crie uma chave em console.anthropic.com (com créditos) e cadastre-a no repositório em
+**Settings → Secrets and variables → Actions → New repository secret**, com o nome `ANTHROPIC_API_KEY`.
+Sem a chave, o app funciona normalmente, só que sem as análises.
+
+**Ajustes opcionais** (Settings → Secrets and variables → Actions → aba *Variables*):
+
+| Variável | Padrão | Para quê |
+|---|---|---|
+| `NEXUS_MODEL` | `claude-opus-5-5` | modelo (`claude-sonnet-5-5` ou `claude-haiku-5-5` custam menos) |
+| `NEXUS_EFFORT` | `low` | profundidade do raciocínio (`low`, `medium`, `high`) |
+| `NEXUS_MAX_PER_RUN` | `4` | análises por execução |
+| `NEXUS_MAX_PER_DAY` | `20` | teto diário de análises |
+
+Teste local sem gastar nada: `py collector/analyze.py --dry-run`.
+
 ## Próximas versões
 
-- **v2 · IA:** análise de cada destaque em 7 blocos (fato, contexto, mecanismo, consequências,
-  conexões, o que acompanhar, o que estudar) e o chat "Pergunte ao NEXUS", com a API do Claude.
-- **v3 · Segundo cérebro completo:** subir ementas e slides, notas sincronizadas entre aparelhos,
+- **Chat "Pergunte ao NEXUS":** precisa de um pequeno servidor que guarde a chave (por exemplo, um
+  Cloudflare Worker), porque o site é público.
+- **Segundo cérebro completo:** subir ementas e slides, notas sincronizadas entre aparelhos,
   busca no histórico inteiro.
