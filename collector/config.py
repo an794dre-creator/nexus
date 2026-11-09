@@ -14,6 +14,13 @@ FEEDS = [
     {"name": "InfoMoney", "url": "https://www.infomoney.com.br/feed/", "kind": "imp", "area": "mercados"},
     {"name": "Exame", "url": "https://exame.com/feed/", "kind": "imp", "area": "empresas"},
     {"name": "Poder360", "url": "https://www.poder360.com.br/feed/", "kind": "imp", "area": "politica"},
+    # Congresso (só itens sobre economia, orçamento e tributos)
+    {"name": "Agência Senado", "url": "https://www12.senado.leg.br/noticias/feed/todasnoticias/rss", "kind": "prim", "area": "politica", "filter": "ECON"},
+    {"name": "Agência Câmara", "url": "https://www.camara.leg.br/noticias/rss/ultimas-noticias", "kind": "prim", "area": "politica", "filter": "ECON"},
+    # Maranhão e Nordeste (só itens de economia, empresas, emprego e governo)
+    {"name": "G1 Maranhão", "url": "https://g1.globo.com/dynamo/ma/maranhao/rss2.xml", "kind": "imp", "area": "regional", "filter": "ECON"},
+    {"name": "O Imparcial", "url": "https://oimparcial.com.br/feed/", "kind": "imp", "area": "macro", "filter": "ECON"},
+    {"name": "Imirante", "url": "https://imirante.com.br/rss", "kind": "imp", "area": "macro", "filter": "ECON"},
     # Bancos centrais e organismos
     {"name": "Federal Reserve", "url": "https://www.federalreserve.gov/feeds/press_all.xml", "kind": "prim", "area": "global"},
     {"name": "Banco Central Europeu", "url": "https://www.ecb.europa.eu/rss/press.html", "kind": "prim", "area": "global"},
@@ -92,7 +99,16 @@ COINS = [
 # Classificação por palavra-chave (título + resumo, minúsculas).
 # A primeira regra que casar define a área; se nenhuma casar, vale a do feed.
 # ---------------------------------------------------------------------------
+# Feeds generalistas (regionais e Congresso): o TÍTULO precisa casar com ECON_FILTER e não casar com ECON_EXCLUDE
+ECON_FILTER = (r"(economi|emprego|desemprego|sal[aá]rio m[ií]nimo|investiment|itaqui|ind[uú]stri|agroneg|soja|milho|safra|\bpib\b"
+               r"|imposto|tribut|or[cç]ament|\bldo\b|\bloa\b|\bfiscal\b|d[ií]vida p[uú]blica|juros|infla[cç]|exporta|import[aã]|\bvale\b|suzano|alumar"
+               r"|petr[oó]le|g[aá]s natural|ferrovia|bolsa fam[ií]lia|sudene|banco do nordeste|\bbnb\b|bndes|com[eé]rcio|varejo|turismo"
+               r"|f[aá]brica|gera[cç][aã]o de empregos|arrecada[cç]|reforma tribut|previd[eê]ncia|cr[eé]dito|tarifa de energia|energia el[eé]trica"
+               r"|e[oó]lica|energia solar|hidrog[eê]nio|mercado de trabalho|portu[aá]ri|porto do itaqui)")
+ECON_EXCLUDE = r"(mega-sena|lotof[aá]cil|loteria|quina|futebol|palmeiras|flamengo|show|turn[eê]|morre|acidente|atropel|pres[oa]\b|pol[ií]cia|assassin|bbb\b)"
+
 AREA_RULES = [
+    ("regional", r"\b(nordeste|nordestin[oa]s?|maranh[aã]o|maranhense|s[aã]o lu[ií]s|imperatriz|sudene|matopiba|itaqui)\b"),
     ("cripto", r"\b(bitcoin|btc|ethereum|ether|cripto|crypto|stablecoin|blockchain|solana|etf de bitcoin)\b"),
     ("agro", r"\b(soja|milho|safra|agro|agroneg[oó]cio|boi gordo|pecu[aá]ria|caf[eé] ar[aá]bica|conab|fertilizante|colheita|plantio)\b"),
     ("carreira", r"\b(vagas?|est[aá]gio|trainee|carreira|contrata[cç][aã]o|recrutamento|curr[ií]culo|jobs report|hiring)\b"),

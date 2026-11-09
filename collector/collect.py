@@ -14,6 +14,7 @@ import gzip
 import hashlib
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -138,6 +139,8 @@ def parse_feed(raw: bytes):
 
 
 AREA_RES = [(a, re.compile(rx, re.I)) for a, rx in C.AREA_RULES]
+ECON_RE = re.compile(C.ECON_FILTER, re.I)
+ECON_NO = re.compile(C.ECON_EXCLUDE, re.I)
 BOOST_RE = re.compile(C.BOOST, re.I)
 
 
@@ -174,6 +177,8 @@ def collect_rss() -> list[dict]:
             if d > NOW + timedelta(hours=2) or NOW - d > timedelta(hours=C.WINDOW_HOURS):
                 continue
             text = e["title"] + " " + e["summary"]
+            if f.get("filter") == "ECON" and (not ECON_RE.search(e["title"]) or ECON_NO.search(e["title"])):
+                continue  # feed generalista: só entra o que for de economia
             it = {
                 "id": hashlib.sha1(e["link"].encode()).hexdigest()[:16],
                 "title": e["title"],
@@ -463,6 +468,7 @@ def update_archive(items: list[dict]) -> int:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", choices=["rss", "bcb", "focus", "yahoo", "crypto", "arxiv"])
+    ap.add_argument("--archive", action="store_true", help="grava o histórico também numa execução local")
     args = ap.parse_args()
     DATA.mkdir(parents=True, exist_ok=True)
     path = DATA / "latest.json"
@@ -478,7 +484,9 @@ def main() -> None:
         items = collect_rss()
         if items:
             out["items"] = items
-            log(f"  arquivo: +{update_archive(items)} itens novos")
+            # o histórico só é gravado no GitHub Actions (ou com --archive), para não conflitar com o repositório
+            if os.environ.get("GITHUB_ACTIONS") or args.archive:
+                log(f"  arquivo: +{update_archive(items)} itens novos")
     indicators = dict(ind_prev)
     for part, fn in (("bcb", collect_bcb), ("yahoo", collect_yahoo), ("crypto", collect_crypto)):
         if want(part):

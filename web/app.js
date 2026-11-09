@@ -50,8 +50,19 @@ let ARCH = null;
 let loadError = null;
 const state = {filter:'todos', q:'', limit:60, mkt:'geral', acad:'mat', ppl:'empresas', reg:'todas', grp:'Todos', k:.8};
 const savedMap = load('nexus-saved-items', {});
-const mast = load('nexus-mastery', {});
+const MKEY = 'nexus-mastery-v2';  // v2 = grade da UFMA
+const mast = load(MKEY, {});
 CONC.forEach(c => { if (mast[c.id] != null) c.m = mast[c.id]; });
+const ATUAIS = CURSOS.filter(c => c.atual);
+const ATUAL_CONC = new Set(ATUAIS.flatMap(c => c.conc));
+const SHORT = {psi:'Subst. de importações', tributacao:'Tributação', divida:'Dívida pública', orcamento:'Orçamento público', bens:'Bens públicos',
+  estado_desenv:'Estado desenv.', idh:'IDH', capficticio:'Capital fictício', tqtl:'Queda do lucro', capital_humano:'Capital humano',
+  plano_real:'Plano Real', cepal:'Centro-periferia', regional:'Desig. regionais', sni:'Sist. de inovação', schumpeter:'Destruição criadora',
+  ricardo:'Vant. comparativas', difeq:'Eq. em diferença', regressao:'Regressão', pesquisa:'Projeto de pesquisa', deriv:'Otimização', paridade:'Paridade de juros',
+  taylor:'Regra de Taylor', islm:'IS-LM', elast:'Elasticidade', cournot:'Oligopólio', vpl:'VPL e TIR', wacc:'WACC', giro:'Capital de giro', maisvalia:'Mais-valia'};
+const short = c => SHORT[c.id] || c.name;
+const courseOf = cod => CURSOS.find(c => c.cod === cod);
+const coursesFor = id => CURSOS.filter(c => c.conc.includes(id));
 const notes = load('nexus-notes', {});
 
 const byItem = id => DATA.items.find(i => i.id === id) || savedMap[id];
@@ -230,13 +241,15 @@ V.hoje = () => {
   const tick = ['selic','ipca12','usdbrl','ibov','spx','btc','brent','ust10'].map(ind).filter(Boolean);
   const day = recent(24).length ? recent(24) : DATA.items;
   const ccount = CONC.map(c => [c, mentions('concepts', c.id, day).length]).sort((a, b) => b[1] - a[1]);
-  // gira entre os 6 conceitos mais citados para não repetir sempre o mesmo
-  const cand = ccount.filter(x => x[1] >= 2).slice(0, 6);
+  // prefere conceitos das matérias deste semestre e gira entre os mais citados para não repetir sempre o mesmo
+  let cand = ccount.filter(x => x[1] >= 2 && ATUAL_CONC.has(x[0].id)).slice(0, 6);
+  if (!cand.length) cand = ccount.filter(x => x[1] >= 2).slice(0, 6);
   const doy = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 864e5);
   const pick = cand.length ? cand[doy % cand.length] : ccount[0];
   const cday = pick[0];
   const foco = [...COS.map(c => ['company', c, mentions('cos', c.id).length]), ...PEOPLE.map(p => ['person', p, mentions('ppl', p.id).length])].filter(x => x[2]).sort((a, b) => b[2] - a[2]).slice(0, 8);
-  const rev = CONC.filter(c => c.m <= 1 && mentions('concepts', c.id, day).length).slice(0, 5);
+  const mat = ATUAIS.map(c => [c, day.filter(i => i.concepts.some(k => c.conc.includes(k))).length]);
+  const rev = REFORCO.map(cById).filter(c => c && c.m <= 1 && mentions('concepts', c.id, day).length).slice(0, 5);
   const td = trendData();
   return `${head(`${longDate(new Date())} · atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''}`, 'Panorama <em>do dia</em>', `${hl.length} destaques escolhidos entre ${DATA.items.length} itens das últimas 72 horas, de ${new Set(DATA.items.map(i => i.source)).size} fontes.`)}
   <div class="ticker">${tick.map(t => `<div class="tick"><span>${esc(t.name)}</span><strong>${fmtVal(t)}</strong><span class="d ${t.dir}">${fmtDelta(t)}</span></div>`).join('')}</div>
@@ -254,9 +267,10 @@ V.hoje = () => {
       ? `<button class="pill" data-company="${x.id}"><span class="av">${esc(x.tk.slice(0, 2))}</span>${esc(x.name)}<span class="mono">${n}</span></button>`
       : `<button class="pill" data-person="${x.id}"><span class="av">${esc(x.ini)}</span>${esc(x.name)}<span class="mono">${n}</span></button>`).join('') : '<span class="muted">Nenhuma das empresas e pessoas acompanhadas apareceu hoje.</span>'}</div>
     <a class="link" href="#empresas">Ver empresas e pessoas →</a></section>
-   <section class="card"><h3 class="s">Do seu cérebro: revisar hoje</h3>
-    <p class="muted" style="margin:0;font-size:14px">Conceitos que aparecem nas notícias de hoje e que você ainda não domina.</p>
-    <div class="mini">${rev.length ? rev.map(c => cbtn(c.id)).join('') : '<span class="muted">Nada pendente.</span>'}</div><a class="link" href="#cerebro">Abrir meu cérebro →</a></section>
+   <section class="card"><div class="flexhead"><h3 class="s">Suas matérias nas notícias de hoje</h3><span class="eyebrow">${SEMESTRE_ATUAL}</span></div>
+    <div>${mat.map(([c, n]) => `<button class="mrow" data-course="${c.cod}"><span>${esc(c.nome)}</span><span class="mono ${n ? 'hotn' : 'muted'}">${n}</span></button>`).join('')}</div>
+    ${rev.length ? `<span class="eyebrow">Para reforçar, e está nas notícias</span><div class="mini">${rev.map(c => cbtn(c.id)).join('')}</div>` : ''}
+    <a class="link" href="#cerebro">Abrir meu cérebro →</a></section>
   </div>
   <section class="section"><header><h2>Mais falados</h2><a class="link" href="#tendencias">Ver tendências →</a></header>
    <div class="feed">${td ? td.themes.slice(0, 4).map(trendRow).join('') : '<div class="empty">Carregando histórico…</div>'}</div></section>`;
@@ -355,7 +369,7 @@ V.academia = () => {
   let body = '';
   const newsFor = id => mentions('concepts', id).slice(0, 1)[0];
   if (t === 'mat') body = `<div class="grid wide">${PROBS.map(p => `<section class="card ex">
-    <div class="meta"><span class="eyebrow">Exercício</span>${cbtn(p.conc)}</div><h3 style="font-size:24px">${esc(p.title)}</h3><p style="margin:0">${esc(p.enun)}</p>
+    <div class="meta"><span class="eyebrow">${esc(p.materia || 'Exercício')}</span>${cbtn(p.conc)}</div><h3 style="font-size:24px">${esc(p.title)}</h3><p style="margin:0">${esc(p.enun)}</p>
     <label for="in-${p.id}">Sua resposta (${esc(p.unit)})</label><div class="ans"><input id="in-${p.id}" inputmode="decimal" placeholder="0,00"><button class="btn" data-check="${p.id}">Conferir</button><button class="btn ghost" data-show="${p.id}">Resolução</button></div>
     <div id="fb-${p.id}" aria-live="polite"></div></section>`).join('')}</div>`;
   else if (t === 'lab') body = `<section class="card"><div class="meta"><span class="eyebrow">Laboratório · modelo da teia de aranha</span>${cbtn('difeq')}</div>
@@ -370,7 +384,7 @@ V.academia = () => {
     <dl class="kv"><dt>Intuição</dt><dd>${m.int}</dd><dt>Hipóteses</dt><dd>${m.hip}</dd><dt>Limites</dt><dd>${m.lim}</dd></dl>
     ${n ? `<button class="relbtn" data-item="${esc(n.id)}"><small>Nas notícias de agora</small>${esc(n.title)} →</button>` : ''}</section>`; }).join('')}</div>`;
   else if (t === 'casos') body = `<div class="grid wide">${CASES.map(c => `<article class="card click" data-case="${c.id}" tabindex="0" role="button">
-    <span class="eyebrow">${esc(c.per)}</span><h3 style="font-size:26px">${esc(c.name)}</h3><p class="muted" style="margin:0;font-size:14px">${esc(c.res.split('. ')[0])}.</p>
+    <span class="eyebrow">${esc(c.per)}${c.materia ? ' · ' + esc(c.materia) : ''}</span><h3 style="font-size:26px">${esc(c.name)}</h3><p class="muted" style="margin:0;font-size:14px">${esc(c.res.split('. ')[0])}.</p>
     <div class="tags"><span>${esc(c.fw)}</span></div><div class="foot"><span class="meta">${notes['case-' + c.id] ? 'Você já respondeu' : `${c.conc.length} conceitos ligados`}</span><span class="open">Estudar o caso →</span></div></article>`).join('')}</div>`;
   else if (t === 'rev') body = `<div class="grid">${FLASH.map((f, i) => `<div class="card flash" id="fl${i}"><span class="q">${f[0]}</span><span class="a" hidden>${f[1]}</span><div class="act"><button class="btn ghost" data-flip="${i}">Mostrar resposta</button></div></div>`).join('')}</div>`;
   else {
@@ -382,12 +396,16 @@ V.academia = () => {
 };
 
 function graphSVG(){
-  const W = 900, H = 560, cx = 450, cy = 280, N = DISC.length, pos = {}, hubs = {};
+  const W = 1000, H = 620, cx = 500, cy = 310, N = DISC.length, pos = {}, hubs = {};
+  const nowDisc = new Set(ATUAIS.map(c => c.eixo));
   DISC.forEach((d, i) => {
     const th = -Math.PI / 2 + i * 2 * Math.PI / N;
-    hubs[d[0]] = [cx + 165 * Math.cos(th), cy + 112 * Math.sin(th)];
+    hubs[d[0]] = [cx + 175 * Math.cos(th), cy + 118 * Math.sin(th)];
     const cs = CONC.filter(c => c.disc === d[0]);
-    cs.forEach((c, j) => { const o = (j - (cs.length - 1) / 2) * .3; pos[c.id] = [cx + 345 * Math.cos(th + o), cy + 222 * Math.sin(th + o)]; });
+    cs.forEach((c, j) => {
+      const o = (j - (cs.length - 1) / 2) * .26, far = j % 2 === 0;   // alterna raio para os rótulos não se sobreporem
+      pos[c.id] = [cx + (far ? 400 : 330) * Math.cos(th + o), cy + (far ? 250 : 205) * Math.sin(th + o)];
+    });
   });
   const seen = new Set(); let cross = '';
   CONC.forEach(c => c.links.forEach(l => { const k = [c.id, l].sort().join('-'); if (seen.has(k) || !pos[l]) return; seen.add(k); const a = pos[c.id], b = pos[l]; cross += `<path class="e2" d="M${a[0].toFixed(0)} ${a[1].toFixed(0)} Q${cx} ${cy} ${b[0].toFixed(0)} ${b[1].toFixed(0)}"/>`; }));
@@ -396,23 +414,27 @@ function graphSVG(){
    ${DISC.map(d => `<line class="e1" x1="${cx}" y1="${cy}" x2="${hubs[d[0]][0].toFixed(0)}" y2="${hubs[d[0]][1].toFixed(0)}"/>`).join('')}
    ${CONC.map(c => `<line class="e1" x1="${hubs[c.disc][0].toFixed(0)}" y1="${hubs[c.disc][1].toFixed(0)}" x2="${pos[c.id][0].toFixed(0)}" y2="${pos[c.id][1].toFixed(0)}"/>`).join('')}
    ${cross}<g class="me"><circle cx="${cx}" cy="${cy}" r="24"/><text x="${cx}" y="${cy + 6}" text-anchor="middle">você</text></g>
-   ${DISC.map(d => `<g class="hub"><circle cx="${hubs[d[0]][0].toFixed(0)}" cy="${hubs[d[0]][1].toFixed(0)}" r="30"/><text x="${hubs[d[0]][0].toFixed(0)}" y="${(hubs[d[0]][1] + 4).toFixed(0)}" text-anchor="middle">${esc(d[2])}</text></g>`).join('')}
-   ${CONC.map(c => { const n = mentions('concepts', c.id, day).length; return `<g class="cn m${c.m}" data-concept="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}, ${MLBL[c.m]}"><circle cx="${pos[c.id][0].toFixed(0)}" cy="${pos[c.id][1].toFixed(0)}" r="9"/><text class="${n ? 'hot' : ''}" x="${pos[c.id][0].toFixed(0)}" y="${(pos[c.id][1] + 24).toFixed(0)}" text-anchor="middle">${esc(c.name)}${n ? ` · ${n}` : ''}</text></g>`; }).join('')}
+   ${DISC.map(d => `<g class="hub${nowDisc.has(d[0]) ? ' now' : ''}" data-disc="${d[0]}" tabindex="0" role="button" aria-label="${esc(d[1])}"><circle cx="${hubs[d[0]][0].toFixed(0)}" cy="${hubs[d[0]][1].toFixed(0)}" r="34"/><text x="${hubs[d[0]][0].toFixed(0)}" y="${(hubs[d[0]][1] + 4).toFixed(0)}" text-anchor="middle">${esc(d[2])}</text></g>`).join('')}
+   ${CONC.map(c => { const n = mentions('concepts', c.id, day).length; return `<g class="cn m${c.m}${ATUAL_CONC.has(c.id) ? ' now' : ''}" data-concept="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}, ${MLBL[c.m]}"><circle cx="${pos[c.id][0].toFixed(0)}" cy="${pos[c.id][1].toFixed(0)}" r="9"/><text class="${n ? 'hot' : ''}" x="${pos[c.id][0].toFixed(0)}" y="${(pos[c.id][1] + 24).toFixed(0)}" text-anchor="middle">${esc(short(c))}${n ? ` · ${n}` : ''}</text></g>`; }).join('')}
   </svg>`;
 }
 V.cerebro = () => {
   const prog = DISC.map(d => { const cs = CONC.filter(c => c.disc === d[0]); return [d[1], cs.reduce((a, c) => a + c.m, 0) / (cs.length * 3)]; });
   const tot = CONC.reduce((a, c) => a + c.m, 0) / (CONC.length * 3);
-  return `${head('Segundo cérebro · sua formação conectada ao mundo', 'Meu <em>cérebro</em>', 'Cada ponto é um conceito da sua formação. A cor mostra o quanto você domina; o número ao lado, quantas notícias de hoje usam aquele conceito. Clique para ver as notícias, praticar e anotar.')}
-  ${note('A grade de disciplinas ainda é genérica. Para usar a do seu curso, edite DISC e CONC em web/content.js (ou me peça para montar). Domínio e notas ficam salvos neste aparelho.', 'Personalize')}
+  const day = recent(72).length ? recent(72) : DATA.items;
+  return `${head(`Ciências Econômicas · UFMA · ${CURSOS.length} disciplinas · semestre ${SEMESTRE_ATUAL}`, 'Meu <em>cérebro</em>', 'Sua grade organizada em 8 eixos. Cada ponto é um conceito: a cor mostra o quanto você domina, o anel marca o que está nas matérias deste semestre e o número diz quantas notícias de hoje usam aquele conceito. Clique num eixo para ver as disciplinas, ou num conceito para ver notícias, praticar e anotar.')}
+  <section class="card"><div class="flexhead"><h3 class="s">Cursando agora · ${SEMESTRE_ATUAL}</h3><span class="eyebrow">notícias em 72 h</span></div>
+   <div>${ATUAIS.map(c => { const n = day.filter(i => i.concepts.some(k => c.conc.includes(k))).length; return `<div class="crow"><button class="mrow" data-course="${c.cod}"><span>${esc(c.nome)}</span><span class="mono ${n ? 'hotn' : 'muted'}">${n}</span></button><div class="mini">${c.conc.map(cbtn).join('')}</div></div>`; }).join('')}</div></section>
   <div class="graph">${graphSVG()}</div>
-  <div class="mlegend"><span><i style="background:var(--bg)"></i>Não vi</span><span><i style="background:rgba(247,147,26,.3)"></i>Vi em aula</span><span><i style="background:rgba(247,147,26,.65)"></i>Sei explicar</span><span><i style="background:var(--accent)"></i>Sei aplicar</span></div>
+  <div class="mlegend"><span><i style="background:var(--bg)"></i>Não vi</span><span><i style="background:rgba(247,147,26,.3)"></i>Vi em aula</span><span><i style="background:rgba(247,147,26,.65)"></i>Sei explicar</span><span><i style="background:var(--accent)"></i>Sei aplicar</span><span><i style="background:var(--bg);border-color:var(--fg);border-width:2.5px"></i>Matéria deste semestre</span></div>
   <div class="two">
-   <section class="card"><div class="flexhead"><h3 class="s">Domínio por disciplina</h3><span class="mono" style="color:var(--accent)">${Math.round(tot * 100)}% geral</span></div>
-    <div>${prog.map(p => `<div class="prog"><span>${esc(p[0])}</span><span class="tr"><i style="width:${Math.round(p[1] * 100)}%"></i></span><span class="mono" style="text-align:right;font-size:12.5px">${Math.round(p[1] * 100)}%</span></div>`).join('')}</div></section>
-   <section class="card"><h3 class="s">Lacunas</h3><p class="muted" style="margin:0;font-size:14px">Conceitos que você marcou como “não vi”:</p>
-    <div class="mini">${CONC.filter(c => c.m === 0).map(c => cbtn(c.id)).join('') || '<span class="muted">Nenhuma. Bom trabalho.</span>'}</div>
-    <div class="lock"><b>Em breve:</b> subir ementas, slides e listas da faculdade para o NEXUS extrair os conceitos sozinho (precisa da versão com IA).</div></section>
+   <section class="card"><div class="flexhead"><h3 class="s">Domínio por eixo</h3><span class="mono" style="color:var(--accent)">${Math.round(tot * 100)}% geral</span></div>
+    <div>${prog.map((p, i) => `<button class="prog" data-disc="${DISC[i][0]}"><span>${esc(p[0])}</span><span class="tr"><i style="width:${Math.round(p[1] * 100)}%"></i></span><span class="mono" style="text-align:right;font-size:12.5px">${Math.round(p[1] * 100)}%</span></button>`).join('')}</div></section>
+   <section class="card"><h3 class="s">Para reforçar</h3><p class="muted" style="margin:0;font-size:14px">Conceitos de matérias que aparecem mais de uma vez no seu histórico. Marque “sei explicar” quando estiverem firmes.</p>
+    <div class="mini">${REFORCO.map(cById).filter(c => c && c.m <= 1).map(c => cbtn(c.id)).join('') || '<span class="muted">Tudo firme.</span>'}</div>
+    <h3 class="s" style="margin-top:6px">Ainda não vistos</h3>
+    <div class="mini">${CONC.filter(c => c.m === 0).map(c => cbtn(c.id)).join('') || '<span class="muted">Nenhum.</span>'}</div>
+    <div class="lock"><b>Em breve:</b> subir ementas e slides para o NEXUS extrair os conceitos de cada aula (precisa da versão com IA).</div></section>
   </div>`;
 };
 
@@ -497,14 +519,39 @@ function openConcept(id){
   const back = CONC.filter(x => x.links.includes(id)).map(x => x.id), linked = [...new Set([...c.links, ...back])];
   const ppl = PEOPLE.filter(p => p.conc.includes(id)), cos = COS.filter(x => x.conc.includes(id));
   const acadLbl = {mat:'Exercício de matemática', lab:'Simulador no laboratório', teo:'Resumo na teoria', casos:'Casos de empresa'}[c.acad];
-  openDrawer(`<span class="area a1">${esc(dName(c.disc))}</span>`,
+  const vis = coursesFor(id);
+  openDrawer(`<span class="area a1">${esc(dName(c.disc))}</span>${ATUAL_CONC.has(id) ? '<span class="kind prim">Neste semestre</span>' : ''}`,
    `<h2 id="dtitle">${esc(c.name)}</h2><p style="margin:0">${esc(c.def)}</p>${c.f ? `<div class="formula">${esc(c.f)}</div>` : ''}
     ${blk('Seu domínio', `<div class="mast" role="group">${MLBL.map((l, i) => `<button data-mast="${id}" data-lv="${i}" class="${c.m === i ? 'on' : ''}" aria-pressed="${c.m === i}">${l}</button>`).join('')}</div>`)}
+    ${vis.length ? blk('Nas suas disciplinas', `<div style="display:flex;flex-direction:column;gap:6px">${vis.map(v => `<button class="relbtn" data-course="${v.cod}"><small>${esc(v.cod)} · ${esc(v.sems.join(', '))}${v.atual ? ' · cursando' : ''}</small>${esc(v.nome)}</button>`).join('')}</div>`) : ''}
     ${blk(`Nas notícias (72 h) · ${news.length}`, news.length ? relList(news.slice(0, 6)) : '<p class="muted">Não apareceu nas últimas 72 horas.</p>')}
     ${blk('Conectado a', `<div class="mini">${linked.length ? linked.map(cbtn).join('') : '<span class="muted">Sem conexões ainda.</span>'}</div>`)}
     ${ppl.length || cos.length ? blk('Quem usa essa ideia', `<div class="mini">${ppl.map(p => `<button class="pill" data-person="${p.id}"><span class="av">${esc(p.ini)}</span>${esc(p.name)}</button>`).join('')}${cos.map(x => `<button class="pill" data-company="${x.id}"><span class="av">${esc(x.tk.slice(0, 2))}</span>${esc(x.name)}</button>`).join('')}</div>`) : ''}
     ${blk('Praticar', `<a class="link" href="#academia" data-acad="${c.acad}">${acadLbl} →</a>`)}
     ${blk('Minhas notas', `<textarea data-note="c-${id}" placeholder="Anote com suas palavras. Fica salvo neste aparelho.">${esc(notes['c-' + id] || '')}</textarea>`)}`);
+}
+
+function openCourse(cod){
+  const c = courseOf(cod); if (!c) return;
+  const news = DATA.items.filter(i => i.concepts.some(k => c.conc.includes(k)));
+  const probs = PROBS.filter(p => c.conc.includes(p.conc)), cases = CASES.filter(x => x.materia === c.nome || x.conc.some(k => c.conc.includes(k))).slice(0, 4);
+  const teo = THEORY.filter(t => c.conc.includes(t.conc));
+  openDrawer(`<span class="area a1">${esc(dName(c.eixo))}</span><span class="mono">${esc(c.cod)}</span>${c.atual ? '<span class="kind prim">Cursando</span>' : ''}`,
+   `<h2 id="dtitle">${esc(c.nome)}</h2><p class="muted" style="margin:0">${c.atual ? `Cursando agora, em ${SEMESTRE_ATUAL}` : 'Cursada'}${c.sems.length > 1 || !c.atual ? ` · no histórico: ${esc(c.sems.join(', '))}` : ''}.</p>
+    ${blk('Conceitos', `<div class="mini">${c.conc.map(cbtn).join('')}</div>`)}
+    ${blk(`Nas notícias (72 h) · ${news.length}`, news.length ? relList(news.slice(0, 8)) : '<p class="muted">Nada nas últimas 72 horas.</p>')}
+    ${probs.length || teo.length ? blk('Praticar', `<div class="mini">${probs.map(p => `<a class="pill" href="#academia" data-acad="mat">✎ ${esc(p.title)}</a>`).join('')}${teo.map(t => `<a class="pill" href="#academia" data-acad="teo">∂ ${esc(t.name)}</a>`).join('')}</div>`) : ''}
+    ${cases.length ? blk('Casos para discutir', `<div class="mini">${cases.map(x => `<button class="pill" data-case="${x.id}">${esc(x.name)}</button>`).join('')}</div>`) : ''}
+    ${blk('Minhas notas da matéria', `<textarea data-note="curso-${c.cod}" placeholder="Resumos, datas de prova, dúvidas para o professor… Fica salvo neste aparelho.">${esc(notes['curso-' + c.cod] || '')}</textarea>`)}`);
+}
+function openDisc(id){
+  const d = DISC.find(x => x[0] === id); if (!d) return;
+  const cs = CURSOS.filter(c => c.eixo === id), cc = CONC.filter(c => c.disc === id);
+  const pct = Math.round(cc.reduce((a, c) => a + c.m, 0) / (cc.length * 3) * 100);
+  openDrawer(`<span class="area a1">Eixo</span><span class="mono">${pct}% de domínio</span>`,
+   `<h2 id="dtitle">${esc(d[1])}</h2>
+    ${blk('Conceitos', `<div style="display:flex;flex-direction:column;gap:6px">${cc.map(c => `<button class="relbtn" data-concept="${c.id}"><small>${MLBL[c.m]}${ATUAL_CONC.has(c.id) ? ' · neste semestre' : ''}</small>${esc(c.name)}</button>`).join('')}</div>`)}
+    ${blk(`Disciplinas · ${cs.length}`, `<div style="display:flex;flex-direction:column;gap:6px">${cs.map(c => `<button class="relbtn" data-course="${c.cod}"><small>${esc(c.cod)} · ${esc(c.sems.join(', '))}${c.atual ? ' · cursando' : ''}</small>${esc(c.nome)}</button>`).join('')}</div>`)}`);
 }
 
 /* ================= render, rotas e eventos ================= */
@@ -532,7 +579,7 @@ function bindLab(){
   s.addEventListener('input', upd); upd();
 }
 const stepsHTML = p => `<ol class="steps">${p.steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
-const OPEN = {item: openItem, company: openCompany, person: openPerson, concept: openConcept, case: openCase};
+const OPEN = {item: openItem, company: openCompany, person: openPerson, concept: openConcept, case: openCase, course: openCourse, disc: openDisc};
 
 document.addEventListener('click', e => {
   const t = e.target;
@@ -553,7 +600,7 @@ document.addEventListener('click', e => {
   if (ac) { state.acad = ac.dataset.acad; if (!$('#drawer').hidden) closeDrawer(); if (current() === 'academia') { e.preventDefault(); render(); window.scrollTo(0, 0); } return; }
   const ms = t.closest('[data-mast]');
   if (ms) {
-    const c = cById(ms.dataset.mast); c.m = +ms.dataset.lv; mast[c.id] = c.m; store('nexus-mastery', mast);
+    const c = cById(ms.dataset.mast); c.m = +ms.dataset.lv; mast[c.id] = c.m; store(MKEY, mast);
     ms.parentElement.querySelectorAll('button').forEach(b => { const on = +b.dataset.lv === c.m; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
     if (['cerebro', 'hoje'].includes(current())) render();
     return;
@@ -567,7 +614,7 @@ document.addEventListener('click', e => {
     const v = parseFloat(raw.includes(',') ? raw.replace(/\./g, '').replace(',', '.') : raw), fb = $('#fb-' + p.id);
     if (isNaN(v)) { fb.innerHTML = '<div class="fb no">Digite um número, por exemplo 5,60.</div>'; return; }
     const ok = Math.abs(v - p.ans) <= p.tol;
-    if (ok) { const c = cById(p.conc); if (c && c.m < 3) { c.m = Math.max(c.m, 2); mast[c.id] = c.m; store('nexus-mastery', mast); } }
+    if (ok) { const c = cById(p.conc); if (c && c.m < 3) { c.m = Math.max(c.m, 2); mast[c.id] = c.m; store(MKEY, mast); } }
     fb.innerHTML = ok ? `<div class="fb ok"><b>Certo.</b> “${esc(cById(p.conc).name)}” subiu no seu cérebro.</div>${stepsHTML(p)}` : '<div class="fb no"><b>Ainda não.</b> Revise o conceito e tente de novo.</div>';
     return;
   }
