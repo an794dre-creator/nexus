@@ -96,9 +96,31 @@ Sem a chave, o app funciona normalmente, só que sem as análises.
 
 Teste local sem gastar nada: `py collector/analyze.py --dry-run`.
 
+## Chat "Pergunte ao NEXUS"
+
+O site é público, então a chave da API não pode ficar nele. O chat passa por um pequeno servidor
+no Cloudflare Workers (`chat-worker/`, plano gratuito), que guarda a chave, exige uma senha sua e
+responde em tempo real, citando as notícias e análises do NEXUS como [1], [2]…
+
+**Publicar o servidor (uma vez), num terminal:**
+
+```bash
+cd chat-worker
+npm install
+npx wrangler login
+npx wrangler secret put ANTHROPIC_API_KEY
+npx wrangler secret put NEXUS_PASSWORD
+npx wrangler deploy
+```
+
+- `wrangler login` abre o navegador para você autorizar a sua conta do Cloudflare.
+- Os dois `secret put` pedem o valor no terminal: cole a chave da Anthropic e invente uma senha.
+- O `deploy` mostra o endereço do servidor, algo como `https://nexus-chat.SEU-NOME.workers.dev`.
+
+Depois, no app, abra **Pergunte**, informe esse endereço e a senha. Fica salvo só no aparelho.
+O modelo e o esforço do chat ficam em `chat-worker/wrangler.toml` (`MODEL`, `EFFORT`).
+
 ## Próximas versões
 
-- **Chat "Pergunte ao NEXUS":** precisa de um pequeno servidor que guarde a chave (por exemplo, um
-  Cloudflare Worker), porque o site é público.
 - **Segundo cérebro completo:** subir ementas e slides, notas sincronizadas entre aparelhos,
   busca no histórico inteiro.

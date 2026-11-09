@@ -1,0 +1,14 @@
+name = "nexus-chat"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+MODEL = "claude-opus-5-5"
+EFFORT = "low"
+DATA_URL = "https://an794dre-creator.github.io/nexus/data/"
+ALLOWED_ORIGINS = "https://an794dre-creator.github.io,http://localhost:8765,http://127.0.0.1:8765"
+
+# Segredos (não ficam neste arquivo). Cadastre com:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+#   npx wrangler secret put NEXUS_PASSWORD

@@ -2,6 +2,9 @@
 web/data/latest.json
 
 .claude/
+node_modules/
+chat-worker/.wrangler/
+chat-worker/.dev.vars
 __pycache__/
 *.pyc
 .env

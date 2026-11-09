@@ -472,12 +472,117 @@ V.carreira = () => {
   <section class="card"><h3 class="s">Certificações do mercado financeiro</h3><table class="tb"><tbody>${CERT.map(c => `<tr><td><b>${esc(c[0])}</b><br><span class="muted" style="font-size:12.5px">${esc(c[1])}</span></td><td style="text-align:left" class="muted">${esc(c[2])}</td></tr>`).join('')}</tbody></table></section>`;
 };
 
-V.pergunte = () => `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}
-  <div class="lock"><b>O chat é a próxima etapa.</b> As análises com IA já funcionam, mas o chat precisa de um pequeno servidor que guarde a chave da API (o site é público). Quando estiver pronto, a pergunta vai junto com as notícias, os dados e as suas notas mais relevantes, e a resposta cita de onde veio cada informação.</div>
-  ${(() => { const c = aiCost(); return `<section class="card"><h3 class="s">Consumo da IA neste mês</h3><p style="margin:0"><span class="mono" style="font-size:22px;color:var(--accent)">US$ ${nf(c.usd, 2)}</span> <span class="muted">· ${c.calls} chamadas em ${c.days} dia(s) · ${Object.keys(AN).length} análises guardadas</span></p><p class="muted" style="margin:0;font-size:13px">Estimativa pelos preços públicos da Anthropic. O valor oficial está em console.anthropic.com.</p></section>`; })()}
-  <section class="card"><h3 class="s">Perguntas que ele vai responder</h3><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
-   <li>Por que juros altos nos EUA afetam empresas brasileiras?</li><li>O que mudou nas expectativas do Focus nas últimas 4 semanas, e por quê?</li>
-   <li>Quais empresas mais apareceram nas notícias este mês e em que contexto?</li><li>Explique a notícia X usando o que eu estudei em Macroeconomia.</li></ul></section>`;
+/* ================= chat "Pergunte ao NEXUS" ================= */
+const CHAT = {cfg: load('nexus-chat-cfg', {url: '', key: ''}), hist: load('nexus-chat-hist', []), cost: load('nexus-chat-cost', {}), busy: false, editing: false};
+const SUGG = ['Por que juros altos nos EUA afetam empresas brasileiras?', 'O que mudou nas expectativas do Focus e por quê?',
+  'Explique o destaque de hoje usando Economia do Setor Público.', 'Que tema destas notícias renderia um bom TCC?'];
+const monthKey = () => new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'}).slice(0, 7);
+function saveChat(){ store('nexus-chat-hist', CHAT.hist.slice(-40)); }
+function chatProfile(){
+  return `Semestre ${SEMESTRE_ATUAL}. Cursando: ${ATUAIS.map(c => c.nome).join('; ')}.\n` +
+    `Domínio dos conceitos (0 = não vi, 3 = sei aplicar): ${CONC.map(c => `${c.name}: ${c.m}`).join('; ')}.`;
+}
+function mdLite(text, sources, mi){
+  const cite = s => s.replace(/\[(\d+(?:\s*,\s*\d+)*)\]/g, (_, g) => g.split(/\s*,\s*/).map(n => {
+    const src = (sources || []).find(x => x.n === +n);
+    return src ? `<button class="cite" data-cite="${mi}:${n}" title="${esc(src.title)}">${n}</button>` : `[${n}]`;
+  }).join(''));
+  const inline = s => cite(s.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'));
+  return esc(text).split(/\n{2,}/).map(block => {
+    const lines = block.split('\n');
+    if (lines.every(l => /^\s*([-*•]|\d+[.)])\s+/.test(l))) return `<ul>${lines.map(l => `<li>${inline(l.replace(/^\s*([-*•]|\d+[.)])\s+/, ''))}</li>`).join('')}</ul>`;
+    return `<p>${lines.map(inline).join('<br>')}</p>`;
+  }).join('');
+}
+function chatMsgHTML(m, i){
+  if (m.role === 'user') return `<div class="msg me">${esc(m.text)}</div>`;
+  const cited = [...new Set([...(m.text || '').matchAll(/\[(\d+(?:\s*,\s*\d+)*)\]/g)].flatMap(x => x[1].split(/\s*,\s*/).map(Number)))];
+  const srcs = (m.sources || []).filter(s => cited.includes(s.n));
+  return `<div class="msg bot${m.error ? ' err' : ''}" data-mi="${i}">${m.text ? mdLite(m.text, m.sources, i) : '<p class="muted">Pensando…</p>'}
+   ${srcs.length ? `<div class="refs"><span class="eyebrow">Fontes</span>${srcs.map(s => `<button class="cite-src" data-cite="${i}:${s.n}"><b>${s.n}</b> ${esc(s.source)} · ${esc(s.title.slice(0, 54))}${s.title.length > 54 ? '…' : ''}</button>`).join('')}</div>` : ''}
+   ${m.usd != null ? `<span class="cost">US$ ${nf(m.usd, 3)}</span>` : ''}</div>`;
+}
+V.pergunte = () => {
+  const c = aiCost(), chatUsd = CHAT.cost[monthKey()] || 0;
+  const costCard = `<section class="card"><h3 class="s">Consumo da IA neste mês</h3><p style="margin:0"><span class="mono" style="font-size:22px;color:var(--accent)">US$ ${nf(c.usd + chatUsd, 2)}</span> <span class="muted">· análises US$ ${nf(c.usd, 2)} (${c.calls} chamadas) · chat neste aparelho US$ ${nf(chatUsd, 2)}</span></p><p class="muted" style="margin:0;font-size:13px">Estimativa pelos preços públicos da Anthropic. O valor oficial está em console.anthropic.com.</p></section>`;
+  const cfgForm = `<section class="card"><h3 class="s">Conectar ao servidor do chat</h3>
+    <p class="muted" style="margin:0;font-size:14px">Informe o endereço do seu servidor no Cloudflare e a senha que você cadastrou nele. Fica salvo só neste aparelho.</p>
+    <form id="chatcfg" class="cfg"><label for="cfgurl">Endereço</label><input id="cfgurl" type="url" required placeholder="https://nexus-chat.seu-nome.workers.dev" value="${esc(CHAT.cfg.url)}">
+     <label for="cfgkey">Senha</label><input id="cfgkey" type="password" required autocomplete="current-password" value="${esc(CHAT.cfg.key)}">
+     <div class="ans"><button class="btn" type="submit">Salvar e testar</button>${CHAT.cfg.url && CHAT.cfg.key ? '<button class="btn ghost" type="button" data-chat-cancel="1">Cancelar</button>' : ''}</div>
+     <div id="cfgmsg" aria-live="polite"></div></form></section>`;
+  if (!CHAT.cfg.url || !CHAT.cfg.key || CHAT.editing) return `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}${cfgForm}${costCard}`;
+  let host = ''; try { host = new URL(CHAT.cfg.url).host; } catch (e) {}
+  return `${head('Responde com base no acervo e cita as fontes', 'Pergunte ao <em>NEXUS</em>')}
+  <div class="chat"><div class="chatbar"><span class="live"><i></i>${esc(host)}</span><span class="spacer"></span><button class="link" data-chat-edit="1">Configurar</button>${CHAT.hist.length ? '<button class="link" data-chat-clear="1">Limpar conversa</button>' : ''}</div>
+   <div class="msgs" id="msgs">${CHAT.hist.length ? CHAT.hist.map(chatMsgHTML).join('') : `<div class="sugg"><span class="eyebrow">Experimente</span>${SUGG.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}</div>
+   <form class="composer" id="composer"><textarea id="askin" rows="1" placeholder="Pergunte sobre economia, empresas, suas matérias…" aria-label="Pergunta" ${CHAT.busy ? 'disabled' : ''}></textarea><button class="btn" type="submit" ${CHAT.busy ? 'disabled' : ''}>${CHAT.busy ? '…' : 'Enviar'}</button></form></div>
+  ${costCard}`;
+};
+function bindChat(){
+  const cfg = $('#chatcfg');
+  if (cfg) cfg.addEventListener('submit', async e => {
+    e.preventDefault();
+    const url = $('#cfgurl').value.trim().replace(/\/+$/, ''), key = $('#cfgkey').value;
+    $('#cfgmsg').innerHTML = '<p class="muted">Testando…</p>';
+    try {
+      const r = await fetch(url + '/health');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      CHAT.cfg = {url, key}; store('nexus-chat-cfg', CHAT.cfg); CHAT.editing = false; render();
+    } catch (err) { $('#cfgmsg').innerHTML = `<div class="fb no">Não consegui falar com o servidor (${esc(err.message)}). Confira o endereço.</div>`; }
+  });
+  const f = $('#composer');
+  if (f) {
+    const ta = $('#askin');
+    ta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); f.requestSubmit(); } });
+    f.addEventListener('submit', e => { e.preventDefault(); const v = ta.value.trim(); if (v) askNexus(v); });
+    const m = $('#msgs'); m.scrollTop = m.scrollHeight;
+  }
+}
+async function askNexus(q){
+  if (CHAT.busy) return;
+  CHAT.busy = true;
+  CHAT.hist.push({role: 'user', text: q});
+  const msg = {role: 'assistant', text: '', sources: []};
+  CHAT.hist.push(msg); saveChat(); render();
+  const mi = CHAT.hist.length - 1;
+  let raf = 0;
+  const paint = () => { raf = 0; const el = document.querySelector(`.msg.bot[data-mi="${mi}"]`); if (el) { el.outerHTML = chatMsgHTML(msg, mi); const m = $('#msgs'); if (m) m.scrollTop = m.scrollHeight; } };
+  const schedule = () => { if (!raf) raf = requestAnimationFrame(paint); };
+  try {
+    const history = CHAT.hist.slice(0, -1).filter(m => !m.error && m.text).slice(-11).map(m => ({role: m.role, content: m.text}));
+    const r = await fetch(CHAT.cfg.url + '/chat', {method: 'POST', headers: {'content-type': 'application/json', 'x-nexus-key': CHAT.cfg.key},
+      body: JSON.stringify({messages: history, profile: chatProfile()})});
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(r.status === 401 ? 'Senha incorreta. Toque em “Configurar” para corrigir.' : (j.error || 'HTTP ' + r.status));
+    }
+    const reader = r.body.getReader(), dec = new TextDecoder();
+    let buf = '';
+    for (;;) {
+      const {value, done} = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, {stream: true});
+      let cut;
+      while ((cut = buf.indexOf('\n\n')) >= 0) {
+        const raw = buf.slice(0, cut); buf = buf.slice(cut + 2);
+        const ev = (raw.match(/^event: (.*)$/m) || [])[1], data = (raw.match(/^data: (.*)$/m) || [])[1];
+        if (!ev || data == null) continue;
+        const d = JSON.parse(data);
+        if (ev === 'meta') msg.sources = d.sources;
+        else if (ev === 'text') { msg.text += d; schedule(); }
+        else if (ev === 'done') { msg.usd = d.usd; const k = monthKey(); CHAT.cost[k] = (CHAT.cost[k] || 0) + (d.usd || 0); store('nexus-chat-cost', CHAT.cost); }
+        else if (ev === 'error') throw new Error(d.message);
+      }
+    }
+    if (!msg.text) throw new Error('A resposta veio vazia. Tente de novo.');
+  } catch (err) {
+    msg.error = true;
+    msg.text = (msg.text ? msg.text + '\n\n' : '') + (err.message === 'Failed to fetch' ? 'Sem conexão com o servidor do chat.' : err.message);
+  }
+  CHAT.busy = false; saveChat();
+  if (current() === 'pergunte') render();
+}
 
 function emptyState(){
   return `${head('Sem dados', 'Ainda não há coleta')}
@@ -603,6 +708,7 @@ function render(){
   document.querySelectorAll('[data-nav]').forEach(a => { const on = a.dataset.nav === k; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   $('#morebtn').classList.toggle('on', MORE.includes(k));
   if (k === 'academia' && state.acad === 'lab') bindLab();
+  if (k === 'pergunte') bindChat();
   if (k === 'radar') { const q = $('#q'); if (q) q.addEventListener('input', e => { state.q = e.target.value; state.limit = 60; const pos = e.target.selectionStart; render(); const n = $('#q'); n.focus(); n.setSelectionRange(pos, pos); }); }
 }
 function renderStatus(){
@@ -636,6 +742,16 @@ document.addEventListener('click', e => {
     store('nexus-saved-items', savedMap);
     document.querySelectorAll(`[data-save="${CSS.escape(id)}"]`).forEach(b => { b.classList.toggle('on', !!savedMap[id]); b.setAttribute('aria-pressed', !!savedMap[id]); });
     if (current() === 'radar' && state.filter === 'salvos') render();
+    return;
+  }
+  const aq = t.closest('[data-ask]'); if (aq) { askNexus(aq.dataset.ask); return; }
+  if (t.closest('[data-chat-clear]')) { CHAT.hist = []; saveChat(); render(); return; }
+  if (t.closest('[data-chat-edit]')) { CHAT.editing = true; render(); return; }
+  if (t.closest('[data-chat-cancel]')) { CHAT.editing = false; render(); return; }
+  const ci = t.closest('[data-cite]');
+  if (ci) {
+    const [mi, n] = ci.dataset.cite.split(':').map(Number), src = (CHAT.hist[mi]?.sources || []).find(s => s.n === n);
+    if (src) { if (byItem(src.id)) openItem(src.id); else window.open(src.link, '_blank', 'noopener'); }
     return;
   }
   const ac = t.closest('[data-acad]');

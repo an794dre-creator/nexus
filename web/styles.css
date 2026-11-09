@@ -235,6 +235,29 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .mast button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
 textarea{width:100%;min-height:110px;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);resize:vertical}
 
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-height:460px}
+.chatbar{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:12.5px;font-family:var(--mono);color:var(--muted)}
+.chatbar .spacer{flex:1}
+.msgs{padding:18px;display:flex;flex-direction:column;gap:14px;flex:1;max-height:62vh;overflow-y:auto}
+.msg{max-width:78ch;padding:12px 14px;border-radius:12px;min-width:0;overflow-wrap:anywhere}
+.msg.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:4px;white-space:pre-wrap}
+.msg.bot{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:4px;display:flex;flex-direction:column;gap:8px}
+.msg.bot p{margin:0}
+.msg.bot ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.msg.bot.err{border:1px solid rgba(255,107,94,.5)}
+.msg .cost{font-family:var(--mono);font-size:11px;color:var(--muted);align-self:flex-end}
+.cite{border:0;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:500;border-radius:4px;padding:0 5px;margin:0 1px;cursor:pointer;vertical-align:1px}
+.refs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cite-src{font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 8px;cursor:pointer;text-align:left}
+.cite-src b{color:var(--accent);font-family:var(--mono);font-weight:500}
+.sugg{display:flex;flex-direction:column;gap:8px}
+.sugg button{text-align:left;border:1px solid var(--line);background:var(--surface);padding:10px 14px;border-radius:10px;cursor:pointer}
+.sugg button:hover{border-color:var(--accent)}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);align-items:flex-end}
+.composer textarea{flex:1;min-width:0;min-height:44px;max-height:160px;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);resize:vertical}
+.cfg{display:flex;flex-direction:column;gap:8px}
+.cfg label{font-weight:500;font-size:14px}
+.cfg input{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
 .scrim{position:fixed;inset:0;background:var(--scrim);z-index:40}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(620px,100%);background:var(--surface);z-index:41;overflow-y:auto;border-left:1px solid var(--line);
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);animation:slide .22s ease-out}
