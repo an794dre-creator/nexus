@@ -47,6 +47,18 @@ FEEDS = [
     # Carreira: sem feed dedicado estável; os itens entram pela regra de palavras-chave
 ]
 
+# Inovação: pesquisa econômica, gestão, Brasil e dados (aba Novidades; a IA escolhe e explica as melhores)
+INNOV_FEEDS = [
+    {"name": "VoxEU / CEPR", "url": "https://cepr.org/rss/vox-content", "tipo": "pesquisa"},
+    {"name": "Liberty Street Economics (Fed NY)", "url": "https://libertystreeteconomics.newyorkfed.org/feed/", "tipo": "pesquisa"},
+    {"name": "Marginal Revolution", "url": "https://marginalrevolution.com/feed", "tipo": "pesquisa"},
+    {"name": "McKinsey Insights", "url": "https://www.mckinsey.com/insights/rss", "tipo": "gestao"},
+    {"name": "MIT Sloan Management Review", "url": "https://sloanreview.mit.edu/feed/", "tipo": "gestao"},
+    {"name": "IPEA · Carta de Conjuntura", "url": "https://www.ipea.gov.br/cartadeconjuntura/index.php/feed/", "tipo": "brasil"},
+    {"name": "Blog do IBRE (FGV)", "url": "https://blogdoibre.fgv.br/rss.xml", "tipo": "brasil"},
+    {"name": "Our World in Data", "url": "https://ourworldindata.org/atom.xml", "tipo": "dados"},
+]
+
 # Papers: arXiv (finanças quantitativas e economia) e NBER (working papers novos)
 ARXIV_QUERY = "cat:q-fin.* OR cat:econ.*"
 ARXIV_MAX = 25

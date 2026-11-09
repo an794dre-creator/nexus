@@ -291,14 +291,14 @@ def collect_bcb() -> list[dict]:
             rows = sgs(s["code"], s["days"])
             vals = [v for _, v in rows]
             dates = [d for d, _ in rows]
-            extra = None
+            extra = {"sgs": s["code"]}
             if s["id"] == "selic":  # série diária longa: reduz para ~60 pontos
                 step = max(1, len(vals) // 60)
                 vals_s, dates_s = vals[::step] + [vals[-1]], dates[::step] + [dates[-1]]
                 delta = change(vals, "pp")
                 lc = last_change(vals, "pp")
                 if lc:
-                    extra = {"note": f"última mudança: {'+' if lc > 0 else '−'}{abs(lc):.2f} p.p.".replace(".", ",", 1).replace("p,p", "p.p")}
+                    extra["note"] = f"última mudança: {'+' if lc > 0 else '−'}{abs(lc):.2f} p.p.".replace(".", ",", 1).replace("p,p", "p.p")
             else:
                 vals_s, dates_s = vals[-30:], dates[-30:]
                 delta = change(vals, s["delta"])
@@ -432,7 +432,7 @@ def collect_yahoo() -> list[dict]:
             dk = y.get("delta", "pct")
             delta = round(vals[-1] - vals[-2], 3) if dk == "pp" else round((vals[-1] / vals[-2] - 1) * 100, 2)
             out.append(indicator(y["id"], y["name"], y["group"], vals[-1], "", delta, dk, vals, dates, "Yahoo Finance",
-                                 {"fmt": y["fmt"], "prefix": y.get("prefix", ""), "suffix": y.get("suffix", "")}))
+                                 {"fmt": y["fmt"], "prefix": y.get("prefix", ""), "suffix": y.get("suffix", ""), "sym": y["sym"]}))
             log(f"  ✓ Yahoo {y['name']}: {vals[-1]:.2f}")
             time.sleep(0.3)
         except Exception as e:  # noqa: BLE001
@@ -465,7 +465,7 @@ def collect_crypto() -> list[dict]:
             log(f"  ✗ CoinGecko histórico {c['name']}: {type(e).__name__}: {e}")
         out.append(indicator(c["id"], c["name"], "cripto", p["usd"], "US$", round(p.get("usd_24h_change") or 0, 2), "pct",
                              series or [p["usd"]], dates or [NOW.strftime("%d/%m/%Y")], "CoinGecko · 24h",
-                             {"fmt": "int" if p["usd"] > 1000 else "2", "prefix": "US$ ", "brl": p.get("brl")}))
+                             {"fmt": "int" if p["usd"] > 1000 else "2", "prefix": "US$ ", "brl": p.get("brl"), "sym": f"{c['id'].upper()}-USD"}))
         log(f"  ✓ CoinGecko {c['name']}: US$ {p['usd']}")
     try:
         g = fetch_json("https://api.coingecko.com/api/v3/global")["data"]
@@ -507,6 +507,27 @@ def collect_arxiv() -> list[dict]:
         })
     log(f"  ✓ arXiv: {len(out)} papers")
     return out
+
+
+def collect_innov() -> list[dict]:
+    """Blogs de pesquisa econômica, gestão e dados: matéria-prima da aba Novidades (últimos 21 dias)."""
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(_fetch_feed, C.INNOV_FEEDS))
+    out = []
+    for f, entries in zip(C.INNOV_FEEDS, results):
+        if isinstance(entries, Exception):
+            log(f"  ✗ {f['name']}: {type(entries).__name__}: {entries}")
+            continue
+        n = 0
+        for e in entries[:15]:
+            d = e["date"] or NOW
+            if NOW - d > timedelta(days=21):
+                continue
+            out.append({"id": hashlib.sha1(e["link"].encode()).hexdigest()[:16], "title": e["title"], "link": e["link"],
+                        "summary": clean(e["summary"], 500), "source": f["name"], "tipo": f["tipo"], "published": iso(d)})
+            n += 1
+        log(f"  ✓ {f['name']}: {n} textos recentes")
+    return sorted(out, key=lambda x: x["published"], reverse=True)
 
 
 def collect_papers() -> list[dict]:
@@ -551,7 +572,7 @@ def update_archive(items: list[dict]) -> int:
 # ---------------------------------------------------------------------------
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--only", choices=["rss", "bcb", "ibge", "focus", "yahoo", "crypto", "arxiv"])
+    ap.add_argument("--only", choices=["rss", "bcb", "ibge", "ma", "innov", "focus", "yahoo", "crypto", "arxiv"])
     ap.add_argument("--archive", action="store_true", help="grava o histórico também numa execução local")
     args = ap.parse_args()
     DATA.mkdir(parents=True, exist_ok=True)
@@ -578,6 +599,15 @@ def main() -> None:
             for i in fn():
                 indicators[i["id"]] = i  # se uma fonte falhar, mantém o último valor bom
     out["indicators"] = list(indicators.values())
+    if want("ma"):
+        log("MARANHÃO")
+        from maranhao import collect_maranhao
+        out["maranhao"] = collect_maranhao(lambda u, t=60: fetch(u, t), lambda u: fetch_json(u, 40), DATA, log)
+    if want("innov"):
+        log("INOVAÇÃO")
+        inn = collect_innov()
+        if inn:
+            out["innov"] = inn
     if want("focus"):
         log("FOCUS")
         f = collect_focus()

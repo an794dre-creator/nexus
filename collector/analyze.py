@@ -272,11 +272,113 @@ def main() -> None:
         except anthropic.APIError as e:
             print(f"  ✗ edição não gerada: {type(e).__name__}")
 
+    # ---------------- Novidades (inovação) e tendências explicadas: uma vez por dia ----------------
+    ipath = DATA / "innovation.json"
+    innov = json.loads(ipath.read_text("utf-8")) if ipath.exists() else {}
+    need_innov = args.force_edition or (innov.get("date") != today and NOW.astimezone(BRT).hour >= EDITION_HOUR_BRT)
+    if need_innov:
+        cands = [x for x in latest.get("innov", [])
+                 if datetime.fromisoformat(x["published"].replace("Z", "+00:00")) > NOW - timedelta(days=10)][:45]
+        cands += [{"id": "p:" + p["id"], "title": p["title"], "summary": p["summary"], "source": p["cat"], "link": p["link"],
+                   "tipo": "pesquisa", "published": p.get("published", "")} for p in latest.get("papers", [])[:15]]
+        seen = {v["ref"] for day in innov.get("history", {}).values() for v in day}
+        cands = [c for c in cands if c["id"] not in seen]
+        if cands:
+            lst = "\n\n".join(f"[{c['id']}] ({c['source']}, {c['tipo']})\n{c['title']}\n{c['summary'][:450]}" for c in cands)
+            user = ("Escolha as 5 novidades mais valiosas desta lista para ele: métodos ou cálculos novos, descobertas empíricas, "
+                    "técnicas de gestão inovadoras, dados novos ou mudanças de política que valha a pena entender. Prefira o que é "
+                    "realmente novo e aplicável (inclusive na empresa de ônibus ou no TCC) ao que é só opinião. Escreva em português "
+                    "mesmo quando a fonte for em inglês.\n\n"
+                    "Para cada uma: ref (o id entre colchetes), titulo (curto, em português), tipo, o_que_e_novo (2 a 3 frases), "
+                    "como_funciona (o mecanismo, o método ou o modelo, 3 a 4 frases), calculo (uma fórmula ou conta ilustrativa em "
+                    "texto simples, ou vazio se não couber), por_que_importa (2 frases), como_aplicar (1 a 2 frases práticas) e "
+                    "conceito (id da lista de conceitos ou vazio). Baseie-se só no resumo fornecido: se ele não detalhar o método, "
+                    "diga o que dá para inferir e que é preciso ler o original.\n\n" + lst)
+            schema = {"type": "object", "properties": {"itens": {"type": "array", "items": {
+                "type": "object", "properties": {
+                    "ref": {"type": "string", "enum": [c["id"] for c in cands]},
+                    "titulo": {"type": "string"},
+                    "tipo": {"type": "string", "enum": ["método", "descoberta", "técnica de gestão", "dado novo", "política"]},
+                    "o_que_e_novo": {"type": "string"}, "como_funciona": {"type": "string"}, "calculo": {"type": "string"},
+                    "por_que_importa": {"type": "string"}, "como_aplicar": {"type": "string"},
+                    "conceito": {"type": "string", "enum": cids + [""]}},
+                "required": ["ref", "titulo", "tipo", "o_que_e_novo", "como_funciona", "calculo", "por_que_importa", "como_aplicar", "conceito"],
+                "additionalProperties": False}}}, "required": ["itens"], "additionalProperties": False}
+            try:
+                data, usage, stop = call_claude(client, system, user, schema, max_tokens=8000)
+                add_usage(usage)
+                if data:
+                    byid = {c["id"]: c for c in cands}
+                    picks = []
+                    for it in data["itens"][:6]:
+                        src = byid.get(it["ref"])
+                        if src:
+                            it.update({"fonte": src["source"], "link": src["link"], "titulo_original": src["title"], "publicado": src["published"]})
+                            picks.append(it)
+                    hist = innov.get("history", {})
+                    hist[today] = picks
+                    innov["history"] = {k: hist[k] for k in sorted(hist)[-14:]}
+                    innov.update({"date": today, "created": NOW.isoformat(), "model": MODEL})
+                    print(f"  ✓ novidades: {len(picks)} escolhidas")
+                else:
+                    print(f"  ✗ novidades não geradas ({stop})")
+            except anthropic.APIError as e:
+                print(f"  ✗ novidades: {type(e).__name__}")
+        trends = rising_themes()
+        if trends:
+            lst = "\n\n".join(f"Tema: {t['tema']} ({t['ultimos7']} manchetes nos últimos 7 dias, {t['anteriores7']} nos 7 anteriores)\n"
+                              + "\n".join(f"- {h}" for h in t["manchetes"]) for t in trends)
+            user = ("Estes temas cresceram nas manchetes coletadas pelo NEXUS. Para cada um, explique em 2 a 3 frases por que está "
+                    "subindo (o que aconteceu, segundo as manchetes) e em 1 frase o que observar a seguir. Use só o que as manchetes "
+                    "sustentam; se forem vagas, diga isso.\n\n" + lst)
+            schema = {"type": "object", "properties": {"temas": {"type": "array", "items": {"type": "object", "properties": {
+                "tema": {"type": "string", "enum": [t["tema"] for t in trends]}, "por_que": {"type": "string"}, "observar": {"type": "string"}},
+                "required": ["tema", "por_que", "observar"], "additionalProperties": False}}}, "required": ["temas"], "additionalProperties": False}
+            try:
+                data, usage, stop = call_claude(client, system, user, schema, max_tokens=4000)
+                add_usage(usage)
+                if data:
+                    meta = {t["tema"]: t for t in trends}
+                    innov["tendencias"] = [{**x, "ultimos7": meta[x["tema"]]["ultimos7"], "anteriores7": meta[x["tema"]]["anteriores7"]}
+                                           for x in data["temas"] if x["tema"] in meta]
+                    innov["tendencias_date"] = today
+                    print(f"  ✓ tendências explicadas: {len(innov['tendencias'])}")
+            except anthropic.APIError as e:
+                print(f"  ✗ tendências: {type(e).__name__}")
+        ipath.write_text(json.dumps(innov, ensure_ascii=False, indent=1), "utf-8")
+
     apath.write_text(json.dumps(analyses, ensure_ascii=False, separators=(",", ":")), "utf-8")
     cost = estimate_cost(usage_tot)
     print(f"tokens: entrada {usage_tot['in']} · saída {usage_tot['out']} · cache lido {usage_tot['cache_read']} · "
           f"cache gravado {usage_tot['cache_write']} · custo estimado US$ {cost:.4f}")
     record_usage(usage_tot, cost, usage_tot["calls"])
+
+
+def rising_themes(max_themes: int = 4) -> list[dict]:
+    """Temas de web/content.js (THEMES) que mais cresceram: últimos 7 dias contra os 7 anteriores, no histórico."""
+    js = CONTENT_JS.read_text("utf-8")
+    block = js[js.index("const THEMES"):]
+    themes = [(n, re.compile(rx, re.I)) for n, rx in re.findall(r"\['([^']+)',/(.+?)/i\]", block)]
+    items = []
+    for p in sorted((DATA / "archive").glob("20*.json"))[-2:]:
+        items += json.loads(p.read_text("utf-8"))
+    cut1, cut2 = NOW - timedelta(days=7), NOW - timedelta(days=14)
+    out = []
+    for name, rx in themes:
+        recent, before = [], 0
+        for it in items:
+            d = datetime.fromisoformat(it["published"].replace("Z", "+00:00"))
+            if rx.search(it["title"]):
+                if d > cut1:
+                    recent.append(it)
+                elif d > cut2:
+                    before += 1
+        if len(recent) >= 5:
+            growth = (len(recent) - before) / max(before, 3)
+            out.append({"tema": name, "ultimos7": len(recent), "anteriores7": before, "growth": growth,
+                        "manchetes": [x["title"] for x in sorted(recent, key=lambda x: x["published"], reverse=True)[:10]]})
+    out.sort(key=lambda t: (-t["growth"], -t["ultimos7"]))
+    return out[:max_themes]
 
 
 # Preços por milhão de tokens (US$): entrada, saída, leitura de cache. Gravação de cache = 1,25 × entrada.

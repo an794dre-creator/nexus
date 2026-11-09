@@ -106,16 +106,80 @@ function safeEqual(a, b) {
 
 const json = (obj, status, cors) => new Response(JSON.stringify(obj), { status, headers: { ...cors, "content-type": "application/json; charset=utf-8" } });
 
+/* ---------- mercado: busca de ativos e histórico (Yahoo Finance e Banco Central), com cache de 5 min ---------- */
+const UA = { "user-agent": "Mozilla/5.0 (compatible; NEXUS/1.0)", accept: "application/json" };
+const RANGES = { "1mo": "1d", "6mo": "1d", "1y": "1d", "5y": "1wk", max: "1mo" };
+
+async function cached(req, ctx, build) {
+  const cache = caches.default;
+  const key = new Request(new URL(req.url).toString(), { method: "GET" });
+  const hit = await cache.match(key);
+  if (hit) return hit;
+  const res = await build();
+  if (res.status === 200) ctx.waitUntil(cache.put(key, res.clone()));
+  return res;
+}
+
+async function marketSearch(q) {
+  const u = `https://query1.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(q)}&quotesCount=10&newsCount=0&lang=pt-BR&region=BR`;
+  const r = await fetch(u, { headers: UA });
+  if (!r.ok) throw new Error("busca indisponível");
+  const d = await r.json();
+  return (d.quotes || []).filter((x) => x.symbol && ["EQUITY", "ETF", "INDEX", "CURRENCY", "CRYPTOCURRENCY", "FUTURE", "MUTUALFUND"].includes(x.quoteType))
+    .map((x) => ({ symbol: x.symbol, name: x.longname || x.shortname || x.symbol, type: x.typeDisp || x.quoteType, exchange: x.exchDisp || x.exchange }));
+}
+
+async function marketQuote(symbol, range) {
+  const interval = RANGES[range] || "1d";
+  const u = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${range}&interval=${interval}`;
+  const r = await fetch(u, { headers: UA });
+  if (!r.ok) throw new Error("ativo não encontrado");
+  const res = (await r.json()).chart?.result?.[0];
+  if (!res) throw new Error("sem dados");
+  const closes = res.indicators?.quote?.[0]?.close || [];
+  const points = (res.timestamp || []).map((t, i) => [t * 1000, closes[i]]).filter((p) => p[1] != null);
+  const m = res.meta || {};
+  return { symbol: m.symbol || symbol, name: m.longName || m.shortName || symbol, currency: m.currency || "", exchange: m.fullExchangeName || "", points };
+}
+
+async function sgsSeries(code, years) {
+  const fim = new Date(), ini = new Date(Date.now() - years * 365 * 864e5);
+  const f = (d) => `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
+  const r = await fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${code}/dados?formato=json&dataInicial=${f(ini)}&dataFinal=${f(fim)}`, { headers: UA });
+  if (!r.ok) throw new Error("série indisponível");
+  const rows = await r.json();
+  const today = Date.now();
+  return rows.map((x) => { const [d, m, y] = x.data.split("/"); return [Date.UTC(+y, +m - 1, +d), +x.valor]; }).filter((p) => p[0] <= today);
+}
+
 export default {
   async fetch(req, env, ctx) {
     const cors = corsHeaders(req, env);
     const url = new URL(req.url);
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     if (url.pathname === "/health") return json({ ok: true, model: env.MODEL }, 200, cors);
-    if (url.pathname !== "/chat" || req.method !== "POST") return json({ error: "Rota não encontrada." }, 404, cors);
 
     if (!env.NEXUS_PASSWORD || !safeEqual(req.headers.get("x-nexus-key"), env.NEXUS_PASSWORD))
       return json({ error: "Senha incorreta." }, 401, cors);
+
+    if (req.method === "GET" && ["/search", "/quote", "/sgs"].includes(url.pathname)) {
+      const p = url.searchParams;
+      try {
+        const res = await cached(req, ctx, async () => {
+          let body;
+          if (url.pathname === "/search") body = { results: await marketSearch((p.get("q") || "").slice(0, 60)) };
+          else if (url.pathname === "/quote") body = await marketQuote((p.get("symbol") || "").slice(0, 30), RANGES[p.get("range")] ? p.get("range") : "1y");
+          else body = { points: await sgsSeries(parseInt(p.get("code"), 10), Math.min(Math.max(parseInt(p.get("years"), 10) || 1, 1), 20)) };
+          return new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300" } });
+        });
+        const out = new Response(res.body, res);
+        Object.entries(cors).forEach(([k, v]) => out.headers.set(k, v));
+        return out;
+      } catch (err) {
+        return json({ error: err.message || "Erro ao buscar dados." }, 502, cors);
+      }
+    }
+    if (url.pathname !== "/chat" || req.method !== "POST") return json({ error: "Rota não encontrada." }, 404, cors);
     if (!env.ANTHROPIC_API_KEY) return json({ error: "O servidor está sem a chave da API." }, 500, cors);
 
     let body;

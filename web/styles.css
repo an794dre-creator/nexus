@@ -235,6 +235,24 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .mast button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
 textarea{width:100%;min-height:110px;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);resize:vertical}
 
+.cv3{fill:none;stroke:var(--cool);stroke-width:2}
+.cv4{fill:none;stroke:var(--green);stroke-width:2}
+.cvd{stroke:var(--accent)} .cv3d{stroke:var(--cool)} .cv4d{stroke:var(--green)} .cv2d{stroke:var(--muted)}
+.legend i.cvl{border-top-color:var(--accent)} .legend i.cv3l{border-top-color:var(--cool)} .legend i.cv4l{border-top-color:var(--green)} .legend i.cv2l{border-top:2px dashed var(--muted)}
+.bar{fill:rgba(247,147,26,.45)} .bar.last{fill:var(--accent)}
+.chart.big svg{min-width:520px}
+.chstats{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.chstats .big{font-size:28px;font-weight:500}
+.hovl{stroke:var(--muted);stroke-dasharray:3 3}
+.mres{display:flex;flex-direction:column;gap:6px}
+.mres:empty{display:none}
+.qres{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer;font-size:14px}
+.qres:hover{border-color:var(--accent)}
+.qres b{color:var(--accent);font-weight:500}
+.pday{display:flex;flex-direction:column;gap:6px;padding:8px 0;border-top:1px solid var(--line)}
+.pday:first-of-type{border-top:0}
+a.row{text-decoration:none;color:var(--fg)}
+@media (max-width:900px){ .qres{grid-template-columns:90px minmax(0,1fr)} .qres span:last-child{grid-column:1/-1} }
 .chat{background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-height:460px}
 .chatbar{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:12.5px;font-family:var(--mono);color:var(--muted)}
 .chatbar .spacer{flex:1}

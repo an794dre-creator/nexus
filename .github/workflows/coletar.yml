@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "17 * * * *"   # a cada hora, aos 17 minutos (horário UTC)
   workflow_dispatch:        # botão "Run workflow" na aba Actions
+    inputs:
+      forcar_edicao:
+        description: "Gerar agora a edição do dia, as novidades e as tendências (mesmo antes das 7h)"
+        type: boolean
+        default: false
   push:
     branches: [main]
 
@@ -42,7 +47,8 @@ jobs:
         run: |
           if [ -n "$ANTHROPIC_API_KEY" ]; then
             pip install --quiet "anthropic>=1.0"
-            python collector/analyze.py || echo "Análise com IA falhou; o app segue sem as análises novas."
+            if [ "${{ inputs.forcar_edicao }}" = "true" ]; then FLAG="--force-edition"; else FLAG=""; fi
+            python collector/analyze.py $FLAG || echo "Análise com IA falhou; o app segue sem as análises novas."
           else
             echo "Sem ANTHROPIC_API_KEY: análises com IA desligadas."
           fi
@@ -52,7 +58,7 @@ jobs:
           git config user.name "nexus-coletor"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add web/data/archive
-          for f in web/data/analyses.json web/data/edition.json web/data/usage.json web/data/ibge_cache.json; do
+          for f in web/data/analyses.json web/data/edition.json web/data/usage.json web/data/ibge_cache.json web/data/maranhao_cache.json web/data/innovation.json; do
             if [ -f "$f" ]; then git add "$f"; fi
           done
           if git diff --cached --quiet; then

@@ -226,6 +226,10 @@ const CERT = [
   ['CFA','CFA Institute','Análise de investimentos, reconhecida no mundo todo (3 níveis)']
 ];
 
+/* ---------- dados do Maranhão sem fonte aberta: preencha à mão quando quiser mostrar no app ----------
+   Exemplo: agua: {valor: 'R$ 6,50 / m³', faixa: 'residencial, até 10 m³', fonte: 'CAEMA (conta de out/2026)', data: '10/2026'} */
+const MA_MANUAL = { agua: null };
+
 /* ---------- temas acompanhados nas tendências ---------- */
 const THEMES = [
   ['Transporte coletivo e tarifas',/[oô]nibus|transporte (?:p[uú]blico|coletivo)|tarifa|mobilidade|passagem|gratuidade/i],

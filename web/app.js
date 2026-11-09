@@ -7,6 +7,8 @@ const IC = {
   radar:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6-6"/>',
   mercados:'<path d="M4 19V5"/><path d="M4 19h16"/><path d="M7 15l4-4 3 3 5-6"/>',
   transportes:'<rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/>',
+  maranhao:'<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
+  novidades:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
   empresas:'<path d="M4 20V8l6-4v16"/><path d="M10 20V10h10v10"/><path d="M3 20h18M13 13h4M13 16h4"/>',
   tendencias:'<path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/>',
   academia:'<path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/>',
@@ -15,9 +17,9 @@ const IC = {
   pergunte:'<path d="M5 5h14v10H10l-5 4z"/>',
   mais:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'
 };
-const LBL = {hoje:'Hoje',radar:'Radar',mercados:'Mercados',transportes:'Transportes',empresas:'Empresas e pessoas',tendencias:'Tendências',academia:'Academia',cerebro:'Meu cérebro',carreira:'Carreira',pergunte:'Pergunte'};
-const GROUPS = [['Acompanhar',['hoje','radar','mercados','transportes','empresas','tendencias']],['Aprender',['academia','cerebro','carreira']],['Perguntar',['pergunte']]];
-const MORE = ['transportes','empresas','cerebro','carreira','tendencias','pergunte'];
+const LBL = {hoje:'Hoje',radar:'Radar',novidades:'Novidades',mercados:'Mercados',transportes:'Transportes',maranhao:'Maranhão',empresas:'Empresas e pessoas',tendencias:'Tendências',academia:'Academia',cerebro:'Meu cérebro',carreira:'Carreira',pergunte:'Pergunte'};
+const GROUPS = [['Acompanhar',['hoje','radar','novidades','mercados','transportes','maranhao','empresas','tendencias']],['Aprender',['academia','cerebro','carreira']],['Perguntar',['pergunte']]];
+const MORE = ['novidades','transportes','maranhao','empresas','tendencias','cerebro','carreira','pergunte'];
 const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 document.getElementById('nav').innerHTML = GROUPS.map(([g,ks]) => `<div class="navg"><span class="eyebrow">${g}</span>${ks.map(k => `<a href="#${k}" data-nav="${k}">${svg(k)}${LBL[k]}</a>`).join('')}</div>`).join('');
 document.getElementById('tabbar').innerHTML = ['hoje','radar','mercados','academia'].map(k => `<a href="#${k}" data-nav="${k}">${svg(k)}${LBL[k]}</a>`).join('') + `<button id="morebtn" aria-expanded="false">${svg('mais')}Mais</button>`;
@@ -50,6 +52,7 @@ let DATA = {items:[], indicators:[], papers:[], focus:null, updated_at:null};
 let AN = {};        // análises com IA, por id de notícia (data/analyses.json)
 let ED = null;      // edição do dia (data/edition.json)
 let USAGE = {};     // consumo da IA por dia (data/usage.json)
+let INNOV = null;   // novidades e tendências explicadas (data/innovation.json)
 function aiCost(){
   const month = new Date().toLocaleDateString('sv-SE', {timeZone: 'America/Sao_Paulo'}).slice(0, 7);
   const days = Object.entries(USAGE).filter(([d]) => d.startsWith(month));
@@ -131,7 +134,7 @@ function spark(vals, dir){
   const l = pts[pts.length - 1];
   return `<svg class="spark c-${dir}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="ar" d="${d} L${l[0].toFixed(1)} ${h} L${p} ${h} Z"/><path class="ln" d="${d}" vector-effect="non-scaling-stroke"/><circle class="pt" cx="${l[0]}" cy="${l[1]}" r="2.6"/></svg>`;
 }
-const tile = i => i ? `<div class="tile"><div class="top"><span class="name">${esc(i.name)}</span><span class="d ${i.dir}">${fmtDelta(i)}</span></div><span class="val">${fmtVal(i)}</span>${spark(i.series, i.dir)}<span class="src">${esc(i.src)}${i.as_of ? ' · ' + esc(i.as_of) : ''}${i.note ? '<br>' + esc(i.note) : ''}</span></div>` : '';
+const tile = i => i ? `<div class="tile click" data-chart="${esc(i.id)}" tabindex="0" role="button" title="Abrir gráfico"><div class="top"><span class="name">${esc(i.name)}</span><span class="d ${i.dir}">${fmtDelta(i)}</span></div><span class="val">${fmtVal(i)}</span>${spark(i.series, i.dir)}<span class="src">${esc(i.src)}${i.as_of ? ' · ' + esc(i.as_of) : ''}${i.note ? '<br>' + esc(i.note) : ''}</span></div>` : '';
 function heatCell(n, v){
   const a = Math.min(Math.abs(v) / 3, 1) * 48 + 10, col = v >= 0 ? 'var(--up)' : 'var(--down)';
   return `<div class="cell" style="background:color-mix(in srgb, ${col} ${a.toFixed(0)}%, var(--surface))"><span>${esc(n)}</span><b>${sign(v)}${nf(Math.abs(v), 1)}%</b></div>`;
@@ -348,8 +351,231 @@ V.mercados = () => {
   } else {
     body = `<div class="tiles">${G(t).map(tile).join('')}</div>`;
   }
-  return `${head(`Atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''} · BCB · Yahoo Finance · CoinGecko`, 'Mercados', 'Do juro ao grão, da bolsa ao bitcoin. As cotações de bolsa têm atraso de alguns minutos.')}${chips('mkt', tabs, t)}${body}`;
+  const ph = {brasil: 'Ex.: Petrobras, Itaú, VALE3, Tesouro', cambio: 'Ex.: euro, peso argentino, yuan', bolsas: 'Ex.: Petrobras, Apple, Ibovespa, Nasdaq',
+    juros: 'Ex.: Treasury 2 anos, DI futuro', commod: 'Ex.: ouro, café, soja, minério', cripto: 'Ex.: bitcoin, ethereum, solana'}[t] || 'Ex.: Petrobras, Apple, ouro, bitcoin';
+  return `${head(`Atualizado ${DATA.updated_at ? ago(DATA.updated_at) : ''} · BCB · Yahoo Finance · CoinGecko`, 'Mercados', 'Do juro ao grão, da bolsa ao bitcoin. Clique em qualquer indicador para ver o gráfico completo, ou busque um ativo.')}
+   ${chips('mkt', tabs, t)}
+   <div class="search"><input id="msearch" type="search" placeholder="Buscar ativo · ${esc(ph)}" aria-label="Buscar ativo" autocomplete="off"></div><div id="mres" class="mres"></div>
+   ${body}`;
 };
+
+/* ================= gráficos ================= */
+const CLS = ['cv', 'cv3', 'cv4', 'cv2'];
+function multiLine(series, fmtTick, fmtX = l => l, H = 220){
+  const labels = [...new Set(series.flatMap(s => s.pts.map(p => p[0])))].sort();
+  const all = series.flatMap(s => s.pts.map(p => p[1]));
+  if (labels.length < 2 || !all.length) return '<p class="muted">Sem dados suficientes.</p>';
+  const W = 560, L = 58, R = 16, T = 14, B = 30;
+  const ticks = niceTicks(Math.min(...all), Math.max(...all)), y0 = ticks[0], y1 = ticks[ticks.length - 1];
+  const idx = new Map(labels.map((l, i) => [l, i]));
+  const x = i => L + i * (W - L - R) / (labels.length - 1), y = v => T + (y1 - v) / ((y1 - y0) || 1) * (H - T - B);
+  const n = labels.length - 1, marks = [...new Set([0, Math.round(n / 2), n])];
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(series.map(s => s.name).join(', '))}">
+   ${ticks.map(t => `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/><text class="ax" x="${L - 8}" y="${y(t) + 4}" text-anchor="end">${fmtTick(t)}</text>`).join('')}
+   ${marks.map((i, k) => `<text class="ax" x="${x(i)}" y="${H - 10}" text-anchor="${k === 0 ? 'start' : i === n ? 'end' : 'middle'}">${esc(fmtX(labels[i]))}</text>`).join('')}
+   ${series.map((s, si) => { const pts = s.pts.filter(p => idx.has(p[0])); const last = pts[pts.length - 1];
+     return `<path class="${s.cls || CLS[si]}" d="${pts.map((p, k) => (k ? 'L' : 'M') + x(idx.get(p[0])).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(' ')}"/>${last ? `<circle class="dot ${s.cls || CLS[si]}d" cx="${x(idx.get(last[0]))}" cy="${y(last[1])}" r="3.5"/>` : ''}`; }).join('')}
+  </svg>`;
+}
+const legend = series => `<div class="legend">${series.map((s, i) => `<span><i class="${s.cls || CLS[i]}l"></i>${esc(s.name)}</span>`).join('')}</div>`;
+function bars(pts, fmtTick, fmtX = l => l, H = 210){
+  if (!pts.length) return '<p class="muted">Sem dados.</p>';
+  const W = 560, L = 58, R = 10, T = 14, B = 30, vals = pts.map(p => p[1]);
+  const ticks = niceTicks(0, Math.max(...vals)), y1 = ticks[ticks.length - 1];
+  const bw = (W - L - R) / pts.length, y = v => T + (y1 - v) / y1 * (H - T - B);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de barras">
+   ${ticks.map(t => `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/><text class="ax" x="${L - 8}" y="${y(t) + 4}" text-anchor="end">${fmtTick(t)}</text>`).join('')}
+   ${pts.map((p, i) => `<rect class="bar${i === pts.length - 1 ? ' last' : ''}" x="${(L + i * bw + bw * .15).toFixed(1)}" y="${y(p[1]).toFixed(1)}" width="${(bw * .7).toFixed(1)}" height="${(y(0) - y(p[1])).toFixed(1)}"><title>${esc(fmtX(p[0]))}: ${fmtTick(p[1])}</title></rect>
+     ${i % 2 === pts.length % 2 || pts.length < 8 ? `<text class="ax" x="${(L + i * bw + bw / 2).toFixed(1)}" y="${H - 10}" text-anchor="middle">${esc(fmtX(p[0]))}</text>` : ''}`).join('')}
+  </svg>`;
+}
+const pctChange = (a, b) => a && b ? (b / a - 1) * 100 : null;
+const fmtPct = v => v == null ? '—' : `${sign(v)}${nf(Math.abs(v), 1)}%`;
+const mmYY = s => { const [y, m] = s.split('-'); return `${m}/${y.slice(2)}`; };
+const ddMM = s => s.split('-').reverse().slice(0, 2).join('/');
+
+/* ================= Maranhão ================= */
+const FUELS = [['diesel_s10', 'Diesel S10'], ['diesel', 'Diesel comum'], ['gasolina', 'Gasolina'], ['etanol', 'Etanol'], ['glp', 'GLP (13 kg)']];
+V.maranhao = () => {
+  const M = DATA.maranhao;
+  if (!M) return `${head('Economia do Maranhão', 'Maranhão')}${note('Os dados do Maranhão chegam na próxima coleta.', 'Aguarde')}`;
+  const C = M.combustiveis || {}, cid = C.cidades || {}, br = C.brasil || {};
+  const fuel = state.maFuel || 'diesel_s10';
+  const lastOf = s => s && s.length ? s[s.length - 1] : null;
+  const ago4 = s => s && s.length > 4 ? s[s.length - 5] : null;
+  const priceCell = s => { const l = lastOf(s); if (!l) return '<td class="muted">—</td>'; const c = pctChange(ago4(s)?.[1], l[1]);
+    return `<td class="mono">R$ ${nf(l[1], 2)} <span class="d ${c > 0 ? 'up' : c < 0 ? 'down' : 'flat'}">${fmtPct(c)}</span></td>`; };
+  const week = lastOf(cid.slz?.diesel_s10)?.[0];
+  const fuelSeries = [['São Luís', cid.slz?.[fuel]], ['Imperatriz', cid.imp?.[fuel]], ['Brasil', br[fuel]]]
+    .filter(s => s[1]).map(([name, s]) => ({name, pts: s.slice(-30).map(p => [p[0], p[1]])}));
+  const E = M.energia?.residencial || [], eL = lastOf(E), ePrev = E.length > 1 ? E[E.length - 2] : null;
+  const I = M.icms || {}, D = M.desemprego || {}, NE = M.ibcr_ne || [];
+  const icms12 = (I.meses || []).reduce((a, p) => a + p[1], 0);
+  const regional = DATA.items.filter(i => (i.area === 'regional' || MA_RE.test(i.title)) && i.econ !== false).slice(0, 12);
+  const ipcaS = ['geral', 'diesel', 'onibus_urbano'].map(k => ind(`ipca_${k}_slz`)).filter(Boolean);
+  return `${head('Combustíveis, energia, arrecadação, emprego e atividade', 'Maranhão', 'Os números da economia maranhense que pesam no orçamento das famílias, das empresas e do governo, com fonte e data de cada um.')}
+  <section class="card"><div class="flexhead"><h3 class="s">Combustíveis: preço médio na bomba</h3><span class="eyebrow">ANP · semana até ${week ? ddMM(week) : '—'} · variação em 4 semanas</span></div>
+   <div class="scroll"><table class="tb"><thead><tr><th>Produto</th><th>São Luís</th><th>Imperatriz</th><th>Brasil</th></tr></thead><tbody>
+   ${FUELS.map(([k, n]) => `<tr><td>${n}</td>${priceCell(cid.slz?.[k])}${priceCell(cid.imp?.[k])}${priceCell(br[k])}</tr>`).join('')}</tbody></table></div>
+   <div class="chips">${FUELS.map(([k, n]) => `<button class="chip${fuel === k ? ' on' : ''}" data-set="maFuel" data-val="${k}">${n}</button>`).join('')}</div>
+   <div class="chart">${multiLine(fuelSeries, t => 'R$ ' + nf(t, fuel === 'glp' ? 0 : 2), ddMM)}</div>${legend(fuelSeries)}</section>
+  <div class="two">
+   <section class="card"><div class="flexhead"><h3 class="s">Energia elétrica · Equatorial Maranhão</h3><span class="eyebrow">ANEEL · residencial B1, sem tributos</span></div>
+    ${eL ? `<p style="margin:0"><span class="mono" style="font-size:26px">R$ ${nf(eL[1], 3)}</span> <span class="muted">por kWh, desde ${ddMM(eL[0])}/${eL[0].slice(0, 4)}</span>
+     ${ePrev ? ` · <span class="d ${eL[1] > ePrev[1] ? 'up' : 'down'}">${fmtPct(pctChange(ePrev[1], eL[1]))}</span> <span class="muted">no último reajuste</span>` : ''}</p>
+     <div class="chart">${bars(E.map(p => [p[0], p[1]]), t => 'R$ ' + nf(t, 2), s => s.slice(0, 4))}</div>
+     <p class="muted" style="margin:0;font-size:12.5px">Na conta entram ainda ICMS, PIS/Cofins e bandeiras tarifárias.</p>` : '<p class="muted">Sem dados da ANEEL nesta coleta.</p>'}</section>
+   <section class="card"><div class="flexhead"><h3 class="s">Arrecadação de ICMS do Estado</h3><span class="eyebrow">${esc(I.fonte || 'Tesouro Nacional')}</span></div>
+    ${I.meses ? `<p style="margin:0"><span class="mono" style="font-size:26px">R$ ${nf(I.total12 || icms12 / 1000, 2)} bi</span> <span class="muted">em 12 meses até ${mmYY(I.meses[I.meses.length - 1][0])}</span>
+     ${I.previsao ? ` · <span class="muted">previsão para ${I.ano}: R$ ${nf(I.previsao, 2)} bi</span>` : ''}</p>
+     <div class="chart">${bars(I.meses, t => nf(t, 0), mmYY)}</div><p class="muted" style="margin:0;font-size:12.5px">Valores mensais em R$ milhões.</p>` : '<p class="muted">Sem dados nesta coleta.</p>'}</section>
+  </div>
+  <div class="two">
+   <section class="card"><div class="flexhead"><h3 class="s">Desemprego (PNAD Contínua)</h3><span class="eyebrow">IBGE · trimestral</span></div>
+    ${D.ma ? (() => { const s = [{name: 'Maranhão', pts: D.ma}, {name: 'Brasil', pts: D.br || []}]; return `<p style="margin:0"><span class="mono" style="font-size:26px">${nf(D.ma[D.ma.length - 1][1], 1)}%</span> <span class="muted">no ${D.ma[D.ma.length - 1][0]} · Brasil ${D.br ? nf(D.br[D.br.length - 1][1], 1) + '%' : '—'}</span></p>
+     <div class="chart">${multiLine(s, t => nf(t, 1) + '%', l => l)}</div>${legend(s)}`; })() : '<p class="muted">Sem dados nesta coleta.</p>'}</section>
+   <section class="card"><div class="flexhead"><h3 class="s">Atividade econômica do Nordeste (IBCR-NE)</h3><span class="eyebrow">Banco Central · mensal</span></div>
+    ${NE.length ? `<p style="margin:0"><span class="mono" style="font-size:26px">${nf(NE[NE.length - 1][1], 1)}</span> <span class="muted">em ${mmYY(NE[NE.length - 1][0])} · ${fmtPct(NE.length > 12 ? pctChange(NE[NE.length - 13][1], NE[NE.length - 1][1]) : null)} em 12 meses</span></p>
+     <div class="chart">${multiLine([{name: 'IBCR-NE', pts: NE.slice(-36)}], t => nf(t, 0), mmYY)}</div><p class="muted" style="margin:0;font-size:12.5px">Prévia mensal do PIB regional. O BCB não publica um índice só do Maranhão.</p>` : '<p class="muted">Sem dados nesta coleta.</p>'}</section>
+  </div>
+  <div class="two">
+   <section class="card"><h3 class="s">Inflação em São Luís (IPCA 12 meses)</h3>
+    <table class="tb"><tbody>${ipcaS.map(i => `<tr><td>${esc(i.name.split(' · ')[0])}</td><td class="mono">${nf(i.value, 2)}%</td></tr>`).join('')}</tbody></table>
+    <a class="link" href="#transportes">Ver custos do transporte →</a></section>
+   <section class="card"><h3 class="s">Água e esgoto (CAEMA)</h3>
+    ${MA_MANUAL.agua ? `<p style="margin:0"><span class="mono" style="font-size:22px">${esc(MA_MANUAL.agua.valor)}</span> <span class="muted">${esc(MA_MANUAL.agua.faixa || '')}</span></p><span class="eyebrow">${esc(MA_MANUAL.agua.fonte || 'CAEMA')} · ${esc(MA_MANUAL.agua.data || '')}</span>`
+      : '<div class="lock"><b>Sem fonte aberta.</b> A CAEMA não publica a tarifa num formato que dê para coletar automaticamente. Para mostrar aqui, preencha MA_MANUAL.agua em web/content.js com o valor da sua conta.</div>'}</section>
+  </div>
+  <section class="section"><header><h2>Notícias da economia maranhense</h2><span class="eyebrow">${regional.length} em 72 h</span></header>
+   <div class="feed">${regional.length ? regional.map(itemRow).join('') : '<div class="empty">Nenhuma nas últimas 72 horas.</div>'}</div></section>`;
+};
+
+/* ================= Novidades ================= */
+const TIPO_LBL = {pesquisa: 'Pesquisa', gestao: 'Gestão', brasil: 'Brasil', dados: 'Dados'};
+function innovPicks(){
+  const h = INNOV?.history || {}, days = Object.keys(h).sort().reverse();
+  return {days, h};
+}
+V.novidades = () => {
+  const {days, h} = innovPicks(), today = days[0], picks = today ? h[today] : [];
+  const raw = (DATA.innov || []).filter(i => !state.inTipo || state.inTipo === 'todos' || i.tipo === state.inTipo);
+  return `${head('Métodos, descobertas e técnicas de gestão · escolhidos e explicados pela IA', 'Novi<em>dades</em>', 'Todo dia a IA lê blogs de pesquisa econômica (VoxEU, Fed de Nova York, Marginal Revolution), de gestão (McKinsey, MIT Sloan), do Brasil (IPEA, IBRE) e papers novos, e escolhe o que é de fato novo, explicando como funciona e como aplicar.')}
+  ${picks && picks.length ? `<section class="section"><header><h2>Seleção de ${today.split('-').reverse().join('/')}</h2><span class="eyebrow">${esc(INNOV.model || '')}</span></header>
+   <div class="grid wide">${picks.map((p, i) => `<article class="card click innov" data-innov="${today}:${i}" tabindex="0" role="button">
+    <div class="meta"><span class="area a2">${esc(p.tipo)}</span><span>${esc(p.fonte)}</span></div><h3 style="font-size:24px">${esc(p.titulo)}</h3>
+    <p class="muted" style="margin:0;font-size:14.5px">${esc(p.o_que_e_novo)}</p>
+    <div class="foot"><span class="meta">${p.calculo ? '∑ tem cálculo' : ''}${p.conceito ? ` · ${esc(cById(p.conceito)?.name || '')}` : ''}</span><span class="open">Entender →</span></div></article>`).join('')}</div></section>`
+    : note('A primeira seleção comentada sai na próxima coleta depois das 7h (Brasília). Enquanto isso, veja abaixo o que chegou das fontes.', 'Em breve')}
+  ${days.length > 1 ? `<section class="card"><h3 class="s">Seleções anteriores</h3>${days.slice(1, 8).map(d => `<div class="pday"><span class="eyebrow">${d.split('-').reverse().join('/')}</span><div class="mini">${h[d].map((p, i) => `<button class="pill" data-innov="${d}:${i}">${esc(p.titulo)}</button>`).join('')}</div></div>`).join('')}</section>` : ''}
+  <section class="section"><header><h2>Direto das fontes</h2><span class="eyebrow">${(DATA.innov || []).length} textos · últimas 3 semanas</span></header>
+   ${chips('inTipo', [['todos', 'Todos'], ...Object.entries(TIPO_LBL)], state.inTipo || 'todos')}
+   <div class="feed">${raw.slice(0, 40).map(i => `<a class="row click" href="${safeUrl(i.link)}" target="_blank" rel="noopener"><span class="t">${dmy(i.published)}</span>
+    <div><h4>${esc(i.title)}</h4><div class="src"><span class="area a2">${TIPO_LBL[i.tipo] || ''}</span><span>${esc(i.source)}</span></div></div><span class="open">↗</span></a>`).join('') || '<div class="empty">Nada por enquanto.</div>'}</div>
+   <a class="link" href="#academia" data-acad="papers">Papers novos do arXiv e do NBER →</a></section>`;
+};
+function openInnov(key){
+  const [d, i] = key.split(':'), p = INNOV?.history?.[d]?.[+i]; if (!p) return;
+  openDrawer(`<span class="area a2">${esc(p.tipo)}</span><span>${esc(p.fonte)}</span>`,
+   `<h2 id="dtitle">${esc(p.titulo)}</h2><p class="muted" style="margin:0;font-size:13.5px">Original: ${esc(p.titulo_original)}</p>
+    ${blk('O que é novo', `<p>${esc(p.o_que_e_novo)}</p>`, '<span class="tag fato">Fonte</span>')}
+    ${blk('Como funciona', `<p>${esc(p.como_funciona)}</p>`, '<span class="tag interp">Explicação</span>')}
+    ${p.calculo ? blk('Cálculo', `<div class="formula" style="white-space:pre-wrap">${esc(p.calculo)}</div>`) : ''}
+    ${blk('Por que importa', `<p>${esc(p.por_que_importa)}</p>`)}
+    ${blk('Como aplicar', `<div class="foryou"><p>${esc(p.como_aplicar)}</p></div>`)}
+    ${p.conceito ? blk('Conceito ligado', `<div class="mini">${cbtn(p.conceito)}</div>`) : ''}
+    <div><a class="btn" href="${safeUrl(p.link)}" target="_blank" rel="noopener">Ler o original →</a></div>
+    <p class="muted" style="margin:0;font-size:12.5px">Explicação gerada por IA a partir do resumo publicado pela fonte. Confira os detalhes no original.</p>`);
+}
+
+/* ================= gráfico grande (Mercados e indicadores) ================= */
+let CUR_CHART = null;
+async function api(path){
+  if (!CHAT.cfg.url || !CHAT.cfg.key) throw new Error('sem-servidor');
+  const r = await fetch(CHAT.cfg.url + path, {headers: {'x-nexus-key': CHAT.cfg.key}});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || 'HTTP ' + r.status);
+  return j;
+}
+function openChartFor(id){
+  const i = ind(id); if (!i) return;
+  if (i.sym) openChart({kind: 'yahoo', symbol: i.sym, name: i.name, ind: i});
+  else if (i.sgs) openChart({kind: 'sgs', code: i.sgs, name: i.name, ind: i});
+  else openChart({kind: 'local', name: i.name, ind: i});
+}
+function openChart(spec){
+  CUR_CHART = spec; state.chartRange = state.chartRange || '1y';
+  const ranges = spec.kind === 'local' ? [] : [['1mo', '1M'], ['6mo', '6M'], ['1y', '1A'], ['5y', '5A']];
+  openDrawer(`<span class="area a1">${spec.kind === 'yahoo' ? esc(spec.symbol) : spec.kind === 'sgs' ? 'Banco Central' : 'Série coletada'}</span>`,
+   `<h2 id="dtitle">${esc(spec.name)}</h2><div id="chstats" class="chstats"></div>
+    ${ranges.length ? `<div class="chips">${ranges.map(([k, l]) => `<button class="chip${state.chartRange === k ? ' on' : ''}" data-range="${k}">${l}</button>`).join('')}</div>` : ''}
+    <div id="bigchart" class="chart big"><p class="muted">Carregando…</p></div><div id="chnote"></div>`);
+  loadChart();
+}
+async function loadChart(){
+  const spec = CUR_CHART, el = $('#bigchart'); if (!spec || !el) return;
+  let pts = [], unit = '', cur = '';
+  const localPts = () => (spec.ind?.series || []).map((v, k) => [spec.ind.dates?.[k] || String(k), v]);
+  try {
+    if (spec.kind === 'yahoo') { const d = await api(`/quote?symbol=${encodeURIComponent(spec.symbol)}&range=${state.chartRange}`); pts = d.points; cur = d.currency; if (!spec.ind) $('#dtitle').textContent = d.name; }
+    else if (spec.kind === 'sgs') { const yrs = {'1mo': 1, '6mo': 1, '1y': 1, '5y': 5}[state.chartRange]; const d = await api(`/sgs?code=${spec.code}&years=${yrs}`);
+      const cut = Date.now() - {'1mo': 31, '6mo': 183, '1y': 366, '5y': 1830}[state.chartRange] * 864e5; pts = d.points.filter(p => p[0] >= cut); unit = spec.ind?.unit; }
+    else { pts = localPts(); unit = spec.ind?.unit; }
+  } catch (e) {
+    pts = localPts(); unit = spec.ind?.unit;
+    $('#chnote').innerHTML = e.message === 'sem-servidor'
+      ? note('Para histórico completo e para buscar ativos, conecte o servidor do chat na tela <a href="#pergunte">Pergunte</a>. Mostrando a série que o coletor guardou.', 'Histórico')
+      : note(`Não consegui buscar o histórico (${esc(e.message)}). Mostrando a série guardada.`, 'Aviso');
+  }
+  if (pts.length < 2) { el.innerHTML = '<p class="muted">Sem dados para este período.</p>'; return; }
+  const isTs = typeof pts[0][0] === 'number';
+  const fmtX = v => isTs ? new Date(v).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: '2-digit'}) : String(v);
+  const vals = pts.map(p => p[1]), last = vals[vals.length - 1], first = vals[0];
+  const dec = Math.abs(last) >= 1000 ? 0 : Math.abs(last) >= 10 ? 2 : 4;
+  const isIndex = (spec.symbol || '').startsWith('^') || spec.symbol === 'DX-Y.NYB';
+  const fmtV = v => (unit === '%' ? nf(v, 2) + '%' : (isIndex ? '' : cur === 'BRL' ? 'R$ ' : cur === 'USD' ? 'US$ ' : cur === 'EUR' ? '€ ' : '') + nf(v, dec));
+  $('#chstats').innerHTML = `<span class="mono big">${fmtV(last)}</span><span class="d ${last >= first ? 'up' : 'down'}">${unit === '%' ? `${sign(last - first)}${nf(Math.abs(last - first), 2)} p.p.` : fmtPct(pctChange(first, last))} no período</span>
+    <span class="muted">máx ${fmtV(Math.max(...vals))} · mín ${fmtV(Math.min(...vals))}</span>`;
+  const W = 600, H = 300, L = 66, R = 14, T = 16, B = 30;
+  const ticks = niceTicks(Math.min(...vals), Math.max(...vals)), y0 = ticks[0], y1 = ticks[ticks.length - 1];
+  const x = k => L + k * (W - L - R) / (pts.length - 1), y = v => T + (y1 - v) / ((y1 - y0) || 1) * (H - T - B);
+  const d = pts.map((p, k) => (k ? 'L' : 'M') + x(k).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(' ');
+  const n = pts.length - 1, marks = [0, Math.round(n / 3), Math.round(2 * n / 3), n];
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" id="bigsvg" role="img" aria-label="${esc(spec.name)}">
+    ${ticks.map(t => `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/><text class="ax" x="${L - 8}" y="${y(t) + 4}" text-anchor="end">${fmtV(t)}</text>`).join('')}
+    ${marks.map((k, j) => `<text class="ax" x="${x(k)}" y="${H - 9}" text-anchor="${j === 0 ? 'start' : j === 3 ? 'end' : 'middle'}">${esc(fmtX(pts[k][0]))}</text>`).join('')}
+    <path d="${d} L${x(n)} ${H - B} L${L} ${H - B} Z" fill="rgba(247,147,26,.1)"/><path class="cv" d="${d}"/>
+    <g id="hov" style="display:none"><line id="hovl" class="hovl" y1="${T}" y2="${H - B}"/><circle id="hovc" r="4" class="dot"/><text id="hovt" class="lbl" y="${T + 10}"></text></g>
+    <rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent" id="hovr"/></svg>`;
+  const svgEl = $('#bigsvg'), hov = $('#hov');
+  const move = ev => {
+    const r = svgEl.getBoundingClientRect(), px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left, sx = px * W / r.width;
+    const k = Math.max(0, Math.min(n, Math.round((sx - L) / (W - L - R) * n)));
+    hov.style.display = ''; $('#hovl').setAttribute('x1', x(k)); $('#hovl').setAttribute('x2', x(k));
+    $('#hovc').setAttribute('cx', x(k)); $('#hovc').setAttribute('cy', y(pts[k][1]));
+    const t = $('#hovt'); t.textContent = `${fmtX(pts[k][0])} · ${fmtV(pts[k][1])}`; t.setAttribute('x', Math.min(Math.max(x(k), L + 70), W - R - 70)); t.setAttribute('text-anchor', 'middle');
+  };
+  $('#hovr').addEventListener('mousemove', move); $('#hovr').addEventListener('touchmove', move, {passive: true});
+  $('#hovr').addEventListener('mouseleave', () => { hov.style.display = 'none'; });
+}
+let searchTimer = 0;
+function bindMarketSearch(){
+  const inp = $('#msearch'); if (!inp) return;
+  inp.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    const q = inp.value.trim(), box = $('#mres');
+    if (q.length < 2) { box.innerHTML = ''; return; }
+    searchTimer = setTimeout(async () => {
+      box.innerHTML = '<p class="muted" style="margin:0">Buscando…</p>';
+      try {
+        const {results: raw} = await api('/search?q=' + encodeURIComponent(q));
+        const results = [...raw].sort((a, b) => (b.symbol.endsWith('.SA') ? 1 : 0) - (a.symbol.endsWith('.SA') ? 1 : 0));
+        box.innerHTML = results.length ? results.map(r => `<button class="qres" data-quote="${esc(r.symbol)}" data-qname="${esc(r.name)}"><b class="mono">${esc(r.symbol)}</b><span>${esc(r.name)}</span><span class="muted">${esc(r.type)} · ${esc(r.exchange)}</span></button>`).join('') : '<p class="muted" style="margin:0">Nada encontrado.</p>';
+      } catch (e) {
+        box.innerHTML = e.message === 'sem-servidor' ? note('A busca usa o servidor do chat. Conecte-o na tela <a href="#pergunte">Pergunte</a>.', 'Busca') : `<div class="fb no">Erro na busca: ${esc(e.message)}</div>`;
+      }
+    }, 350);
+  });
+}
 
 const MA_RE = /maranh[aã]o|maranhense|s[aã]o lu[ií]s|imperatriz|timon|caxias \(ma\)|\(ma\)|\bma\b|smtt|\bmob\b|nordeste/i;
 const TR_RE = /[oô]nibus|transporte|mobilidade|tarifa|passagem|rodovi[aá]ri|diesel|frota|brt/i;
@@ -409,7 +635,11 @@ V.tendencias = () => {
   if (!td) return ARCH === null ? `${head('Histórico', 'Tendências')}<p class="muted">Carregando histórico…</p>` : emptyState();
   const days = Math.max(1, Math.round(td.spanDays));
   const mxA = Math.max(...td.areas.map(a => a[1]), 1), mxC = td.cos.length ? td.cos[0][1] : 1;
+  const tex = INNOV?.tendencias || [];
   return `${head(`Menções ${td.daily ? 'por dia · últimos 14 dias' : 'por semana · últimas 8 semanas'}`, 'Tendências', 'Temas que aparecem cada vez mais (ou menos) nas manchetes, calculados pelo histórico que o coletor acumula a cada hora.')}
+  ${tex.length ? `<section class="section"><header><h2>Por que estão subindo</h2><span class="eyebrow">IA · ${esc((INNOV.tendencias_date || '').split('-').reverse().join('/'))}</span></header>
+   <div class="grid wide">${tex.map(t => `<section class="card"><div class="flexhead"><h3 style="font-size:24px">${esc(t.tema)}</h3><span class="mono d up">${t.ultimos7} manchetes em 7 dias</span></div>
+    <p style="margin:0">${esc(t.por_que)}</p><div class="foryou"><span class="eyebrow">O que observar</span><p>${esc(t.observar)}</p></div></section>`).join('')}</div></section>` : ''}
   ${td.spanDays < 14 ? note(`O histórico começou em ${dmy(new Date(td.first).toISOString())} e tem ${td.count} manchetes (${days} dia${days > 1 ? 's' : ''}). As variações ficam confiáveis depois de algumas semanas de coleta.`, 'Histórico curto') : ''}
   <div class="feed">${td.themes.map(trendRow).join('') || '<div class="empty">Nenhum tema acompanhado apareceu ainda.</div>'}</div>
   <div class="two">
@@ -751,6 +981,7 @@ function render(){
   $('#morebtn').classList.toggle('on', MORE.includes(k));
   if (k === 'academia' && state.acad === 'lab') bindLab();
   if (k === 'pergunte') bindChat();
+  if (k === 'mercados') bindMarketSearch();
   if (k === 'radar') { const q = $('#q'); if (q) q.addEventListener('input', e => { state.q = e.target.value; state.limit = 60; const pos = e.target.selectionStart; render(); const n = $('#q'); n.focus(); n.setSelectionRange(pos, pos); }); }
 }
 function renderStatus(){
@@ -787,6 +1018,10 @@ document.addEventListener('click', e => {
     return;
   }
   const aq = t.closest('[data-ask]'); if (aq) { askNexus(aq.dataset.ask); return; }
+  const rg = t.closest('[data-range]'); if (rg) { state.chartRange = rg.dataset.range; document.querySelectorAll('[data-range]').forEach(b => b.classList.toggle('on', b === rg)); loadChart(); return; }
+  const qt = t.closest('[data-quote]'); if (qt) { openChart({kind: 'yahoo', symbol: qt.dataset.quote, name: qt.dataset.qname}); return; }
+  const ch = t.closest('[data-chart]'); if (ch) { openChartFor(ch.dataset.chart); return; }
+  const inv = t.closest('[data-innov]'); if (inv) { openInnov(inv.dataset.innov); return; }
   if (t.closest('[data-chat-clear]')) { CHAT.hist = []; saveChat(); render(); return; }
   if (t.closest('[data-chat-edit]')) { CHAT.editing = true; render(); return; }
   if (t.closest('[data-chat-cancel]')) { CHAT.editing = false; render(); return; }
@@ -840,9 +1075,9 @@ async function loadData(){
     DATA = Object.assign({items: [], indicators: [], papers: []}, await r.json());
     loadError = null;
   } catch (err) { loadError = err.message; }
-  const [an, ed, us] = await Promise.all(['data/analyses.json', 'data/edition.json', 'data/usage.json'].map(u =>
+  const [an, ed, us, inn] = await Promise.all(['data/analyses.json', 'data/edition.json', 'data/usage.json', 'data/innovation.json'].map(u =>
     fetch(u, {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null)));
-  AN = an || {}; ED = ed; USAGE = us || {};
+  AN = an || {}; ED = ed; USAGE = us || {}; INNOV = inn;
   prepare(); renderStatus(); render();
   loadArchive();
 }
