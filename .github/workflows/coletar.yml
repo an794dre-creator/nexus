@@ -29,6 +29,8 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main          # sempre a versão mais nova (execuções manuais ou na fila podem ter começado antes de outra salvar dados)
 
       - uses: actions/setup-python@v5
         with:
@@ -65,7 +67,11 @@ jobs:
             echo "Sem itens novos no histórico."
           else
             git commit -m "histórico: coleta $(date -u +'%Y-%m-%d %H:%M') UTC"
-            git push
+            # se outra execução salvou dados no meio do caminho, junta (prevalece o desta) e tenta de novo
+            for i in 1 2 3; do
+              if git push; then break; fi
+              git pull --rebase -X theirs origin main || { git rebase --abort; git pull --no-rebase -X ours origin main; }
+            done
           fi
 
       - uses: actions/configure-pages@v5
