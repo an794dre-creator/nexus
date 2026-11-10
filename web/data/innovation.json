@@ -76,40 +76,117 @@
     "titulo_original": "The Global Office: Globalisation’s frontier is shifting from factories to offices",
     "publicado": "2026-11-09T00:00:00Z"
    }
+  ],
+  "2026-11-10": [
+   {
+    "ref": "p:2611.12117v1",
+    "titulo": "Formato de comunicação da tarifa muda horário de viagem",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo o resumo, é o primeiro estudo a testar, com experimento aleatorizado, se o formato de apresentação do preço da passagem avulsa (com desconto fora do pico) altera o horário de partida dos passageiros. A pergunta é de economia comportamental aplicada ao transporte público.",
+    "como_funciona": "Grupos de usuários sorteados recebem a mesma tarifa fora do pico comunicada de formas diferentes (por exemplo, valor absoluto versus percentual de desconto, inferência nossa). Compara-se a proporção de viagens deslocadas do pico entre os grupos. Como a atribuição é aleatória, a diferença estima o efeito causal do formato. Os resultados e os formatos exatos testados precisam ser lidos no artigo original.",
+    "calculo": "Efeito = (% viagens fora do pico no grupo formato B) − (% no grupo formato A); ex.: 18% − 14% = 4 p.p. de demanda deslocada sem mudar o preço.",
+    "por_que_importa": "Achatar o pico reduz a frota necessária, que é o maior custo fixo do operador. Se só a forma de comunicar já desloca demanda, é uma alavanca quase gratuita.",
+    "como_aplicar": "Testar na empresa, em uma linha piloto, mensagens diferentes para horários de vale e medir o embarque por faixa horária via bilhetagem. Também serve de modelo de desenho experimental para o TCC.",
+    "conceito": "elast",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.12117v1",
+    "titulo_original": "Does fare communication format matter? Evidence from a randomised experiment in public transport",
+    "publicado": "2026-11-09T09:30:30Z"
+   },
+   {
+    "ref": "p:2611.12565v1",
+    "titulo": "Por que reajustes salariais públicos são raros e grandes",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo modela cada revisão do salário público como decisão de um governo que olha para frente, já que o salário é fixado por lei em valor nominal e a inflação o corrói entre uma lei e outra. A frequência e o tamanho dos reajustes surgem do equilíbrio entre dois custos.",
+    "como_funciona": "Há um custo fixo de agir, que favorece reajustes grandes e raros, à maneira de um modelo de custos de menu. Há também um custo convexo de financiar o aumento de uma vez, que favorece reajustes pequenos e frequentes. A política ótima é uma regra de banda: só se revisa quando a perda real passa de um limite. Os efeitos agregados que o autor estima não aparecem no resumo.",
+    "calculo": "Salário real = W/P. Com inflação de 5% ao ano e W fixo, após 3 anos W/P ≈ 1/1,05³ ≈ 0,864, ou seja, perda de 13,6% antes da revisão.",
+    "por_que_importa": "Ajuda a explicar a dinâmica da folha e as pressões fiscais concentradas em certos anos. A mesma lógica vale para reajustes contratuais de tarifa.",
+    "como_aplicar": "Use a lógica de custo fixo contra custo convexo para argumentar, na empresa, a favor de gatilhos de reajuste tarifário mais frequentes e menores. Também é útil em Economia do Setor Público.",
+    "conceito": "reajuste",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.12565v1",
+    "titulo_original": "That Time of the Year Again: Government Pay Revisions in the Aggregate Economy",
+    "publicado": "2026-11-09T15:28:51Z"
+   },
+   {
+    "ref": "p:2611.12347v1",
+    "titulo": "Cenário probabilístico de choque de petróleo sobre inflação",
+    "tipo": "método",
+    "o_que_e_novo": "Propõe um modelo não linear que transforma um cenário narrativo de escassez de petróleo em distribuições de probabilidade para os preços de petróleo e gasolina e para a inflação. Isso supera os cenários lineares que os bancos centrais costumam usar, que não capturam a chance de eventos extremos.",
+    "como_funciona": "Em vez de um único caminho, o modelo gera distribuições completas, condicionadas ao cenário. A não linearidade permite que choques grandes tenham efeitos desproporcionais. Detalhes da especificação e dos dados exigem leitura do original.",
+    "calculo": "Impacto no custo/km ≈ participação do diesel no custo × variação do diesel; ex.: 30% × 20% = 6% de alta no custo por km.",
+    "por_que_importa": "O diesel é um dos principais itens do custo do ônibus, e as caudas de risco importam mais que a média. Pensar em percentis melhora o planejamento de caixa e de reajuste.",
+    "como_aplicar": "Monte faixas de cenário (percentis 10, 50 e 90) para o diesel no orçamento anual da empresa e calcule o custo por km em cada uma.",
+    "conceito": "custo_km",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.12347v1",
+    "titulo_original": "Fueling Inflation Risks: An Oil Shortage Scenario",
+    "publicado": "2026-11-09T13:01:51Z"
+   },
+   {
+    "ref": "p:2611.12459v1",
+    "titulo": "Filantropia complementa ou substitui gasto público?",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo distingue dois conceitos: a adicionalidade de base, que preserva o financiamento público anterior à doação, e a preservação de portfólio, que preserva a posição do serviço dentro do orçamento compartilhado. Doadores com propósitos diferentes interagem com uma autoridade que aloca o gasto.",
+    "como_funciona": "O governo redistribui o orçamento entre serviços. Uma doação a um serviço pode liberar verba pública para outros, gerando efeito crowding-out. O compromisso fiscal determina se a doação realmente se soma ao gasto. Os resultados formais precisam ser lidos no original.",
+    "calculo": "Adicionalidade = (gasto total no serviço após a doação − gasto antes) / doação; valor 1 indica adição plena, valor 0 indica substituição total.",
+    "por_que_importa": "Vale para emendas, convênios e fundos vinculados no Brasil, inclusive subsídios ao transporte. Mostra que recurso carimbado nem sempre aumenta o total do setor.",
+    "como_aplicar": "Em Economia do Setor Público, analise se repasses ao transporte no Maranhão aumentaram o gasto ou só substituíram verba municipal, comparando LOAs.",
+    "conceito": "orcamento",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.12459v1",
+    "titulo_original": "Fiscal Commitment and the Additionality of Philanthropy: Heterogeneous Donor Purposes in a Shared Public Budget",
+    "publicado": "2026-11-09T14:11:04Z"
+   },
+   {
+    "ref": "de7e5382feb0fd56",
+    "titulo": "A política monetária dos EUA melhorou mesmo em 150 anos?",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Pesquisadores do Fed de Nova York apresentam um arcabouço para comparar a política monetária entre ambientes econômicos diferentes. O objetivo é separar o mérito da política da sorte, ou seja, de choques mais favoráveis.",
+    "como_funciona": "A ideia inferida é avaliar o desempenho condicionado aos choques enfrentados, por exemplo, como cada regime teria reagido aos mesmos distúrbios. Assim, distingue-se boa política de ambiente benigno. O resumo não traz a conclusão nem o método detalhado, por isso é preciso ler o paper.",
+    "calculo": "Regra de Taylor: i = r* + π + 0,5(π − π*) + 0,5(hiato do produto).",
+    "por_que_importa": "Ajuda a avaliar com rigor a credibilidade de bancos centrais, inclusive o BC brasileiro no tripé. É uma boa referência metodológica para o TCC.",
+    "como_aplicar": "Use a ideia de contrafactual (política ou sorte) para estruturar uma análise do regime de metas no Brasil em Economia Brasileira Contemporânea I.",
+    "conceito": "taylor",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/has-u-s-monetary-policy-really-improved-a-150-year-perspective/",
+    "titulo_original": "Has U.S. Monetary Policy Really Improved? A 150‑Year Perspective",
+    "publicado": "2026-11-09T12:00:00Z"
+   }
   ]
  },
- "date": "2026-11-09",
- "created": "2026-11-09T06:52:24.714381+00:00",
+ "date": "2026-11-10",
+ "created": "2026-11-10T13:36:35.456715+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Bitcoin e cripto",
-   "por_que": "As manchetes misturam vários assuntos sem um fato único: volatilidade do bitcoin atribuída ao escândalo envolvendo a Nvidia e ao fracasso de negociações com o Irã, efeitos das eleições de meio de mandato nos EUA sobre o setor e mudanças na Binance (encerramento do pool de mineração e de contas em alguns países europeus). Também aparecem debates técnicos do Ethereum, a estagnação das stablecoins e um roubo bilionário por golpe de falsa entrevista. O salto de 0 para 39 pode refletir mais a cobertura recorrente de veículos especializados do que um evento isolado.",
-   "observar": "Vale acompanhar se o preço do bitcoin se mantém após as eleições americanas e se as novas regras e taxas da Binance na Europa entram mesmo em vigor no fim do ano.",
-   "ultimos7": 39,
+   "tema": "Juros e Copom",
+   "por_que": "As manchetes giram em torno da ata do Copom: segundo elas, o comitê manteve a Selic em 13,75%, vê expectativas de inflação mais altas e defende juros restritivos por mais tempo. O tema também aparece ligado ao exterior, com um dirigente do Fed (Waller) defendendo alta de ao menos 0,25 ponto em dezembro, o que mexeu com dólar, bolsa e juros futuros. O salto de 0 para 165 manchetes pode refletir também mudança na coleta, não só no noticiário.",
+   "observar": "Os próximos comunicados do Copom e do Fed e a curva de juros futuros, que mostram se o mercado espera juros altos por mais tempo; isso pesa no custo de financiamento de frota.",
+   "ultimos7": 165,
    "anteriores7": 0
   },
   {
-   "tema": "IA e agentes",
-   "por_que": "O tema cresce por notícias dispersas: a infraestrutura física da IA (a Anthropic fechando acordo de US$ 3,4 bilhões em geradores a gás para data centers, Milei apostando em data centers na Patagônia), a concorrência entre plataformas (agentes da DeepSeek com 1,54 milhão de usuários diários) e a presença da IA na cúpula climática na Turquia. Há ainda efeitos setoriais, como seguro cibernético para PMEs e a vantagem de grandes varejistas no e-commerce, segundo o UBS BB. Não há um único acontecimento central.",
-   "observar": "Observe se surgem novos contratos de energia para data centers e como a COP na Turquia trata o consumo energético da IA.",
-   "ultimos7": 36,
+   "tema": "Bitcoin e cripto",
+   "por_que": "Segundo as manchetes, o bitcoin recuou para cerca de US$ 74 mil com temor de alta de juros nos EUA, saques de ETFs e venda de parte das reservas da mineradora MARA, descolando das ações. No Brasil, o Banco Central passou a divulgar a lista de empresas autorizadas a operar com cripto, e há dúvidas sobre a cobrança de IOF em stablecoins. As demais manchetes, como a falha no iOS e o processo contra a Ethereum Foundation, são pontuais e não explicam a alta do tema.",
+   "observar": "Os fluxos dos ETFs de bitcoin depois do dado de inflação dos EUA e a regulamentação do BC e da Receita sobre cripto e IOF.",
+   "ultimos7": 150,
    "anteriores7": 0
   },
   {
    "tema": "Transporte coletivo e tarifas",
-   "por_que": "As manchetes são vagas e pouco tratam de tarifas: a maioria fala de acidentes, renovação de frota (Guimarães na Bahia), indústria de ônibus na Turquia e reforço de linhas e gratuidade para o Enem 2026 em Maceió e Suzano. O ponto mais ligado a custos é a ANTT ter autorizado aumento de pedágios da EPR Iguaçu no Paraná, inclusive para ônibus. A alta parece vir de cobertura pontual, não de uma mudança de política tarifária.",
-   "observar": "Fique atento a novos reajustes de pedágio ou de tarifa e a gratuidades em eventos como o Enem, que pesam no custo por passageiro sem contrapartida de receita.",
-   "ultimos7": 24,
+   "por_que": "As manchetes são dispersas, sem um fato único que puxe o tema: pagamento por QR Code em Salvador, licitação dos ônibus de Curitiba barrada pela Justiça e pelo TCE, edital para 100 ônibus novos em Teresina e tarifa zero para estudantes em Porto Nacional. Também aparecem o financiamento de ônibus elétricos (crédito, subsídio e locação) e um incentivo do REIDI a rodovias. Nenhuma trata diretamente de reajuste tarifário, e a alta de 0 para 146 manchetes sugere mudança na coleta.",
+   "observar": "O desfecho da licitação de Curitiba e o edital de Teresina, que servem de referência de modelagem contratual e de compra de frota no Nordeste para a operação no Maranhão.",
+   "ultimos7": 146,
    "anteriores7": 0
   },
   {
-   "tema": "China",
-   "por_que": "Dois focos puxam o tema: o caso do CEO da Nvidia, que, segundo as manchetes, admitiu relacionamento com uma suposta espiã chinesa, o que levou a empresa a abrir investigação e trouxe à tona questionamentos sobre chips liberados a firmas chinesas; e o índice de preços ao produtor na China, no ritmo mais forte em mais de quatro anos, enquanto a inflação ao consumidor desacelera. Também aparecem a venda da CSN Cimentos à chinesa Huaxin por R$ 12,7 bi e a ofensiva de carros elétricos chineses na Europa.",
-   "observar": "Acompanhe os próximos dados de preços ao produtor da China, por possíveis efeitos sobre os custos de insumos importados, e o desfecho da investigação na Nvidia.",
-   "ultimos7": 19,
+   "tema": "Inflação",
+   "por_que": "O principal fato, segundo as manchetes, é que a inflação ao consumidor dos EUA subiu 0,4% em outubro, acima do esperado, com núcleo de 0,3%. Isso reforçou o temor de juros altos lá fora. No Brasil, uma manchete diz que a inflação continuou bem-comportada na primeira semana de novembro, enquanto o Copom fala em expectativas desancoradas, e títulos IPCA+ ainda pagam até 7,7%.",
+   "observar": "O próximo IPCA, o boletim Focus e o preço do diesel, que indicam se as expectativas cedem e como fica a pressão sobre o custo por km e os reajustes tarifários.",
+   "ultimos7": 137,
    "anteriores7": 0
   }
  ],
- "tendencias_date": "2026-11-09"
+ "tendencias_date": "2026-11-10"
 }
