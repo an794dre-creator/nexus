@@ -20,5 +20,16 @@
   "models": [
    "claude-opus-5-5"
   ]
+ },
+ "2026-11-11": {
+  "calls": 4,
+  "in": 2480,
+  "out": 4276,
+  "cache_read": 12246,
+  "cache_write": 4082,
+  "usd": 0.1183,
+  "models": [
+   "claude-opus-5-5"
+  ]
  }
 }
