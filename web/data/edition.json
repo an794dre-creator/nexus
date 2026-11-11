@@ -1,33 +1,34 @@
 {
- "manchete": "Ata do Copom mantém Selic em 13,75%, aponta expectativas desancoradas e risco fiscal, e sinaliza juros altos por mais tempo; dólar sobe acima de R$ 5,50 à espera da inflação dos EUA",
+ "manchete": "Plano de ajuste fiscal de Lula alivia dólar e bolsa, mas mercado segue desconfiado enquanto a tarifa zero volta ao centro do debate do transporte",
  "resumo": [
-  "Segundo o Valor Econômico, a ata afirma que, com expectativas de inflação desancoradas, é necessária restrição monetária maior e por mais tempo. Importa porque indica que cortes da Selic não estão no horizonte próximo, o que mantém caro o crédito para empresas, inclusive o financiamento de frota.",
-  "De acordo com a Folha, o Copom atribui a piora das expectativas à guerra no Oriente Médio, ao El Niño, ao fim da escala 6x1 e à disparada do dólar; o Estadão destaca também o risco fiscal. São choques de oferta, de custo e de câmbio, o tipo de pressão que juros altos combatem com mais dificuldade.",
-  "O Poder360 relata que a ata cita incertezas sobre a dívida pública e o aumento do crédito direcionado como fatores que dificultam o controle da inflação. Isso liga política fiscal e monetária, tema central de Economia do Setor Público.",
-  "Segundo o Canal Rural, a ata mantém projeções de inflação acima do teto da meta em 2026 e 2027, e o Money Times diz que o BC vê a economia perdendo força. É o dilema clássico entre desacelerar a atividade e conter a inflação.",
-  "Folha e Valor informam que o dólar abriu em forte alta (R$ 5,551, +0,83%, segundo a Folha) com a ata e falas do diretor do Fed Christopher Waller, e que o real teve o pior desempenho entre as moedas líquidas. Dólar mais caro tende a pressionar insumos importados e combustíveis.",
-  "Segundo o Valor, os juros futuros curtos caíram e os longos tiveram leve alta, o que sugere um mercado que espera Selic alta no curto prazo e cobra prêmio de risco fiscal e inflacionário no longo prazo."
+  "Dólar recua e Ibovespa sobe com o plano de ajuste fiscal do governo Lula no foco, segundo Valor e Folha; na véspera, o dólar subiu 1,46% e fechou no maior valor em mais de 15 meses, pressionado pela inflação acima do esperado nos EUA (Agência Brasil). Importa porque mostra o peso do prêmio de risco fiscal e dos juros americanos sobre o câmbio.",
+  "Na Faria Lima, as diretrizes do plano fiscal são vistas como 'mais do mesmo' e não dissipam a desconfiança, segundo o Valor; economistas ouvidos dizem que o dólar seguirá pressionado até haver ajuste consistente. Importa porque o alívio de hoje pode ser passageiro.",
+  "Coluna da Folha alerta que a demora na resposta fiscal pode levar o Brasil a uma combinação de recessão e inflação alta em 2027, citando a expansão de gastos e do crédito subsidiado. Importa porque liga política fiscal, expectativas e juros, tema central de Economia do Setor Público.",
+  "Questionário do Banco Central, divulgado antes do Copom, mostra que economistas esperam que o fim da escala 6x1 eleve a inflação de 2027 em 0,3 p.p. e reduza o PIB em 0,2 p.p., segundo a Folha. Importa para empresas intensivas em mão de obra, como as de ônibus.",
+  "Especial do Diário do Transporte sobre tarifa zero cita proposta federal de até R$ 12 bilhões contra R$ 20,8 bilhões estimados pelo setor; no mesmo dia, o governo de Minas propôs passe livre estudantil e tarifa zero aos domingos e feriados na Grande BH. Importa porque define quem paga o custo do serviço e afeta o equilíbrio dos contratos.",
+  "Petrobras lucrou R$ 39,8 bilhões no 3º trimestre, alta de 21,5% sobre um ano antes, segundo a Agência Brasil, com Brent hoje em torno de US$ 92,7. Importa para o debate sobre preço do diesel e dividendos à União."
  ],
  "acompanhar_hoje": [
-  "Dado de inflação ao consumidor dos EUA e a reação do dólar e da Treasury de 10 anos, com o mercado precificando alta do Fed em dezembro, segundo a Cointelegraph",
-  "Fechamento do dólar ante o real: ficar acima de R$ 5,50 reforça a leitura de pressão cambial citada na ata",
-  "Inclinação da curva de juros futuros ao longo do dia: curtos em queda e longos em alta indicam prêmio fiscal",
-  "Balanço da Petrobras, citado pelo Seu Dinheiro, por possíveis sinais sobre preços de combustíveis, já que o Brent caiu 2,93%"
+  "Detalhes oficiais do plano de ajuste fiscal: metas, cortes de gasto e tratamento do crédito subsidiado",
+  "Fechamento do dólar e da curva de juros futuros após a queda de hoje, com os Treasuries fechados pelo feriado nos EUA",
+  "Sinais do Copom sobre a Selic em 13,75% diante do IPCA de 12 meses em 4,58% e da alta",
+  "Tramitação do PL 6.219/2026 em Minas e a fonte de custeio prevista para a tarifa zero"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: segundo a ata, a indisciplina fiscal e o crédito direcionado exigem juros maiores. Explique como a trajetória da dívida pública e a dominância fiscal podem reduzir a eficácia da política monetária, e compare a leitura ortodoxa (tripé, credibilidade) com uma crítica heterodoxa (inflação de custos e choques de oferta).",
- "conceito": "taylor",
+ "pergunta_estudo": "Economia do Setor Público: usando a restrição orçamentária intertemporal do governo, explique por que a demora num ajuste fiscal pode elevar juros e câmbio e, ao mesmo tempo, gerar recessão com inflação. Em que pontos uma leitura ortodoxa (credibilidade e prêmio de risco) e uma heterodoxa (papel do gasto na demanda) divergiriam?",
+ "conceito": "divida",
  "itens": [
-  "1ae6a89185ae663a",
-  "3ddf145f43b17308",
-  "ebbf5816f515b17a",
-  "2e6d0570c9f9d0a5",
-  "de77618dae499309",
-  "e9aaba0e161c908a",
-  "71953b223703a915",
-  "c8705b329d3b5da9",
-  "c1f3691f6033d88c"
+  "26d039e9147e792d",
+  "6879c8705b2f023b",
+  "46f44ab5c625c13b",
+  "439fc164a79349b0",
+  "03c86c23792de823",
+  "67cb0fdb6c5f0fb7",
+  "9f9b4e3937d6fddd",
+  "7d34901c7faed0e0",
+  "7d79ed81fbfd3ab2",
+  "db31a0ad6a5384dd"
  ],
- "date": "2026-11-10",
- "created": "2026-11-10T13:36:35.456715+00:00",
+ "date": "2026-11-11",
+ "created": "2026-11-11T17:57:30.807475+00:00",
  "model": "claude-opus-5-5"
 }

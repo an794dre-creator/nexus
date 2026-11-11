@@ -153,40 +153,117 @@
     "titulo_original": "Has U.S. Monetary Policy Really Improved? A 150‑Year Perspective",
     "publicado": "2026-11-09T12:00:00Z"
    }
+  ],
+  "2026-11-11": [
+   {
+    "ref": "01285507aa928ef4",
+    "titulo": "RCTs em economia do desenvolvimento podem ter pouco poder estatístico",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo o resumo, um estudo analisou 745 testes de hipótese principal em 190 artigos de grandes periódicos e concluiu que as estatísticas t observadas ficam bem abaixo do que seria esperado teoricamente. O trabalho também discute como alocar recursos de forma ótima em replicações.",
+    "como_funciona": "O poder de um teste é a chance de detectar um efeito que realmente existe. Quando amostras são pequenas ou efeitos são modestos, a estatística t tende a ser baixa, e os resultados 'significativos' que chegam a ser publicados podem exagerar o tamanho do efeito. Pela descrição, os autores comparam a distribuição das estatísticas t publicadas com a que se esperaria com poder adequado. Os detalhes do método de replicação ótima não estão no resumo, e é preciso ler o original.",
+    "calculo": "Poder aproximado ≈ P(|t| > 1,96) com t ~ N(efeito/erro-padrão, 1). Se efeito/EP = 1,5, poder ≈ 32%; se for 2,8, poder ≈ 80%.",
+    "por_que_importa": "O resultado indica que parte das evidências 'consagradas' em desenvolvimento pode ser frágil. Para quem está escrevendo o TCC, isso reforça que é preciso justificar o tamanho da amostra e não confiar só no p-valor.",
+    "como_aplicar": "No Projeto de Pesquisa, inclua um cálculo de poder ou de efeito mínimo detectável antes de coletar dados. Ao citar estudos, observe o tamanho da amostra e se o resultado foi replicado.",
+    "conceito": "regressao",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/are-rcts-underpowered.html?utm_source=rss&utm_medium=rss&utm_campaign=are-rcts-underpowered",
+    "titulo_original": "Are RCTs underpowered?",
+    "publicado": "2026-11-10T20:05:26Z"
+   },
+   {
+    "ref": "954c0db73f298b45",
+    "titulo": "Inadimplência no cartão nos EUA cresce mais em bairros de baixa renda",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo o Fed de Nova York, a inadimplência no cartão de crédito subiu fortemente entre 2022 e 2024, com aumento maior entre tomadores de bairros de renda mais baixa. Os autores também rastreiam quando os devedores que hoje enfrentam dificuldade receberam seus cartões.",
+    "como_funciona": "O método é uma análise de safras (coortes): a inadimplência é acompanhada pela data de concessão do crédito e pela renda do bairro. Isso permite ver se cartões emitidos num período de crédito frouxo concentram os atrasos. O resumo é cortado antes da conclusão sobre o período de emissão, então é preciso ler o texto original.",
+    "calculo": "Taxa de inadimplência da safra t = saldos com mais de 90 dias de atraso da safra t / saldo total da safra t. A comparação é feita entre os quartis de renda.",
+    "por_que_importa": "O estudo mostra como a expansão do crédito pode gerar fragilidade concentrada nos mais pobres, um tema que dialoga com a ideia de capital fictício. A análise por safra é uma técnica útil de gestão de risco.",
+    "como_aplicar": "Na empresa, aplique a lógica de safras a recebíveis, como vendas de vale-transporte a prazo para empresas clientes, medindo atrasos por mês de contratação. Em Economia Marxista II, use o caso para discutir crédito e consumo dos trabalhadores.",
+    "conceito": "capficticio",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/a-look-at-the-wider-divide-in-credit-card-delinquency-by-income/",
+    "titulo_original": "A Look at the Wider Divide in Credit Card Delinquency by Income",
+    "publicado": "2026-11-10T16:00:00Z"
+   },
+   {
+    "ref": "aa6b08f0da9e5a42",
+    "titulo": "Similaridade de pauta não mede exposição ao desvio chinês",
+    "tipo": "método",
+    "o_que_e_novo": "Segundo a coluna, medir a exposição de um país ao redirecionamento das exportações chinesas pela semelhança de pauta com a China pode enganar. Os autores propõem quatro índices consistentes com a teoria: competição nas exportações, competição nas importações, ganhos do consumidor e um quarto índice que o resumo corta.",
+    "como_funciona": "A exposição depende de onde os produtos chineses desviados efetivamente chegam e de quanto pesam no mercado do país, não só de semelhança entre as pautas. Um país com pauta parecida pode ganhar como importador (bens mais baratos) ou perder como concorrente em terceiros mercados. A fórmula exata dos índices não aparece no resumo, e é preciso ler o original.",
+    "calculo": "Ilustrativo: competição de importação_i ≈ Σ_k (Δimportações da China no produto k / consumo doméstico de k) × participação de k na produção do país i.",
+    "por_que_importa": "O Brasil pode ser afetado pelo desvio de comércio tanto na indústria quanto no consumo. Os índices separam quem perde de quem ganha, algo que a leitura cepalina de centro-periferia também discute.",
+    "como_aplicar": "Use os índices como inspiração de método para um TCC sobre a exposição da indústria brasileira ou nordestina a importações chinesas, a partir de dados do Comex Stat.",
+    "conceito": "cepal",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/similarity-not-exposure-measuring-spillovers-us-china-trade-frictions",
+    "titulo_original": "Similarity is not exposure: Measuring spillovers from US–China trade frictions",
+    "publicado": "2026-11-09T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.14146v1",
+    "titulo": "Pobreza multidimensional local mesmo sem dados ligados por domicílio",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo mostra como estimar Índices de Pobreza Multidimensional em nível local quando as fontes não podem ser cruzadas por domicílio, com aplicação na Macedônia do Norte. Segundo o resumo, os índices costumam existir só em nível nacional ou regional.",
+    "como_funciona": "O índice exige saber como as privações se sobrepõem dentro de cada domicílio. Censos e dados geoespaciais cobrem todas as localidades, mas não se ligam domicílio a domicílio. Pelo que dá para inferir, os autores modelam essa sobreposição a partir de uma pesquisa amostral e a transferem para as localidades. O método exato precisa ser conferido no original.",
+    "calculo": "Método Alkire-Foster: MPI = H × A, em que H é a proporção de pobres (privados em pelo menos k indicadores ponderados) e A é a intensidade média das privações. Exemplo: H = 0,30 e A = 0,45 → MPI = 0,135.",
+    "por_que_importa": "A técnica permite mapear a pobreza municipal, algo valioso para o Maranhão, onde as médias estaduais escondem disparidades internas. Também se liga à abordagem das capacitações.",
+    "como_aplicar": "Pode servir de base a um TCC que estime a pobreza multidimensional por município maranhense, combinando o Censo do IBGE e a PNAD Contínua.",
+    "conceito": "idh",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.14146v1",
+    "titulo_original": "Estimating multidimensional poverty under incomplete data in North Macedonia",
+    "publicado": "2026-11-10T14:34:02Z"
+   },
+   {
+    "ref": "0e39b9f32bbf6c48",
+    "titulo": "Planejamento contínuo com previsões e agentes de IA",
+    "tipo": "técnica de gestão",
+    "o_que_e_novo": "Segundo a McKinsey, combinar previsões melhores com agentes de IA transformaria o planejamento empresarial num sistema contínuo e responsivo. A promessa é reduzir o trabalho manual de transformar previsões em ação.",
+    "como_funciona": "Em vez de um orçamento anual fixo, as previsões são atualizadas com frequência (rolling forecast), e agentes automatizam etapas como consolidação de dados, cenários e alertas de desvio. O resumo não detalha a arquitetura nem traz evidências de resultado. Trata-se de uma proposta de consultoria, não de um estudo empírico.",
+    "calculo": "Rolling forecast: a cada mês, Custo previsto(m+1..m+12) = km programado × custo/km projetado, com o diesel atualizado pelo último preço. Desvio = realizado − previsto.",
+    "por_que_importa": "Para um controller, o orçamento contínuo reage mais rápido a choques de diesel e de demanda. Também dialoga com a matéria Administração Financeira e Orçamentária I.",
+    "como_aplicar": "Implante uma previsão móvel de 12 meses do custo por km e do IPK, atualizada mensalmente, com alertas automáticos (mesmo em planilha) quando o desvio passar de 5%.",
+    "conceito": "custo_km",
+    "fonte": "McKinsey Insights",
+    "link": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/reinventing-business-planning-with-agentic-ai",
+    "titulo_original": "Reinventing business planning with agentic AI",
+    "publicado": "2026-11-11T17:56:05Z"
+   }
   ]
  },
- "date": "2026-11-10",
- "created": "2026-11-10T13:36:35.456715+00:00",
+ "date": "2026-11-11",
+ "created": "2026-11-11T17:57:30.807475+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Juros e Copom",
-   "por_que": "As manchetes giram em torno da ata do Copom: segundo elas, o comitê manteve a Selic em 13,75%, vê expectativas de inflação mais altas e defende juros restritivos por mais tempo. O tema também aparece ligado ao exterior, com um dirigente do Fed (Waller) defendendo alta de ao menos 0,25 ponto em dezembro, o que mexeu com dólar, bolsa e juros futuros. O salto de 0 para 165 manchetes pode refletir também mudança na coleta, não só no noticiário.",
-   "observar": "Os próximos comunicados do Copom e do Fed e a curva de juros futuros, que mostram se o mercado espera juros altos por mais tempo; isso pesa no custo de financiamento de frota.",
-   "ultimos7": 165,
-   "anteriores7": 0
-  },
-  {
-   "tema": "Bitcoin e cripto",
-   "por_que": "Segundo as manchetes, o bitcoin recuou para cerca de US$ 74 mil com temor de alta de juros nos EUA, saques de ETFs e venda de parte das reservas da mineradora MARA, descolando das ações. No Brasil, o Banco Central passou a divulgar a lista de empresas autorizadas a operar com cripto, e há dúvidas sobre a cobrança de IOF em stablecoins. As demais manchetes, como a falha no iOS e o processo contra a Ethereum Foundation, são pontuais e não explicam a alta do tema.",
-   "observar": "Os fluxos dos ETFs de bitcoin depois do dado de inflação dos EUA e a regulamentação do BC e da Receita sobre cripto e IOF.",
-   "ultimos7": 150,
-   "anteriores7": 0
-  },
-  {
-   "tema": "Transporte coletivo e tarifas",
-   "por_que": "As manchetes são dispersas, sem um fato único que puxe o tema: pagamento por QR Code em Salvador, licitação dos ônibus de Curitiba barrada pela Justiça e pelo TCE, edital para 100 ônibus novos em Teresina e tarifa zero para estudantes em Porto Nacional. Também aparecem o financiamento de ônibus elétricos (crédito, subsídio e locação) e um incentivo do REIDI a rodovias. Nenhuma trata diretamente de reajuste tarifário, e a alta de 0 para 146 manchetes sugere mudança na coleta.",
-   "observar": "O desfecho da licitação de Curitiba e o edital de Teresina, que servem de referência de modelagem contratual e de compra de frota no Nordeste para a operação no Maranhão.",
-   "ultimos7": 146,
+   "por_que": "As manchetes misturam dois focos: no Brasil, expectativas de manutenção da Selic em 13,75% e alertas de que o El Niño pode pressionar a inflação e travar cortes; nos EUA, dados de inflação de outubro considerados 'perturbadores' por Goolsbee, do Fed, reacendendo apostas de alta de juros. Parte do salto provavelmente reflete a coleta ter começado agora (0 manchetes na semana anterior), então o crescimento pode ser mais efeito de cobertura do que de um evento único.",
+   "observar": "A próxima decisão do Copom e o tom do comunicado sobre inflação e clima, além da próxima sinalização do Fed.",
+   "ultimos7": 256,
    "anteriores7": 0
   },
   {
    "tema": "Inflação",
-   "por_que": "O principal fato, segundo as manchetes, é que a inflação ao consumidor dos EUA subiu 0,4% em outubro, acima do esperado, com núcleo de 0,3%. Isso reforçou o temor de juros altos lá fora. No Brasil, uma manchete diz que a inflação continuou bem-comportada na primeira semana de novembro, enquanto o Copom fala em expectativas desancoradas, e títulos IPCA+ ainda pagam até 7,7%.",
-   "observar": "O próximo IPCA, o boletim Focus e o preço do diesel, que indicam se as expectativas cedem e como fica a pressão sobre o custo por km e os reajustes tarifários.",
-   "ultimos7": 137,
+   "por_que": "O tema é puxado principalmente pela inflação americana de outubro, que mexeu com bitcoin, ouro e dólar (perto de R$ 5,58, segundo uma manchete). No Brasil aparecem projeções para o IPCA de outubro, o risco climático do El Niño e uma estimativa citada pelo BC de que o fim da escala 6x1 elevaria a inflação em 0,3 ponto percentual em 2027. A comparação com zero na semana anterior sugere também mudança na coleta.",
+   "observar": "A divulgação do IPCA de outubro pelo IBGE e a revisão das expectativas no Boletim Focus.",
+   "ultimos7": 226,
+   "anteriores7": 0
+  },
+  {
+   "tema": "Transporte coletivo e tarifas",
+   "por_que": "As manchetes cobrem fatos dispersos: paralisação em Porto Velho por salários atrasados, já normalizada; proposta do governo de Minas de passe livre estudantil e tarifa zero aos domingos e feriados na Grande BH (PL 6.219/2026); denúncia de duas mil linhas devolvidas em SP e MG desde a pandemia; e um especial sobre quem paga a tarifa zero em 143 cidades. O fio comum é a fragilidade do financiamento do sistema, mas não há um evento central único.",
+   "observar": "A tramitação do PL mineiro, em especial a fonte de custeio prevista para as gratuidades, que serve de referência para negociações de subsídio no Maranhão.",
+   "ultimos7": 217,
+   "anteriores7": 0
+  },
+  {
+   "tema": "Bitcoin e cripto",
+   "por_que": "A principal causa visível é a queda do bitcoin para a faixa de US$ 73-75 mil, atribuída nas manchetes à inflação dos EUA, às apostas de juros mais altos no Fed e às saídas de ETFs. A Binance Research relata recuo de 9,1% em outubro, e outra manchete cita empresas abertas vendendo 108 mil bitcoins em 2026 com migração para IA. O restante é um conjunto heterogêneo de temas policiais, regulatórios e de empresas.",
+   "observar": "O fluxo dos ETFs de bitcoin e a reação do preço à próxima sinalização do Fed sobre juros.",
+   "ultimos7": 217,
    "anteriores7": 0
   }
  ],
- "tendencias_date": "2026-11-10"
+ "tendencias_date": "2026-11-11"
 }
