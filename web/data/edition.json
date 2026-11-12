@@ -1,34 +1,30 @@
 {
- "manchete": "Plano de ajuste fiscal de Lula alivia dólar e bolsa, mas mercado segue desconfiado enquanto a tarifa zero volta ao centro do debate do transporte",
+ "manchete": "IPCA desacelera para 0,14% em outubro, mas mercado reage mal ao pacote fiscal: dólar sobe e Ibovespa cai com tombo do Banco do Brasil",
  "resumo": [
-  "Dólar recua e Ibovespa sobe com o plano de ajuste fiscal do governo Lula no foco, segundo Valor e Folha; na véspera, o dólar subiu 1,46% e fechou no maior valor em mais de 15 meses, pressionado pela inflação acima do esperado nos EUA (Agência Brasil). Importa porque mostra o peso do prêmio de risco fiscal e dos juros americanos sobre o câmbio.",
-  "Na Faria Lima, as diretrizes do plano fiscal são vistas como 'mais do mesmo' e não dissipam a desconfiança, segundo o Valor; economistas ouvidos dizem que o dólar seguirá pressionado até haver ajuste consistente. Importa porque o alívio de hoje pode ser passageiro.",
-  "Coluna da Folha alerta que a demora na resposta fiscal pode levar o Brasil a uma combinação de recessão e inflação alta em 2027, citando a expansão de gastos e do crédito subsidiado. Importa porque liga política fiscal, expectativas e juros, tema central de Economia do Setor Público.",
-  "Questionário do Banco Central, divulgado antes do Copom, mostra que economistas esperam que o fim da escala 6x1 eleve a inflação de 2027 em 0,3 p.p. e reduza o PIB em 0,2 p.p., segundo a Folha. Importa para empresas intensivas em mão de obra, como as de ônibus.",
-  "Especial do Diário do Transporte sobre tarifa zero cita proposta federal de até R$ 12 bilhões contra R$ 20,8 bilhões estimados pelo setor; no mesmo dia, o governo de Minas propôs passe livre estudantil e tarifa zero aos domingos e feriados na Grande BH. Importa porque define quem paga o custo do serviço e afeta o equilíbrio dos contratos.",
-  "Petrobras lucrou R$ 39,8 bilhões no 3º trimestre, alta de 21,5% sobre um ano antes, segundo a Agência Brasil, com Brent hoje em torno de US$ 92,7. Importa para o debate sobre preço do diesel e dividendos à União."
+  "Segundo o IBGE (via Agência Brasil e Folha), o IPCA de outubro ficou em 0,14%, após 0,82% em setembro e abaixo das expectativas, com alívio da bandeira verde na conta de luz e dos transportes. Importa porque reduz a pressão de curto prazo, mas o G1 e o Poder360 destacam que o acumulado segue acima do teto da meta, o que sustenta cautela com a Selic.",
+  "De acordo com o gerente do IBGE citado pelo Globo Rural, alimentação e bebidas subiram 1,04% em outubro, puxadas por El Niño, problemas de oferta e alta do diesel. Importa porque mostra o diesel como canal de transmissão da crise do petróleo para preços básicos, e diesel também é o principal insumo variável de uma empresa de ônibus.",
+  "Segundo a Folha, o governo quer retirar até R$ 10,5 bilhões da subvenção ao diesel da meta fiscal de 2026 para evitar contenção extra de gastos. Importa porque mexe na credibilidade da regra fiscal e, para o operador de ônibus, sinaliza que o subsídio que segura o preço do diesel depende de manobra orçamentária.",
+  "Segundo o Valor e a Folha, o dólar subiu mais de 1% e o Ibovespa caiu com mau humor externo e má recepção do pacote fiscal, visto por profissionais de mercado como insuficiente para restaurar a credibilidade da âncora fiscal. Importa porque câmbio mais alto encarece diesel, peças e chassis importados ou dolarizados.",
+  "De acordo com a Agência Brasil, o lucro líquido ajustado do Banco do Brasil caiu 66,5% no 3º trimestre, para R$ 1,27 bilhão, pressionado pela inadimplência do agronegócio, e o banco reduziu pela metade a projeção de lucro. Importa porque um banco público mais cauteloso pode restringir crédito, inclusive para empresas que financiam frota.",
+  "Segundo o IBGE (via Agência Brasil), o INPC, índice que corrige salários, subiu 0,22% em outubro e acumula 4,49% em 12 meses. Importa porque é a referência típica para dissídios, como o de motoristas e cobradores, e entra no cálculo de reajustes contratuais."
  ],
  "acompanhar_hoje": [
-  "Detalhes oficiais do plano de ajuste fiscal: metas, cortes de gasto e tratamento do crédito subsidiado",
-  "Fechamento do dólar e da curva de juros futuros após a queda de hoje, com os Treasuries fechados pelo feriado nos EUA",
-  "Sinais do Copom sobre a Selic em 13,75% diante do IPCA de 12 meses em 4,58% e da alta",
-  "Tramitação do PL 6.219/2026 em Minas e a fonte de custeio prevista para a tarifa zero"
+  "Tramitação no Congresso do pacote fiscal e da proposta de tirar a subvenção ao diesel da meta de 2026",
+  "Fechamento do dólar perto de R$ 5,64 e do Brent acima de US$ 94, que afetam o preço do diesel",
+  "Reação das projeções de Selic e do Boletim Focus ao IPCA abaixo do esperado e ao acumulado acima do teto",
+  "Sinais de revisão de preços do diesel pela Petrobras diante da crise do petróleo citada pela Azul"
  ],
- "pergunta_estudo": "Economia do Setor Público: usando a restrição orçamentária intertemporal do governo, explique por que a demora num ajuste fiscal pode elevar juros e câmbio e, ao mesmo tempo, gerar recessão com inflação. Em que pontos uma leitura ortodoxa (credibilidade e prêmio de risco) e uma heterodoxa (papel do gasto na demanda) divergiriam?",
+ "pergunta_estudo": "Em Economia do Setor Público: retirar uma despesa como a subvenção ao diesel do cômputo da meta fiscal preserva o gasto no curto prazo, mas que efeitos isso pode ter sobre a credibilidade da regra fiscal, os juros e a sustentabilidade da dívida? Compare a leitura ortodoxa (âncora e expectativas) com a heterodoxa (espaço fiscal e função estabilizadora do gasto).",
  "conceito": "divida",
  "itens": [
+  "3c1e9ef5d9273c8b",
+  "cbae48eb03c7cf71",
+  "40b1ab81d73afcae",
   "26d039e9147e792d",
-  "6879c8705b2f023b",
-  "46f44ab5c625c13b",
-  "439fc164a79349b0",
-  "03c86c23792de823",
-  "67cb0fdb6c5f0fb7",
-  "9f9b4e3937d6fddd",
-  "7d34901c7faed0e0",
-  "7d79ed81fbfd3ab2",
-  "db31a0ad6a5384dd"
+  "12118bdfb36d5229",
+  "b886bb6d3fa47f8b"
  ],
- "date": "2026-11-11",
- "created": "2026-11-11T17:57:30.807475+00:00",
+ "date": "2026-11-12",
+ "created": "2026-11-12T17:39:54.022792+00:00",
  "model": "claude-opus-5-5"
 }

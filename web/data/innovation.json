@@ -230,40 +230,117 @@
     "titulo_original": "Reinventing business planning with agentic AI",
     "publicado": "2026-11-11T17:56:05Z"
    }
+  ],
+  "2026-11-12": [
+   {
+    "ref": "2dac69db60aafc0d",
+    "titulo": "IA lendo teleconferências de resultados para prever o PIB",
+    "tipo": "método",
+    "o_que_e_novo": "Segundo a coluna do VoxEU, os autores usaram IA generativa para extrair a visão econômica dos gestores em mais de 120 mil teleconferências de resultados nos EUA. O índice gerado prevê PIB, emprego e salários além do trimestre seguinte e traz informação que as projeções de analistas profissionais não captam.",
+    "como_funciona": "Um modelo de linguagem lê cada transcrição e classifica o tom dos executivos sobre a economia (otimista, neutro, pessimista). Essas notas são agregadas por período, formando um índice de sentimento. Depois o índice entra como variável explicativa em regressões de previsão, comparadas com as previsões de consenso. O resumo não traz o prompt nem a especificação exata, então é preciso ler o original.",
+    "calculo": "Índice_t = média das notas (−1 a +1) das calls do trimestre t; regressão: ΔPIB_{t+h} = a + b·Índice_t + c·Consenso_t + e; se b for significativo, o índice acrescenta informação.",
+    "por_que_importa": "Mostra como transformar texto em dado quantitativo quando as estatísticas oficiais atrasam. É um método replicável e barato, ideal para um TCC.",
+    "como_aplicar": "No Projeto de Pesquisa, dá para replicar em escala menor com atas do Copom, releases de empresas brasileiras ou notícias do Maranhão, montando um índice de sentimento e testando se ele antecipa o IBC-Br regional ou a demanda de passageiros.",
+    "conceito": "regressao",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/reading-economy-earnings-calls-generative-ai",
+    "titulo_original": "Reading the economy from earnings calls with generative AI",
+    "publicado": "2026-11-12T00:00:00Z"
+   },
+   {
+    "ref": "021e7771e021d8c4",
+    "titulo": "Gêmeos digitais validados por experimento (Chetty et al.)",
+    "tipo": "método",
+    "o_que_e_novo": "Segundo o post, Chetty, Katz e coautores propõem 'gêmeos digitais' validados experimentalmente para avaliar programas. A ideia é aproximar estimativas observacionais das obtidas em ensaios aleatorizados (RCTs), que costumam divergir delas.",
+    "como_funciona": "Pelo que se pode inferir, constrói-se, a partir de dados administrativos ricos, um contrafactual sintético (o gêmeo) para cada participante. Em seguida esse contrafactual é calibrado e checado contra resultados de RCTs já existentes. Se o gêmeo reproduz o efeito experimental, ganha-se confiança para usá-lo onde não há experimento. Os detalhes estão só no artigo original.",
+    "calculo": "Efeito estimado = Y_participante − Ŷ_gêmeo; validação: comparar com o efeito do RCT e checar se a diferença é ≈ 0.",
+    "por_que_importa": "Avaliar política pública sem experimento é o desafio central de Economia do Setor Público. O artigo propõe uma ponte entre os dados observacionais e o padrão-ouro experimental.",
+    "como_aplicar": "No TCC, ao avaliar uma política (por exemplo, gratuidade ou integração tarifária), discuta explicitamente o viés observacional e use grupos de comparação construídos com cuidado.",
+    "conceito": "pesquisa",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/experimentally-validated-digital-twins.html?utm_source=rss&utm_medium=rss&utm_campaign=experimentally-validated-digital-twins",
+    "titulo_original": "Experimentally validated digital twins",
+    "publicado": "2026-11-11T19:12:56Z"
+   },
+   {
+    "ref": "c364e08b8eafbc22",
+    "titulo": "Consumo aparente de bens industriais cai 1,2% em agosto/2026",
+    "tipo": "dado novo",
+    "o_que_e_novo": "De acordo com o Ipea, o Indicador de Consumo Aparente de Bens Industriais recuou 1,2% de julho para agosto de 2026, na série com ajuste sazonal. O indicador funciona como proxy da demanda interna por bens industriais.",
+    "como_funciona": "O consumo aparente soma a produção doméstica vendida no mercado interno e as importações. Assim, ele mede a demanda, e não só a produção. Uma queda indica demanda interna mais fraca, possivelmente ligada a juros altos e crédito caro, mas o resumo não diz as causas.",
+    "calculo": "Consumo aparente = Produção doméstica − Exportações + Importações; variação = (CA_ago / CA_jul − 1) × 100 = −1,2%.",
+    "por_que_importa": "É um termômetro da conjuntura útil em Economia Brasileira Contemporânea I. Demanda industrial em queda pode afetar o emprego e, com ele, a demanda por transporte de trabalhadores.",
+    "como_aplicar": "Acompanhe o indicador mês a mês junto com os passageiros pagantes da empresa, para ver se há correlação com o ciclo econômico.",
+    "conceito": "islm",
+    "fonte": "IPEA · Carta de Conjuntura",
+    "link": "https://www.ipea.gov.br/cartadeconjuntura/index.php/2026/11/indicador-ipea-de-consumo-aparente-de-bens-industriais-agosto-de-2026/",
+    "titulo_original": "Indicador Ipea de consumo aparente de bens industriais: agosto de 2026",
+    "publicado": "2026-11-09T16:53:34Z"
+   },
+   {
+    "ref": "9fcffc021e6bea74",
+    "titulo": "Aviação cria mais valor, mas ainda não cobre o custo de capital",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a McKinsey, mais companhias aéreas estão criando valor, e de forma mais consistente. Mesmo assim, o setor como um todo ainda não cobre o seu custo de capital.",
+    "como_funciona": "Cria valor quem tem retorno sobre o capital investido (ROIC) maior que o WACC. Setores intensivos em ativos, com muita concorrência e custo alto de combustível, tendem a ter ROIC abaixo do WACC. A análise compara o spread econômico entre os elos da cadeia (aeroportos, lessores, companhias).",
+    "calculo": "Lucro econômico = (ROIC − WACC) × Capital investido; ex.: (6% − 8%) × R$100 mi = −R$2 mi.",
+    "por_que_importa": "O ônibus tem uma lógica parecida: frota cara, diesel e tarifa regulada. Medir ROIC contra WACC mostra se a operação realmente remunera o capital.",
+    "como_aplicar": "Na empresa, calcule o ROIC por linha ou contrato e compare com o WACC; use o resultado para justificar o pedido de reequilíbrio no reajuste tarifário.",
+    "conceito": "wacc",
+    "fonte": "McKinsey Insights",
+    "link": "https://www.mckinsey.com/industries/travel/our-insights/could-aviation-at-last-be-close-to-earning-its-wings",
+    "titulo_original": "Could aviation at last be close to earning its wings?",
+    "publicado": "2026-11-12T17:38:48Z"
+   },
+   {
+    "ref": "1da20e1e99ea3e06",
+    "titulo": "Reforma do selo de energia da UE (escala A–G) e uso de energia",
+    "tipo": "política",
+    "o_que_e_novo": "Segundo a coluna, dados de vendas de geladeiras na Bélgica, França, Alemanha e Polônia permitem avaliar a troca, em 2021, da escala inflada (A+++) pela escala A–G. O resumo indica efeito limitado, mas é preciso ler o original para ver os números.",
+    "como_funciona": "Rótulos corrigem uma falha de informação: o consumidor não vê o custo de energia futuro. Uma escala comprimida no topo reduz o poder de diferenciar os produtos. A coluna compara o rótulo com feebates (taxa e bônus) e padrões mínimos, que são alternativas de política.",
+    "calculo": "Feebate: preço efetivo = P + t·(E − E_ref), com bônus se E < E_ref.",
+    "por_que_importa": "É um caso empírico de correção de externalidade e de assimetria de informação, tema de Economia do Setor Público. Ajuda a comparar instrumentos informacionais com instrumentos de preço.",
+    "como_aplicar": "Use como referência para discutir rotulagem de eficiência de ônibus ou incentivos a frotas menos poluentes em São Luís.",
+    "conceito": "bens",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/energy-labels-feebates-and-standards-lessons-eus-2021-reform",
+    "titulo_original": "Energy labels, feebates and standards: Lessons from the EU’s 2021 reform",
+    "publicado": "2026-11-09T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-11",
- "created": "2026-11-11T17:57:30.807475+00:00",
+ "date": "2026-11-12",
+ "created": "2026-11-12T17:39:54.022792+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Juros e Copom",
-   "por_que": "As manchetes misturam dois focos: no Brasil, expectativas de manutenção da Selic em 13,75% e alertas de que o El Niño pode pressionar a inflação e travar cortes; nos EUA, dados de inflação de outubro considerados 'perturbadores' por Goolsbee, do Fed, reacendendo apostas de alta de juros. Parte do salto provavelmente reflete a coleta ter começado agora (0 manchetes na semana anterior), então o crescimento pode ser mais efeito de cobertura do que de um evento único.",
-   "observar": "A próxima decisão do Copom e o tom do comunicado sobre inflação e clima, além da próxima sinalização do Fed.",
-   "ultimos7": 256,
+   "por_que": "O salto vem de duas frentes, segundo as manchetes: no Brasil, o IPCA de outubro desacelerou e reacendeu o debate sobre cortes na Selic, citada em 13,75% ao ano em uma das matérias; no exterior, inflação e PPI dos EUA elevaram as apostas de alta de juros pelo Fed, fortalecendo o dólar e derrubando o ouro. Há também manchetes sobre efeitos em empresas, como prejuízo da Minerva com juros e câmbio e financiamento de caminhões e ônibus a 1,09% na Fenatran. Nenhuma manchete informa uma decisão do Copom nesta semana; o termo aparece mais como expectativa.",
+   "observar": "Observe se a próxima comunicação do Copom (ata ou decisão) sinaliza início de cortes e se o Fed confirma alta em dezembro, o que limitaria o espaço do Banco Central brasileiro e encareceria o financiamento de frota.",
+   "ultimos7": 289,
    "anteriores7": 0
   },
   {
    "tema": "Inflação",
-   "por_que": "O tema é puxado principalmente pela inflação americana de outubro, que mexeu com bitcoin, ouro e dólar (perto de R$ 5,58, segundo uma manchete). No Brasil aparecem projeções para o IPCA de outubro, o risco climático do El Niño e uma estimativa citada pelo BC de que o fim da escala 6x1 elevaria a inflação em 0,3 ponto percentual em 2027. A comparação com zero na semana anterior sugere também mudança na coleta.",
-   "observar": "A divulgação do IPCA de outubro pelo IBGE e a revisão das expectativas no Boletim Focus.",
-   "ultimos7": 226,
+   "por_que": "O motor é a divulgação do IPCA de outubro, que, segundo várias manchetes, veio abaixo do esperado, mas ainda acima do teto da meta. As matérias destacam a conta de luz mais barata como fator de alívio e os alimentos, como o tomate, ainda pressionando. Algumas manchetes da lista não tratam de inflação, como a da CPI do Master, o que indica ruído na classificação.",
+   "observar": "Acompanhe o IPCA-15 e o IPCA de novembro para ver se a desaceleração continua sem o efeito da energia, e o comportamento do diesel nos itens de transporte.",
+   "ultimos7": 275,
    "anteriores7": 0
   },
   {
    "tema": "Transporte coletivo e tarifas",
-   "por_que": "As manchetes cobrem fatos dispersos: paralisação em Porto Velho por salários atrasados, já normalizada; proposta do governo de Minas de passe livre estudantil e tarifa zero aos domingos e feriados na Grande BH (PL 6.219/2026); denúncia de duas mil linhas devolvidas em SP e MG desde a pandemia; e um especial sobre quem paga a tarifa zero em 143 cidades. O fio comum é a fragilidade do financiamento do sistema, mas não há um evento central único.",
-   "observar": "A tramitação do PL mineiro, em especial a fonte de custeio prevista para as gratuidades, que serve de referência para negociações de subsídio no Maranhão.",
-   "ultimos7": 217,
+   "por_que": "O tema reúne assuntos variados, e parte deles nem é de transporte coletivo, como tarifas aéreas da Azul e pedágio. No ônibus urbano, as manchetes citam a discussão da jornada 5×2 em São Paulo, com possível impacto em escalas e custos, a adoção de Pix e cartão na catraca, financiamento de frota (R$ 9,7 milhões para 11 ônibus em Passo Fundo) e um modelo de locação de ônibus elétricos apoiado pelo BNDES. As manchetes não mostram um fato único que explique o salto; parece um agregado de notícias setoriais.",
+   "observar": "Acompanhe se a jornada 5×2 avança na Câmara de São Paulo e se o modelo de locação de elétricos do BNDES chega ao Nordeste, porque os dois mexem diretamente no custo por km e na tarifa técnica.",
+   "ultimos7": 274,
    "anteriores7": 0
   },
   {
    "tema": "Bitcoin e cripto",
-   "por_que": "A principal causa visível é a queda do bitcoin para a faixa de US$ 73-75 mil, atribuída nas manchetes à inflação dos EUA, às apostas de juros mais altos no Fed e às saídas de ETFs. A Binance Research relata recuo de 9,1% em outubro, e outra manchete cita empresas abertas vendendo 108 mil bitcoins em 2026 com migração para IA. O restante é um conjunto heterogêneo de temas policiais, regulatórios e de empresas.",
-   "observar": "O fluxo dos ETFs de bitcoin e a reação do preço à próxima sinalização do Fed sobre juros.",
-   "ultimos7": 217,
+   "por_que": "Segundo as manchetes, o bitcoin caiu para a faixa de US$ 71 mil a 72 mil, a menor cotação em cerca de três meses, com liquidações em sequência. A queda é associada à saída do CEO da Nvidia e à queda das ações da empresa, e os ETFs de bitcoin tiveram saídas de US$ 1,4 bilhão em cinco dias. Aparecem ainda temas regulatórios, como o imposto cripto em Illinois e o limite para stablecoins na Tailândia.",
+   "observar": "Observe se as saídas dos ETFs continuam e se o bitcoin passa a acompanhar as apostas de alta do Fed, o que reforçaria a leitura de aversão global ao risco.",
+   "ultimos7": 268,
    "anteriores7": 0
   }
  ],
- "tendencias_date": "2026-11-11"
+ "tendencias_date": "2026-11-12"
 }
