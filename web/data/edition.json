@@ -1,30 +1,34 @@
 {
- "manchete": "IPCA desacelera para 0,14% em outubro, mas mercado reage mal ao pacote fiscal: dólar sobe e Ibovespa cai com tombo do Banco do Brasil",
+ "manchete": "Senado aprova texto-base do ajuste fiscal, mas mercado desconfia: dólar no maior nível em 17 meses e São Luís segue com a maior inflação do país no ano",
  "resumo": [
-  "Segundo o IBGE (via Agência Brasil e Folha), o IPCA de outubro ficou em 0,14%, após 0,82% em setembro e abaixo das expectativas, com alívio da bandeira verde na conta de luz e dos transportes. Importa porque reduz a pressão de curto prazo, mas o G1 e o Poder360 destacam que o acumulado segue acima do teto da meta, o que sustenta cautela com a Selic.",
-  "De acordo com o gerente do IBGE citado pelo Globo Rural, alimentação e bebidas subiram 1,04% em outubro, puxadas por El Niño, problemas de oferta e alta do diesel. Importa porque mostra o diesel como canal de transmissão da crise do petróleo para preços básicos, e diesel também é o principal insumo variável de uma empresa de ônibus.",
-  "Segundo a Folha, o governo quer retirar até R$ 10,5 bilhões da subvenção ao diesel da meta fiscal de 2026 para evitar contenção extra de gastos. Importa porque mexe na credibilidade da regra fiscal e, para o operador de ônibus, sinaliza que o subsídio que segura o preço do diesel depende de manobra orçamentária.",
-  "Segundo o Valor e a Folha, o dólar subiu mais de 1% e o Ibovespa caiu com mau humor externo e má recepção do pacote fiscal, visto por profissionais de mercado como insuficiente para restaurar a credibilidade da âncora fiscal. Importa porque câmbio mais alto encarece diesel, peças e chassis importados ou dolarizados.",
-  "De acordo com a Agência Brasil, o lucro líquido ajustado do Banco do Brasil caiu 66,5% no 3º trimestre, para R$ 1,27 bilhão, pressionado pela inadimplência do agronegócio, e o banco reduziu pela metade a projeção de lucro. Importa porque um banco público mais cauteloso pode restringir crédito, inclusive para empresas que financiam frota.",
-  "Segundo o IBGE (via Agência Brasil), o INPC, índice que corrige salários, subiu 0,22% em outubro e acumula 4,49% em 12 meses. Importa porque é a referência típica para dissídios, como o de motoristas e cobradores, e entra no cálculo de reajustes contratuais."
+  "Ajuste fiscal: segundo a Agência Senado, o texto-base do projeto de ajuste (PLP 299/2026) foi aprovado por 45 a 31 na quinta (12), com corte de benefícios fiscais e mudança na base de cálculo do piso da saúde; os pontos pendentes ficaram para terça (17). Importa porque mexe em renúncias tributárias e na vinculação de gastos, temas centrais de Economia do Setor Público.",
+  "Diesel no pacote: segundo a Tribuna da Região, o ajuste aprovado no Senado muda regras para o preço do diesel, a verba da saúde e as isenções de impostos. O material não detalha a mudança. Para a empresa de ônibus, convém checar o texto, porque o diesel é um dos maiores itens do custo por km e pode exigir pedido de reajuste.",
+  "Câmbio e juros: segundo a Agência Brasil, o dólar subiu 1,58% e fechou acima de R$ 5,65 na quinta, maior patamar desde junho de 2025, puxado pela insatisfação com o pacote e pelo dólar forte no exterior. O Valor relata que o mercado vê o projeto como sem mudanças estruturais para frear a dívida. Dólar alto e Brent perto de US$ 97 pressionam diesel, peças e chassis importados.",
+  "Inflação local: segundo O Imparcial, com dados do IBGE, o IPCA de São Luís foi de 0,45% em outubro, contra 0,14% na média nacional, e acumula 5,21% em 2026, a maior alta entre as 16 áreas pesquisadas. Isso pesa nos custos locais e na pressão salarial dos rodoviários, e serve de tema para a disciplina de Projeto de Pesquisa.",
+  "Tarifa zero em debate: segundo a Agência iNFRA, uma PEC abre debate sobre gratuidade no transporte e receio com a regulamentação. Cotia terá tarifa zero no domingo do Enem e Porto Velho divulga tarifa reduzida. Para o operador, a pergunta central é quem financia a remuneração por km quando a receita tarifária some.",
+  "Varejo: segundo o Valor, as vendas do varejo cresceram 0,2% em setembro, contra previsão de queda de 0,2%. Uma demanda mais firme reduz a chance de alívio rápido nos juros, com a Selic em 13,75%."
  ],
  "acompanhar_hoje": [
-  "Tramitação no Congresso do pacote fiscal e da proposta de tirar a subvenção ao diesel da meta de 2026",
-  "Fechamento do dólar perto de R$ 5,64 e do Brent acima de US$ 94, que afetam o preço do diesel",
-  "Reação das projeções de Selic e do Boletim Focus ao IPCA abaixo do esperado e ao acumulado acima do teto",
-  "Sinais de revisão de preços do diesel pela Petrobras diante da crise do petróleo citada pela Azul"
+  "Votação dos destaques do PLP 299/2026 no Senado na terça (17) e o calendário de Hugo Motta na Câmara.",
+  "Texto final sobre as regras do diesel no ajuste fiscal e eventual repasse da Petrobras/ANP ao preço na bomba.",
+  "Fechamento do dólar frente aos R$ 5,65 de quinta e reação dos juros futuros à inflação dos EUA.",
+  "Abertura do IPCA de São Luís por grupos no IBGE (alimentos, transportes, habitação) para entender a alta local."
  ],
- "pergunta_estudo": "Em Economia do Setor Público: retirar uma despesa como a subvenção ao diesel do cômputo da meta fiscal preserva o gasto no curto prazo, mas que efeitos isso pode ter sobre a credibilidade da regra fiscal, os juros e a sustentabilidade da dívida? Compare a leitura ortodoxa (âncora e expectativas) com a heterodoxa (espaço fiscal e função estabilizadora do gasto).",
- "conceito": "divida",
+ "pergunta_estudo": "Economia do Setor Público: o ajuste fiscal corta benefícios fiscais e altera regras do diesel. Usando a teoria da incidência tributária e a elasticidade-preço da demanda, quem tende a arcar com o ônus de uma menor desoneração do diesel: as empresas de ônibus, os passageiros ou o poder concedente via subsídio? Como a resposta muda em contratos com reajuste por fórmula paramétrica?",
+ "conceito": "tributacao",
  "itens": [
-  "3c1e9ef5d9273c8b",
-  "cbae48eb03c7cf71",
-  "40b1ab81d73afcae",
+  "a6d40b6dba6072ca",
+  "6f16a18e8c3dc719",
+  "1d167bd7093178ac",
+  "5076674725c23c15",
+  "6fd664008300f3f5",
   "26d039e9147e792d",
-  "12118bdfb36d5229",
-  "b886bb6d3fa47f8b"
+  "374733b6e921d0dd",
+  "19967bc6c847b823",
+  "3214e40c9041f72c",
+  "5f83e310ea1d7d5b"
  ],
- "date": "2026-11-12",
- "created": "2026-11-12T17:39:54.022792+00:00",
+ "date": "2026-11-13",
+ "created": "2026-11-13T15:32:32.539357+00:00",
  "model": "claude-opus-5-5"
 }

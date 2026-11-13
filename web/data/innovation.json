@@ -307,40 +307,117 @@
     "titulo_original": "Energy labels, feebates and standards: Lessons from the EU’s 2021 reform",
     "publicado": "2026-11-09T00:00:00Z"
    }
+  ],
+  "2026-11-13": [
+   {
+    "ref": "a746e4413d01ff87",
+    "titulo": "Gargalos de transporte amplificam choques agregados",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna compara o Superciclo de Commodities dos anos 2000 com a Grande Disrupção das Cadeias de Suprimento pós-pandemia para examinar como gargalos de transporte interagem com choques agregados. Destaca o salto nos fretes de granéis secos como canal central.",
+    "como_funciona": "Quando a capacidade de transporte é quase fixa no curto prazo, um aumento de demanda não se traduz em mais viagens, e sim em preço de frete mais alto. Esse frete entra como custo em toda a cadeia e vira inflação e perda de produto. O resumo não detalha o modelo; é preciso ler o original para saber se é estimação estrutural ou empírica.",
+    "calculo": "Ilustrativo: se a oferta de frete tem elasticidade-preço 0,1 no curto prazo, um aumento de 10% na demanda eleva o frete em cerca de 10%/0,1 = 100%.",
+    "por_que_importa": "Mostra que infraestrutura logística com capacidade rígida transforma choques de demanda em choques de custo. Isso ajuda a entender a inflação de diesel, peças e chassis enfrentada pelo setor de ônibus depois de 2021.",
+    "como_aplicar": "Na empresa, monitore o prazo e o preço de entrega de chassis e peças como indicador antecedente do custo por km. No TCC, pode servir de referência para estudar o frete no Corredor Carajás/Itaqui.",
+    "conceito": "elast",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/transportation-bottlenecks-and-aggregate-shocks",
+    "titulo_original": "Transportation bottlenecks and aggregate shocks",
+    "publicado": "2026-11-13T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.16584v1",
+    "titulo": "Inferência uniforme com clusters em duas dimensões",
+    "tipo": "método",
+    "o_que_e_novo": "Os autores estabelecem inferência assintoticamente exata e uniforme para a média de dados agrupados em duas dimensões (por exemplo, firma × tempo), permitindo que o processo gerador mude com o tamanho da amostra. Afirmam que isso não contradiz o resultado de impossibilidade de Menzel (2021).",
+    "como_funciona": "Em painéis com dependência em duas dimensões, como municípios e anos, os erros-padrão comuns subestimam a incerteza. O artigo estima uma quantidade diferente da média normalizada do arranjo completo, contornando o limite de Menzel. Os detalhes do estimador exigem a leitura do original.",
+    "calculo": "Variância com cluster duplo (Cameron-Gelbach-Miller): V = V_cluster(i) + V_cluster(t) − V_cluster(i,t).",
+    "por_que_importa": "Regressões com painéis de municípios do Maranhão ao longo dos anos sofrem exatamente com esse tipo de dependência. Erros-padrão mal calculados geram significância falsa no TCC.",
+    "como_aplicar": "No Projeto de Pesquisa, se usar painel município-ano, reporte erros-padrão com cluster duplo e cite esta literatura como cuidado metodológico.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.16584v1",
+    "titulo_original": "Uniform Inference for Two-Way Clustered Data",
+    "publicado": "2026-11-12T10:16:59Z"
+   },
+   {
+    "ref": "p:2611.16406v1",
+    "titulo": "Qual lado randomizar em experimentos de plataformas",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo discute se plataformas de dois lados devem randomizar clientes ou anúncios. Randomizar o lado menor reduz o viés de interferência, e randomizar o lado maior aumenta a amostra nominal, o que pode reduzir a variância.",
+    "como_funciona": "Quando unidades tratadas e de controle competem pelos mesmos recursos, o tratamento contamina o controle (interferência). O lado mais escasso sofre menos competição entre unidades, então há menos viés. O resumo é cortado antes da conclusão final, por isso é preciso ler o original.",
+    "calculo": "Erro quadrático médio = viés² + variância; escolha o lado que minimiza a soma.",
+    "por_que_importa": "É um princípio útil para testar mudanças em linhas e horários, em que passageiros e veículos interagem. Ajuda a desenhar pilotos sem conclusões enviesadas.",
+    "como_aplicar": "Ao testar um novo horário, compare linhas (o lado da oferta) em vez de passageiros, e tome cuidado com linhas que compartilham corredores, porque a demanda migra de uma para outra.",
+    "conceito": "pesquisa",
+    "fonte": "stat.ME",
+    "link": "http://arxiv.org/abs/2611.16406v1",
+    "titulo_original": "One-Sided Randomization in Two-Sided Platform Experiments: Which Side Should be Randomized?",
+    "publicado": "2026-11-12T07:15:30Z"
+   },
+   {
+    "ref": "3c807c29e5d143e2",
+    "titulo": "Alíquota de participação e incentivo ao trabalho",
+    "tipo": "política",
+    "o_que_e_novo": "Segundo a coluna, muitas mães casadas de baixa renda nos EUA enfrentam taxas de participação acima de 25%, que chegam a 60% quando se contam os custos de creche. A proposta é elevar os tetos do crédito para creche e mudar a base de cálculo do crédito.",
+    "como_funciona": "A taxa de participação mede quanto da renda bruta de um novo emprego se perde com impostos, benefícios retirados e custos de trabalhar. Se essa taxa for alta, entrar no mercado de trabalho quase não compensa. O resumo é cortado antes de explicar a segunda correção proposta.",
+    "calculo": "PTR = (impostos adicionais + benefícios perdidos + creche) / salário bruto. Exemplo: (300 + 200 + 700) / 2.000 = 60%.",
+    "por_que_importa": "É a ferramenta de incidência tributária aplicada ao desenho de benefícios sociais. Pode ser transposta para a análise do Bolsa Família e da regra de proteção.",
+    "como_aplicar": "Em Economia do Setor Público, calcule a PTR de uma família maranhense que sai do Bolsa Família ao aceitar um emprego formal, incluindo o custo da passagem de ônibus.",
+    "conceito": "tributacao",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/making-work-pay-married-mothers-two-simple-fixes-us-tax-credits",
+    "titulo_original": "Making work pay for married mothers: Two simple fixes to US tax credits",
+    "publicado": "2026-11-10T00:00:00Z"
+   },
+   {
+    "ref": "e23a8dd05761efd8",
+    "titulo": "Vulnerabilidade bancária nos EUA: atualização de 2026",
+    "tipo": "dado novo",
+    "o_que_e_novo": "O Fed de Nova York atualiza quatro modelos de vulnerabilidade do sistema bancário americano com dados até o segundo trimestre de 2026. O resumo não informa a direção das mudanças.",
+    "como_funciona": "Os modelos medem, cada um, um aspecto diferente da vulnerabilidade, como vendas forçadas de ativos, perdas de capital e corridas de liquidez. O resumo não detalha esses modelos; é preciso ler o post.",
+    "calculo": "Ilustrativo de alavancagem: perda de 2% nos ativos com capital de 8% consome 25% do capital.",
+    "por_que_importa": "O estresse bancário americano se transmite ao custo do crédito global e ao câmbio. Isso afeta os juros dos financiamentos de frota no Brasil.",
+    "como_aplicar": "Use o post como referência de painel de risco e acompanhe-o ao revisar o WACC da empresa.",
+    "conceito": "capficticio",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/banking-system-vulnerability-2026-update/",
+    "titulo_original": "Banking System Vulnerability: 2026 Update",
+    "publicado": "2026-11-12T13:25:00Z"
+   }
   ]
  },
- "date": "2026-11-12",
- "created": "2026-11-12T17:39:54.022792+00:00",
+ "date": "2026-11-13",
+ "created": "2026-11-13T15:32:32.539357+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Juros e Copom",
-   "por_que": "O salto vem de duas frentes, segundo as manchetes: no Brasil, o IPCA de outubro desacelerou e reacendeu o debate sobre cortes na Selic, citada em 13,75% ao ano em uma das matérias; no exterior, inflação e PPI dos EUA elevaram as apostas de alta de juros pelo Fed, fortalecendo o dólar e derrubando o ouro. Há também manchetes sobre efeitos em empresas, como prejuízo da Minerva com juros e câmbio e financiamento de caminhões e ônibus a 1,09% na Fenatran. Nenhuma manchete informa uma decisão do Copom nesta semana; o termo aparece mais como expectativa.",
-   "observar": "Observe se a próxima comunicação do Copom (ata ou decisão) sinaliza início de cortes e se o Fed confirma alta em dezembro, o que limitaria o espaço do Banco Central brasileiro e encareceria o financiamento de frota.",
-   "ultimos7": 289,
-   "anteriores7": 0
+   "por_que": "O salto vem sobretudo de falas do presidente do Banco Central, Gabriel Galípolo, que, segundo as manchetes, manteve a mensagem do Copom, disse entender a frustração do mercado e alertou que queda da Selic não garante redução dos juros de longo prazo, porque o prêmio da curva depende da credibilidade do país. Há também ruído externo, com falas de dirigentes do Fed e do Tesouro dos EUA sobre não elevar demais os juros diante do choque de energia ligado à guerra no Irã. As manchetes não dizem qual foi a decisão do Copom nem o nível da Selic.",
+   "observar": "Observar a curva de juros futuros (DI longos) diante da votação do pacote fiscal, que indica se o prêmio de risco cai junto com a Selic, o que pesa no custo de financiar frota.",
+   "ultimos7": 334,
+   "anteriores7": 1
   },
   {
    "tema": "Inflação",
-   "por_que": "O motor é a divulgação do IPCA de outubro, que, segundo várias manchetes, veio abaixo do esperado, mas ainda acima do teto da meta. As matérias destacam a conta de luz mais barata como fator de alívio e os alimentos, como o tomate, ainda pressionando. Algumas manchetes da lista não tratam de inflação, como a da CPI do Master, o que indica ruído na classificação.",
-   "observar": "Acompanhe o IPCA-15 e o IPCA de novembro para ver se a desaceleração continua sem o efeito da energia, e o comportamento do diesel nos itens de transporte.",
-   "ultimos7": 275,
+   "por_que": "A alta reflete a divulgação do IPCA de outubro: segundo as manchetes, a inflação desacelerou para 0,14% no mês, mas segue acima da meta, com pressão de câmbio e El Niño. Para você, o destaque é que São Luís teve a 3ª maior inflação de outubro e segue com a maior alta do país no ano. As manchetes não detalham quais grupos de preços puxaram São Luís.",
+   "observar": "Observar a abertura do IPCA de São Luís por grupo, especialmente transportes, combustíveis e alimentação, porque é isso que pesa no custo por km e no índice usado para reajustar a tarifa.",
+   "ultimos7": 321,
    "anteriores7": 0
   },
   {
    "tema": "Transporte coletivo e tarifas",
-   "por_que": "O tema reúne assuntos variados, e parte deles nem é de transporte coletivo, como tarifas aéreas da Azul e pedágio. No ônibus urbano, as manchetes citam a discussão da jornada 5×2 em São Paulo, com possível impacto em escalas e custos, a adoção de Pix e cartão na catraca, financiamento de frota (R$ 9,7 milhões para 11 ônibus em Passo Fundo) e um modelo de locação de ônibus elétricos apoiado pelo BNDES. As manchetes não mostram um fato único que explique o salto; parece um agregado de notícias setoriais.",
-   "observar": "Acompanhe se a jornada 5×2 avança na Câmara de São Paulo e se o modelo de locação de elétricos do BNDES chega ao Nordeste, porque os dois mexem diretamente no custo por km e na tarifa técnica.",
-   "ultimos7": 274,
-   "anteriores7": 0
+   "por_que": "As manchetes são dispersas: tratam de editais, renovação de frota, tarifas locais e subsídio municipal. Há dois fios mais relevantes. Um é a decisão atribuída a Dino que mantém o fim da escala 6×1 em 16 de dezembro e reduz o prazo de adaptação dos contratos de transporte público. O outro é uma PEC da tarifa zero que abriu debate sobre gratuidade e regulamentação.",
+   "observar": "Observar o texto da decisão sobre a escala 6×1 e como os contratos de concessão serão reequilibrados, já que mais folgas significam mais motoristas por veículo e maior custo de pessoal por km.",
+   "ultimos7": 320,
+   "anteriores7": 4
   },
   {
-   "tema": "Bitcoin e cripto",
-   "por_que": "Segundo as manchetes, o bitcoin caiu para a faixa de US$ 71 mil a 72 mil, a menor cotação em cerca de três meses, com liquidações em sequência. A queda é associada à saída do CEO da Nvidia e à queda das ações da empresa, e os ETFs de bitcoin tiveram saídas de US$ 1,4 bilhão em cinco dias. Aparecem ainda temas regulatórios, como o imposto cripto em Illinois e o limite para stablecoins na Tailândia.",
-   "observar": "Observe se as saídas dos ETFs continuam e se o bitcoin passa a acompanhar as apostas de alta do Fed, o que reforçaria a leitura de aversão global ao risco.",
-   "ultimos7": 268,
-   "anteriores7": 0
+   "tema": "Fiscal e dívida pública",
+   "por_que": "Segundo as manchetes, o pacote de ajuste fiscal do governo Lula está em tramitação no Congresso. A votação foi adiada no Senado, Hugo Motta pode debatê-lo com líderes na Câmara e o mercado passou do alívio à cautela. Também se fala em Lula avaliando quatro nomes para a Fazenda, mas as manchetes não detalham o conteúdo do pacote nem o motivo da possível troca.",
+   "observar": "Observar a data e o texto final da votação do pacote e a definição do comando da Fazenda, que influenciam juros futuros, câmbio e o preço do diesel.",
+   "ultimos7": 236,
+   "anteriores7": 1
   }
  ],
- "tendencias_date": "2026-11-12"
+ "tendencias_date": "2026-11-13"
 }
