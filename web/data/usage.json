@@ -44,12 +44,12 @@
   ]
  },
  "2026-11-13": {
-  "calls": 15,
-  "in": 24216,
-  "out": 19516,
-  "cache_read": 36738,
-  "cache_write": 24952,
-  "usd": 0.6193,
+  "calls": 19,
+  "in": 27081,
+  "out": 24144,
+  "cache_read": 48984,
+  "cache_write": 29034,
+  "usd": 0.7462,
   "models": [
    "claude-opus-5-5"
   ]
