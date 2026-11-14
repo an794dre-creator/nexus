@@ -1,34 +1,30 @@
 {
- "manchete": "Senado aprova texto-base do ajuste fiscal, mas mercado desconfia: dólar no maior nível em 17 meses e São Luís segue com a maior inflação do país no ano",
+ "manchete": "Copom interrompe cortes e mantém Selic em 13,75%, enquanto dólar acumula alta semanal com incerteza fiscal e Fed mais duro; diesel importado perde subsídio de R$ 1,40",
  "resumo": [
-  "Ajuste fiscal: segundo a Agência Senado, o texto-base do projeto de ajuste (PLP 299/2026) foi aprovado por 45 a 31 na quinta (12), com corte de benefícios fiscais e mudança na base de cálculo do piso da saúde; os pontos pendentes ficaram para terça (17). Importa porque mexe em renúncias tributárias e na vinculação de gastos, temas centrais de Economia do Setor Público.",
-  "Diesel no pacote: segundo a Tribuna da Região, o ajuste aprovado no Senado muda regras para o preço do diesel, a verba da saúde e as isenções de impostos. O material não detalha a mudança. Para a empresa de ônibus, convém checar o texto, porque o diesel é um dos maiores itens do custo por km e pode exigir pedido de reajuste.",
-  "Câmbio e juros: segundo a Agência Brasil, o dólar subiu 1,58% e fechou acima de R$ 5,65 na quinta, maior patamar desde junho de 2025, puxado pela insatisfação com o pacote e pelo dólar forte no exterior. O Valor relata que o mercado vê o projeto como sem mudanças estruturais para frear a dívida. Dólar alto e Brent perto de US$ 97 pressionam diesel, peças e chassis importados.",
-  "Inflação local: segundo O Imparcial, com dados do IBGE, o IPCA de São Luís foi de 0,45% em outubro, contra 0,14% na média nacional, e acumula 5,21% em 2026, a maior alta entre as 16 áreas pesquisadas. Isso pesa nos custos locais e na pressão salarial dos rodoviários, e serve de tema para a disciplina de Projeto de Pesquisa.",
-  "Tarifa zero em debate: segundo a Agência iNFRA, uma PEC abre debate sobre gratuidade no transporte e receio com a regulamentação. Cotia terá tarifa zero no domingo do Enem e Porto Velho divulga tarifa reduzida. Para o operador, a pergunta central é quem financia a remuneração por km quando a receita tarifária some.",
-  "Varejo: segundo o Valor, as vendas do varejo cresceram 0,2% em setembro, contra previsão de queda de 0,2%. Uma demanda mais firme reduz a chance de alívio rápido nos juros, com a Selic em 13,75%."
+  "Segundo o Estadão, o Copom interrompeu o ciclo de cortes e manteve a Selic em 13,75% ao ano. Importa porque juros altos por mais tempo encarecem crédito, inclusive financiamento de frota e capital de giro.",
+  "De acordo com a Agência Brasil, o dólar fechou estável a R$ 5,65 na sexta, mas subiu 2,63% na semana, pressionado por incertezas sobre o pacote fiscal e turbulência externa; o Ibovespa subiu 0,66%. Câmbio mais caro tende a pressionar preços de importados, como diesel e peças.",
+  "Segundo a Folha, a equipe econômica discute propor a Lula uma PEC para atingir gastos hoje fora dos limites do arcabouço fiscal, como segunda fase do ajuste. É tema direto de Economia do Setor Público: regras fiscais e credibilidade.",
+  "O G1 relata que o mercado financeiro prevê juros de dois dígitos até 2030, contrastando com a projeção de 2023 de Selic abaixo de 10% já em 2024. Mostra como expectativas fiscais e de inflação travam a queda dos juros.",
+  "Segundo a Folha, os preços ao produtor nos EUA voltaram a subir em outubro, maior alta anual em quatro anos, reforçando expectativas de novas altas do Fed. Juros americanos maiores podem atrair capital para fora do Brasil e pressionar o câmbio.",
+  "O Ministério da Fazenda informou, segundo a Agência Brasil, que não renovará a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082; a subvenção de R$ 2,12 citada na fonte não muda. Para uma empresa de ônibus, isso pode significar diesel mais caro e pressão no custo por km."
  ],
  "acompanhar_hoje": [
-  "Votação dos destaques do PLP 299/2026 no Senado na terça (17) e o calendário de Hugo Motta na Câmara.",
-  "Texto final sobre as regras do diesel no ajuste fiscal e eventual repasse da Petrobras/ANP ao preço na bomba.",
-  "Fechamento do dólar frente aos R$ 5,65 de quinta e reação dos juros futuros à inflação dos EUA.",
-  "Abertura do IPCA de São Luís por grupos no IBGE (alimentos, transportes, habitação) para entender a alta local."
+  "Comunicado e ata do Copom: sinalização sobre duração da pausa na Selic",
+  "Reajuste de preço do diesel nas distribuidoras/postos do Maranhão após fim do subsídio de R$ 1,40",
+  "Detalhes da PEC sobre gastos fora do arcabouço e reação do dólar e juros futuros",
+  "Próximos dados de inflação nos EUA e falas de dirigentes do Fed sobre nova alta"
  ],
- "pergunta_estudo": "Economia do Setor Público: o ajuste fiscal corta benefícios fiscais e altera regras do diesel. Usando a teoria da incidência tributária e a elasticidade-preço da demanda, quem tende a arcar com o ônus de uma menor desoneração do diesel: as empresas de ônibus, os passageiros ou o poder concedente via subsídio? Como a resposta muda em contratos com reajuste por fórmula paramétrica?",
- "conceito": "tributacao",
+ "pergunta_estudo": "Em Economia do Setor Público: por que a credibilidade de uma regra fiscal (como o arcabouço) influencia a taxa de juros que o Banco Central consegue praticar, e como gastos fora do limite afetam a sustentabilidade da dívida pública?",
+ "conceito": "divida",
  "itens": [
-  "a6d40b6dba6072ca",
-  "6f16a18e8c3dc719",
-  "1d167bd7093178ac",
-  "5076674725c23c15",
-  "6fd664008300f3f5",
-  "26d039e9147e792d",
-  "374733b6e921d0dd",
-  "19967bc6c847b823",
-  "3214e40c9041f72c",
-  "5f83e310ea1d7d5b"
+  "fdc376af8a007afe",
+  "aaaaeb830cb38422",
+  "5faa34269c1c4586",
+  "3a3a91807b0dcbc5",
+  "104f1346231ae4ce",
+  "7ea3172402664452"
  ],
- "date": "2026-11-13",
- "created": "2026-11-13T15:32:32.539357+00:00",
+ "date": "2026-11-14",
+ "created": "2026-11-14T10:42:40.941822+00:00",
  "model": "claude-opus-5-5"
 }

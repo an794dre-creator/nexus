@@ -384,40 +384,117 @@
     "titulo_original": "Banking System Vulnerability: 2026 Update",
     "publicado": "2026-11-12T13:25:00Z"
    }
+  ],
+  "2026-11-14": [
+   {
+    "ref": "048f055fdee172d8",
+    "titulo": "Choque de terras raras: perdas desproporcionais no PIB",
+    "tipo": "método",
+    "o_que_e_novo": "A coluna apresenta um modelo de rede de produção para quantificar perdas de produto causadas por uma escassez grande e permanente de terras raras. Segundo o resumo, em horizontes menores que um ano a perda de PIB começa em 0,6%, apesar de o mercado ser pequeno em valor.",
+    "como_funciona": "Modelos de rede (insumo-produto) rastreiam como um insumo de baixo valor, mas sem substituto no curto prazo, trava a produção dos setores que dependem dele, e isso se propaga pela cadeia. Com baixa elasticidade de substituição, a perda não é proporcional à participação do insumo no PIB. O resumo não detalha a calibração nem a faixa completa de resultados; é preciso ler o original.",
+    "calculo": "Aproximação de Hulten: ΔPIB ≈ participação do insumo × choque. Ex.: 0,1% × (−50%) = −0,05%. Com substituição baixa a perda real pode ser muito maior, como os 0,6% citados.",
+    "por_que_importa": "Mostra que a dependência de insumos críticos concentrados em poucos países é um risco macro, tema central de desenvolvimento e política industrial. Também questiona a ideia de que o peso de um setor no PIB mede sua importância.",
+    "como_aplicar": "Na empresa, mapeie insumos de baixo custo e sem substituto (peças, chips de validadores, ARLA) e calcule o custo de um ônibus parado por falta deles. No curso, use o caso em Estratégias de Desenvolvimento Comparadas.",
+    "conceito": "estado_desenv",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/macroeconomic-effects-rare-earth-supply-disruptions",
+    "titulo_original": "Macroeconomic effects of rare earth supply disruptions",
+    "publicado": "2026-11-14T00:00:00Z"
+   },
+   {
+    "ref": "531b0ff76f74698d",
+    "titulo": "IA: ganho de capacidade por dólar caiu cerca de 69%",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Garicano e Imas estimam que as capacidades de IA melhoraram 1,91 vez mais rápido após outubro de 2025, mas o gasto em P&D cresceu 6,19 vezes e a força técnica 3,10 vezes. Assim, o ganho medido por dólar caiu cerca de 69% e por funcionário-ano cerca de 38%.",
+    "como_funciona": "É uma conta de produtividade da pesquisa: divide-se a aceleração do produto (capacidade) pela aceleração dos insumos (dinheiro e pessoas). Se os insumos crescem mais que o produto, os retornos marginais estão caindo. Isso contraria a tese de 'explosão de inteligência' autossustentada, embora dependa da métrica de capacidade escolhida.",
+    "calculo": "Ganho por dólar = 1,91 / 6,19 ≈ 0,31 → queda de ~69%. Por trabalhador = 1,91 / 3,10 ≈ 0,62 → queda de ~38%.",
+    "por_que_importa": "Dá uma forma simples e replicável de testar se uma onda tecnológica tem retornos crescentes ou decrescentes. É um bom ponto de debate sobre Schumpeter e sobre o ritmo real da difusão da IA.",
+    "como_aplicar": "Use a mesma razão produto/insumo para avaliar projetos de tecnologia na empresa (ex.: ganho em km rodados por real investido em telemetria). Em Inovação e Desenvolvimento, discuta retornos decrescentes da P&D.",
+    "conceito": "schumpeter",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/are-we-witnessing-an-intelligence-explosion.html?utm_source=rss&utm_medium=rss&utm_campaign=are-we-witnessing-an-intelligence-explosion",
+    "titulo_original": "Are we witnessing an intelligence explosion?",
+    "publicado": "2026-11-13T18:39:00Z"
+   },
+   {
+    "ref": "388334eb878e1431",
+    "titulo": "IA na radiologia mudou a geografia do trabalho especializado",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Com dados do Medicare dos EUA de 2013 a 2024, a coluna mostra que a difusão da IA não reduziu simplesmente o trabalho dos radiologistas, como previsões baseadas em tarefas sugeriam. O efeito relevante aparece em outra margem, ligada à geografia do trabalho; o resumo é cortado e não diz o resultado exato.",
+    "como_funciona": "Em vez de contar tarefas automatizáveis, o estudo observa o que de fato aconteceu com volume e localização dos laudos ao longo do tempo. A hipótese provável é que IA e telerradiologia permitem laudar à distância, redistribuindo trabalho entre regiões. É preciso ler o original para confirmar o mecanismo e a magnitude.",
+    "calculo": "",
+    "por_que_importa": "Sugere que a IA pode alterar onde o trabalho qualificado é feito, com efeitos sobre desigualdades regionais. Para periferias como o Maranhão, isso pode ser oportunidade de acesso ou risco de concentração.",
+    "como_aplicar": "Para o TCC, é um bom modelo de desenho empírico com dados administrativos em painel. Na empresa, pense em quais funções analíticas podem ser feitas remotamente com apoio de IA.",
+    "conceito": "regional",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/ai-and-geography-expert-work-evidence-radiology",
+    "titulo_original": "AI and the geography of expert work: Evidence from radiology",
+    "publicado": "2026-11-13T00:00:00Z"
+   },
+   {
+    "ref": "3d9a2e27233b00b7",
+    "titulo": "Ferrovias no México e migração para os EUA",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna estuda como a rede ferroviária mexicana construída entre 1880 e 1910 afetou a migração para os EUA no curto e no longo prazo. A ideia central é que a infraestrutura tem efeito ambíguo: reduz o custo de emigrar, mas também gera desenvolvimento local.",
+    "como_funciona": "No curto prazo, o trem barateia a viagem e facilita a saída. No longo prazo, a integração de mercados eleva renda local e pode reduzir o incentivo a emigrar. O efeito líquido é empírico; o resumo não traz os números.",
+    "calculo": "Efeito líquido = efeito custo de migrar (+) + efeito desenvolvimento local (−).",
+    "por_que_importa": "Ajuda a avaliar infraestrutura de transporte em regiões periféricas, como a Ferrovia Norte-Sul e Carajás no Maranhão. Liga transporte, desenvolvimento e desigualdade regional.",
+    "como_aplicar": "Use como referência metodológica para um TCC sobre transporte e migração no Maranhão. Na empresa, lembre que novas linhas também mudam fluxos de população e demanda no longo prazo.",
+    "conceito": "regional",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/short-and-long-run-effects-railroads-mexico-us-migration",
+    "titulo_original": "The short- and long-run effects of railroads on Mexico–US migration",
+    "publicado": "2026-11-11T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.16556v1",
+    "titulo": "Localizar quebras de média em VARs de alta dimensão",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo propõe um procedimento em três etapas para localizar mudanças de média em VARs de alta dimensão quando a dinâmica autorregressiva é a mesma entre regimes. Primeiro estima quebras preliminares ignorando a dependência e depois estima um VAR esparso comum longe dessas quebras.",
+    "como_funciona": "Etapa 1: busca pontos de mudança nas séries brutas. Etapa 2: estima um VAR esparso usando só períodos sem quebra, evitando contaminação. Etapa 3: refina a localização das quebras usando a estrutura estimada; o resumo é cortado, então detalhes da última etapa exigem ler o original.",
+    "calculo": "y_t = μ_t + A·y_(t−1) + e_t, com μ_t mudando em datas desconhecidas e A igual em todos os regimes.",
+    "por_que_importa": "Permite datar choques estruturais em muitas séries ao mesmo tempo, como mudanças de regime de preços. É útil para separar quebra real de dinâmica normal.",
+    "como_aplicar": "Em versão simples, teste quebras em séries de custo por km, diesel e passageiros (ex.: pós-reajuste ou pós-gratuidade). No Projeto de Pesquisa, serve como referência de método.",
+    "conceito": "regressao",
+    "fonte": "stat.ME",
+    "link": "http://arxiv.org/abs/2611.16556v1",
+    "titulo_original": "Localizing Mean Shifts in High-Dimensional Vector Autoregressive Models",
+    "publicado": "2026-11-12T09:44:53Z"
+   }
   ]
  },
- "date": "2026-11-13",
- "created": "2026-11-13T15:32:32.539357+00:00",
+ "date": "2026-11-14",
+ "created": "2026-11-14T10:42:40.941822+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Juros e Copom",
-   "por_que": "O salto vem sobretudo de falas do presidente do Banco Central, Gabriel Galípolo, que, segundo as manchetes, manteve a mensagem do Copom, disse entender a frustração do mercado e alertou que queda da Selic não garante redução dos juros de longo prazo, porque o prêmio da curva depende da credibilidade do país. Há também ruído externo, com falas de dirigentes do Fed e do Tesouro dos EUA sobre não elevar demais os juros diante do choque de energia ligado à guerra no Irã. As manchetes não dizem qual foi a decisão do Copom nem o nível da Selic.",
-   "observar": "Observar a curva de juros futuros (DI longos) diante da votação do pacote fiscal, que indica se o prêmio de risco cai junto com a Selic, o que pesa no custo de financiar frota.",
-   "ultimos7": 334,
-   "anteriores7": 1
-  },
-  {
    "tema": "Inflação",
-   "por_que": "A alta reflete a divulgação do IPCA de outubro: segundo as manchetes, a inflação desacelerou para 0,14% no mês, mas segue acima da meta, com pressão de câmbio e El Niño. Para você, o destaque é que São Luís teve a 3ª maior inflação de outubro e segue com a maior alta do país no ano. As manchetes não detalham quais grupos de preços puxaram São Luís.",
-   "observar": "Observar a abertura do IPCA de São Luís por grupo, especialmente transportes, combustíveis e alimentação, porque é isso que pesa no custo por km e no índice usado para reajustar a tarifa.",
-   "ultimos7": 321,
-   "anteriores7": 0
-  },
-  {
-   "tema": "Transporte coletivo e tarifas",
-   "por_que": "As manchetes são dispersas: tratam de editais, renovação de frota, tarifas locais e subsídio municipal. Há dois fios mais relevantes. Um é a decisão atribuída a Dino que mantém o fim da escala 6×1 em 16 de dezembro e reduz o prazo de adaptação dos contratos de transporte público. O outro é uma PEC da tarifa zero que abriu debate sobre gratuidade e regulamentação.",
-   "observar": "Observar o texto da decisão sobre a escala 6×1 e como os contratos de concessão serão reequilibrados, já que mais folgas significam mais motoristas por veículo e maior custo de pessoal por km.",
-   "ultimos7": 320,
-   "anteriores7": 4
+   "por_que": "O pico coincide com a divulgação do IPCA de outubro: as manchetes dizem que a inflação desacelerou para 0,14% no mês, mas segue acima da meta. Para São Luís, as manchetes apontam a 3ª maior inflação de outubro entre as capitais e a maior alta acumulada do país no ano. Também pesam falas de dirigentes do Fed (Susan Collins, Mary Daly) sobre inflação persistente nos EUA e possível nova alta de juros.",
+   "observar": "O próximo IPCA, com atenção ao recorte de São Luís (quais grupos puxam a alta local, como transporte e alimentação), e se o diferencial frente à média nacional persiste.",
+   "ultimos7": 329,
+   "anteriores7": 3
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "Segundo as manchetes, o pacote de ajuste fiscal do governo Lula está em tramitação no Congresso. A votação foi adiada no Senado, Hugo Motta pode debatê-lo com líderes na Câmara e o mercado passou do alívio à cautela. Também se fala em Lula avaliando quatro nomes para a Fazenda, mas as manchetes não detalham o conteúdo do pacote nem o motivo da possível troca.",
-   "observar": "Observar a data e o texto final da votação do pacote e a definição do comando da Fazenda, que influenciam juros futuros, câmbio e o preço do diesel.",
-   "ultimos7": 236,
+   "por_que": "As manchetes giram em torno de um pacote fiscal em preparação, incluindo a notícia de que a equipe econômica quer propor a Lula uma PEC para alcançar gastos fora dos limites do arcabouço. O mercado reagiu: o dólar subiu 2,66% na semana e fechou a R$ 5,65, segundo as manchetes, enquanto a FecomercioSP avalia o pacote como insuficiente para estabilizar a dívida e o presidente do PT nega cortes em programas sociais. As manchetes não detalham as medidas nem seus valores.",
+   "observar": "O texto oficial do pacote e da PEC (quais gastos entram, qual economia estimada) e sua tramitação no Congresso.",
+   "ultimos7": 270,
+   "anteriores7": 4
+  },
+  {
+   "tema": "Juros e Copom",
+   "por_que": "Segundo as manchetes, o mercado projeta juros de dois dígitos até 2030, e há estresse nos juros futuros ligado à cautela fiscal doméstica e à expectativa de novas altas nos EUA. Galípolo comparou o debate sobre juros a uma 'briga de torcidas'. As manchetes não informam decisão recente do Copom nem o nível atual da Selic.",
+   "observar": "O próximo comunicado e ata do Copom e o Boletim Focus, para ver se a expectativa de Selic alta por mais tempo se consolida.",
+   "ultimos7": 359,
+   "anteriores7": 6
+  },
+  {
+   "tema": "Diesel e combustíveis",
+   "por_que": "O motivo central é o fim da subvenção extra de R$ 1,40 por litro ao diesel importado, segundo várias manchetes, com a ressalva de uma delas de que um benefício de R$ 2,12 continua. O restante do volume são boletins locais de preço da gasolina, pouco informativos. As manchetes não dizem qual será o efeito no preço na bomba.",
+   "observar": "Os preços de diesel S10 nas distribuidoras e postos do Maranhão (levantamento semanal da ANP) nas próximas semanas, para medir o repasse ao custo por km da frota.",
+   "ultimos7": 122,
    "anteriores7": 1
   }
  ],
- "tendencias_date": "2026-11-13"
+ "tendencias_date": "2026-11-14"
 }
