@@ -461,40 +461,117 @@
     "titulo_original": "Localizing Mean Shifts in High-Dimensional Vector Autoregressive Models",
     "publicado": "2026-11-12T09:44:53Z"
    }
+  ],
+  "2026-11-15": [
+   {
+    "ref": "821e6e11db341667",
+    "titulo": "Crescimento sozinho não salva as contas públicas da OCDE",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo coluna no VoxEU baseada em modelagem da OCDE, o papel do crescimento econômico para resolver tensões fiscais de longo prazo costuma ser superestimado. Sob as políticas atuais, nem um crescimento puxado por produtividade bastaria; seria preciso também contenção de gastos.",
+    "como_funciona": "A sustentabilidade da dívida depende da diferença entre juros reais e crescimento (r−g) e do resultado primário. Se o gasto (por exemplo, previdência e saúde, ou salários indexados) acompanha o crescimento, o ganho de arrecadação é parcialmente anulado. O resumo não detalha o modelo da OCDE; é preciso ler o original para ver as hipóteses de indexação e envelhecimento.",
+    "calculo": "Dívida estável exige primário p = d × (r − g)/(1 + g). Ex.: d = 80% do PIB, r = 4%, g = 2% → p ≈ 0,8 × 0,02/1,02 ≈ 1,57% do PIB.",
+    "por_que_importa": "É o núcleo do debate fiscal brasileiro (arcabouço, vinculações de gasto). Ajuda a avaliar com rigor o argumento de que 'basta crescer'.",
+    "como_aplicar": "Em Economia do Setor Público, refaça a conta acima com dados do Brasil (dívida bruta, Selic real, PIB) e teste cenários de g mais alto com gasto indexado.",
+    "conceito": "divida",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/growth-alone-unlikely-fiscal-saviour-resolving-long-run-fiscal-tensions-oecd",
+    "titulo_original": "Growth alone is an unlikely fiscal saviour; resolving long-run fiscal tensions in OECD countries also requires expenditure restraint",
+    "publicado": "2026-11-15T00:00:00Z"
+   },
+   {
+    "ref": "1dc91e5857021628",
+    "titulo": "IA em produção com 'elos fracos': ganhos lentos, riscos altos",
+    "tipo": "método",
+    "o_que_e_novo": "Post no Marginal Revolution discute um modelo de 'elos fracos' em que as tarefas são complementares. Nele, os ganhos da automação chegam devagar porque a produção fica limitada pela tarefa menos produtiva, mas a mesma complementaridade torna ataques mais danosos.",
+    "como_funciona": "Com baixa elasticidade de substituição entre tarefas (função CES próxima de Leontief), automatizar várias tarefas pouco eleva a produção se uma etapa continua lenta. Pelo mesmo motivo, sabotar uma única etapa derruba o todo. O resumo é cortado no valor da elasticidade; é preciso ler o original.",
+    "calculo": "Y = [Σ a_i·x_i^((σ−1)/σ)]^(σ/(σ−1)); com σ→0, Y ≈ min(x_1,...,x_n). Se 9 de 10 tarefas dobram de produtividade e uma não, Y quase não sobe.",
+    "por_que_importa": "Explica por que a IA demora a aparecer na produtividade agregada, um debate central em Inovação e Desenvolvimento. Também mostra que a dependência digital cria vulnerabilidade sistêmica.",
+    "como_aplicar": "Na empresa de ônibus, identifique o gargalo (manutenção, escala, bilhetagem) antes de investir em automação: o ganho vem de destravar o elo fraco.",
+    "conceito": "schumpeter",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/ai-and-complements.html?utm_source=rss&utm_medium=rss&utm_campaign=ai-and-complements",
+    "titulo_original": "AI and complements",
+    "publicado": "2026-11-15T10:03:58Z"
+   },
+   {
+    "ref": "448359cebdc9c402",
+    "titulo": "Camada de inteligência financeira contínua com IA",
+    "tipo": "técnica de gestão",
+    "o_que_e_novo": "Segundo a McKinsey, um conjunto de ferramentas de IA integrado à área financeira pode melhorar muito a tomada de decisão, separando sinal de ruído de forma contínua ('always-on').",
+    "como_funciona": "Pelo resumo, dá para inferir monitoramento automático de indicadores, alertas de desvio e análises sob demanda no lugar de relatórios mensais estáticos. O detalhamento das ferramentas e da arquitetura não está no resumo; é preciso ler o original.",
+    "calculo": "Alerta de desvio: z = (custo/km real − média móvel 12m)/desvio-padrão; sinalizar se |z| > 2.",
+    "por_que_importa": "Para um controller, a vantagem está em detectar cedo desvios de custo e receita. Também conecta gestão orçamentária com análise de dados.",
+    "como_aplicar": "Monte um painel semanal de custo por km, consumo de diesel por veículo e IPK com alertas estatísticos por desvio, como na conta ilustrativa.",
+    "conceito": "custo_km",
+    "fonte": "McKinsey Insights",
+    "link": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/separating-signal-from-noise-the-always-on-finance-intelligence-layer",
+    "titulo_original": "Separating signal from noise: The always-on finance intelligence layer",
+    "publicado": "2026-11-15T17:15:59Z"
+   },
+   {
+    "ref": "50d55414fc15f330",
+    "titulo": "Inflação percebida conforme o canal de TV",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Coluna no VoxEU sobre a Turquia indica que as expectativas de inflação se polarizam conforme a mídia que as pessoas consomem. O caixa mostra a inflação passada, mas o canal escolhido molda a inflação esperada.",
+    "como_funciona": "As expectativas são formadas por experiência própria e por informação mediada. Se os canais têm viés político, grupos diferentes ancoram expectativas diferentes, o que enfraquece a comunicação do banco central. Os dados e o método não aparecem no resumo; é preciso ler o original.",
+    "calculo": "",
+    "por_que_importa": "Metas de inflação dependem de expectativas ancoradas, e a polarização mina esse canal. Isso é relevante para o Brasil, onde o debate sobre o BC é politizado.",
+    "como_aplicar": "Ideia de TCC: cruzar expectativas de inflação de pesquisas brasileiras com perfil de consumo de mídia ou voto regional.",
+    "conceito": "taylor",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/multimedia/inflation-and-polarisation-reality",
+    "titulo_original": "Inflation and the Polarisation of Reality",
+    "publicado": "2026-11-13T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.16747v1",
+    "titulo": "Desigualdade salarial muda a direção da pesquisa científica",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Estudo com universidades públicas dos EUA propõe que a dispersão salarial não afeta só o quanto o cientista produz, mas o tipo de pesquisa que ele faz: estender linhas conhecidas ou explorar caminhos novos.",
+    "como_funciona": "A teoria de torneios prevê mais esforço com prêmios desiguais, e a comparação social prevê retração. O artigo trata o desempenho como multidimensional e, pelo resumo, testa se a desigualdade empurra para trabalho incremental ou exploratório. Resultados e método não estão no resumo; é preciso ler o original.",
+    "calculo": "",
+    "por_que_importa": "Liga incentivos à direção da inovação, tema de sistemas de inovação. Também ajuda a pensar a política salarial em universidades públicas brasileiras.",
+    "como_aplicar": "Em Inovação e Desenvolvimento ou Projeto de Pesquisa, use-o como modelo de desenho empírico com dados de pessoal público (por exemplo, docentes de universidades federais e produção no Lattes).",
+    "conceito": "sni",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.16747v1",
+    "titulo_original": "Unequal Rewards and the Direction of Scientific Work: Evidence from U.S. Public Universities",
+    "publicado": "2026-11-12T12:58:45Z"
+   }
   ]
  },
- "date": "2026-11-14",
- "created": "2026-11-14T10:42:40.941822+00:00",
+ "date": "2026-11-15",
+ "created": "2026-11-15T17:19:57.308300+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Inflação",
-   "por_que": "O pico coincide com a divulgação do IPCA de outubro: as manchetes dizem que a inflação desacelerou para 0,14% no mês, mas segue acima da meta. Para São Luís, as manchetes apontam a 3ª maior inflação de outubro entre as capitais e a maior alta acumulada do país no ano. Também pesam falas de dirigentes do Fed (Susan Collins, Mary Daly) sobre inflação persistente nos EUA e possível nova alta de juros.",
-   "observar": "O próximo IPCA, com atenção ao recorte de São Luís (quais grupos puxam a alta local, como transporte e alimentação), e se o diferencial frente à média nacional persiste.",
-   "ultimos7": 329,
+   "tema": "Política industrial e inovação",
+   "por_que": "O salto vem de manchetes dispersas, sem um fato central: eventos e congressos (Sebrae Rio Summit, Fórum IEL, congresso da Universidade Ceuma no MA, Web Summit Lisboa), um prêmio a laboratório de IA do Ceará e um estudo sobre montadoras. Não há nas manchetes anúncio de política industrial do governo, então o aumento parece refletir uma agenda de eventos e o uso amplo da palavra \"inovação\", e não uma mudança de política.",
+   "observar": "Se aparecer alguma medida concreta de governo (financiamento, programa setorial, crédito para inovação) que dê substância ao tema além dos eventos.",
+   "ultimos7": 64,
    "anteriores7": 3
   },
   {
-   "tema": "Fiscal e dívida pública",
-   "por_que": "As manchetes giram em torno de um pacote fiscal em preparação, incluindo a notícia de que a equipe econômica quer propor a Lula uma PEC para alcançar gastos fora dos limites do arcabouço. O mercado reagiu: o dólar subiu 2,66% na semana e fechou a R$ 5,65, segundo as manchetes, enquanto a FecomercioSP avalia o pacote como insuficiente para estabilizar a dívida e o presidente do PT nega cortes em programas sociais. As manchetes não detalham as medidas nem seus valores.",
-   "observar": "O texto oficial do pacote e da PEC (quais gastos entram, qual economia estimada) e sua tramitação no Congresso.",
-   "ultimos7": 270,
-   "anteriores7": 4
-  },
-  {
-   "tema": "Juros e Copom",
-   "por_que": "Segundo as manchetes, o mercado projeta juros de dois dígitos até 2030, e há estresse nos juros futuros ligado à cautela fiscal doméstica e à expectativa de novas altas nos EUA. Galípolo comparou o debate sobre juros a uma 'briga de torcidas'. As manchetes não informam decisão recente do Copom nem o nível atual da Selic.",
-   "observar": "O próximo comunicado e ata do Copom e o Boletim Focus, para ver se a expectativa de Selic alta por mais tempo se consolida.",
-   "ultimos7": 359,
-   "anteriores7": 6
-  },
-  {
    "tema": "Diesel e combustíveis",
-   "por_que": "O motivo central é o fim da subvenção extra de R$ 1,40 por litro ao diesel importado, segundo várias manchetes, com a ressalva de uma delas de que um benefício de R$ 2,12 continua. O restante do volume são boletins locais de preço da gasolina, pouco informativos. As manchetes não dizem qual será o efeito no preço na bomba.",
-   "observar": "Os preços de diesel S10 nas distribuidoras e postos do Maranhão (levantamento semanal da ANP) nas próximas semanas, para medir o repasse ao custo por km da frota.",
-   "ultimos7": 122,
-   "anteriores7": 1
+   "por_que": "Segundo as manchetes, o governo, com confirmação do Ministério da Fazenda, encerrou o subsídio extra de R$ 1,40 por litro ao diesel importado, o que uma delas descreve como 40% do apoio em meio à alta da importação. Há alerta no agro sobre possível disparada do preço e críticas ao arcabouço porque o subsídio ficava fora da meta fiscal. Para a empresa de ônibus, isso indica risco de alta no custo por km e de pressão por reajuste da tarifa técnica.",
+   "observar": "Os preços de diesel nas distribuidoras e nos postos do Maranhão nas próximas semanas, e se a Petrobras ajusta o preço nas refinarias.",
+   "ultimos7": 152,
+   "anteriores7": 8
+  },
+  {
+   "tema": "Fiscal e dívida pública",
+   "por_que": "As manchetes se concentram no projeto do governo com medidas de ajuste fiscal: Alckmin diz que ele vai \"na direção correta\", mira superávit, mantém programas sociais e deve ser votado na Câmara, com o Senado também na agenda. Ao mesmo tempo, movimentos sociais e centrais sindicais contestam os cortes, e há críticas à credibilidade do arcabouço. As manchetes não informam os valores nem o conteúdo detalhado das medidas.",
+   "observar": "A votação do projeto na Câmara e no Senado e o que muda no texto em relação aos cortes de gastos.",
+   "ultimos7": 300,
+   "anteriores7": 18
+  },
+  {
+   "tema": "Safra e grãos",
+   "por_que": "As manchetes apontam alta da soja, com recuperação em Chicago após relatório do USDA e o maior patamar do ano em Paranaguá, ajudada pelo dólar, além de milho em alta por vendas dos EUA ao México. Também aparecem o El Niño como risco para a safra de soja e o avanço China–EUA no corte de tarifas, que coloca a soja brasileira no radar. Para o Maranhão, produtor no MATOPIBA, isso pode afetar a renda do agro, e a demanda maior por frete pode pressionar o diesel.",
+   "observar": "Os próximos relatórios do USDA, as previsões climáticas sobre o El Niño e os detalhes do acordo tarifário entre China e EUA.",
+   "ultimos7": 125,
+   "anteriores7": 10
   }
  ],
- "tendencias_date": "2026-11-14"
+ "tendencias_date": "2026-11-15"
 }

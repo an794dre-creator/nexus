@@ -1,30 +1,36 @@
 {
- "manchete": "Copom interrompe cortes e mantém Selic em 13,75%, enquanto dólar acumula alta semanal com incerteza fiscal e Fed mais duro; diesel importado perde subsídio de R$ 1,40",
+ "manchete": "Copom para cortes e mantém Selic em 13,75% enquanto governo aposta no ajuste fiscal no Senado e diesel sem subsídio extra acende alerta de custos para 2027",
  "resumo": [
-  "Segundo o Estadão, o Copom interrompeu o ciclo de cortes e manteve a Selic em 13,75% ao ano. Importa porque juros altos por mais tempo encarecem crédito, inclusive financiamento de frota e capital de giro.",
-  "De acordo com a Agência Brasil, o dólar fechou estável a R$ 5,65 na sexta, mas subiu 2,63% na semana, pressionado por incertezas sobre o pacote fiscal e turbulência externa; o Ibovespa subiu 0,66%. Câmbio mais caro tende a pressionar preços de importados, como diesel e peças.",
-  "Segundo a Folha, a equipe econômica discute propor a Lula uma PEC para atingir gastos hoje fora dos limites do arcabouço fiscal, como segunda fase do ajuste. É tema direto de Economia do Setor Público: regras fiscais e credibilidade.",
-  "O G1 relata que o mercado financeiro prevê juros de dois dígitos até 2030, contrastando com a projeção de 2023 de Selic abaixo de 10% já em 2024. Mostra como expectativas fiscais e de inflação travam a queda dos juros.",
-  "Segundo a Folha, os preços ao produtor nos EUA voltaram a subir em outubro, maior alta anual em quatro anos, reforçando expectativas de novas altas do Fed. Juros americanos maiores podem atrair capital para fora do Brasil e pressionar o câmbio.",
-  "O Ministério da Fazenda informou, segundo a Agência Brasil, que não renovará a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082; a subvenção de R$ 2,12 citada na fonte não muda. Para uma empresa de ônibus, isso pode significar diesel mais caro e pressão no custo por km."
+  "Segundo o Estadão, o Copom interrompeu o ciclo de cortes e manteve a Selic em 13,75% ao ano; para O Cafezinho, isso mantém o Brasil no topo dos juros reais. Importa porque encarece crédito, inclusive financiamento de frota, e pesa sobre o custo da dívida pública.",
+  "De acordo com o Valor, o Senado deve votar na terça (17) os destaques do PLP 299/2026, com medidas de ajuste fiscal para 2027; Alckmin disse (Folha, G1, Poder360) que o projeto 'vai na direção correta', mira superávit para reduzir juros e mantém programas sociais. É a aposta do governo para abrir espaço a cortes futuros da Selic.",
+  "Análise do Valor discute o desafio de transformar discurso fiscal em confiança, e Fabio Kanczuk, ex-diretor do BC, avalia que elevar a meta de inflação pouco ajudaria a estabilizar a dívida. Importa para entender a relação entre credibilidade, juros e sustentabilidade da dívida.",
+  "A BM&C relata críticas ao arcabouço por o subsídio ao diesel ficar fora da meta fiscal, e o CompreRural fala em alerta com o fim do subsídio extra de R$ 1,40 no diesel. Para quem opera ônibus, diesel é um dos maiores itens do custo por km.",
+  "Segundo a NTC&Logística, citada pelo Mobilidade Sampa, o transporte rodoviário de cargas deve ter alta significativa de custos a partir de 1º de janeiro de 2027, com repasse 'inevitável' aos fretes. Sinal de pressão de custos que pode alcançar também o transporte de passageiros.",
+  "Lula afirmou, segundo Exame e Imirante, que o Brasil buscou novos parceiros em vez de 'ficar chorando' após o tarifaço dos EUA, citando crescimento do comércio com China, Alemanha, Indonésia e Vietnã. Tema central para inserção externa e estratégias de desenvolvimento."
  ],
  "acompanhar_hoje": [
-  "Comunicado e ata do Copom: sinalização sobre duração da pausa na Selic",
-  "Reajuste de preço do diesel nas distribuidoras/postos do Maranhão após fim do subsídio de R$ 1,40",
-  "Detalhes da PEC sobre gastos fora do arcabouço e reação do dólar e juros futuros",
-  "Próximos dados de inflação nos EUA e falas de dirigentes do Fed sobre nova alta"
+  "Votação dos destaques do PLP 299/2026 no Senado na terça (17) e envio do texto à Câmara",
+  "Comunicado/ata do Copom para sinais sobre retomada ou não de cortes da Selic",
+  "Definição oficial sobre o fim do subsídio extra ao diesel e reação dos preços nas distribuidoras",
+  "Divulgação do IBC-Br e da ata do Fed, citados na agenda do Valor"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: por que a credibilidade de uma regra fiscal (como o arcabouço) influencia a taxa de juros que o Banco Central consegue praticar, e como gastos fora do limite afetam a sustentabilidade da dívida pública?",
+ "pergunta_estudo": "Em Economia do Setor Público: um ajuste fiscal que busca superávit primário pode reduzir a taxa de juros e estabilizar a relação dívida/PIB? Compare essa visão com a proposta de elevar a meta de inflação e com críticas heterodoxas sobre o efeito contracionista do ajuste.",
  "conceito": "divida",
  "itens": [
   "fdc376af8a007afe",
-  "aaaaeb830cb38422",
-  "5faa34269c1c4586",
-  "3a3a91807b0dcbc5",
-  "104f1346231ae4ce",
-  "7ea3172402664452"
+  "382430bf93bffdd7",
+  "ae247b14f52ea89f",
+  "444ecb62093a6f43",
+  "bae4d77efa93c34f",
+  "145c7df9ca6cd42f",
+  "bb987ea687cf23a1",
+  "f7e7bae1750e4609",
+  "b10faf878e36526b",
+  "8af73bea591f5f3f",
+  "8b3b328f48824890",
+  "1ce9ec89bc246617"
  ],
- "date": "2026-11-14",
- "created": "2026-11-14T10:42:40.941822+00:00",
+ "date": "2026-11-15",
+ "created": "2026-11-15T17:19:57.308300+00:00",
  "model": "claude-opus-5-5"
 }
