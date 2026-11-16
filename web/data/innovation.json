@@ -538,40 +538,117 @@
     "titulo_original": "Unequal Rewards and the Direction of Scientific Work: Evidence from U.S. Public Universities",
     "publicado": "2026-11-12T12:58:45Z"
    }
+  ],
+  "2026-11-16": [
+   {
+    "ref": "48e65b7d4b2b40a4",
+    "titulo": "Quanto a inflação reduz a dívida pública na zona do euro",
+    "tipo": "método",
+    "o_que_e_novo": "Segundo a coluna do VoxEU/CEPR, um novo arcabouço de decomposição da dívida mede quanto a inflação afetou a razão dívida/PIB dos cinco maiores emissores soberanos da zona do euro entre 2005 e 2025. O resumo não traz o resultado numérico, que precisa ser lido no original.",
+    "como_funciona": "A decomposição clássica separa a variação da dívida/PIB em juros reais, crescimento real, resultado primário e ajustes. A inflação reduz a razão porque infla o PIB nominal, mas pode elevar os juros nominais na rolagem, dependendo do prazo e da indexação da dívida. O método novo provavelmente isola esses canais, mas o detalhe exige a leitura do texto completo.",
+    "calculo": "Δb ≈ [(i − π − g)/(1 + π + g)]·b(t−1) − superávit primário. Exemplo: b = 80%, i = 3%, π = 4%, g = 1% → (3−4−1)/1,05·0,8 ≈ −1,5 p.p. ao ano só pelo efeito juros-crescimento.",
+    "por_que_importa": "É o núcleo da discussão de sustentabilidade fiscal em Economia do Setor Público e vale também para o Brasil, cuja dívida tem grande parte indexada à Selic e ao IPCA. Mostra que a inflação só reduz a dívida enquanto não é repassada aos juros.",
+    "como_aplicar": "Refaça a decomposição para a dívida bruta brasileira com dados do Banco Central como exercício ou tema de TCC, separando os efeitos de juros, inflação, crescimento e primário.",
+    "conceito": "divida",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/effects-inflation-euro-area-public-debt",
+    "titulo_original": "The effects of inflation on euro area public debt",
+    "publicado": "2026-11-16T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.18116v1",
+    "titulo": "Pesos positivos não garantem inferência válida em TWFE",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo mostra que a regressão com efeitos fixos duplos (TWFE) pode dar inferência inadequada mesmo quando todos os pesos de tratamento são positivos, se o efeito do tratamento variar entre grupos. Os autores propõem um diagnóstico que depende só do desenho do estudo.",
+    "como_funciona": "Sob uma variação local do efeito do tratamento, o viés no pior caso da estatística é (c/q)Γ, em que Γ = √N₁·‖w − u‖₂ mede a distância entre os pesos implícitos do TWFE (w) e pesos iguais (u). Como Γ depende só do desenho, pode ser calculado antes de olhar os resultados. Valores altos de Γ indicam que o TWFE se afasta do efeito médio simples.",
+    "calculo": "Γ = √N₁ × ‖w − u‖₂. Exemplo: N₁ = 100 células tratadas e ‖w − u‖₂ = 0,05 → Γ = 10 × 0,05 = 0,5.",
+    "por_que_importa": "Diferenças-em-diferenças com adoção escalonada é o método mais comum para avaliar políticas públicas, como a adoção de tarifa zero ou de subsídios por municípios. Um TCC que use TWFE precisa justificar a robustez do desenho.",
+    "como_aplicar": "Se o projeto de pesquisa usar DiD com municípios adotando a política em anos diferentes, calcule Γ e compare o TWFE com estimadores robustos, como o de Callaway-Sant'Anna.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.18116v1",
+    "titulo_original": "Positive Weights Do Not Certify TWFE Inference: A Design Diagnostic under Treatment-Effect Heterogeneity",
+    "publicado": "2026-11-13T12:39:59Z"
+   },
+   {
+    "ref": "p:2611.18345v1",
+    "titulo": "Exploração e bem-estar num modelo sraffiano com preferências de consumo",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo constrói um modelo sraffiano de reprodução simples em que preços e distribuição continuam determinados de forma clássica, mas trabalhadores e capitalistas escolhem de forma ótima o que consomem. O resumo indica que, com isso, a medida da mais-valia passa a depender dessas escolhas, mas a conclusão exata precisa ser lida no original.",
+    "como_funciona": "Na tradição clássica, o salário é uma cesta fixa e a exploração é medida pelo trabalho excedente contido nela. Aqui, cada classe escolhe sua cesta segundo as próprias preferências, aos preços de produção dados. Assim, o valor-trabalho do consumo dos trabalhadores, e portanto a taxa de exploração, deixa de ser fixo e passa a depender da demanda.",
+    "calculo": "Taxa de mais-valia e = (L − v)/v, em que L é o trabalho total e v o trabalho incorporado na cesta escolhida pelos trabalhadores. Se L = 8h e v = 5h, e = 0,6; se a cesta escolhida incorporar 4h, e = 1,0.",
+    "por_que_importa": "Liga diretamente Economia Marxista II ao debate sobre microfundamentos: mostra como medir exploração quando o consumo não é uma cesta fixa. Também ajuda a discutir as críticas de Sraffa e Steedman à teoria do valor.",
+    "como_aplicar": "Use como referência num seminário de Economia Marxista II comparando a cesta fixa clássica com o consumo escolhido; leia o artigo para entender os resultados sobre bem-estar.",
+    "conceito": "maisvalia",
+    "fonte": "econ.TH",
+    "link": "http://arxiv.org/abs/2611.18345v1",
+    "titulo_original": "Exploitation, class income and welfare in a Sraffian economy with consumption preferences",
+    "publicado": "2026-11-13T15:53:58Z"
+   },
+   {
+    "ref": "1cdc66429ac3823d",
+    "titulo": "Nova base de dados sobre a composição das reservas de 149 países",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo a coluna do VoxEU/CEPR, uma nova base pública traz a composição por moeda das reservas de 149 bancos centrais, em 23 moedas, de 1999 a 2026. Ela permite analisar país a país o que leva à escolha das moedas de reserva.",
+    "como_funciona": "A base aproveita o número crescente de bancos centrais que divulgam a participação de cada moeda em suas reservas. Isso permite ir além do agregado do FMI (COFER) e testar determinantes como comércio, dívida denominada em moeda estrangeira e sanções. Como os dados foram montados exige a leitura do original.",
+    "calculo": "Participação da moeda j = reservas na moeda j / reservas totais. Exemplo: US$ 200 bi em dólar sobre US$ 340 bi totais = 58,8%.",
+    "por_que_importa": "Ajuda a discutir a hierarquia monetária e a dependência periférica do dólar, tema do pensamento cepalino em Estratégias de Desenvolvimento Comparadas. Também é material para regressões em painel num TCC.",
+    "como_aplicar": "Baixe a base e compare o Brasil com outros emergentes num exercício sobre a hierarquia das moedas e a relação centro-periferia.",
+    "conceito": "cepal",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/inside-central-banks-currency-portfolios-new-evidence-149-countries-and-23-currencies",
+    "titulo_original": "Inside central banks’ currency portfolios: New evidence from 149 countries and 23 currencies",
+    "publicado": "2026-11-16T00:00:00Z"
+   },
+   {
+    "ref": "06ea7758863a8441",
+    "titulo": "Risco cambial explica tanto as taxas de remessa quanto o markup",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a coluna, em 339 corredores de remessas o risco cambial assumido pelas operadoras de transferência explica as tarifas tanto quanto as margens de lucro. Isso desafia a ideia de que tarifas altas refletem apenas falta de concorrência.",
+    "como_funciona": "A operadora de transferência fica exposta à variação do câmbio entre o momento em que recebe e o momento em que entrega a moeda. Esse risco é cobrado como um prêmio embutido na tarifa. Em corredores com câmbio mais volátil, o prêmio é maior, mesmo com concorrência; a especificação econométrica precisa ser conferida no original.",
+    "calculo": "Tarifa ≈ custo + markup + prêmio de risco; prêmio ≈ k·σ(câmbio). Exemplo: com σ = 2% e k = 0,5, o prêmio é de 1% do valor enviado.",
+    "por_que_importa": "Mostra que separar poder de mercado de custo de risco muda a política adequada: mais concorrência ou instrumentos de hedge. A mesma lógica vale para avaliar se um preço alto vem de oligopólio ou de risco.",
+    "como_aplicar": "Na empresa de ônibus, aplique a mesma decomposição ao preço do diesel ou de peças importadas, separando o repasse cambial da margem do fornecedor ao negociar contratos.",
+    "conceito": "cournot",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/currency-risk-drives-remittance-fees-much-markups-do",
+    "titulo_original": "Currency risk drives remittance fees as much as markups do",
+    "publicado": "2026-11-16T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-15",
- "created": "2026-11-15T17:19:57.308300+00:00",
+ "date": "2026-11-16",
+ "created": "2026-11-16T20:37:01.448424+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Política industrial e inovação",
-   "por_que": "O salto vem de manchetes dispersas, sem um fato central: eventos e congressos (Sebrae Rio Summit, Fórum IEL, congresso da Universidade Ceuma no MA, Web Summit Lisboa), um prêmio a laboratório de IA do Ceará e um estudo sobre montadoras. Não há nas manchetes anúncio de política industrial do governo, então o aumento parece refletir uma agenda de eventos e o uso amplo da palavra \"inovação\", e não uma mudança de política.",
-   "observar": "Se aparecer alguma medida concreta de governo (financiamento, programa setorial, crédito para inovação) que dê substância ao tema além dos eventos.",
-   "ultimos7": 64,
-   "anteriores7": 3
-  },
-  {
-   "tema": "Diesel e combustíveis",
-   "por_que": "Segundo as manchetes, o governo, com confirmação do Ministério da Fazenda, encerrou o subsídio extra de R$ 1,40 por litro ao diesel importado, o que uma delas descreve como 40% do apoio em meio à alta da importação. Há alerta no agro sobre possível disparada do preço e críticas ao arcabouço porque o subsídio ficava fora da meta fiscal. Para a empresa de ônibus, isso indica risco de alta no custo por km e de pressão por reajuste da tarifa técnica.",
-   "observar": "Os preços de diesel nas distribuidoras e nos postos do Maranhão nas próximas semanas, e se a Petrobras ajusta o preço nas refinarias.",
-   "ultimos7": 152,
-   "anteriores7": 8
+   "tema": "Orçamento e gasto público",
+   "por_que": "O salto de 4 para 32 manchetes parece puxado pela tramitação no Congresso: aprovação de projetos que destinam recursos, reforço orçamentário para ministérios e Judiciário, e a disputa sobre emendas, com R$ 8,3 bilhões disponíveis segundo uma manchete e Gilmar Mendes cobrando solução para as impositivas. Para o transporte, duas manchetes chamam atenção. A proposta de Orçamento prevê R$ 1,08 bilhão a menos para mobilidade urbana, e São Paulo autorizou empenho de R$ 370,3 milhões para os ônibus. Em São Luís, há disputa entre Prefeitura e Câmara envolvendo vetos e orçamento, mas a manchete não detalha o conteúdo.",
+   "observar": "Vale acompanhar a tramitação da proposta orçamentária na rubrica de mobilidade urbana e o desfecho da disputa orçamentária em São Luís, que pode afetar subsídios e gratuidades no transporte local.",
+   "ultimos7": 32,
+   "anteriores7": 4
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "As manchetes se concentram no projeto do governo com medidas de ajuste fiscal: Alckmin diz que ele vai \"na direção correta\", mira superávit, mantém programas sociais e deve ser votado na Câmara, com o Senado também na agenda. Ao mesmo tempo, movimentos sociais e centrais sindicais contestam os cortes, e há críticas à credibilidade do arcabouço. As manchetes não informam os valores nem o conteúdo detalhado das medidas.",
-   "observar": "A votação do projeto na Câmara e no Senado e o que muda no texto em relação aos cortes de gastos.",
-   "ultimos7": 300,
-   "anteriores7": 18
+   "por_que": "O tema explodiu (306 contra 48 manchetes) com a tramitação de um pacote de ajuste fiscal no Congresso. Houve destaques da oposição no Senado, votação incerta na Câmara e alterações por emendas. Segundo as manchetes, a desconfiança fiscal levou o dólar a cerca de R$ 5,77–5,78, o maior nível desde abril de 2025, acelerou a saída de estrangeiros da bolsa e levou bancos a rebaixar o Brasil. As manchetes não dizem o conteúdo do pacote.",
+   "observar": "Os pontos a observar são a votação do pacote na Câmara, o que sobra dele após as emendas e se o dólar recua ou segue acima de R$ 5,70, o que pressiona o diesel importado e a inflação.",
+   "ultimos7": 306,
+   "anteriores7": 48
   },
   {
-   "tema": "Safra e grãos",
-   "por_que": "As manchetes apontam alta da soja, com recuperação em Chicago após relatório do USDA e o maior patamar do ano em Paranaguá, ajudada pelo dólar, além de milho em alta por vendas dos EUA ao México. Também aparecem o El Niño como risco para a safra de soja e o avanço China–EUA no corte de tarifas, que coloca a soja brasileira no radar. Para o Maranhão, produtor no MATOPIBA, isso pode afetar a renda do agro, e a demanda maior por frete pode pressionar o diesel.",
-   "observar": "Os próximos relatórios do USDA, as previsões climáticas sobre o El Niño e os detalhes do acordo tarifário entre China e EUA.",
-   "ultimos7": 125,
-   "anteriores7": 10
+   "tema": "Diesel e combustíveis",
+   "por_que": "O principal motor (165 contra 31 manchetes) é o fim, segundo as manchetes, do subsídio extra de R$ 1,40 por litro ao diesel importado. Segundo a Abicom e outras fontes, a medida deve elevar o preço nas bombas, com uma estimativa de R$ 0,42 por litro, e dá mais folga à Petrobras. O setor de biodiesel também espera aumento da mistura no primeiro trimestre de 2027. O restante são notícias locais de preços, sem padrão claro.",
+   "observar": "Observe o repasse efetivo ao preço do diesel S10 nas distribuidoras do Maranhão e se a Petrobras reajusta seu preço, pois isso afeta diretamente o custo por km e pode justificar pedido de reajuste da tarifa técnica.",
+   "ultimos7": 165,
+   "anteriores7": 31
+  },
+  {
+   "tema": "Política industrial e inovação",
+   "por_que": "O crescimento (60 contra 12 manchetes) é disperso e as manchetes são vagas: muitas são eventos e feiras de empreendedorismo. A linha mais concreta é a atuação do BNDES, com financiamento à Suzano, aporte via fundo com BNDESPar na Viridis e um estudo com 50 projetos de metrô, VLT e BRT para metrópoles do Nordeste. Não há sinal claro de uma nova política industrial nas manchetes.",
+   "observar": "Vale ver se o estudo do BNDES inclui a Grande São Luís e quais projetos avançam para financiamento, o que pode mudar a concorrência e a integração com o ônibus.",
+   "ultimos7": 60,
+   "anteriores7": 12
   }
  ],
- "tendencias_date": "2026-11-15"
+ "tendencias_date": "2026-11-16"
 }
