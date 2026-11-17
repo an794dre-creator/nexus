@@ -1,36 +1,33 @@
 {
- "manchete": "Dólar dispara a R$ 5,77, maior nível desde abril de 2025, e mercado passa a precificar alta da Selic, com dúvidas sobre a sustentabilidade da dívida pública",
+ "manchete": "Estresse fiscal domina o dia: dólar perto de R$ 5,80 com votação do ajuste no Senado, enquanto juros futuros devolvem parte da alta da véspera",
  "resumo": [
-  "Segundo G1, Folha e Valor, o dólar fechou em alta de cerca de 2,1% nesta segunda (16), a R$ 5,77, maior nível desde abril de 2025, com preocupação dos investidores sobre a trajetória da dívida pública após a aprovação no Senado do plano de ajuste fiscal. Importa porque câmbio mais caro tende a pressionar preços de importados e combustíveis.",
-  "De acordo com o Valor, a curva de juros disparou nos prazos curtos e médios e o mercado passou a precificar possibilidade de alta da Selic em dezembro e taxa de 15,50% em 2027. Isso indica crédito mais caro à frente, inclusive para financiamento de frota.",
-  "Segundo o Boletim Focus do Banco Central (Agência Brasil, G1, Folha), os economistas reduziram as projeções de inflação e PIB para 2026, mas elevaram as de inflação (para 5%, segundo o G1), Selic e dólar para 2027. A piora está concentrada nas expectativas do próximo ano, o que importa para a ancoragem da política monetária.",
-  "Artigo na Folha destaca o diagnóstico fiscal: déficit primário de 0,5% do PIB, mas déficit nominal de 9,5% do PIB ao incluir juros. Isso mostra que o custo da dívida, ligado à própria Selic, pesa mais que o resultado primário.",
-  "Segundo o G1, após aprovar o ajuste atual, a equipe econômica pretende propor medidas para reduzir o crescimento das despesas obrigatórias. Já o senador Humberto Costa, segundo a Agência Senado, defendeu que o ajuste (PLP 299/2026) não compromete políticas sociais. O debate sobre o formato do ajuste deve seguir no Congresso.",
-  "No exterior, segundo o Valor, o ouro caiu ao menor nível em 14 meses com apostas de alta de juros pelo Fed, e ações americanas recuaram, o que reforça a pressão sobre moedas emergentes como o real."
+  "Câmbio sob pressão fiscal: segundo a Folha, o dólar abriu em alta, a R$ 5,795 às 9h45, com o mercado à espera da conclusão da votação do projeto de ajuste fiscal no Senado; o Valor relata que a moeda fechou ontem no maior nível desde abril de 2025. Importa porque câmbio mais caro tende a pressionar preços em reais de itens dolarizados, como o diesel.",
+  "Proposta vista como insuficiente: de acordo com o Valor, o projeto em tramitação é considerado insuficiente pelos agentes financeiros, que cobram medidas estruturais para conter o avanço da dívida pública. É um caso concreto do debate sobre sustentabilidade fiscal e prêmio de risco.",
+  "Curva de juros: o Valor informa que os juros futuros recuam, devolvendo parte dos prêmios da véspera, mas a maioria das taxas ainda opera acima de 15%. Juros longos altos encarecem financiamentos de longo prazo, como a renovação de frota.",
+  "Crédito em desaceleração: segundo o CEO do Itaú e presidente do conselho da Febraban, Milton Maluhy, o crédito deve seguir desacelerando em 2027, com juros elevados e comprometimento de renda das famílias em patamar recorde. Renda comprometida pode afetar consumo e demanda por serviços.",
+  "Efeito no agro: segundo a Globo Rural, com base no Cepea, o dólar valorizado mantém a soja nos maiores patamares do ano em Paranaguá, com a saca a R$ 166,07 na segunda-feira; o Canal Rural pondera que o lucro do produtor depende de custos e vendas já fechadas. Mostra o lado de quem ganha com a desvalorização cambial.",
+  "Cenário externo: o Money Times relata que o presidente do Fed de St. Louis afirmou que os EUA devem precisar de várias altas de juros para controlar a inflação, e o Valor aponta cautela com IA antes do balanço da Nvidia. Juros americanos mais altos podem reforçar a pressão sobre o real."
  ],
  "acompanhar_hoje": [
-  "Definição da equipe econômica e anúncio de novas medidas fiscais com o retorno do presidente Lula, segundo o InfoMoney",
-  "Votação dos itens restantes do PLP 299/2026 no Congresso",
-  "Comportamento da curva de juros futuros e sinais do Copom sobre a reunião de dezembro",
-  "Repasse do câmbio ao diesel: próximos anúncios de preço da Petrobras, mesmo com o Brent em queda"
+  "Resultado da votação do projeto de ajuste fiscal no Senado e eventuais mudanças no texto",
+  "Fechamento do dólar: se fica acima de R$ 5,80 ou devolve parte da alta",
+  "Balanço da Nvidia e reação das bolsas americanas, com efeito sobre apetite a risco",
+  "Movimento dos juros futuros longos (DI) após a votação"
  ],
- "pergunta_estudo": "Economia do Setor Público: com déficit primário de 0,5% do PIB e déficit nominal de 9,5% do PIB, explique pela equação da dinâmica da dívida (relação entre juros reais, crescimento do PIB e superávit primário) por que um ajuste apenas no primário pode não estabilizar a relação dívida/PIB. Discuta também como a alta da Selic retroalimenta o problema.",
+ "pergunta_estudo": "Em Economia do Setor Público: por que o mercado pode considerar 'insuficiente' um ajuste fiscal que não altera a trajetória estrutural da dívida? Explique a relação entre resultado primário, juros reais, crescimento do PIB e estabilização da razão dívida/PIB, e discuta como o prêmio de risco na curva de juros pode retroalimentar essa dinâmica.",
  "conceito": "divida",
  "itens": [
+  "b1149821a35c4a41",
   "26d039e9147e792d",
-  "83fec92fa5a7294d",
-  "386e0c27ac372706",
-  "5a8630d71e845d38",
-  "480737921d41d101",
-  "91efb243df1eac54",
-  "0d9064c7a59773da",
-  "fd1cf7e02b4e78a2",
-  "197b0aeac9141c8e",
-  "a0b5987dd0665045",
-  "b8ddf38564b36d25",
-  "7e715a3844727d4c"
+  "3bf252d9fbec0887",
+  "d1d1664cec8d0e49",
+  "12f4fac99751be0c",
+  "6e33e027b4ed814e",
+  "2e8ff6d590bd98fa",
+  "6d3b12aa4af7eabf",
+  "b4679b477a26b627"
  ],
- "date": "2026-11-16",
- "created": "2026-11-16T20:37:01.448424+00:00",
+ "date": "2026-11-17",
+ "created": "2026-11-17T13:39:22.761426+00:00",
  "model": "claude-opus-5-5"
 }

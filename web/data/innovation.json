@@ -615,40 +615,117 @@
     "titulo_original": "Currency risk drives remittance fees as much as markups do",
     "publicado": "2026-11-16T00:00:00Z"
    }
+  ],
+  "2026-11-17": [
+   {
+    "ref": "p:2611.21230v1",
+    "titulo": "Empirical Bayes: encolher estimativas ruidosas com responsabilidade",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo faz uma revisão do método empirical Bayes (eB) aplicado à economia. O foco é a estimação do efeito de unidades individuais, como escolas, hospitais e bairros. Segundo o resumo, o eB ajuda a separar o sinal do ruído quando as estimativas por regressão são imprecisas.",
+    "como_funciona": "Primeiro, uma regressão estima um parâmetro para cada unidade, e cada estimativa vem com seu erro-padrão. O eB estima a distribuição desses efeitos no conjunto das unidades e puxa cada estimativa em direção à média, encolhendo mais as que são mais ruidosas. O resultado é um ranking mais confiável. Os cuidados específicos que o título sugere ('responsavelmente') exigem a leitura do original.",
+    "calculo": "Estimativa encolhida = média + B × (estimativa bruta − média), com B = σ²_sinal / (σ²_sinal + erro²). Exemplo: média de 2,0; estimativa bruta de 3,0; σ² = 0,25; erro² = 0,25. Então B = 0,5 e a estimativa encolhida fica em 2,5.",
+    "por_que_importa": "Ranquear unidades pelo número bruto premia ou pune quem tem amostra pequena. O eB corrige esse viés com uma conta simples.",
+    "como_aplicar": "Na empresa, dá para ranquear linhas ou motoristas por consumo de diesel por km com encolhimento, para que linhas com poucas viagens não pareçam extremas. No TCC, serve para comparar municípios do Maranhão.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.21230v1",
+    "titulo_original": "Shrink Responsibly: Empirical Bayes in Economics",
+    "publicado": "2026-11-16T15:14:17Z"
+   },
+   {
+    "ref": "p:2611.21207v1",
+    "titulo": "Viés quando o tratamento é rotulado por IA",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo mostra que regredir resultados em tratamentos classificados por modelos de linguagem (LLMs) gera dois vieses: a atenuação clássica por erro de classificação e um termo seletivo, que aparece quando os erros do rótulo se correlacionam com o resultado. Os autores também mostram que, quando os efeitos são heterogêneos, o MQO pondera o ATT e o ATU dando mais peso ao grupo menor. A aplicação é feita com vagas do LinkedIn.",
+    "como_funciona": "O LLM rotula cada observação, por exemplo, se a vaga menciona IA ou não. Os erros desse rótulo sujam a variável de tratamento. Se o LLM erra mais justamente nos casos com resultado alto, surge um viés que vai além da simples atenuação. A proposta de auditoria provavelmente compara uma amostra rotulada por humanos com os rótulos do LLM, mas é preciso ler o original para confirmar.",
+    "calculo": "β_MQO ≈ w·ATT + (1−w)·ATU, com w maior para o grupo menor. O viés total equivale a atenuação mais o termo seletivo.",
+    "por_que_importa": "Usar LLM para classificar textos virou prática comum em TCCs. Sem auditoria, o coeficiente estimado pode estar errado e ainda descrever a população errada.",
+    "como_aplicar": "Em Projeto de Pesquisa, se usar IA para classificar notícias ou documentos, rotule também à mão uma amostra de validação e reporte a taxa de erro do LLM.",
+    "conceito": "pesquisa",
+    "fonte": "stat.AP",
+    "link": "http://arxiv.org/abs/2611.21207v1",
+    "titulo_original": "Who Is the Regression About? Auditing AI-Labeled Treatments When Effects Differ",
+    "publicado": "2026-11-16T15:01:00Z"
+   },
+   {
+    "ref": "p:2611.21364v1",
+    "titulo": "Choque turístico de Game of Thrones medido por controle sintético",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Os autores usam a aparição de San Juan de Gaztelugatxe em Game of Thrones, em 2017, como choque exógeno. Com dados administrativos novos, eles estimam o efeito causal desse choque sobre a economia local. Os números dos resultados não aparecem no resumo.",
+    "como_funciona": "O controle sintético monta uma região 'clone', feita da média ponderada de outras localidades que tinham trajetória parecida antes de 2017. Depois do choque, a diferença entre a região real e o clone é o efeito estimado. Os pesos são escolhidos para minimizar o erro de ajuste no período pré-choque.",
+    "calculo": "Efeito_t = Y_real,t − Σ w_j·Y_j,t, com w_j ≥ 0 e Σw_j = 1.",
+    "por_que_importa": "É um desenho causal reaproveitável para choques locais. Também ajuda a discutir se o turismo gera desenvolvimento ou apenas renda concentrada.",
+    "como_aplicar": "No TCC, o mesmo método serve para avaliar choques no Maranhão, como o turismo nos Lençóis ou a chegada de uma grande obra, comparando o município afetado com um sintético formado por municípios do Nordeste.",
+    "conceito": "regional",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.21364v1",
+    "titulo_original": "A Game of Throngs: How Spotlight Tourism Reshapes Local Economies",
+    "publicado": "2026-11-16T16:34:28Z"
+   },
+   {
+    "ref": "p:2611.21070v1",
+    "titulo": "Choque geopolítico derruba salários no trabalho por aplicativo",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Os autores dizem trazer a primeira evidência sobre o tema na gig economy. Após o alerta de viagem da China para o Japão, em novembro de 2025, o salário-hora anunciado na maior plataforma japonesa de trabalho avulso caiu de forma imediata e persistente nas províncias mais dependentes de turistas chineses. Segundo o resumo, o número de vagas, as horas e o emprego tiveram comportamento diferente do salário, mas o resumo é cortado antes do resultado completo.",
+    "como_funciona": "O método é uma diferença-em-diferenças: compara províncias muito expostas aos turistas chineses com províncias pouco expostas, antes e depois do alerta. Num mercado flexível de trabalho avulso, o ajuste ao choque parece ocorrer pelo preço, ou seja, pelo salário. O detalhe das quantidades exige ler o original.",
+    "calculo": "Δsalário = (pós − pré)_expostas − (pós − pré)_não expostas.",
+    "por_que_importa": "O estudo mostra como um choque externo de demanda chega ao mercado de trabalho local. Também indica que trabalho flexível transfere o risco do choque para o trabalhador.",
+    "como_aplicar": "Em Economia Marxista II, o resultado serve para discutir a precarização e o exército de reserva. Para a empresa, vale lembrar que a demanda ligada ao turismo pode ser volátil.",
+    "conceito": "maisvalia",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.21070v1",
+    "titulo_original": "Trade Tensions Meet the Gig Economy: Evidence from the 2025 Halving of Chinese Travel to Japan",
+    "publicado": "2026-11-16T13:23:09Z"
+   },
+   {
+    "ref": "e7b956b374c7a449",
+    "titulo": "Atritos financeiros enfraquecem a política monetária",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Os autores mapeiam o acesso das empresas a crédito na Europa com a pesquisa SAFE, do BCE. Segundo eles, os países onde as empresas enfrentam atritos financeiros maiores respondem menos à política monetária.",
+    "como_funciona": "Quando o crédito é racionado pela oferta, uma queda da taxa básica não se transmite bem às empresas, porque a restrição está na quantidade de crédito disponível, e não no preço. O canal de crédito fica bloqueado. O resumo não detalha a magnitude do efeito nem a estratégia econométrica usada.",
+    "calculo": "",
+    "por_que_importa": "A conclusão dialoga com o Nordeste brasileiro, onde o crédito é mais escasso, e sugere que a Selic pode ter efeito regional desigual. É relevante para o financiamento de frota.",
+    "como_aplicar": "Na empresa, compare o custo e o acesso a linhas como BNDES Finame ou FNE com o crédito bancário comum quando a Selic cair. O resultado mostra que o fundo regional pode importar mais que a própria Selic.",
+    "conceito": "capficticio",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/geography-financial-frictions",
+    "titulo_original": "The geography of financial frictions",
+    "publicado": "2026-11-17T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-16",
- "created": "2026-11-16T20:37:01.448424+00:00",
+ "date": "2026-11-17",
+ "created": "2026-11-17T13:39:22.761426+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Orçamento e gasto público",
-   "por_que": "O salto de 4 para 32 manchetes parece puxado pela tramitação no Congresso: aprovação de projetos que destinam recursos, reforço orçamentário para ministérios e Judiciário, e a disputa sobre emendas, com R$ 8,3 bilhões disponíveis segundo uma manchete e Gilmar Mendes cobrando solução para as impositivas. Para o transporte, duas manchetes chamam atenção. A proposta de Orçamento prevê R$ 1,08 bilhão a menos para mobilidade urbana, e São Paulo autorizou empenho de R$ 370,3 milhões para os ônibus. Em São Luís, há disputa entre Prefeitura e Câmara envolvendo vetos e orçamento, mas a manchete não detalha o conteúdo.",
-   "observar": "Vale acompanhar a tramitação da proposta orçamentária na rubrica de mobilidade urbana e o desfecho da disputa orçamentária em São Luís, que pode afetar subsídios e gratuidades no transporte local.",
-   "ultimos7": 32,
-   "anteriores7": 4
-  },
-  {
    "tema": "Fiscal e dívida pública",
-   "por_que": "O tema explodiu (306 contra 48 manchetes) com a tramitação de um pacote de ajuste fiscal no Congresso. Houve destaques da oposição no Senado, votação incerta na Câmara e alterações por emendas. Segundo as manchetes, a desconfiança fiscal levou o dólar a cerca de R$ 5,77–5,78, o maior nível desde abril de 2025, acelerou a saída de estrangeiros da bolsa e levou bancos a rebaixar o Brasil. As manchetes não dizem o conteúdo do pacote.",
-   "observar": "Os pontos a observar são a votação do pacote na Câmara, o que sobra dele após as emendas e se o dólar recua ou segue acima de R$ 5,70, o que pressiona o diesel importado e a inflação.",
-   "ultimos7": 306,
-   "anteriores7": 48
+   "por_que": "O salto vem principalmente da votação no Senado de um pacote de ajuste fiscal do governo Lula, com destaques da oposição, alterações por emendas, atos da UNE contra o ajuste e menções ao PLP 299 e ao arcabouço fiscal; o mercado de câmbio aparece reagindo à expectativa da votação, com o dólar chegando a R$ 5,79 segundo uma manchete. Parte da contagem é ruído: notícias sobre 'trimestre fiscal' da Disney e o déficit do Flamengo entraram pela palavra 'fiscal' sem relação com finanças públicas.",
+   "observar": "O texto final aprovado no Senado (resultado dos quatro destaques) e a reação do dólar e dos juros futuros depois da votação.",
+   "ultimos7": 335,
+   "anteriores7": 65
   },
   {
-   "tema": "Diesel e combustíveis",
-   "por_que": "O principal motor (165 contra 31 manchetes) é o fim, segundo as manchetes, do subsídio extra de R$ 1,40 por litro ao diesel importado. Segundo a Abicom e outras fontes, a medida deve elevar o preço nas bombas, com uma estimativa de R$ 0,42 por litro, e dá mais folga à Petrobras. O setor de biodiesel também espera aumento da mistura no primeiro trimestre de 2027. O restante são notícias locais de preços, sem padrão claro.",
-   "observar": "Observe o repasse efetivo ao preço do diesel S10 nas distribuidoras do Maranhão e se a Petrobras reajusta seu preço, pois isso afeta diretamente o custo por km e pode justificar pedido de reajuste da tarifa técnica.",
-   "ultimos7": 165,
-   "anteriores7": 31
+   "tema": "Pobreza e desigualdade",
+   "por_que": "A alta vem sobretudo do calendário de pagamento do Bolsa Família de novembro e da aprovação no Congresso de créditos para os programas sociais: R$ 26 bilhões via empréstimos para o Bolsa Família e R$ 149 bilhões para Bolsa Família, BPC e Previdência. Há ainda um estudo que diz que uma reforma dos programas sociais poderia erradicar a extrema pobreza. A base é pequena (13 manchetes contra 1), então o salto é mais efeito de calendário e de votação do que uma mudança de agenda.",
+   "observar": "Se o financiamento de transferências com empréstimos aparece como ponto de atrito no debate fiscal e nas regras do arcabouço.",
+   "ultimos7": 13,
+   "anteriores7": 1
+  },
+  {
+   "tema": "Orçamento e gasto público",
+   "por_que": "O aumento coincide com a tramitação do Orçamento de 2027, com comissões e bancadas votando emendas, R$ 8,3 bilhões em emendas citados como moeda para avançar a pauta e a discussão no STF sobre emendas impositivas. Para o transporte, as manchetes trazem R$ 1,08 bilhão a menos para mobilidade urbana na proposta orçamentária, o empenho de R$ 370,3 milhões para ônibus em São Paulo e a disputa orçamentária entre Prefeitura e Câmara em São Luís.",
+   "observar": "A votação final do Orçamento de 2027 e o valor que sobra para mobilidade urbana, além do desfecho da disputa sobre o orçamento em São Luís, que pode afetar o subsídio ao ônibus.",
+   "ultimos7": 30,
+   "anteriores7": 7
   },
   {
    "tema": "Política industrial e inovação",
-   "por_que": "O crescimento (60 contra 12 manchetes) é disperso e as manchetes são vagas: muitas são eventos e feiras de empreendedorismo. A linha mais concreta é a atuação do BNDES, com financiamento à Suzano, aporte via fundo com BNDESPar na Viridis e um estudo com 50 projetos de metrô, VLT e BRT para metrópoles do Nordeste. Não há sinal claro de uma nova política industrial nas manchetes.",
-   "observar": "Vale ver se o estudo do BNDES inclui a Grande São Luís e quais projetos avançam para financiamento, o que pode mudar a concorrência e a integração com o ônibus.",
-   "ultimos7": 60,
-   "anteriores7": 12
+   "por_que": "As manchetes são dispersas: eventos e fóruns sobre IA e inovação, além de vários financiamentos do BNDES (Embrapa e Amazônia Legal, Suzano, aporte da BNDESPar na Viridis). Não há um fato central que explique a alta, que parece refletir mais um volume de anúncios do que uma nova política. O item mais relevante para o Nordeste é o estudo do BNDES com 50 projetos de metrô, VLT e BRT para metrópoles da região.",
+   "observar": "Se o estudo do BNDES sobre transporte no Nordeste inclui São Luís e vira linha de financiamento concreta, com impacto na concorrência e na integração com o ônibus.",
+   "ultimos7": 61,
+   "anteriores7": 16
   }
  ],
- "tendencias_date": "2026-11-16"
+ "tendencias_date": "2026-11-17"
 }
