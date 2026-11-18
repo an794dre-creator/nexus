@@ -1,33 +1,34 @@
 {
- "manchete": "Estresse fiscal domina o dia: dólar perto de R$ 5,80 com votação do ajuste no Senado, enquanto juros futuros devolvem parte da alta da véspera",
+ "manchete": "Ajuste fiscal no Senado e sinais de alta de juros nos EUA pressionam o dólar para perto de R$ 5,82 e elevam os juros futuros",
  "resumo": [
-  "Câmbio sob pressão fiscal: segundo a Folha, o dólar abriu em alta, a R$ 5,795 às 9h45, com o mercado à espera da conclusão da votação do projeto de ajuste fiscal no Senado; o Valor relata que a moeda fechou ontem no maior nível desde abril de 2025. Importa porque câmbio mais caro tende a pressionar preços em reais de itens dolarizados, como o diesel.",
-  "Proposta vista como insuficiente: de acordo com o Valor, o projeto em tramitação é considerado insuficiente pelos agentes financeiros, que cobram medidas estruturais para conter o avanço da dívida pública. É um caso concreto do debate sobre sustentabilidade fiscal e prêmio de risco.",
-  "Curva de juros: o Valor informa que os juros futuros recuam, devolvendo parte dos prêmios da véspera, mas a maioria das taxas ainda opera acima de 15%. Juros longos altos encarecem financiamentos de longo prazo, como a renovação de frota.",
-  "Crédito em desaceleração: segundo o CEO do Itaú e presidente do conselho da Febraban, Milton Maluhy, o crédito deve seguir desacelerando em 2027, com juros elevados e comprometimento de renda das famílias em patamar recorde. Renda comprometida pode afetar consumo e demanda por serviços.",
-  "Efeito no agro: segundo a Globo Rural, com base no Cepea, o dólar valorizado mantém a soja nos maiores patamares do ano em Paranaguá, com a saca a R$ 166,07 na segunda-feira; o Canal Rural pondera que o lucro do produtor depende de custos e vendas já fechadas. Mostra o lado de quem ganha com a desvalorização cambial.",
-  "Cenário externo: o Money Times relata que o presidente do Fed de St. Louis afirmou que os EUA devem precisar de várias altas de juros para controlar a inflação, e o Valor aponta cautela com IA antes do balanço da Nvidia. Juros americanos mais altos podem reforçar a pressão sobre o real."
+  "Ajuste fiscal no Senado: segundo o Valor Econômico, a votação dos destaques do pacote foi adiada para hoje, e o pacote pode gerar economia de até R$ 60 bilhões em 2027. Importa porque o resultado mexe com a percepção de risco fiscal, a curva de juros e o câmbio, tema central de Economia do Setor Público.",
+  "Debate político sobre o ajuste: de acordo com a Agência Senado, Leany Lemos (PSB-DF) defendeu o PLP 299/2026 como forma de recuperar a capacidade de investimento do Estado. Eliziane Gama (PSD-MA) apoiou a proposta destacando a preservação de programas sociais. Já Sargento Reginauro (PSDB-CE) criticou o risco para saúde, educação e programas sociais e defendeu cortar despesas. Importa porque mostra o conflito distributivo por trás de qualquer ajuste.",
+  "Dólar em alta: segundo G1 e Folha, a moeda chegou a cerca de R$ 5,82, com o mercado atento aos leilões do Banco Central, ao ajuste fiscal e à ata do Fed. Para uma empresa de ônibus, o dólar mais alto tende a encarecer o diesel e os chassis e peças importados.",
+  "Fed mais duro: de acordo com o Valor, o diretor Christopher Waller defendeu que uma alta de 0,50 p.p. pode ser necessária em dezembro, e o dólar no exterior está na máxima em 19 meses. Importa porque juros americanos maiores puxam capital para os EUA e pressionam moedas emergentes, como prevê a paridade de juros.",
+  "Estudo do BC sobre o crédito: segundo o Valor, o Banco Central concluiu que a transmissão da política monetária é assimétrica e que uma parcela relevante do crédito fica relativamente protegida das variações da Selic. Importa para entender por que a Selic a 13,75% pode ter efeito parcial e para avaliar se o financiamento de frota é subsidiado ou de mercado.",
+  "Crédito a exportadores: de acordo com o Imirante, o Senado aprovou uma MP com R$ 13,5 bilhões em crédito para empresas afetadas pelas tarifas dos EUA e pela guerra no Oriente Médio, dentro do programa Brasil Soberano. É um exemplo de política industrial e creditícia, assunto de Estratégias de Desenvolvimento Comparadas."
  ],
  "acompanhar_hoje": [
-  "Resultado da votação do projeto de ajuste fiscal no Senado e eventuais mudanças no texto",
-  "Fechamento do dólar: se fica acima de R$ 5,80 ou devolve parte da alta",
-  "Balanço da Nvidia e reação das bolsas americanas, com efeito sobre apetite a risco",
-  "Movimento dos juros futuros longos (DI) após a votação"
+  "Resultado da votação dos destaques do pacote de ajuste fiscal no Senado e quanto da economia de até R$ 60 bilhões em 2027 será preservada",
+  "Divulgação da ata do Fed e a reação do dólar e dos juros futuros",
+  "Volume e resultado dos leilões de câmbio do Banco Central",
+  "Repasse da queda do Brent ao diesel no Brasil, frente ao dólar mais alto"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: por que o mercado pode considerar 'insuficiente' um ajuste fiscal que não altera a trajetória estrutural da dívida? Explique a relação entre resultado primário, juros reais, crescimento do PIB e estabilização da razão dívida/PIB, e discuta como o prêmio de risco na curva de juros pode retroalimentar essa dinâmica.",
+ "pergunta_estudo": "(Economia do Setor Público) Um ajuste fiscal pode ser feito revisando benefícios e receitas ou cortando despesas discricionárias. Com base na teoria da sustentabilidade da dívida, compare os efeitos dos dois caminhos sobre o prêmio de risco e a taxa de juros. Explique também quem arca com o custo em cada caso, considerando a incidência e a distribuição.",
  "conceito": "divida",
  "itens": [
-  "b1149821a35c4a41",
-  "26d039e9147e792d",
-  "3bf252d9fbec0887",
-  "d1d1664cec8d0e49",
-  "12f4fac99751be0c",
-  "6e33e027b4ed814e",
-  "2e8ff6d590bd98fa",
-  "6d3b12aa4af7eabf",
-  "b4679b477a26b627"
+  "2db16460110c555a",
+  "752a02ca56a307ea",
+  "16a7748e51a4469c",
+  "545704e8a6882881",
+  "b262a91cbc5e7e12",
+  "c30a3957b2d2b736",
+  "a5f0f84ae22f14f2",
+  "0cc963aac382e508",
+  "d93291dc2a575fb5",
+  "e972a1982da7daa7"
  ],
- "date": "2026-11-17",
- "created": "2026-11-17T13:39:22.761426+00:00",
+ "date": "2026-11-18",
+ "created": "2026-11-18T14:16:59.180171+00:00",
  "model": "claude-opus-5-5"
 }

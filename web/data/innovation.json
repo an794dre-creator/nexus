@@ -692,40 +692,117 @@
     "titulo_original": "The geography of financial frictions",
     "publicado": "2026-11-17T00:00:00Z"
    }
+  ],
+  "2026-11-18": [
+   {
+    "ref": "p:2611.22892v1",
+    "titulo": "Rateio proporcional ponderado de pedágios em redes de rodovias",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo estende o método de divisão igual por segmentos (SES) de rodovias em linha para redes gerais, inclusive com ciclos. Propõe o método WPS, que reparte a receita de quilometragem de cada rota proporcionalmente aos comprimentos ponderados dos segmentos e a sobretaxa fixa por outro critério.",
+    "como_funciona": "Parte-se de um perfil exógeno de fluxos por rota. A receita por km de cada rota é distribuída entre os trechos (e seus operadores) conforme o peso de cada segmento. A parte fixa da tarifa recebe regra própria, que o resumo não detalha. É preciso ler o original para ver os pesos e as propriedades axiomáticas.",
+    "calculo": "Receita do trecho s na rota r = Receita_km(r) × (w_s × L_s) / Σ(w_j × L_j). Ex.: rota de 100 km com R$ 1.000, trecho A de 60 km peso 1 e trecho B de 40 km peso 1,5 → A = 1.000×60/120 = R$ 500; B = R$ 500.",
+    "por_que_importa": "Rateio de receita entre operadores de uma rede é um problema clássico de concessões. A mesma lógica serve para dividir receita de bilhetagem integrada ou de passe livre entre empresas de ônibus.",
+    "como_aplicar": "Use a fórmula como referência para propor critérios de partilha de receita de integração tarifária no sistema de São Luís, com peso por km rodado ou por custo do trecho.",
+    "conceito": "subsidio",
+    "fonte": "econ.TH",
+    "link": "http://arxiv.org/abs/2611.22892v1",
+    "titulo_original": "Weighted Proportional Toll Sharing on General Highway Networks",
+    "publicado": "2026-11-17T15:00:45Z"
+   },
+   {
+    "ref": "p:2611.23174v1",
+    "titulo": "Inferência estatística quando agentes de IA escrevem o código",
+    "tipo": "método",
+    "o_que_e_novo": "Os autores argumentam que agentes de IA que programam e manipulam dados permitem uma forma turbinada de inferência seletiva, testando muitas especificações até achar significância. Isso ameaça os testes de hipótese clássicos.",
+    "como_funciona": "Se o agente roda dezenas de regressões e só reporta a melhor, o p-valor nominal deixa de valer, pois a probabilidade de falso positivo cresce com o número de tentativas. O resumo indica que propõem correções, mas não diz quais; é preciso ler o original.",
+    "calculo": "Com 20 testes independentes a 5%: P(ao menos um falso positivo) = 1 − 0,95^20 ≈ 64%. Correção de Bonferroni: usar α = 0,05/20 = 0,0025.",
+    "por_que_importa": "Afeta diretamente a credibilidade de qualquer TCC que use IA para rodar regressões. Pré-registrar a especificação vira boa prática.",
+    "como_aplicar": "No Projeto de Pesquisa, defina modelo e variáveis antes de rodar os dados e registre todas as especificações testadas.",
+    "conceito": "regressao",
+    "fonte": "stat.ME",
+    "link": "http://arxiv.org/abs/2611.23174v1",
+    "titulo_original": "Inference after coding agents",
+    "publicado": "2026-11-17T18:22:01Z"
+   },
+   {
+    "ref": "p:2611.22921v1",
+    "titulo": "Auditoria de viabilidade antes de investir em IA na logística",
+    "tipo": "técnica de gestão",
+    "o_que_e_novo": "Propõe um teste prévio, o 'acoplamento ação-resultado', para verificar se os registros históricos sustentam uma política de decisão melhor antes de financiar projetos de aprendizado por reforço offline.",
+    "como_funciona": "Mede-se um índice de variância de efeito total: quanto o resultado esperado muda quando a ação muda. Se os dados mostram pouca variação nas ações ou pouco efeito delas, o modelo não terá o que aprender. Detalhes do estimador exigem ler o artigo.",
+    "calculo": "Ideia ilustrativa: índice ≈ Var(E[Y|ação, contexto]) / Var(Y). Se ≈ 0, as ações registradas quase não explicam o resultado.",
+    "por_que_importa": "Evita gastar com projetos de dados que não têm base. É uma lógica de VPL aplicada a projetos analíticos.",
+    "como_aplicar": "Antes de contratar sistema de otimização de escalas ou frota, verifique se o histórico da empresa tem variação suficiente de decisões (horários, frota alocada) e resultados (passageiros, custo/km).",
+    "conceito": "vpl",
+    "fonte": "cs.LG",
+    "link": "http://arxiv.org/abs/2611.22921v1",
+    "titulo_original": "Action-outcome coupling: a pre-investment feasibility audit for offline reinforcement learning in supply chain operations",
+    "publicado": "2026-11-17T15:21:50Z"
+   },
+   {
+    "ref": "cf478e042efed68f",
+    "titulo": "Ipea antecipa resultado primário de outubro de 2026",
+    "tipo": "dado novo",
+    "o_que_e_novo": "O Ipea estima, com dados do Siafi, que o governo central teve superávit primário em outubro de 2026, antes da divulgação oficial do Tesouro. O resumo não traz o valor.",
+    "como_funciona": "A execução orçamentária no Siafi aproxima receitas e despesas primárias registradas. Subtraindo despesas de receitas, sem juros, chega-se ao primário antes da STN publicar.",
+    "calculo": "Resultado primário = Receitas primárias líquidas − Despesas primárias (excluem-se juros).",
+    "por_que_importa": "O primário guia a trajetória da dívida e as expectativas de juros. Juros afetam o custo de financiar frota.",
+    "como_aplicar": "Em Economia do Setor Público, compare a prévia com o dado da STN e calcule o primário necessário para estabilizar a dívida.",
+    "conceito": "divida",
+    "fonte": "IPEA · Carta de Conjuntura",
+    "link": "https://www.ipea.gov.br/cartadeconjuntura/index.php/2026/11/estimativa-preliminar-do-resultado-primario-do-governo-central-em-outubro-de-2026/",
+    "titulo_original": "Estimativa preliminar do resultado primário do governo central em outubro de 2026",
+    "publicado": "2026-11-17T18:29:11Z"
+   },
+   {
+    "ref": "27924393bf77cc9f",
+    "titulo": "Atualizar currículos técnicos importa tanto quanto mais anos de estudo",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Com cinco décadas de currículos obrigatórios do ensino profissional alemão ligados a patentes e registros de trabalhadores, a coluna mostra que mudar o conteúdo do aprendizado acompanha a tecnologia tanto quanto elevar escolaridade.",
+    "como_funciona": "Liga-se a revisão de currículos ocupacionais às inovações patenteadas da área e observa-se a trajetória dos trabalhadores formados. O resumo não detalha efeitos salariais; é preciso ler a coluna.",
+    "calculo": "",
+    "por_que_importa": "Mostra um canal do sistema de inovação pouco discutido: a difusão de conhecimento via formação técnica. Relevante para estratégias de desenvolvimento no Nordeste.",
+    "como_aplicar": "Em Inovação e Desenvolvimento, use como exemplo de SNI; na empresa, revise treinamentos de motoristas e mecânicos quando entra tecnologia nova (telemetria, elétricos).",
+    "conceito": "sni",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/updating-what-workers-learn-technology-training-content-and-supply-expertise",
+    "titulo_original": "Updating what workers learn: Technology, training content, and the supply of expertise",
+    "publicado": "2026-11-17T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-17",
- "created": "2026-11-17T13:39:22.761426+00:00",
+ "date": "2026-11-18",
+ "created": "2026-11-18T14:16:59.180171+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Fiscal e dívida pública",
-   "por_que": "O salto vem principalmente da votação no Senado de um pacote de ajuste fiscal do governo Lula, com destaques da oposição, alterações por emendas, atos da UNE contra o ajuste e menções ao PLP 299 e ao arcabouço fiscal; o mercado de câmbio aparece reagindo à expectativa da votação, com o dólar chegando a R$ 5,79 segundo uma manchete. Parte da contagem é ruído: notícias sobre 'trimestre fiscal' da Disney e o déficit do Flamengo entraram pela palavra 'fiscal' sem relação com finanças públicas.",
-   "observar": "O texto final aprovado no Senado (resultado dos quatro destaques) e a reação do dólar e dos juros futuros depois da votação.",
-   "ultimos7": 335,
-   "anteriores7": 65
-  },
-  {
    "tema": "Pobreza e desigualdade",
-   "por_que": "A alta vem sobretudo do calendário de pagamento do Bolsa Família de novembro e da aprovação no Congresso de créditos para os programas sociais: R$ 26 bilhões via empréstimos para o Bolsa Família e R$ 149 bilhões para Bolsa Família, BPC e Previdência. Há ainda um estudo que diz que uma reforma dos programas sociais poderia erradicar a extrema pobreza. A base é pequena (13 manchetes contra 1), então o salto é mais efeito de calendário e de votação do que uma mudança de agenda.",
-   "observar": "Se o financiamento de transferências com empréstimos aparece como ponto de atrito no debate fiscal e nas regras do arcabouço.",
-   "ultimos7": 13,
-   "anteriores7": 1
+   "por_que": "A alta vem sobretudo do calendário de pagamentos do Bolsa Família de novembro, com várias manchetes repetindo datas e finais de NIS, e uma delas informando que o programa injeta mais de R$ 929 milhões no Maranhão no mês. Há também notícias pontuais: um levantamento do IBGE sobre redução da desigualdade educacional com disparidades persistentes, um estudo que diz que reformar programas sociais poderia erradicar a extrema pobreza, e a aproximação dos Awá-Guajá isolados no Maranhão, com a fome levantada como hipótese. Boa parte do volume é, portanto, rotina de pagamento, não um fato novo de política.",
+   "observar": "Vale acompanhar se o estudo sobre reforma de programas sociais ganha eco no debate do ajuste fiscal, já que há manchetes de parlamentares falando em revisão de benefícios.",
+   "ultimos7": 14,
+   "anteriores7": 3
   },
   {
-   "tema": "Orçamento e gasto público",
-   "por_que": "O aumento coincide com a tramitação do Orçamento de 2027, com comissões e bancadas votando emendas, R$ 8,3 bilhões em emendas citados como moeda para avançar a pauta e a discussão no STF sobre emendas impositivas. Para o transporte, as manchetes trazem R$ 1,08 bilhão a menos para mobilidade urbana na proposta orçamentária, o empenho de R$ 370,3 milhões para ônibus em São Paulo e a disputa orçamentária entre Prefeitura e Câmara em São Luís.",
-   "observar": "A votação final do Orçamento de 2027 e o valor que sobra para mobilidade urbana, além do desfecho da disputa sobre o orçamento em São Luís, que pode afetar o subsídio ao ônibus.",
-   "ultimos7": 30,
-   "anteriores7": 7
+   "tema": "Fiscal e dívida pública",
+   "por_que": "As manchetes giram em torno de um pacote de ajuste fiscal do governo em tramitação no Congresso, com parlamentares se posicionando a favor, contra ou pedindo a preservação de programas sociais. Segundo as manchetes, o mercado reage: o dólar passou de R$ 5,80, os juros futuros subiram depois do adiamento da votação no Senado e o Ibovespa caiu levemente. Os leilões do Banco Central e os juros dos EUA aparecem como fatores somados.",
+   "observar": "Observar a data e o resultado da votação do ajuste no Senado e a reação do dólar e dos juros futuros, que pesam no custo de financiamento de frota.",
+   "ultimos7": 379,
+   "anteriores7": 97
+  },
+  {
+   "tema": "Diesel e combustíveis",
+   "por_que": "Segundo as manchetes, o governo não renovou o subsídio de R$ 1,40 ao diesel importado e não sabe como segurar o preço na bomba, e o fim desse subsídio aparece pressionando preços em Minas. Os sinais de preço são mistos: há manchetes de diesel S-10 recuando para R$ 7,39 em novembro e caindo 0,6% na primeira quinzena. Lá fora, o diesel em nível recorde levou a inflação do Reino Unido a 3,6%, e o setor defende ampliar a mistura de biodiesel para baratear o combustível.",
+   "observar": "Acompanhar os preços semanais da ANP para o diesel no Maranhão nas próximas semanas, para ver se o fim do subsídio chega à bomba e ao custo por km da operação de ônibus.",
+   "ultimos7": 184,
+   "anteriores7": 63
   },
   {
    "tema": "Política industrial e inovação",
-   "por_que": "As manchetes são dispersas: eventos e fóruns sobre IA e inovação, além de vários financiamentos do BNDES (Embrapa e Amazônia Legal, Suzano, aporte da BNDESPar na Viridis). Não há um fato central que explique a alta, que parece refletir mais um volume de anúncios do que uma nova política. O item mais relevante para o Nordeste é o estudo do BNDES com 50 projetos de metrô, VLT e BRT para metrópoles da região.",
-   "observar": "Se o estudo do BNDES sobre transporte no Nordeste inclui São Luís e vira linha de financiamento concreta, com impacto na concorrência e na integração com o ônibus.",
-   "ultimos7": 61,
-   "anteriores7": 16
+   "por_que": "As manchetes são dispersas e não apontam um fato central. Há notícias regionais, como a lei de política industrial do Rio Grande do Norte e o Ceará em 7º no ranking de inovação da FIEC/CNI (mas 24º em empreendedorismo), anúncios do BNDES (até R$ 16 milhões com a Embrapa para a Amazônia Legal e um estudo de rede de transporte para a RMS) e vários eventos locais sobre inteligência artificial. O aumento parece refletir volume de pauta, não uma mudança de política nacional.",
+   "observar": "Ver se o Maranhão aparece nos rankings de inovação ou adota iniciativa semelhante à lei potiguar, o que serve de material para Inovação e Desenvolvimento.",
+   "ultimos7": 62,
+   "anteriores7": 24
   }
  ],
- "tendencias_date": "2026-11-17"
+ "tendencias_date": "2026-11-18"
 }
