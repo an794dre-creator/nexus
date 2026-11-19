@@ -769,40 +769,117 @@
     "titulo_original": "Updating what workers learn: Technology, training content, and the supply of expertise",
     "publicado": "2026-11-17T00:00:00Z"
    }
+  ],
+  "2026-11-19": [
+   {
+    "ref": "p:2611.24266v1",
+    "titulo": "Análise de sensibilidade em opções reais: revisão e recomendações",
+    "tipo": "método",
+    "o_que_e_novo": "O estudo revisa mais de 100 artigos revisados por pares sobre opções reais e examina como fazem análise de sensibilidade. O resumo cita transporte, energia e clima entre os setores de investimento intensivo em capital e indica que o trabalho traz recomendações. Quais são essas recomendações exatamente exige ler o original.",
+    "como_funciona": "Opções reais valorizam a flexibilidade gerencial, como adiar, expandir ou abandonar um investimento sob incerteza, algo que o VPL estático ignora. Como o valor da opção depende muito de premissas como volatilidade, custo e demanda, a análise de sensibilidade mostra o quanto o resultado muda quando cada premissa varia. Pelo resumo, a revisão avalia a transparência dessas análises na literatura e sugere boas práticas.",
+    "calculo": "VPL expandido = VPL estático + valor da opção. Exemplo: renovar a frota agora dá VPL = -200 mil. Esperar 1 ano, com 50% de chance de o diesel subir e o VPL ir a +600 mil, e 50% de cair e você não investir (0), vale 0,5×600/1,12 ≈ 268 mil. Logo esperar vale mais que investir já.",
+    "por_que_importa": "Investir em frota (diesel, elétrico ou GNV) é decisão de capital alto e irreversível, feita sob incerteza de tarifa e de combustível. Saber testar a sensibilidade evita decisões frágeis baseadas em uma única premissa.",
+    "como_aplicar": "No plano de renovação de frota, calcule o VPL com e sem a opção de adiar e varie diesel, IPK e tarifa em ±20% num gráfico tornado. Em Administração Financeira e Orçamentária I, o mesmo exercício pode virar estudo de caso.",
+    "conceito": "vpl",
+    "fonte": "q-fin.CP",
+    "link": "http://arxiv.org/abs/2611.24266v1",
+    "titulo_original": "Sensitivity analysis in real options studies: systematic review and recommendations",
+    "publicado": "2026-11-18T11:45:55Z"
+   },
+   {
+    "ref": "p:2611.23798v1",
+    "titulo": "Índice de progresso econômico local com dados de satélite",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo propõe um Índice de Progresso Econômico (EPI) em nível de subdistrito. O índice é montado com dados de observação da Terra e dados geoespaciais abertos, ponderados por Análise de Componentes Principais (PCA) não supervisionada. O objetivo, segundo o resumo, é monitorar economias locais onde faltam estatísticas subnacionais.",
+    "como_funciona": "Variáveis como luzes noturnas, área construída e infraestrutura indicam a capacidade produtiva e a intensidade de uso do espaço econômico. A PCA reduz essas variáveis a um componente principal, cujos pesos saem dos próprios dados em vez de serem escolhidos pelo pesquisador. O resultado é um índice comparável entre pequenas áreas; as variáveis exatas usadas exigem a leitura do original.",
+    "calculo": "EPI_i = w1·z(luzes_i) + w2·z(área construída_i) + w3·z(estradas_i), em que os pesos w são as cargas do 1º componente principal e z() é a variável padronizada.",
+    "por_que_importa": "No Maranhão, os dados municipais e intramunicipais são escassos e defasados, e esse índice permite medir desigualdades regionais com fontes gratuitas. É um tema de TCC viável e original.",
+    "como_aplicar": "Em Projeto de Pesquisa, replique o índice para os municípios ou bairros da Grande São Luís com luzes noturnas (VIIRS) e OpenStreetMap. Na empresa, cruze o índice com a demanda das linhas para identificar áreas que estão crescendo.",
+    "conceito": "regional",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.23798v1",
+    "titulo_original": "Developing a Subdistrict-Level Economic Progress Index Using Geospatial Data",
+    "publicado": "2026-11-18T04:03:08Z"
+   },
+   {
+    "ref": "p:2611.24402v1",
+    "titulo": "Inferência baseada em desenho para diferenças em diferenças fuzzy",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo trata o diferenças em diferenças (DiD) 'fuzzy', em que a política não muda o tratamento de todos da mesma forma, sob uma ótica baseada em desenho: só a atribuição da política é aleatória, com probabilidades heterogêneas. Ele mostra que o estimador Wald-DiD mistura o efeito sobre os cumpridores com contaminações vindas de quem troca de status e dos 'always-takers'.",
+    "como_funciona": "O DiD comum compara a variação entre grupo tratado e grupo de controle. No caso fuzzy, divide-se o DiD do resultado pelo DiD da taxa de tratamento, como numa variável instrumental. Segundo o resumo, essa razão só identifica o efeito puro sob certas condições; a forma de corrigir as contaminações exige a leitura do original.",
+    "calculo": "Wald-DiD = [ΔY_tratado − ΔY_controle] / [ΔD_tratado − ΔD_controle], em que Y é o resultado e D é a taxa de adesão ao tratamento.",
+    "por_que_importa": "Muitas políticas brasileiras têm adesão parcial, como gratuidades, programas e subsídios. Aplicar o DiD simples a elas pode viesar a conclusão de um TCC.",
+    "como_aplicar": "Se o seu TCC avaliar uma política com adesão parcial (por exemplo, a meia-passagem estudantil), use o Wald-DiD e discuta as fontes de viés. Leve essa discussão para Projeto de Pesquisa.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.24402v1",
+    "titulo_original": "Design-Based Inference for Fuzzy Difference-in-Differences",
+    "publicado": "2026-11-18T13:33:09Z"
+   },
+   {
+    "ref": "8dff4c70f41020dd",
+    "titulo": "Valor fiscal da adaptação climática pelo balanço soberano",
+    "tipo": "método",
+    "o_que_e_novo": "A coluna propõe avaliar a adaptação climática pelo balanço patrimonial do Estado, e não pelo orçamento anual. Por essa lente, segundo o texto, a adaptação reduz o custo fiscal esperado do risco físico climático.",
+    "como_funciona": "O orçamento registra o gasto em adaptação como custo imediato, enquanto o balanço considera também passivos contingentes: os gastos futuros prováveis com desastres. Se a adaptação reduz a probabilidade ou o tamanho dessas perdas, ela diminui o passivo esperado. O efeito acontece 'gradualmente e depois de repente', quando um evento extremo acontece.",
+    "calculo": "Passivo esperado = probabilidade × perda. Exemplo: 10%/ano × R$ 1 bi = R$ 100 mi/ano. Se a adaptação reduz a perda para R$ 400 mi, o ganho é de R$ 60 mi/ano. Um custo de R$ 300 mi se paga em cerca de 5 anos, sem descontar.",
+    "por_que_importa": "Isso muda o debate sobre regra fiscal, porque a adaptação deixa de ser vista como 'gasto' e passa a ser redução de dívida implícita. É relevante para cidades como São Luís, expostas a alagamentos.",
+    "como_aplicar": "Em Economia do Setor Público, use o enfoque de passivos contingentes para discutir a sustentabilidade da dívida. Na empresa, estime o custo esperado de vias alagadas, como desvios e danos à frota.",
+    "conceito": "divida",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/gradually-then-suddenly-fiscal-value-climate-resilience",
+    "titulo_original": "Gradually, then suddenly – the fiscal value of climate resilience",
+    "publicado": "2026-11-18T00:00:00Z"
+   },
+   {
+    "ref": "f8257d22ce95265e",
+    "titulo": "Fusões na Europa elevam markups sem ganho claro de inovação",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna analisa as fusões revisadas pela Comissão Europeia entre 1990 e 2024. Em média, markups e lucros sobem após as fusões; o resumo é cortado na parte sobre patentes ponderadas por citações, que sugere o efeito sobre a inovação.",
+    "como_funciona": "A fusão reduz o número de concorrentes e eleva o poder de mercado, o que aparece como markup (preço sobre custo marginal). A tese pró-escala diz que fusões financiam inovação, e o estudo testa isso medindo patentes ponderadas por citações. O resultado sobre inovação precisa ser confirmado no texto completo.",
+    "calculo": "Markup = P/CMg. Índice de Lerner = (P − CMg)/P = 1/|elasticidade|.",
+    "por_que_importa": "Os resultados desafiam o argumento de 'campeões nacionais', central na discussão sobre Estado desenvolvimentista e política industrial. Também valem para a concentração em concessões de transporte.",
+    "como_aplicar": "Em Estratégias de Desenvolvimento Comparadas e Inovação e Desenvolvimento, contraste essa evidência com Schumpeter (a escala favorece a inovação). Use o índice de Lerner para pensar a concorrência entre operadores.",
+    "conceito": "cournot",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/mergers-and-european-competitiveness-evidence-innovation-and-market-power",
+    "titulo_original": "Mergers and European competitiveness: Evidence on innovation and market power",
+    "publicado": "2026-11-19T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-18",
- "created": "2026-11-18T14:16:59.180171+00:00",
+ "date": "2026-11-19",
+ "created": "2026-11-19T13:30:05.871493+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Pobreza e desigualdade",
-   "por_que": "A alta vem sobretudo do calendário de pagamentos do Bolsa Família de novembro, com várias manchetes repetindo datas e finais de NIS, e uma delas informando que o programa injeta mais de R$ 929 milhões no Maranhão no mês. Há também notícias pontuais: um levantamento do IBGE sobre redução da desigualdade educacional com disparidades persistentes, um estudo que diz que reformar programas sociais poderia erradicar a extrema pobreza, e a aproximação dos Awá-Guajá isolados no Maranhão, com a fome levantada como hipótese. Boa parte do volume é, portanto, rotina de pagamento, não um fato novo de política.",
-   "observar": "Vale acompanhar se o estudo sobre reforma de programas sociais ganha eco no debate do ajuste fiscal, já que há manchetes de parlamentares falando em revisão de benefícios.",
-   "ultimos7": 14,
-   "anteriores7": 3
+   "por_que": "A alta parece puxada sobretudo pelo calendário de pagamento do Bolsa Família de novembro, que gera várias manchetes repetitivas, incluindo uma que fala em mais de R$ 929 milhões injetados no Maranhão. Somam-se um levantamento do IBGE que aponta redução da desigualdade educacional com disparidades persistentes, um estudo segundo o qual a reforma de programas sociais poderia erradicar a extrema pobreza e o caso dos Awá-Guajá no Maranhão, em que a hipótese de fome aparece como pergunta, não como fato. Parte do aumento é volume de notícias de serviço, e não um evento novo.",
+   "observar": "Vale acompanhar se o estudo sobre reforma dos programas sociais ganha resposta do governo ou do Congresso, e quais números o IBGE detalha sobre o Nordeste e o Maranhão.",
+   "ultimos7": 13,
+   "anteriores7": 4
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "As manchetes giram em torno de um pacote de ajuste fiscal do governo em tramitação no Congresso, com parlamentares se posicionando a favor, contra ou pedindo a preservação de programas sociais. Segundo as manchetes, o mercado reage: o dólar passou de R$ 5,80, os juros futuros subiram depois do adiamento da votação no Senado e o Ibovespa caiu levemente. Os leilões do Banco Central e os juros dos EUA aparecem como fatores somados.",
-   "observar": "Observar a data e o resultado da votação do ajuste no Senado e a reação do dólar e dos juros futuros, que pesam no custo de financiamento de frota.",
-   "ultimos7": 379,
-   "anteriores7": 97
+   "por_que": "Segundo as manchetes, o Senado aprovou um pacote fiscal, que agora segue para a Câmara. O mercado reagiu com o dólar perto de R$ 5,90 a R$ 5,91, alta dos juros futuros e taxas do Tesouro Direto em 15,43%, atribuídas ao fiscal e ao Fed. O ministro do Planejamento prevê estabilizar a dívida em até 3 anos, mas economistas citados consideram o pacote insuficiente e criticam a falta de cortes, e as manchetes ainda mencionam a escolha de nomes para a Fazenda.",
+   "observar": "Os pontos a acompanhar são a votação na Câmara (e se o texto sai desidratado), a definição do comando da Fazenda e o comportamento da curva de juros e do câmbio, que pesam no custo de financiar frota.",
+   "ultimos7": 391,
+   "anteriores7": 168
   },
   {
    "tema": "Diesel e combustíveis",
-   "por_que": "Segundo as manchetes, o governo não renovou o subsídio de R$ 1,40 ao diesel importado e não sabe como segurar o preço na bomba, e o fim desse subsídio aparece pressionando preços em Minas. Os sinais de preço são mistos: há manchetes de diesel S-10 recuando para R$ 7,39 em novembro e caindo 0,6% na primeira quinzena. Lá fora, o diesel em nível recorde levou a inflação do Reino Unido a 3,6%, e o setor defende ampliar a mistura de biodiesel para baratear o combustível.",
-   "observar": "Acompanhar os preços semanais da ANP para o diesel no Maranhão nas próximas semanas, para ver se o fim do subsídio chega à bomba e ao custo por km da operação de ônibus.",
-   "ultimos7": 184,
-   "anteriores7": 63
+   "por_que": "As manchetes trazem recuo de preços: o diesel S-10 em R$ 7,39 em novembro, quedas seguidas na refinaria Clara Camarão e gasolina 5% mais barata em Natal, segundo o Procon. Ao mesmo tempo, há alerta de que o fim do subsídio ao diesel pode provocar nova greve dos caminhoneiros e a notícia de um navio com diesel russo desviado para o Brasil. O quadro mistura alívio de curto prazo com risco de política, mas as manchetes não dizem quando nem como o subsídio acabaria.",
+   "observar": "É preciso checar se e quando o subsídio ao diesel será retirado e se a queda no preço da bomba chega ao Maranhão, o que afeta diretamente o custo por km e o pleito de reajuste tarifário.",
+   "ultimos7": 180,
+   "anteriores7": 78
   },
   {
    "tema": "Política industrial e inovação",
-   "por_que": "As manchetes são dispersas e não apontam um fato central. Há notícias regionais, como a lei de política industrial do Rio Grande do Norte e o Ceará em 7º no ranking de inovação da FIEC/CNI (mas 24º em empreendedorismo), anúncios do BNDES (até R$ 16 milhões com a Embrapa para a Amazônia Legal e um estudo de rede de transporte para a RMS) e vários eventos locais sobre inteligência artificial. O aumento parece refletir volume de pauta, não uma mudança de política nacional.",
-   "observar": "Ver se o Maranhão aparece nos rankings de inovação ou adota iniciativa semelhante à lei potiguar, o que serve de material para Inovação e Desenvolvimento.",
-   "ultimos7": 62,
-   "anteriores7": 24
+   "por_que": "O crescimento vem de notícias dispersas, sem um evento central. Os destaques são um índice de inovação da FIEC e da CNI que põe o Ceará em 1º no Nordeste e 7º no país, a lei de Política Industrial do Rio Grande do Norte, um fórum de economia azul em Salvador e um estudo do BNDES sobre a rede de transporte da Região Metropolitana de Salvador. As demais manchetes são eventos e palestras de baixo conteúdo, então o sinal é fraco.",
+   "observar": "Vale ver a posição do Maranhão no índice de inovação e se o estado segue o RN com uma política industrial própria, além dos custos e projetos do estudo do BNDES como referência para o transporte metropolitano.",
+   "ultimos7": 58,
+   "anteriores7": 32
   }
  ],
- "tendencias_date": "2026-11-18"
+ "tendencias_date": "2026-11-19"
 }

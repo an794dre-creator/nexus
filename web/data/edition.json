@@ -1,34 +1,32 @@
 {
- "manchete": "Ajuste fiscal no Senado e sinais de alta de juros nos EUA pressionam o dólar para perto de R$ 5,82 e elevam os juros futuros",
+ "manchete": "Senado conclui ajuste fiscal (PLP 299/2026), mas dólar passa de R$ 5,91 e juros futuros sobem com incerteza sobre o novo ministro da Fazenda",
  "resumo": [
-  "Ajuste fiscal no Senado: segundo o Valor Econômico, a votação dos destaques do pacote foi adiada para hoje, e o pacote pode gerar economia de até R$ 60 bilhões em 2027. Importa porque o resultado mexe com a percepção de risco fiscal, a curva de juros e o câmbio, tema central de Economia do Setor Público.",
-  "Debate político sobre o ajuste: de acordo com a Agência Senado, Leany Lemos (PSB-DF) defendeu o PLP 299/2026 como forma de recuperar a capacidade de investimento do Estado. Eliziane Gama (PSD-MA) apoiou a proposta destacando a preservação de programas sociais. Já Sargento Reginauro (PSDB-CE) criticou o risco para saúde, educação e programas sociais e defendeu cortar despesas. Importa porque mostra o conflito distributivo por trás de qualquer ajuste.",
-  "Dólar em alta: segundo G1 e Folha, a moeda chegou a cerca de R$ 5,82, com o mercado atento aos leilões do Banco Central, ao ajuste fiscal e à ata do Fed. Para uma empresa de ônibus, o dólar mais alto tende a encarecer o diesel e os chassis e peças importados.",
-  "Fed mais duro: de acordo com o Valor, o diretor Christopher Waller defendeu que uma alta de 0,50 p.p. pode ser necessária em dezembro, e o dólar no exterior está na máxima em 19 meses. Importa porque juros americanos maiores puxam capital para os EUA e pressionam moedas emergentes, como prevê a paridade de juros.",
-  "Estudo do BC sobre o crédito: segundo o Valor, o Banco Central concluiu que a transmissão da política monetária é assimétrica e que uma parcela relevante do crédito fica relativamente protegida das variações da Selic. Importa para entender por que a Selic a 13,75% pode ter efeito parcial e para avaliar se o financiamento de frota é subsidiado ou de mercado.",
-  "Crédito a exportadores: de acordo com o Imirante, o Senado aprovou uma MP com R$ 13,5 bilhões em crédito para empresas afetadas pelas tarifas dos EUA e pela guerra no Oriente Médio, dentro do programa Brasil Soberano. É um exemplo de política industrial e creditícia, assunto de Estratégias de Desenvolvimento Comparadas."
+  "Segundo a Agência Senado, o Senado rejeitou três destaques e concluiu na quarta (18) o PLP 299/2026, com impacto estimado entre R$ 45,1 bilhões e R$ 56,1 bilhões no Orçamento de 2027 e um acordo sobre repasses a estados e municípios. Importa porque é a primeira peça do ajuste do governo Lula e mexe diretamente na LOA de 2027.",
+  "De acordo com a Agência Senado, o presidente da Câmara, Hugo Motta, espera concluir a análise do projeto até terça (24). Até lá, o ajuste ainda pode mudar, e o mercado segue sem garantia do valor final.",
+  "Mesmo com a aprovação, o dólar abriu em alta e superou R$ 5,91, segundo G1, Folha e Valor. O Valor atribui parte da piora à possibilidade de Bruno Moretti, ministro do Planejamento, assumir a Fazenda. A leitura é que o mercado reage menos à lei aprovada e mais a quem vai conduzir a política fiscal.",
+  "O Valor relata alta dos juros futuros, e o Valor Investe registra taxas do Tesouro Direto em 15,43%, puxadas pelo fiscal e pelo Fed. Na véspera, segundo a Agência Brasil, o dólar teve a quinta alta seguida, a maior cotação em 19 meses. Juro longo mais alto encarece o crédito, incluindo o financiamento de frota.",
+  "A Kinea, segundo o Valor, vê risco de inflação acima de 6% e de contração do PIB, e por isso se protege com NTN-B. Esse cenário contrasta com o IPCA atual de 4,63% e indica expectativas piorando.",
+  "No transporte, o Diário do Transporte informa que, em levantamento do Ministério das Cidades, os ônibus metropolitanos declararam arrecadação de R$ 5,44 bilhões, acima da dos sistemas municipais, sendo R$ 2 bilhões da Grande São Paulo. A fonte ressalva que faltam dados de cidades como São Paulo. É uma base útil para comparar receita tarifária entre sistemas."
  ],
  "acompanhar_hoje": [
-  "Resultado da votação dos destaques do pacote de ajuste fiscal no Senado e quanto da economia de até R$ 60 bilhões em 2027 será preservada",
-  "Divulgação da ata do Fed e a reação do dólar e dos juros futuros",
-  "Volume e resultado dos leilões de câmbio do Banco Central",
-  "Repasse da queda do Brent ao diesel no Brasil, frente ao dólar mais alto"
+  "Votação do PLP 299/2026 na Câmara (meta até 24/11) e possíveis mudanças no acordo sobre repasses a estados e municípios",
+  "Anúncio do novo ministro da Fazenda e a reação do dólar e da curva de juros",
+  "Resultado do leilão de LTNs e NTN-Fs do Tesouro e os discursos de dirigentes do Fed",
+  "Fechamento do dólar perto de R$ 5,90 e efeito do câmbio no preço do diesel, com o Brent hoje em queda de 2,14%"
  ],
- "pergunta_estudo": "(Economia do Setor Público) Um ajuste fiscal pode ser feito revisando benefícios e receitas ou cortando despesas discricionárias. Com base na teoria da sustentabilidade da dívida, compare os efeitos dos dois caminhos sobre o prêmio de risco e a taxa de juros. Explique também quem arca com o custo em cada caso, considerando a incidência e a distribuição.",
+ "pergunta_estudo": "Em Economia do Setor Público, explique por que a aprovação de um ajuste fiscal pode não reduzir os prêmios de risco (juros futuros e câmbio) quando há incerteza sobre a condução da política fiscal. Use os conceitos de sustentabilidade da dívida e de credibilidade, e compare a leitura ortodoxa (dominância fiscal, expectativas) com a heterodoxa (o ajuste como restrição ao gasto e ao crescimento, como na crítica Constituição contra o arcabouço).",
  "conceito": "divida",
  "itens": [
-  "2db16460110c555a",
-  "752a02ca56a307ea",
-  "16a7748e51a4469c",
-  "545704e8a6882881",
-  "b262a91cbc5e7e12",
-  "c30a3957b2d2b736",
-  "a5f0f84ae22f14f2",
-  "0cc963aac382e508",
-  "d93291dc2a575fb5",
-  "e972a1982da7daa7"
+  "419fb83448c6eb05",
+  "deab6dd5a1bba949",
+  "26d039e9147e792d",
+  "a0dadc8755ea4414",
+  "d10e1075c05a0a6a",
+  "98c44e833730a16c",
+  "a480698b74e38ac0",
+  "94e00cb66c336f92"
  ],
- "date": "2026-11-18",
- "created": "2026-11-18T14:16:59.180171+00:00",
+ "date": "2026-11-19",
+ "created": "2026-11-19T13:30:05.871493+00:00",
  "model": "claude-opus-5-5"
 }
