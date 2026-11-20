@@ -846,40 +846,117 @@
     "titulo_original": "Mergers and European competitiveness: Evidence on innovation and market power",
     "publicado": "2026-11-19T00:00:00Z"
    }
+  ],
+  "2026-11-20": [
+   {
+    "ref": "4b56225baa11037a",
+    "titulo": "Inflação por faixa de renda desacelera em outubro de 2026",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo o Ipea, o Indicador de Inflação por Faixa de Renda mostrou desaceleração na margem em outubro para todas as classes de renda, após as altas de setembro. O principal motor foi a queda da energia elétrica.",
+    "como_funciona": "O Ipea reponderá os preços do IPCA usando cestas de consumo específicas de cada faixa de renda (a partir da POF). Como famílias pobres gastam proporcionalmente mais com energia, alimentos e transporte público, choques nesses itens afetam as faixas de forma desigual. O resumo não detalha os números de cada faixa; é preciso ler o original.",
+    "calculo": "Inflação da faixa i = soma(peso do item j na cesta da faixa i × variação de preço do item j). Ex.: energia com peso de 5% caindo 3% contribui com -0,15 p.p.",
+    "por_que_importa": "Mostra quem sente a inflação, algo central para avaliar a incidência distributiva de política pública e de tarifas. Para a empresa, a renda real das faixas baixas define a demanda por ônibus e a tolerância a reajuste tarifário.",
+    "como_aplicar": "Use a inflação da faixa de renda mais baixa como argumento ao discutir reajuste tarifário e impacto sobre o usuário. Compare com a variação do custo por km da empresa.",
+    "conceito": "reajuste",
+    "fonte": "IPEA · Carta de Conjuntura",
+    "link": "https://www.ipea.gov.br/cartadeconjuntura/index.php/2026/11/inflacao-por-faixa-de-renda-outubro2026/",
+    "titulo_original": "Inflação por faixa de renda – Outubro/2026",
+    "publicado": "2026-11-19T14:01:41Z"
+   },
+   {
+    "ref": "2e15af2dadf9e4da",
+    "titulo": "Depreciação integral imediata de investimento: avaliação em equilíbrio geral",
+    "tipo": "método",
+    "o_que_e_novo": "O trabalho avalia a lei americana de 2025 que tornou permanente a dedução de 100% do investimento em equipamentos. O modelo usa firmas heterogêneas com restrição de colateral e deduções fiscais não reembolsáveis, calibrado com declarações fiscais e Compustat.",
+    "como_funciona": "Deduzir o investimento inteiro no ano da compra reduz o custo de uso do capital e antecipa o benefício fiscal. Firmas com prejuízo não aproveitam a dedução (não reembolsável), e firmas com pouco colateral ganham liquidez. Os resultados quantitativos não aparecem no resumo; é preciso ler o paper.",
+    "calculo": "Valor presente da dedução: com depreciação em 5 anos, alíquota de 34% e taxa de 10%, VP ≈ 0,34×(0,2×3,79)=0,258 por real investido; com dedução integral, 0,34. Ganho ≈ 0,08 por real.",
+    "por_que_importa": "Liga tributação ao investimento e ao financiamento das firmas, tema de Economia do Setor Público. Ajuda a discutir incentivos à renovação de frota no Brasil.",
+    "como_aplicar": "No VPL da compra de ônibus, modele o fluxo do benefício fiscal da depreciação e teste uma hipótese de depreciação acelerada.",
+    "conceito": "tributacao",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/the-economics-of-investment-expensing.html?utm_source=rss&utm_medium=rss&utm_campaign=the-economics-of-investment-expensing",
+    "titulo_original": "The economics of investment expensing",
+    "publicado": "2026-11-18T18:17:04Z"
+   },
+   {
+    "ref": "6532be0d886236a8",
+    "titulo": "Papers de economia gerados por IA: 84% com erro grave",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo o texto, pesquisadores verificaram com IA 1.000 papers gerados por agentes (APE): nenhum estava livre de erro e 842 tinham ao menos um erro grave, alguns invalidando o resultado principal. A Economist comparou com papers humanos.",
+    "como_funciona": "Um verificador automatizado revisa código, dados e inferências de cada paper. O resumo não informa o resultado da comparação com humanos nem os critérios de gravidade; é preciso ler o original.",
+    "calculo": "Taxa de erro grave = 842/1000 = 84,2%.",
+    "por_que_importa": "É um alerta direto para o TCC: IA acelera, mas erra em resultados centrais. Reforça que é preciso replicar e checar.",
+    "como_aplicar": "Em Projeto de Pesquisa, documente e reexecute todo código e regressão gerados com ajuda de IA antes de interpretar.",
+    "conceito": "pesquisa",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/ais-vs-humans-in-economics-papers.html?utm_source=rss&utm_medium=rss&utm_campaign=ais-vs-humans-in-economics-papers",
+    "titulo_original": "AIs vs. humans in economics papers",
+    "publicado": "2026-11-20T05:53:10Z"
+   },
+   {
+    "ref": "7b90d5c3a8317de6",
+    "titulo": "Juros altos: mais lucro para bancos, prejuízo para bancos centrais",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna argumenta que a política monetária cria um ciclo na rentabilidade bancária. Desde 2021, o ROE e a margem de juros dos bancos da zona do euro subiram com os juros, enquanto bancos centrais pagam mais sobre reservas.",
+    "como_funciona": "O banco central remunera as reservas com a taxa básica. Quando ela sobe, bancos ganham sobre reservas e ativos, enquanto o banco central, com ativos de juro fixo, tem perdas. Os números exatos não estão no resumo.",
+    "calculo": "Resultado do BC ≈ (rendimento dos ativos − taxa sobre reservas) × reservas; ex.: (1% − 4%) × 3 tri = −90 bi.",
+    "por_que_importa": "Mostra efeitos distributivos e fiscais da política monetária, útil para discutir capital fictício e custo do crédito. No Brasil, a Selic alta também pesa no custo do financiamento de frota.",
+    "como_aplicar": "Acompanhe spread bancário e Selic ao recalcular o WACC da empresa.",
+    "conceito": "capficticio",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/return-inflation-more-bank-profits-more-central-bank-losses",
+    "titulo_original": "The return of inflation: More bank profits, more central bank losses",
+    "publicado": "2026-11-20T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.26168v1",
+    "titulo": "Subsídio à produção ou ao consumo de leguminosas",
+    "tipo": "política",
+    "o_que_e_novo": "O paper compara globalmente subsídios à produção e ao uso de leguminosas, justificados por externalidades positivas econômicas, ambientais e de saúde. O resumo não traz os resultados finais.",
+    "como_funciona": "Com externalidades positivas, o mercado produz menos que o ótimo social, e um subsídio pigouviano corrige. O efeito depende de quem recebe e das elasticidades de oferta e demanda. Detalhes do modelo exigem leitura do original.",
+    "calculo": "Subsídio ótimo = benefício marginal externo; parcela do produtor = εd/(εd+εs).",
+    "por_que_importa": "É um caso concreto de bens/externalidades e incidência de subsídio. A mesma lógica vale para subsídio ao transporte público.",
+    "como_aplicar": "Use a comparação produção x consumo como analogia para subsidiar operação versus usuário no ônibus.",
+    "conceito": "bens",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.26168v1",
+    "titulo_original": "Globally promoting legumes by production or use subsidies",
+    "publicado": "2026-11-19T14:19:35Z"
+   }
   ]
  },
- "date": "2026-11-19",
- "created": "2026-11-19T13:30:05.871493+00:00",
+ "date": "2026-11-20",
+ "created": "2026-11-20T13:10:19.836886+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Pobreza e desigualdade",
-   "por_que": "A alta parece puxada sobretudo pelo calendário de pagamento do Bolsa Família de novembro, que gera várias manchetes repetitivas, incluindo uma que fala em mais de R$ 929 milhões injetados no Maranhão. Somam-se um levantamento do IBGE que aponta redução da desigualdade educacional com disparidades persistentes, um estudo segundo o qual a reforma de programas sociais poderia erradicar a extrema pobreza e o caso dos Awá-Guajá no Maranhão, em que a hipótese de fome aparece como pergunta, não como fato. Parte do aumento é volume de notícias de serviço, e não um evento novo.",
-   "observar": "Vale acompanhar se o estudo sobre reforma dos programas sociais ganha resposta do governo ou do Congresso, e quais números o IBGE detalha sobre o Nordeste e o Maranhão.",
-   "ultimos7": 13,
-   "anteriores7": 4
-  },
-  {
-   "tema": "Fiscal e dívida pública",
-   "por_que": "Segundo as manchetes, o Senado aprovou um pacote fiscal, que agora segue para a Câmara. O mercado reagiu com o dólar perto de R$ 5,90 a R$ 5,91, alta dos juros futuros e taxas do Tesouro Direto em 15,43%, atribuídas ao fiscal e ao Fed. O ministro do Planejamento prevê estabilizar a dívida em até 3 anos, mas economistas citados consideram o pacote insuficiente e criticam a falta de cortes, e as manchetes ainda mencionam a escolha de nomes para a Fazenda.",
-   "observar": "Os pontos a acompanhar são a votação na Câmara (e se o texto sai desidratado), a definição do comando da Fazenda e o comportamento da curva de juros e do câmbio, que pesam no custo de financiar frota.",
-   "ultimos7": 391,
-   "anteriores7": 168
+   "tema": "IA e agentes",
+   "por_que": "O volume saltou de 279 para 457 manchetes, puxado sobretudo pela estreia da Anthropic na Nasdaq, descrita como um IPO estrondoso, seguida de queda das ações e de um sell-off mais amplo em papéis de tecnologia e IA, lido pelas manchetes como alerta sobre um possível excesso no setor. Aparecem também temas laterais: a Meta reavaliando a meta de zerar emissões até 2030 por causa do consumo da IA e um levantamento do Gartner segundo o qual só 3% das empresas superam as metas de economia com IA.",
+   "observar": "Se as ações da Anthropic e de outras empresas de IA estabilizam ou continuam caindo nas próximas semanas, o que indicaria se o temor de bolha se aprofunda ou foi só uma correção pós-estreia.",
+   "ultimos7": 457,
+   "anteriores7": 279
   },
   {
    "tema": "Diesel e combustíveis",
-   "por_que": "As manchetes trazem recuo de preços: o diesel S-10 em R$ 7,39 em novembro, quedas seguidas na refinaria Clara Camarão e gasolina 5% mais barata em Natal, segundo o Procon. Ao mesmo tempo, há alerta de que o fim do subsídio ao diesel pode provocar nova greve dos caminhoneiros e a notícia de um navio com diesel russo desviado para o Brasil. O quadro mistura alívio de curto prazo com risco de política, mas as manchetes não dizem quando nem como o subsídio acabaria.",
-   "observar": "É preciso checar se e quando o subsídio ao diesel será retirado e se a queda no preço da bomba chega ao Maranhão, o que afeta diretamente o custo por km e o pleito de reajuste tarifário.",
-   "ultimos7": 180,
-   "anteriores7": 78
+   "por_que": "O tema subiu de 104 para 170 manchetes, mas as amostras são dispersas e não apontam um evento único. Há testes de biocombustível ampliados para dez ônibus do transporte coletivo de Porto Alegre, redução do preço da gasolina pela Refinaria Clara Camarão no RN (R$ 3,66/litro), levantamentos de Procons sobre a variação entre postos, uma alta de 1,39% que reabre a conta etanol x gasolina e notícias de Portugal sobre queda de preços. Quase nada fala diretamente do diesel no Brasil.",
+   "observar": "Se reajustes da Petrobras ou de refinarias privadas passam a atingir o diesel, e se o teste de Porto Alegre gera resultados de custo por km que outras cidades, inclusive no Maranhão, possam usar.",
+   "ultimos7": 170,
+   "anteriores7": 104
   },
   {
-   "tema": "Política industrial e inovação",
-   "por_que": "O crescimento vem de notícias dispersas, sem um evento central. Os destaques são um índice de inovação da FIEC e da CNI que põe o Ceará em 1º no Nordeste e 7º no país, a lei de Política Industrial do Rio Grande do Norte, um fórum de economia azul em Salvador e um estudo do BNDES sobre a rede de transporte da Região Metropolitana de Salvador. As demais manchetes são eventos e palestras de baixo conteúdo, então o sinal é fraco.",
-   "observar": "Vale ver a posição do Maranhão no índice de inovação e se o estado segue o RN com uma política industrial própria, além dos custos e projetos do estudo do BNDES como referência para o transporte metropolitano.",
-   "ultimos7": 58,
-   "anteriores7": 32
+   "tema": "Fiscal e dívida pública",
+   "por_que": "O volume passou de 238 para 350 manchetes por causa da tramitação do pacote de ajuste fiscal. Segundo as manchetes, o relator na Câmara manteve o texto do Senado sem alterações para acelerar a votação, prevista para segunda-feira. O Ibovespa caiu com o receio fiscal, Lula disse que o controle fiscal é prioridade sem retirar direitos, e Moretti afirmou que medidas adicionais podem ser enviadas se necessário. Houve ainda protesto contra o ajuste em Curitiba.",
+   "observar": "O resultado da votação na Câmara e a reação de dólar, juros futuros e Ibovespa, além de um eventual anúncio de medidas adicionais pela equipe econômica.",
+   "ultimos7": 350,
+   "anteriores7": 238
+  },
+  {
+   "tema": "Safra e grãos",
+   "por_que": "A alta (de 101 para 143 manchetes) vem principalmente dos preços da soja. As manchetes citam a maior cotação em mais de dois anos no Paraná, acima de R$ 140 por saca segundo o Deral, e preço próximo de R$ 170 em Paranaguá, puxados por dólar e Chicago. No sentido oposto, o milho caiu 11,5% em Sorriso, com 40 milhões de toneladas da safrinha ainda à espera de venda, e o plantio de soja no RS chegou a 56% da área. Parte das manchetes é ruído, como a que trata de filme.",
+   "observar": "Se a soja sustenta o patamar alto conforme o câmbio e Chicago, e se o milho encalhado continua derrubando preços ou é absorvido pelo etanol de milho e pelo confinamento de gado.",
+   "ultimos7": 143,
+   "anteriores7": 101
   }
  ],
- "tendencias_date": "2026-11-19"
+ "tendencias_date": "2026-11-20"
 }

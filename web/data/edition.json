@@ -1,32 +1,31 @@
 {
- "manchete": "Senado conclui ajuste fiscal (PLP 299/2026), mas dólar passa de R$ 5,91 e juros futuros sobem com incerteza sobre o novo ministro da Fazenda",
+ "manchete": "Dólar renova máxima desde abril de 2025 com apostas de juros mais altos nos EUA, enquanto o ajuste fiscal chega à Câmara e operadora cobra R$ 98 milhões por tarifa congelada em Divinópolis",
  "resumo": [
-  "Segundo a Agência Senado, o Senado rejeitou três destaques e concluiu na quarta (18) o PLP 299/2026, com impacto estimado entre R$ 45,1 bilhões e R$ 56,1 bilhões no Orçamento de 2027 e um acordo sobre repasses a estados e municípios. Importa porque é a primeira peça do ajuste do governo Lula e mexe diretamente na LOA de 2027.",
-  "De acordo com a Agência Senado, o presidente da Câmara, Hugo Motta, espera concluir a análise do projeto até terça (24). Até lá, o ajuste ainda pode mudar, e o mercado segue sem garantia do valor final.",
-  "Mesmo com a aprovação, o dólar abriu em alta e superou R$ 5,91, segundo G1, Folha e Valor. O Valor atribui parte da piora à possibilidade de Bruno Moretti, ministro do Planejamento, assumir a Fazenda. A leitura é que o mercado reage menos à lei aprovada e mais a quem vai conduzir a política fiscal.",
-  "O Valor relata alta dos juros futuros, e o Valor Investe registra taxas do Tesouro Direto em 15,43%, puxadas pelo fiscal e pelo Fed. Na véspera, segundo a Agência Brasil, o dólar teve a quinta alta seguida, a maior cotação em 19 meses. Juro longo mais alto encarece o crédito, incluindo o financiamento de frota.",
-  "A Kinea, segundo o Valor, vê risco de inflação acima de 6% e de contração do PIB, e por isso se protege com NTN-B. Esse cenário contrasta com o IPCA atual de 4,63% e indica expectativas piorando.",
-  "No transporte, o Diário do Transporte informa que, em levantamento do Ministério das Cidades, os ônibus metropolitanos declararam arrecadação de R$ 5,44 bilhões, acima da dos sistemas municipais, sendo R$ 2 bilhões da Grande São Paulo. A fonte ressalva que faltam dados de cidades como São Paulo. É uma base útil para comparar receita tarifária entre sistemas."
+  "Segundo a Agência Brasil, o dólar subiu pela sexta sessão seguida e superou R$ 5,93 na quinta (19), maior valor desde abril de 2025, mesmo após o Banco Central vender US$ 1 bilhão. Importa porque câmbio alto tende a pressionar preços de importados e combustíveis, como o diesel.",
+  "De acordo com o Valor Econômico, o dólar segue elevado no exterior com apostas de aperto monetário mais forte pelo Fed, o que pressiona moedas emergentes e provoca desmonte de operações de carry trade. É a paridade de juros na prática: quando o juro americano sobe, o diferencial que atrai capital para o Brasil perde força.",
+  "Segundo o G1, o relator Mauro Benevides manteve na Câmara o texto do ajuste fiscal aprovado pelo Senado, com votação prevista para segunda-feira; a Agência Senado informa que o PLP 299/2026 passou no Senado por 69 a 2. A aprovação pode influenciar a percepção de risco fiscal e, por tabela, o câmbio e os juros.",
+  "Conforme o DiviNews, a TransOeste cobra R$ 98 milhões da Prefeitura de Divinópolis (MG) por tarifa de ônibus congelada. O caso ilustra o pedido de reequilíbrio econômico-financeiro quando a tarifa pública fica abaixo da tarifa técnica.",
+  "Segundo a Globo Rural, a soja subiu pelo indicador Cepea/Esalq em Paranaguá para R$ 168,69 a saca, impulsionada pelo dólar. Mostra como a desvalorização cambial favorece exportadores de commodities, tema relevante para o Matopiba e o Maranhão.",
+  "Segundo o Diário do Transporte, Porto Alegre ampliou para dez ônibus da Carris os testes com biocombustível no lugar do diesel. É um sinal de busca por alternativas ao diesel, cujo custo é sensível ao câmbio."
  ],
  "acompanhar_hoje": [
-  "Votação do PLP 299/2026 na Câmara (meta até 24/11) e possíveis mudanças no acordo sobre repasses a estados e municípios",
-  "Anúncio do novo ministro da Fazenda e a reação do dólar e da curva de juros",
-  "Resultado do leilão de LTNs e NTN-Fs do Tesouro e os discursos de dirigentes do Fed",
-  "Fechamento do dólar perto de R$ 5,90 e efeito do câmbio no preço do diesel, com o Brent hoje em queda de 2,14%"
+  "Fechamento do dólar e eventual nova intervenção do Banco Central no câmbio",
+  "Andamento do ajuste fiscal (PLP 299/2026) na Câmara antes da votação prevista para segunda-feira",
+  "Sinais de dirigentes do Fed sobre o ritmo de alta de juros nos EUA",
+  "Resposta da Prefeitura de Divinópolis à cobrança de R$ 98 milhões da TransOeste"
  ],
- "pergunta_estudo": "Em Economia do Setor Público, explique por que a aprovação de um ajuste fiscal pode não reduzir os prêmios de risco (juros futuros e câmbio) quando há incerteza sobre a condução da política fiscal. Use os conceitos de sustentabilidade da dívida e de credibilidade, e compare a leitura ortodoxa (dominância fiscal, expectativas) com a heterodoxa (o ajuste como restrição ao gasto e ao crescimento, como na crítica Constituição contra o arcabouço).",
- "conceito": "divida",
+ "pergunta_estudo": "Em Economia do Setor Público: quando um município congela a tarifa de ônibus abaixo do custo, quem arca com a diferença (usuário, contribuinte ou operador) e como o equilíbrio econômico-financeiro do contrato pode ser restaurado sem comprometer o orçamento municipal?",
+ "conceito": "paridade",
  "itens": [
-  "419fb83448c6eb05",
-  "deab6dd5a1bba949",
-  "26d039e9147e792d",
-  "a0dadc8755ea4414",
-  "d10e1075c05a0a6a",
-  "98c44e833730a16c",
-  "a480698b74e38ac0",
-  "94e00cb66c336f92"
+  "f9155037db5b62b1",
+  "7e97822a693baa52",
+  "2378ae13fc37c30d",
+  "5c6aaa683b006bb7",
+  "936e83d38719cfaf",
+  "2eafab628a7f4de4",
+  "7ae76e69e25535f1"
  ],
- "date": "2026-11-19",
- "created": "2026-11-19T13:30:05.871493+00:00",
+ "date": "2026-11-20",
+ "created": "2026-11-20T13:10:19.836886+00:00",
  "model": "claude-opus-5-5"
 }
