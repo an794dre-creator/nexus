@@ -923,40 +923,117 @@
     "titulo_original": "Globally promoting legumes by production or use subsidies",
     "publicado": "2026-11-19T14:19:35Z"
    }
+  ],
+  "2026-11-21": [
+   {
+    "ref": "0533693f5f41ea6d",
+    "titulo": "O que encarece a moradia na Europa: crédito antes, oferta depois",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a coluna do VoxEU, a alta dos preços de imóveis antes da crise financeira global foi puxada principalmente pela oferta de crédito, enquanto na fase recente a restrição de oferta habitacional ganha peso. O texto também analisa efeitos distributivos e sobre a mobilidade do trabalho.",
+    "como_funciona": "A ideia é decompor a alta de preços em choques de demanda (crédito barato) e de oferta (pouca construção, regulação do solo). Quando a oferta é inelástica, qualquer aumento de demanda vira preço, não quantidade. Moradia cara reduz a mobilidade: trabalhadores deixam de se mudar para regiões mais produtivas. O método exato de decomposição não aparece no resumo; é preciso ler o original.",
+    "calculo": "Variação de preço ≈ choque de demanda / (elasticidade da oferta + elasticidade da demanda). Ex.: demanda +10%, elasticidade da oferta 0,2 e da demanda 0,5 → preço sobe cerca de 14%.",
+    "por_que_importa": "Mostra que a mesma alta de preços pode ter causas diferentes e exigir políticas diferentes: regular o crédito ou liberar a construção. Dialoga com a teoria do capital fictício e com a economia urbana.",
+    "como_aplicar": "Serve de modelo para um TCC sobre preços de imóveis em São Luís, separando o efeito do crédito imobiliário do efeito da oferta. Na empresa, moradia cara empurra a população para a periferia, o que aumenta as distâncias das linhas e o custo por passageiro.",
+    "conceito": "elast",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/locked-out-drivers-and-consequences-housing-affordability-pressures-europe",
+    "titulo_original": "Locked out: Drivers and consequences of housing affordability pressures in Europe",
+    "publicado": "2026-11-21T00:00:00Z"
+   },
+   {
+    "ref": "bab1fdc2b95ed89e",
+    "titulo": "Custos de saúde do crime organizado com lixo tóxico",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna apresenta evidência de efeitos de longo prazo sobre a saúde causados pelo descarte ilegal de resíduos tóxicos no sul da Itália. A comparação é entre municípios igualmente próximos de locais de descarte, mas expostos de forma diferente.",
+    "como_funciona": "É um desenho quase-experimental: a distância parecida controla fatores locais, e a diferença de exposição (provavelmente por vento ou hidrografia, o que só pode ser inferido) identifica o efeito causal. O resultado mede uma externalidade negativa que não aparece nos preços. Os detalhes precisam ser lidos no original.",
+    "calculo": "Efeito ≈ (taxa de doença nos municípios expostos − taxa nos não expostos), entre municípios à mesma distância do local de descarte.",
+    "por_que_importa": "Quantifica externalidades geradas por mercados ilegais e a falha do Estado em fiscalizar. É um bom exemplo de identificação causal para pesquisa aplicada.",
+    "como_aplicar": "Use como referência de método em Projeto de Pesquisa, por exemplo para estudar a poluição de lixões ou da área industrial em São Luís.",
+    "conceito": "bens",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/health-costs-organised-crime",
+    "titulo_original": "The health costs of organised crime",
+    "publicado": "2026-11-19T00:00:00Z"
+   },
+   {
+    "ref": "4518386d6807e46b",
+    "titulo": "Empresas da UE trocam estoques por diversificação de fornecedores",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Uma nova pesquisa com empresas mostra que firmas da UE passaram a ver as rupturas de comércio como persistentes. Por isso, estão saindo de respostas emergenciais, como formar estoques, e indo para a diversificação de fornecedores e mercados no longo prazo.",
+    "como_funciona": "Estocar protege contra choques temporários, mas imobiliza capital de giro. Se o risco é permanente, compensa mais o custo fixo de ter fornecedores alternativos. A survey capta essa mudança de expectativa e de estratégia.",
+    "calculo": "Custo de estocar = estoque médio × custo de capital. Ex.: R$ 500 mil × 15% ao ano = R$ 75 mil por ano.",
+    "por_que_importa": "Mostra como a geopolítica muda a gestão do capital de giro. A diversificação também pode abrir espaço para países periféricos entrarem nas cadeias de fornecimento.",
+    "como_aplicar": "Na empresa de ônibus, compare o custo de manter estoque de peças e pneus com o de qualificar um segundo fornecedor.",
+    "conceito": "giro",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/resilience-without-retreat-how-eu-firms-are-redesigning-their-supply-chains",
+    "titulo_original": "Resilience without retreat: How EU firms are redesigning their supply chains",
+    "publicado": "2026-11-18T00:00:00Z"
+   },
+   {
+    "ref": "b89f0a9b58e29946",
+    "titulo": "Corridas de funcionários e desenho de remuneração",
+    "tipo": "técnica de gestão",
+    "o_que_e_novo": "Segundo a coluna, o caso Weil Gotshal mostra que a saída de pessoas-chave pode virar contágio e levar outros a sair, mesmo com a firma lucrativa. O texto propõe desenhos de remuneração para conter essas saídas.",
+    "como_funciona": "A lógica é a de uma corrida bancária: se eu espero que os outros saiam, sair primeiro passa a ser racional. Remuneração diferida, com vesting e cláusulas de permanência, reduz o ganho de sair cedo. Os mecanismos específicos estão no original.",
+    "calculo": "Sair compensa se oferta externa > salário atual + valor presente da remuneração diferida perdida.",
+    "por_que_importa": "A retenção de talentos depende das expectativas coletivas, não só do salário individual. É uma aplicação direta de teoria dos jogos à gestão.",
+    "como_aplicar": "Na empresa, avalie bônus de permanência para motoristas e mecânicos experientes, para evitar saídas em cadeia.",
+    "conceito": "capital_humano",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/worker-runs-how-compensation-design-can-curb-contagious-departures-weil-gotschal",
+    "titulo_original": "Worker runs: How compensation design can curb contagious departures like that at Weil, Gotschal & Manges",
+    "publicado": "2026-11-20T00:00:00Z"
+   },
+   {
+    "ref": "6ec0a40bb42b4894",
+    "titulo": "Estigma de bancos que tomam empréstimo do Fed",
+    "tipo": "descoberta",
+    "o_que_e_novo": "O Fed de Nova York investiga se o mercado acionário pune bancos que recorrem ao banco central em momentos de pânico. Se houver esse estigma, a capacidade do Fed de conter crises fica reduzida.",
+    "como_funciona": "Pegar recursos no redesconto pode sinalizar fraqueza, o que derruba o preço da ação. Com medo disso, os bancos evitam a liquidez e a crise se agrava. O resultado empírico não aparece no resumo; é preciso ler o original.",
+    "calculo": "Retorno anormal = retorno da ação − retorno esperado pelo mercado, medido em torno da divulgação do empréstimo.",
+    "por_que_importa": "Mostra os limites do emprestador de última instância. Conecta-se à fragilidade do crédito discutida na tradição marxista e em Minsky.",
+    "como_aplicar": "Use o estudo de evento como técnica para o TCC.",
+    "conceito": "capficticio",
+    "fonte": "Liberty Street Economics (Fed NY)",
+    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/does-the-stock-market-stigmatize-banks-that-borrow-from-the-fed/",
+    "titulo_original": "Does the Stock Market Stigmatize Banks that Borrow from the Fed?",
+    "publicado": "2026-11-17T12:00:00Z"
+   }
   ]
  },
- "date": "2026-11-20",
- "created": "2026-11-20T13:10:19.836886+00:00",
+ "date": "2026-11-21",
+ "created": "2026-11-21T11:25:08.695715+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "IA e agentes",
-   "por_que": "O volume saltou de 279 para 457 manchetes, puxado sobretudo pela estreia da Anthropic na Nasdaq, descrita como um IPO estrondoso, seguida de queda das ações e de um sell-off mais amplo em papéis de tecnologia e IA, lido pelas manchetes como alerta sobre um possível excesso no setor. Aparecem também temas laterais: a Meta reavaliando a meta de zerar emissões até 2030 por causa do consumo da IA e um levantamento do Gartner segundo o qual só 3% das empresas superam as metas de economia com IA.",
-   "observar": "Se as ações da Anthropic e de outras empresas de IA estabilizam ou continuam caindo nas próximas semanas, o que indicaria se o temor de bolha se aprofunda ou foi só uma correção pós-estreia.",
-   "ultimos7": 457,
-   "anteriores7": 279
+   "tema": "Pobreza e desigualdade",
+   "por_que": "O aumento (13 contra 8 manchetes) parece puxado sobretudo pelo calendário de pagamentos do Bolsa Família de novembro, incluindo o valor injetado no Maranhão, e por divulgações do IBGE, como a de que o Brasil reduziu a desigualdade educacional, mas com disparidades persistentes. Há também textos de opinião e reportagens sobre desigualdade racial (mobilidade urbana no Grande ABC, saúde) e o caso dos Awá-Guajá no Maranhão, com a pergunta sobre fome. As manchetes são dispersas e não apontam um único fato novo; parte do volume é rotina de calendário.",
+   "observar": "Vale acompanhar a nova pesquisa do IBGE citada nas manchetes e seus dados regionais para o Maranhão, além do desdobramento sobre a situação dos Awá-Guajá.",
+   "ultimos7": 13,
+   "anteriores7": 8
   },
   {
-   "tema": "Diesel e combustíveis",
-   "por_que": "O tema subiu de 104 para 170 manchetes, mas as amostras são dispersas e não apontam um evento único. Há testes de biocombustível ampliados para dez ônibus do transporte coletivo de Porto Alegre, redução do preço da gasolina pela Refinaria Clara Camarão no RN (R$ 3,66/litro), levantamentos de Procons sobre a variação entre postos, uma alta de 1,39% que reabre a conta etanol x gasolina e notícias de Portugal sobre queda de preços. Quase nada fala diretamente do diesel no Brasil.",
-   "observar": "Se reajustes da Petrobras ou de refinarias privadas passam a atingir o diesel, e se o teste de Porto Alegre gera resultados de custo por km que outras cidades, inclusive no Maranhão, possam usar.",
-   "ultimos7": 170,
-   "anteriores7": 104
+   "tema": "IA e agentes",
+   "por_que": "O volume saltou de 324 para 453 manchetes, com destaque para o IPO da Anthropic, descrito como histórico, e para os balanços ligados à Nvidia, que puseram a IA no noticiário financeiro. Somam-se casos de aplicação em empresas (os 12 mil agentes de IA do iFood) e debates sobre efeitos na mídia e na comunicação. O restante são usos variados (clima, sementes, perfumes, segurança), sem um fio único.",
+   "observar": "Observar o desempenho das ações da Anthropic após a estreia e se surgem novos anúncios de uso de agentes de IA em empresas brasileiras.",
+   "ultimos7": 453,
+   "anteriores7": 324
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "O volume passou de 238 para 350 manchetes por causa da tramitação do pacote de ajuste fiscal. Segundo as manchetes, o relator na Câmara manteve o texto do Senado sem alterações para acelerar a votação, prevista para segunda-feira. O Ibovespa caiu com o receio fiscal, Lula disse que o controle fiscal é prioridade sem retirar direitos, e Moretti afirmou que medidas adicionais podem ser enviadas se necessário. Houve ainda protesto contra o ajuste em Curitiba.",
-   "observar": "O resultado da votação na Câmara e a reação de dólar, juros futuros e Ibovespa, além de um eventual anúncio de medidas adicionais pela equipe econômica.",
-   "ultimos7": 350,
-   "anteriores7": 238
+   "por_que": "O tema já era alto e subiu pouco (292 para 311), concentrado na tramitação do pacote de ajuste fiscal do governo Lula: o texto veio do Senado, o relator na Câmara o manteve sem alterações e Hugo Motta convocou sessão extraordinária para votá-lo na segunda-feira (23). As manchetes ligam o tema à disparada do dólar e aos juros nos EUA, e há artigos heterodoxos que criticam o ajuste por frear investimento e crescimento.",
+   "observar": "Observar o resultado da votação na Câmara na segunda-feira (23) e a reação do dólar e dos juros futuros logo depois.",
+   "ultimos7": 311,
+   "anteriores7": 292
   },
   {
-   "tema": "Safra e grãos",
-   "por_que": "A alta (de 101 para 143 manchetes) vem principalmente dos preços da soja. As manchetes citam a maior cotação em mais de dois anos no Paraná, acima de R$ 140 por saca segundo o Deral, e preço próximo de R$ 170 em Paranaguá, puxados por dólar e Chicago. No sentido oposto, o milho caiu 11,5% em Sorriso, com 40 milhões de toneladas da safrinha ainda à espera de venda, e o plantio de soja no RS chegou a 56% da área. Parte das manchetes é ruído, como a que trata de filme.",
-   "observar": "Se a soja sustenta o patamar alto conforme o câmbio e Chicago, e se o milho encalhado continua derrubando preços ou é absorvido pelo etanol de milho e pelo confinamento de gado.",
-   "ultimos7": 143,
-   "anteriores7": 101
+   "tema": "China",
+   "por_que": "O tema não está subindo: o volume ficou estável e até caiu levemente (237 para 230). As manchetes falam da extensão da trégua comercial EUA-China condicionada às terras raras, da soja brasileira no mercado chinês, do caso de suposta espionagem na Nvidia e de iniciativas chinesas de arrecadação e cooperação, sem um fato dominante.",
+   "observar": "Observar se a trégua EUA-China é estendida após a negociação sobre terras raras, com reflexos na demanda por soja brasileira.",
+   "ultimos7": 230,
+   "anteriores7": 237
   }
  ],
- "tendencias_date": "2026-11-20"
+ "tendencias_date": "2026-11-21"
 }
