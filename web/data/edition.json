@@ -1,33 +1,34 @@
 {
- "manchete": "Pressão do Fed por juros mais altos derruba ativos de risco, fortalece o dólar e pressiona o real, com reflexos no custo do diesel e da frota",
+ "manchete": "Ajuste fiscal vai à Câmara nesta segunda enquanto dólar passa de R$ 5,89 e estudo da EPE mostra ICMS do diesel muito acima da inflação",
  "resumo": [
-  "Fed mais duro: segundo o Valor Econômico, a diretora Lisa Cook disse que as condições financeiras nos EUA estão excessivamente acomodatícias, sem sinais claros de desinflação, e votou contra a manutenção dos juros na última reunião. Isso importa porque juros mais altos nos EUA atraem capital para o dólar e encarecem o financiamento em países emergentes.",
-  "Divergência política: o Valor Econômico relata que o secretário do Tesouro, Scott Bessent, pediu uma alta mais moderada e citou o choque de oferta em energia. Outros veículos noticiam que Trump chamou o Fed de 'político'. A disputa mostra o debate entre independência do banco central e pressão do governo, e o caso de um choque de oferta que impõe um dilema à política monetária.",
-  "Real sob pressão: o G1 atribui a disparada do dólar a fatores globais, como os juros nos EUA, e a questões fiscais domésticas, e coloca o real entre as moedas que mais perderam valor. No painel do dia, o dólar sobe 1,35%, para R$ 5,89. Câmbio mais fraco tende a encarecer combustíveis e insumos importados.",
-  "Fuga de ativos de risco: o Valor Econômico informa que o ouro caiu ao menor nível desde agosto de 2025 com a expectativa de novas altas de juros. Segundo a CoinDesk, o bitcoin se aproxima das mínimas do verão, em meio a uma busca por caixa. É um movimento típico de aperto das condições financeiras globais.",
-  "Transição da frota: segundo o Diário do Transporte, estudo do MME e da EPE projeta que ônibus elétricos a bateria podem chegar a quase 39% dos novos ônibus urbanos em dez anos, com o diesel ainda com 56% do mercado. O mesmo veículo relata que a Grande Goiânia avança com ônibus a gás e biometano. Essas notícias sinalizam decisões de investimento em frota que dependem de juros e câmbio.",
-  "Balanços fracos: o InfoMoney aponta que a temporada de balanços na B3 teve o menor percentual de empresas acima das estimativas de EBITDA desde 2021. Isso indica margens pressionadas num ambiente de Selic em 13,75%."
+  "Câmara deve votar na segunda (23) o ajuste fiscal do governo; segundo o Imirante, a economia prevista é de R$ 50 bilhões em 2027, e o relator Mauro Benevides manteve o texto do Senado (G1). Importa porque a credibilidade fiscal pesa sobre juros e câmbio.",
+  "A gestora Ashmore, segundo o Valor, estima em um de seus cenários que a saída bruta de recursos do Brasil pode chegar a US$ 420 bilhões em 18 meses (cerca de 16% do PIB) se o ajuste for apenas pontual. Isso mostra o canal entre fiscal, fluxo de capital e dólar.",
+  "O dólar segue acima de R$ 5,90 mesmo após venda de reservas pelo BC, segundo o boca.com.br; no painel, fecha em R$ 5,89 (+1,35%). Câmbio mais alto pressiona diesel importado e inflação.",
+  "Estudo da EPE citado por Canal Rural, Estadão e UOL aponta que o ICMS sobre o diesel subiu 735,7% desde 2002, acima da inflação acumulada, e prevê novo reajuste a partir de fevereiro de 2027. Para uma empresa de ônibus, isso entra direto no custo por km e no pedido de reajuste tarifário.",
+  "No Fed, cresce a pressão por alta de 0,50 p.p. na próxima reunião, embora o consenso ainda seja de 0,25 p.p., segundo o Valor. Juros americanos mais altos tendem a reforçar a saída de capital de emergentes como o Brasil.",
+  "Maranhão zera multas e juros do IPVA 2026 para pagamento à vista até 18 de dezembro, segundo G1 Maranhão e Imirante; há mais de 200 mil veículos em atraso. É um caso de recuperação de receita estadual via anistia, com chance de regularizar débitos de frota."
  ],
  "acompanhar_hoje": [
-  "Precificação do CME para a reunião de dezembro do Fed: probabilidade de manutenção versus alta",
-  "Cotação do dólar e eventuais sinais da Petrobras sobre o preço do diesel",
-  "Notícias do ajuste fiscal brasileiro citadas pelo G1 como fator de pressão sobre o real",
-  "Brent acima de US$ 90 e seu repasse aos combustíveis no mercado interno"
+  "Votação do ajuste fiscal na Câmara na segunda (23) e se o texto do Senado é mantido sem alterações",
+  "Nova atuação do BC no câmbio e se o dólar se mantém acima de R$ 5,90",
+  "Detalhes do estudo da EPE: valor e data do reajuste do ICMS do diesel previsto para fevereiro de 2027",
+  "Sinais de dirigentes do Fed sobre alta de 0,25 ou 0,50 p.p."
  ],
- "pergunta_estudo": "(Economia Brasileira Contemporânea I) Usando a paridade descoberta de juros, explique por que uma alta de juros nos EUA, combinada com incerteza fiscal doméstica, pode depreciar o real mesmo com a Selic em 13,75%. Que dilemas isso cria para o tripé macroeconômico?",
- "conceito": "paridade",
+ "pergunta_estudo": "Em Economia do Setor Público: o ICMS sobre o diesel é um tributo indireto cobrado na cadeia; considerando a baixa elasticidade-preço da demanda por diesel no transporte, quem arca de fato com a alta do imposto — distribuidoras, empresas de ônibus ou passageiros — e como contratos com reajuste tarifário mudam essa incidência?",
+ "conceito": "tributacao",
  "itens": [
-  "76e36abb397122d2",
-  "f9115a0c04a5cfda",
-  "0562697eba56a5ec",
-  "d6bc79503acbf11d",
-  "d8f06ed4ba8ae71f",
-  "aa650f223215decb",
-  "bec457b4d645a11b",
-  "99fcd71396ad049a",
-  "3f3002a1143b5929"
+  "93640836281e62d3",
+  "9101cc2fae2eb572",
+  "2fa344c02fbc2263",
+  "8b45d5da40fb2faf",
+  "916596fd86a10016",
+  "fa7db8b90963260f",
+  "37d4dd5683f417c3",
+  "fea61b3e92319648",
+  "d2ce5ae63975a0fe",
+  "856b261e55d4f578"
  ],
- "date": "2026-11-21",
- "created": "2026-11-21T11:25:08.695715+00:00",
+ "date": "2026-11-22",
+ "created": "2026-11-22T16:26:41.436000+00:00",
  "model": "claude-opus-5-5"
 }

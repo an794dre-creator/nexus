@@ -1000,40 +1000,117 @@
     "titulo_original": "Does the Stock Market Stigmatize Banks that Borrow from the Fed?",
     "publicado": "2026-11-17T12:00:00Z"
    }
+  ],
+  "2026-11-22": [
+   {
+    "ref": "2f7f85f7fc8a4ad0",
+    "titulo": "Salário mínimo de US$20 na Califórnia: 1.440 controles sintéticos",
+    "tipo": "método",
+    "o_que_e_novo": "A coluna estima o efeito do salário mínimo de US$20 no fast-food californiano rodando 1.440 especificações plausíveis de controle sintético. Mostra que boa parte da divergência entre estudos vem de escolhas aparentemente inocentes do pesquisador na montagem do grupo de comparação.",
+    "como_funciona": "O controle sintético cria uma 'Califórnia artificial' como média ponderada de outros estados que imitam a trajetória pré-tratamento do emprego. Variando escolhas (quais estados entram no grupo doador, período, variáveis de ajuste), gera-se uma distribuição de efeitos estimados, uma 'curva de especificações'. O resumo não traz o resultado central; é preciso ler o original para saber se a maioria aponta perda de emprego ou não.",
+    "calculo": "Efeito = Emprego_CA(pós) − Σ w_j·Emprego_j(pós), com pesos w_j ≥ 0, Σw_j = 1, escolhidos para minimizar o erro pré-tratamento; repetir para 1.440 combinações e ver a distribuição.",
+    "por_que_importa": "Ensina que um único resultado empírico pode depender mais das decisões do autor do que dos dados. Isso é central para avaliar estudos sobre salário mínimo, inclusive no Brasil.",
+    "como_aplicar": "No TCC, apresente uma análise de robustez com várias especificações em vez de uma só. Na empresa, ao avaliar o impacto de reajuste salarial de motoristas, teste diferentes cenários de comparação.",
+    "conceito": "regressao",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/researcher-choices-matter-synthetic-controls-and-californias-20-fast-food-minimum",
+    "titulo_original": "Researcher choices matter: Synthetic controls and California’s $20 fast-food minimum wage",
+    "publicado": "2026-11-22T00:00:00Z"
+   },
+   {
+    "ref": "0b72bb55fa0f2ab3",
+    "titulo": "O crescimento puxado por IA chegará aos países em desenvolvimento?",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Paper do NBER (Björkegren, Lagakos e VanVuren) modela o efeito do crescimento movido por IA sobre países desenvolvidos e em desenvolvimento. A novidade é tratar serviços de IA como bens comercializados no mercado mundial.",
+    "como_funciona": "O modelo tem duas economias, uma avançada e uma em desenvolvimento, e a IA é produzida e vendida internacionalmente. Assim, o país pobre pode importar IA em vez de produzi-la, e o ganho depende da estrutura produtiva e dos termos de troca. O resumo é cortado antes dos resultados; é preciso ler o paper para saber a conclusão.",
+    "calculo": "",
+    "por_que_importa": "Retoma, com ferramentas novas, a pergunta centro-periferia de Prebisch e Furtado: o progresso técnico se difunde ou se concentra? É um tema direto de Inovação e Desenvolvimento e de Estratégias de Desenvolvimento Comparadas.",
+    "como_aplicar": "Use o artigo como contraponto ortodoxo à leitura cepalina em trabalhos dessas disciplinas. Também pode servir de base para uma pergunta de pesquisa sobre a adoção de IA no Nordeste.",
+    "conceito": "cepal",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/will-ai-growth-reach-the-developing-world.html?utm_source=rss&utm_medium=rss&utm_campaign=will-ai-growth-reach-the-developing-world",
+    "titulo_original": "Will AI Growth Reach the Developing World?",
+    "publicado": "2026-11-22T06:14:28Z"
+   },
+   {
+    "ref": "p:2611.26338v1",
+    "titulo": "Mudança estrutural com a transformação digital (modelo de agentes)",
+    "tipo": "método",
+    "o_que_e_novo": "O estudo usa um modelo baseado em agentes da economia global, calibrado, para simular como ganhos de produtividade nos fornecedores digitais reconfiguram redes de produção. Compara dois cenários com o mesmo ganho acumulado, que diferem na forma como os insumos digitais entram nos setores expostos.",
+    "como_funciona": "Firmas e setores interagem em rede insumo-produto. Um choque de produtividade digital se propaga para os setores que compram esses insumos, mudando preços, demanda e emprego. O resultado mostra a realocação de trabalho entre setores; os detalhes dos cenários exigem a leitura do original.",
+    "calculo": "",
+    "por_que_importa": "Mostra que o efeito da inovação depende de como ela se difunde pela estrutura produtiva, e não só do tamanho do ganho. Dialoga com Schumpeter e com a abordagem de sistemas de inovação.",
+    "como_aplicar": "Em Inovação e Desenvolvimento, use o artigo como exemplo de método alternativo ao equilíbrio geral. Ele ajuda a discutir a destruição criadora entre setores.",
+    "conceito": "schumpeter",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.26338v1",
+    "titulo_original": "Structural economic change under the digital transformation",
+    "publicado": "2026-11-19T16:16:35Z"
+   },
+   {
+    "ref": "391b97d98024a0b5",
+    "titulo": "Excelência em capex: valor no investimento de capital",
+    "tipo": "técnica de gestão",
+    "o_que_e_novo": "A McKinsey aponta a excelência na gestão de investimentos de capital como uma das maiores alavancas ainda pouco usadas na indústria química europeia, que está sob pressão. O foco é extrair mais valor de cada real investido.",
+    "como_funciona": "Pelo que dá para inferir do resumo, a técnica envolve priorizar projetos por retorno, padronizar a execução e controlar o custo e o prazo das obras. O método detalhado não aparece no resumo; é preciso ler o original.",
+    "calculo": "VPL = Σ FC_t/(1+WACC)^t − Investimento; reduzir o capex em 10% num projeto de R$10 mi com VPL de R$1 mi eleva o VPL para R$2 mi.",
+    "por_que_importa": "Mostra que disciplina na alocação de capital gera valor tanto quanto o crescimento das receitas. Liga-se diretamente a Administração Financeira e Orçamentária I.",
+    "como_aplicar": "Na empresa de ônibus, priorize a renovação de frota por VPL e TIR, descontando pelo WACC, e compare depois o custo orçado com o realizado. Assim o plano de investimentos passa a ser acompanhado como um portfólio.",
+    "conceito": "vpl",
+    "fonte": "McKinsey Insights",
+    "link": "https://www.mckinsey.com/capabilities/operations/our-insights/capex-in-chemicals-generating-value-through-performance-excellence",
+    "titulo_original": "Capex in chemicals: Generating value through performance excellence",
+    "publicado": "2026-11-22T16:23:00Z"
+   },
+   {
+    "ref": "27af641be33b5a4d",
+    "titulo": "ICTI do Ipea sobe 0,81% em setembro de 2026",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo o Ipea, o Índice de Custo da TI subiu 0,81% em setembro de 2026, 0,6 p.p. acima do mês anterior. A variação foi 0,45 p.p. maior que a do mesmo mês de 2025.",
+    "como_funciona": "O índice mede o custo dos serviços de TI e é usado para reajustar contratos, inclusive os da administração pública. Funciona como um indexador setorial, de forma análoga aos índices de custo do transporte.",
+    "calculo": "Valor reajustado = Contrato × (1 + 0,0081); um contrato de R$50.000 passa a R$50.405.",
+    "por_que_importa": "Indexadores setoriais preservam o equilíbrio econômico-financeiro dos contratos. A lógica é a mesma das planilhas tarifárias de ônibus.",
+    "como_aplicar": "Use o ICTI para reajustar contratos de software e bilhetagem da empresa. Compare sua lógica com a das fórmulas paramétricas de reajuste tarifário.",
+    "conceito": "reajuste",
+    "fonte": "IPEA · Carta de Conjuntura",
+    "link": "https://www.ipea.gov.br/cartadeconjuntura/index.php/2026/11/indice-de-custo-da-tecnologia-da-informacao-icti-setembro-de-2026/",
+    "titulo_original": "Índice de Custo da Tecnologia da Informação (ICTI): setembro de 2026",
+    "publicado": "2026-11-17T21:41:25Z"
+   }
   ]
  },
- "date": "2026-11-21",
- "created": "2026-11-21T11:25:08.695715+00:00",
+ "date": "2026-11-22",
+ "created": "2026-11-22T16:26:41.436000+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Pobreza e desigualdade",
-   "por_que": "O aumento (13 contra 8 manchetes) parece puxado sobretudo pelo calendário de pagamentos do Bolsa Família de novembro, incluindo o valor injetado no Maranhão, e por divulgações do IBGE, como a de que o Brasil reduziu a desigualdade educacional, mas com disparidades persistentes. Há também textos de opinião e reportagens sobre desigualdade racial (mobilidade urbana no Grande ABC, saúde) e o caso dos Awá-Guajá no Maranhão, com a pergunta sobre fome. As manchetes são dispersas e não apontam um único fato novo; parte do volume é rotina de calendário.",
-   "observar": "Vale acompanhar a nova pesquisa do IBGE citada nas manchetes e seus dados regionais para o Maranhão, além do desdobramento sobre a situação dos Awá-Guajá.",
-   "ultimos7": 13,
+   "por_que": "O tema quase dobrou (15 contra 8 manchetes), mas as manchetes são dispersas: divulgações do IBGE (nova pesquisa sobre pobreza e redução da desigualdade educacional com disparidades persistentes), notícias sobre Bolsa Família (R$ 929 milhões injetados no Maranhão em novembro e campanhas que pagaram R$ 113 milhões a beneficiários) e textos sobre desigualdade racial em ciência, saúde e mobilidade urbana. Há também a previsão do Programa Alimentar Mundial de apoiar 91 milhões de pessoas em 2027 e o caso dos Awá-Guajá se aproximando de uma comunidade no Maranhão, com a fome levantada como hipótese. Não há um evento único que explique a alta, e sim um acúmulo de pautas sociais.",
+   "observar": "O que a nova pesquisa do IBGE vai medir e quando sai, além dos próximos repasses do Bolsa Família ao Maranhão, que influenciam o consumo e a demanda local, inclusive por transporte.",
+   "ultimos7": 15,
    "anteriores7": 8
   },
   {
    "tema": "IA e agentes",
-   "por_que": "O volume saltou de 324 para 453 manchetes, com destaque para o IPO da Anthropic, descrito como histórico, e para os balanços ligados à Nvidia, que puseram a IA no noticiário financeiro. Somam-se casos de aplicação em empresas (os 12 mil agentes de IA do iFood) e debates sobre efeitos na mídia e na comunicação. O restante são usos variados (clima, sementes, perfumes, segurança), sem um fio único.",
-   "observar": "Observar o desempenho das ações da Anthropic após a estreia e se surgem novos anúncios de uso de agentes de IA em empresas brasileiras.",
-   "ultimos7": 453,
-   "anteriores7": 324
+   "por_que": "O volume já era alto e subiu de 321 para 489 manchetes, puxado por notícias sobre IA como canal de vendas operado de ponta a ponta e pela dificuldade de colocá-la para trabalhar nas empresas. Duas manchetes indicam uma virada para riscos e retorno: uma diz que a IA avança na produtividade, mas o lucro segue distante, e outra diz que o Fed simulou impactos como desemprego e crise nas bolsas. Também aparecem segurança e fraude, como uma vulnerabilidade do Bitcoin Core encontrada por IA e uma campanha da Binance contra golpes.",
+   "observar": "Os resultados detalhados da simulação do Fed e se surgem dados de empresas mostrando ganho de lucro, e não só de produtividade, com o uso de IA.",
+   "ultimos7": 489,
+   "anteriores7": 321
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "O tema já era alto e subiu pouco (292 para 311), concentrado na tramitação do pacote de ajuste fiscal do governo Lula: o texto veio do Senado, o relator na Câmara o manteve sem alterações e Hugo Motta convocou sessão extraordinária para votá-lo na segunda-feira (23). As manchetes ligam o tema à disparada do dólar e aos juros nos EUA, e há artigos heterodoxos que criticam o ajuste por frear investimento e crescimento.",
-   "observar": "Observar o resultado da votação na Câmara na segunda-feira (23) e a reação do dólar e dos juros futuros logo depois.",
-   "ultimos7": 311,
-   "anteriores7": 292
+   "por_que": "O volume ficou quase estável (321 contra 304), mas o assunto se concentrou na votação na Câmara de um projeto de ajuste fiscal já aprovado pelo Senado, com economia prevista de R$ 50 bilhões segundo as manchetes. Em paralelo, há críticas de que o plano seria um remendo (editorial da Folha) e um alerta da Ashmore de que a saída de recursos poderia chegar a US$ 420 bilhões num cenário de estresse fiscal. Parte das manchetes só usa a palavra 'fiscal' sem ligação com o tema, como a apreensão de tirzepatida com nota fiscal baixa.",
+   "observar": "O resultado da votação na Câmara e se a economia de R$ 50 bilhões se mantém no texto final, além da reação dos juros futuros e do câmbio.",
+   "ultimos7": 321,
+   "anteriores7": 304
   },
   {
    "tema": "China",
-   "por_que": "O tema não está subindo: o volume ficou estável e até caiu levemente (237 para 230). As manchetes falam da extensão da trégua comercial EUA-China condicionada às terras raras, da soja brasileira no mercado chinês, do caso de suposta espionagem na Nvidia e de iniciativas chinesas de arrecadação e cooperação, sem um fato dominante.",
-   "observar": "Observar se a trégua EUA-China é estendida após a negociação sobre terras raras, com reflexos na demanda por soja brasileira.",
-   "ultimos7": 230,
-   "anteriores7": 237
+   "por_que": "O volume está praticamente estável (248 contra 243), então não há alta clara. O destaque é a intervenção nas bolsas chinesas, que reduziram a margem exigida de 100% para 80% e cortaram tarifas depois de perdas de US$ 1,7 trilhão, segundo a manchete. Há ainda a disputa tecnológica com os EUA (chips, Nvidia, telecomunicações) e efeitos no Brasil: frete mais caro de Vitória à China apertando a margem das mineradoras e a Índia passando ao 2º lugar nas exportações do Pará.",
+   "observar": "Se as medidas estabilizam as bolsas chinesas e se a perda de espaço da China nas exportações do Pará aparece também nos dados de outros estados exportadores do Norte e Nordeste.",
+   "ultimos7": 248,
+   "anteriores7": 243
   }
  ],
- "tendencias_date": "2026-11-21"
+ "tendencias_date": "2026-11-22"
 }
