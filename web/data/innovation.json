@@ -1,82 +1,5 @@
 {
  "history": {
-  "2026-11-09": [
-   {
-    "ref": "72bfd0c6989106cd",
-    "titulo": "Petróleo dos EUA amorteceu choque de oferta de 2026",
-    "tipo": "descoberta",
-    "o_que_e_novo": "Segundo o Fed de Nova York, o conflito no Oriente Médio no início de 2026 causou uma queda sem precedentes na oferta global de petróleo, mas os preços não chegaram a níveis recordes. A análise atribui parte dessa moderação ao setor petrolífero americano, cujo aumento contínuo de perfurações criou um grande excesso de oferta antes do choque.",
-    "como_funciona": "Um excesso de oferta prévio funciona como colchão: estoques altos e produção em expansão fora da região afetada reduzem a escassez efetiva quando a oferta cai. Como a demanda por petróleo é inelástica no curto prazo, pequenas folgas de oferta mudam muito o preço. O resumo não detalha os demais fatores nem o método; é preciso ler o original.",
-    "calculo": "Variação de preço ≈ choque de oferta (%) / elasticidade-preço da demanda. Ex.: queda líquida de 2% com elasticidade -0,1 → alta de ~20%; se a folga de oferta reduz a queda líquida para 1%, a alta cai para ~10%.",
-    "por_que_importa": "O preço do diesel no Brasil acompanha o petróleo internacional e o câmbio, e é um dos maiores itens do custo por km. Entender o que amortece choques ajuda a prever se uma alta será passageira ou persistente.",
-    "como_aplicar": "Monte cenários de custo por km com diesel em alta moderada e forte, e use-os para justificar cláusulas de gatilho de reajuste no contrato de concessão.",
-    "conceito": "custo_km",
-    "fonte": "Liberty Street Economics (Fed NY)",
-    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/the-u-s-oil-sectors-role-in-restraining-prices/",
-    "titulo_original": "The U.S. Oil Sector’s Role in Restraining Prices",
-    "publicado": "2026-11-05T12:00:00Z"
-   },
-   {
-    "ref": "1a108e07ca4097a2",
-    "titulo": "Poder de mercado define quanto do corte de juros chega ao cliente",
-    "tipo": "descoberta",
-    "o_que_e_novo": "Com dados de 14 milhões de cartões novos, pesquisadores do Fed de NY examinam como a taxa oferecida muda quando cai o custo de captação do banco. O resumo indica que a posição de mercado do credor explica por que tomadores parecidos recebem taxas muito diferentes.",
-    "como_funciona": "Quando o custo de funding cai, um banco em mercado competitivo repassa a queda ao cliente; um com poder de mercado pode reter parte como margem. O grau de repasse (pass-through) depende, portanto, da concorrência local. Os números exatos do repasse não aparecem no resumo; é preciso ler o artigo.",
-    "calculo": "Pass-through = Δ taxa ao cliente / Δ custo de captação. Ex.: Selic cai 1 p.p. e a taxa do financiamento cai 0,4 p.p. → repasse de 40%.",
-    "por_que_importa": "Mostra que a política monetária não chega igual a todos: depende da estrutura do mercado de crédito. Para quem financia frota, isso explica spreads altos mesmo com juros básicos em queda.",
-    "como_aplicar": "Ao renovar financiamento de ônibus, compare cotações de vários bancos e fontes (BNDES/Finame, bancos de montadora) e calcule o repasse da Selic de cada uma para negociar.",
-    "conceito": "cournot",
-    "fonte": "Liberty Street Economics (Fed NY)",
-    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/how-market-position-shapes-credit-card-interest-rates/",
-    "titulo_original": "How Market Position Shapes Credit Card Interest Rates",
-    "publicado": "2026-11-04T12:00:00Z"
-   },
-   {
-    "ref": "6ef2d79f9a2769d9",
-    "titulo": "A pergunta da pesquisa muda o efeito da inflação esperada sobre o consumo",
-    "tipo": "método",
-    "o_que_e_novo": "A coluna mostra que a forma como se pergunta sobre consumo em pesquisas pode mudar o sinal e a força da relação estimada entre expectativas de inflação e gasto das famílias. Isso ajuda a explicar por que a evidência empírica é mista.",
-    "como_funciona": "Perguntas sobre gastar em geral, sobre bens duráveis ou sobre gastos nominais versus reais captam comportamentos distintos: quem espera inflação pode antecipar compras (efeito positivo) ou cortar consumo real por perda de renda (efeito negativo). A redação da questão determina qual efeito aparece. O resumo é cortado; os detalhes das perguntas comparadas exigem ler o original.",
-    "calculo": "Consumo_i = a + b × Expectativa_inflação_i + controles + erro; o sinal de b pode mudar conforme a medida de consumo usada.",
-    "por_que_importa": "Viés de mensuração pode inverter conclusões de política monetária. É uma lição metodológica direta para qualquer TCC baseado em questionário.",
-    "como_aplicar": "No Projeto de Pesquisa, teste formulações alternativas da variável-chave e reporte a robustez; numa pesquisa com passageiros, pergunte de mais de uma forma sobre uso do ônibus.",
-    "conceito": "pesquisa",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/when-wording-changes-what-we-find-impact-inflation-expectations-spending",
-    "titulo_original": "When wording changes what we find: The impact of inflation expectations on spending",
-    "publicado": "2026-11-08T00:00:00Z"
-   },
-   {
-    "ref": "e2e94245408193ea",
-    "titulo": "Política monetária com dívida pública alta",
-    "tipo": "descoberta",
-    "o_que_e_novo": "A coluna argumenta que, mesmo com dívida pública elevada, bancos centrais ainda conseguem controlar a inflação. Reconhece o canal de risco: transferências financiadas por dívida elevam gasto e inflação se as famílias não as pouparem integralmente.",
-    "como_funciona": "Se as famílias não seguem a equivalência ricardiana, dívida maior aumenta demanda agregada e pressão inflacionária. O banco central compensaria reagindo com juros, mas juros maiores também encarecem a dívida. O resumo não mostra as condições exatas sob as quais o controle se mantém; é preciso ler o original.",
-    "calculo": "Dinâmica da dívida: Δd = (r − g) × d − superávit primário. Ex.: d=80% do PIB, r−g=2 p.p., primário 0 → dívida sobe 1,6 p.p. ao ano.",
-    "por_que_importa": "É o debate de dominância fiscal, central no Brasil. Conecta Economia do Setor Público com política monetária.",
-    "como_aplicar": "Use a fórmula de dinâmica da dívida com dados do Banco Central para discutir sustentabilidade fiscal brasileira em Economia do Setor Público.",
-    "conceito": "divida",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/monetary-policy-times-high-public-debt",
-    "titulo_original": "Monetary policy in times of high public debt",
-    "publicado": "2026-11-05T00:00:00Z"
-   },
-   {
-    "ref": "16e4c7d28d19aca7",
-    "titulo": "Do 'Escritório Global' à fronteira da globalização",
-    "tipo": "dado novo",
-    "o_que_e_novo": "A pesquisa documenta que cadeias globais de valor de serviços crescem mais rápido que as industriais. Sua geografia é diferente: uma estrela centrada nos EUA, e não blocos regionais como na indústria.",
-    "como_funciona": "Com dados de comércio de bens intermediários (mapa de calor), os autores comparam a 'Fábrica Global', organizada em blocos, ao 'Escritório Global', em que serviços digitais se conectam a um centro. Isso pede nova teoria e novos métodos empíricos. Detalhes das bases e medidas exigem leitura do artigo.",
-    "calculo": "",
-    "por_que_importa": "Atualiza a leitura centro-periferia: a dependência pode migrar da indústria para serviços e tecnologia. Isso é relevante para pensar estratégias de desenvolvimento do Brasil e do Nordeste.",
-    "como_aplicar": "Em Estratégias de Desenvolvimento Comparadas ou Inovação e Desenvolvimento, use o argumento para discutir se exportar serviços digitais é rota viável fora do eixo industrial.",
-    "conceito": "cepal",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/global-office-globalisations-frontier-shifting-factories-offices",
-    "titulo_original": "The Global Office: Globalisation’s frontier is shifting from factories to offices",
-    "publicado": "2026-11-09T00:00:00Z"
-   }
-  ],
   "2026-11-10": [
    {
     "ref": "p:2611.12117v1",
@@ -1077,40 +1000,117 @@
     "titulo_original": "Índice de Custo da Tecnologia da Informação (ICTI): setembro de 2026",
     "publicado": "2026-11-17T21:41:25Z"
    }
+  ],
+  "2026-11-23": [
+   {
+    "ref": "e5bf909a5302934c",
+    "titulo": "Nova base de dados de medidas fiscais em 142 países",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo a coluna da VoxEU, foi criada a Global Fiscal Actions, base trimestral de medidas de tributação e gasto em 142 países desde 1990. A classificação das medidas foi feita com modelos de linguagem (LLMs), por direção, instrumento e motivação.",
+    "como_funciona": "Pelo resumo, dá para inferir que se trata de uma abordagem 'narrativa': em vez de olhar só o saldo fiscal agregado, cada ação do governo é identificada em documentos e classificada (aumento ou corte, imposto ou gasto, motivo cíclico ou estrutural). Os LLMs automatizam o que antes era feito à mão, caso a caso. Separar as medidas pela motivação ajuda a isolar choques fiscais exógenos e estimar multiplicadores. Os detalhes de validação precisam ser lidos no original.",
+    "calculo": "Multiplicador fiscal estimado: ΔY_t+h = α + β·(choque fiscal exógeno_t) + controles; β = efeito acumulado de 1 unidade de medida fiscal sobre o PIB no horizonte h.",
+    "por_que_importa": "Faltam dados comparáveis sobre o que os governos de fato fazem, e isso limita o debate sobre austeridade e expansão fiscal. Para um TCC, a base pode permitir comparar o Brasil com outros países emergentes com uma metodologia replicável.",
+    "como_aplicar": "Verifique se o Brasil está na base e se ela é pública; daria para montar um projeto de pesquisa em Economia do Setor Público sobre medidas fiscais brasileiras e crescimento. A ideia de usar LLM para classificar textos (por exemplo, leis orçamentárias do Maranhão) também pode virar método de TCC.",
+    "conceito": "pesquisa",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/inside-fiscal-policy-new-dataset-government-actions",
+    "titulo_original": "Inside fiscal policy: A new dataset on government actions",
+    "publicado": "2026-11-23T00:00:00Z"
+   },
+   {
+    "ref": "ca41c7e94f8f003e",
+    "titulo": "Semana de 35 horas na França não dividiu o trabalho",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a coluna, a reforma francesa de 2000 reduziu a jornada padrão de 39 para 35 horas sem corte no salário mensal e veio acompanhada de redução de encargos sobre a folha. A evidência apresentada indica que a redução não cumpriu a promessa de repartir o trabalho entre mais pessoas.",
+    "como_funciona": "A tese da divisão do trabalho supõe que, com menos horas por trabalhador, as empresas contratariam mais gente. Só que, se o salário mensal é mantido, o custo por hora sobe cerca de 11% (39/35), e as empresas tendem a reorganizar a produção, ganhar produtividade ou cortar em vez de contratar. A desoneração da folha compensava parte desse custo. O resumo não detalha o método de identificação, então é preciso ler o original.",
+    "calculo": "Custo por hora: aumento de 39/35 − 1 ≈ 11,4% com salário mensal fixo. Exemplo: salário de R$3.000 → de R$17,78/h (3000/168,7) para R$19,81/h (3000/151,4).",
+    "por_que_importa": "O fim da escala 6x1 e a redução da jornada estão em debate no Brasil, e esta é uma evidência empírica relevante sobre o tema. Em setores intensivos em mão de obra, como o de ônibus, o impacto no custo é direto.",
+    "como_aplicar": "Simule na planilha de custo por km da empresa o efeito de uma jornada menor sobre o custo de motoristas e cobradores (horas extras e contratações adicionais). Do lado teórico, ligue o tema à discussão de mais-valia absoluta versus relativa em Economia Marxista II.",
+    "conceito": "custo_km",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/shorter-workweeks-do-not-share-work-evidence-frances-35-hour-reform",
+    "titulo_original": "Shorter workweeks do not share work: Evidence from France's 35-hour reform",
+    "publicado": "2026-11-23T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.27210v1",
+    "titulo": "Agentes de IA e a demanda por trabalho",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Os autores afirmam trazer a primeira evidência para a economia como um todo sobre os efeitos da IA agêntica na demanda por trabalho. Eles combinam dados da OpenRouter, cerca de 2 quatrilhões de tokens, com 34,8 milhões de vagas de emprego de empresas abertas nos EUA.",
+    "como_funciona": "Pelo resumo, dá para inferir que o estudo cruza a intensidade de uso de IA (tokens consumidos, inclusive os agênticos) com o conteúdo textual das vagas publicadas, para ver se a demanda por certas tarefas cai ou muda. O resumo não traz os resultados nem o desenho causal, então é preciso ler o original.",
+    "calculo": "Desenho provável: Vagas_ocupação,t = α + β·Exposição_IA_ocupação × Pós_t + efeitos fixos + ε; β < 0 indicaria substituição.",
+    "por_que_importa": "É evidência quantitativa sobre o debate da destruição criadora com IA. Também mostra como dados novos, como logs de uso e texto de vagas, ampliam as possibilidades de pesquisa.",
+    "como_aplicar": "Use como referência em Inovação e Desenvolvimento para discutir Schumpeter e trabalho. Na empresa, sirva de base para pensar quais tarefas administrativas (escala, conciliação) podem ser automatizadas.",
+    "conceito": "schumpeter",
+    "fonte": "econ.GN",
+    "link": "http://arxiv.org/abs/2611.27210v1",
+    "titulo_original": "The Rise of Agents and the Human Labor Market",
+    "publicado": "2026-11-20T06:50:23Z"
+   },
+   {
+    "ref": "7815d90e5c28b6ed",
+    "titulo": "Por que os salários baixos subiram nos EUA",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo o trabalho citado, a parcela de trabalhadores horistas dos EUA que ganham menos de US$15 reais caiu de 38% para 13% entre 2014 e 2024. A pesquisa separa a entrada e saída de empregadores das mudanças dentro das empresas que já existiam.",
+    "como_funciona": "É uma decomposição: o aumento salarial pode vir de empresas que pagam mais tomando o lugar das que pagam menos (realocação) ou de empresas já existentes elevando os salários. Isso remete à decomposição de produtividade (between/within). O resumo não diz qual efeito domina, então é preciso ler o original.",
+    "calculo": "ΔS = Σ(entrantes) − Σ(saídas) + Σ_incumbentes Δs_i (dentro) + Σ Δpeso_i·s_i (realocação).",
+    "por_que_importa": "Ajuda a entender se o salário sobe por competição entre empresas ou por política. O método de decomposição pode ser replicado com dados da RAIS.",
+    "como_aplicar": "Num TCC, aplique a decomposição à RAIS do Maranhão para estudar a massa salarial. Para a empresa, fica o alerta de que concorrentes que pagam mais disputam motoristas.",
+    "conceito": "capital_humano",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/increasing-pay-for-lower-wage-workers.html?utm_source=rss&utm_medium=rss&utm_campaign=increasing-pay-for-lower-wage-workers",
+    "titulo_original": "Increasing pay for lower wage workers",
+    "publicado": "2026-11-22T19:24:24Z"
+   },
+   {
+    "ref": "a226f19b38e35492",
+    "titulo": "Controles de exportação funcionam melhor quando coordenados",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna combina dados de exportações dos EUA com um modelo quantitativo de comércio para avaliar controles sobre bens de uso dual (civil e militar). Segundo os autores, quando EUA e aliados aplicam os controles em conjunto, o efeito de segurança sobre os países-alvo é maior.",
+    "como_funciona": "Num modelo de comércio, um controle isolado permite que o país-alvo substitua o fornecedor por terceiros. Com coordenação, essas opções somem e o custo para o alvo sobe. O resumo não detalha o modelo usado.",
+    "calculo": "",
+    "por_que_importa": "Tecnologia virou instrumento de Estado, e isso mostra limites da lógica de vantagens comparativas pura. Ajuda a entender as estratégias de desenvolvimento em disputa entre EUA e China.",
+    "como_aplicar": "Use em Estratégias de Desenvolvimento Comparadas para discutir o Estado desenvolvimentista e a geopolítica da tecnologia.",
+    "conceito": "estado_desenv",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/export-controls-are-broader-you-think-they-buy-more-security-coordination",
+    "titulo_original": "Export controls are broader than you think, but they buy more security with coordination",
+    "publicado": "2026-11-21T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-22",
- "created": "2026-11-22T16:26:41.436000+00:00",
+ "date": "2026-11-23",
+ "created": "2026-11-23T14:56:02.457660+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "Pobreza e desigualdade",
-   "por_que": "O tema quase dobrou (15 contra 8 manchetes), mas as manchetes são dispersas: divulgações do IBGE (nova pesquisa sobre pobreza e redução da desigualdade educacional com disparidades persistentes), notícias sobre Bolsa Família (R$ 929 milhões injetados no Maranhão em novembro e campanhas que pagaram R$ 113 milhões a beneficiários) e textos sobre desigualdade racial em ciência, saúde e mobilidade urbana. Há também a previsão do Programa Alimentar Mundial de apoiar 91 milhões de pessoas em 2027 e o caso dos Awá-Guajá se aproximando de uma comunidade no Maranhão, com a fome levantada como hipótese. Não há um evento único que explique a alta, e sim um acúmulo de pautas sociais.",
-   "observar": "O que a nova pesquisa do IBGE vai medir e quando sai, além dos próximos repasses do Bolsa Família ao Maranhão, que influenciam o consumo e a demanda local, inclusive por transporte.",
-   "ultimos7": 15,
-   "anteriores7": 8
-  },
-  {
    "tema": "IA e agentes",
-   "por_que": "O volume já era alto e subiu de 321 para 489 manchetes, puxado por notícias sobre IA como canal de vendas operado de ponta a ponta e pela dificuldade de colocá-la para trabalhar nas empresas. Duas manchetes indicam uma virada para riscos e retorno: uma diz que a IA avança na produtividade, mas o lucro segue distante, e outra diz que o Fed simulou impactos como desemprego e crise nas bolsas. Também aparecem segurança e fraude, como uma vulnerabilidade do Bitcoin Core encontrada por IA e uma campanha da Binance contra golpes.",
-   "observar": "Os resultados detalhados da simulação do Fed e se surgem dados de empresas mostrando ganho de lucro, e não só de produtividade, com o uso de IA.",
-   "ultimos7": 489,
-   "anteriores7": 321
+   "por_que": "O volume saltou de 329 para 486 manchetes, puxado por notícias de investimento e adoção: a Sierra teria dobrado sua avaliação para US$ 30 bilhões com a demanda por IA no atendimento ao cliente, e startups como a chilena Ainwater captaram recursos mirando o Brasil. Também aparecem casos de uso setoriais (hospitais, pedágio), agentes de IA fazendo pagamentos com cartão e uma simulação do Fed sobre efeitos da IA no emprego e na bolsa dos EUA. As manchetes são dispersas e não apontam um único evento gatilho; parecem refletir um fluxo amplo de anúncios corporativos.",
+   "observar": "Vale acompanhar se a adoção desigual de agentes de IA pelas PMEs brasileiras ganha dados concretos e se o estudo do Fed sobre emprego tem desdobramentos.",
+   "ultimos7": 486,
+   "anteriores7": 329
   },
   {
    "tema": "Fiscal e dívida pública",
-   "por_que": "O volume ficou quase estável (321 contra 304), mas o assunto se concentrou na votação na Câmara de um projeto de ajuste fiscal já aprovado pelo Senado, com economia prevista de R$ 50 bilhões segundo as manchetes. Em paralelo, há críticas de que o plano seria um remendo (editorial da Folha) e um alerta da Ashmore de que a saída de recursos poderia chegar a US$ 420 bilhões num cenário de estresse fiscal. Parte das manchetes só usa a palavra 'fiscal' sem ligação com o tema, como a apreensão de tirzepatida com nota fiscal baixa.",
-   "observar": "O resultado da votação na Câmara e se a economia de R$ 50 bilhões se mantém no texto final, além da reação dos juros futuros e do câmbio.",
-   "ultimos7": 321,
-   "anteriores7": 304
+   "por_que": "O tema subiu de 301 para 342 manchetes porque o pacote de ajuste fiscal do governo Lula entrou em votação no Congresso, com resistências no Senado e análise iniciada na Câmara. Segundo as manchetes, o mercado reagiu com o dólar superando R$ 6 pela primeira vez desde abril de 2025 e queda do Ibovespa. Críticos, como Braga, dizem que o pacote é insuficiente e que seria preciso uma nova PEC, e Galípolo defendeu equilíbrio entre política fiscal e monetária.",
+   "observar": "O ponto central é o resultado da votação na Câmara e se o dólar se mantém acima de R$ 6, o que pesaria no diesel e nos custos de frota da empresa.",
+   "ultimos7": 342,
+   "anteriores7": 301
   },
   {
-   "tema": "China",
-   "por_que": "O volume está praticamente estável (248 contra 243), então não há alta clara. O destaque é a intervenção nas bolsas chinesas, que reduziram a margem exigida de 100% para 80% e cortaram tarifas depois de perdas de US$ 1,7 trilhão, segundo a manchete. Há ainda a disputa tecnológica com os EUA (chips, Nvidia, telecomunicações) e efeitos no Brasil: frete mais caro de Vitória à China apertando a margem das mineradoras e a Índia passando ao 2º lugar nas exportações do Pará.",
-   "observar": "Se as medidas estabilizam as bolsas chinesas e se a perda de espaço da China nas exportações do Pará aparece também nos dados de outros estados exportadores do Norte e Nordeste.",
-   "ultimos7": 248,
-   "anteriores7": 243
+   "tema": "Mercado de trabalho",
+   "por_que": "O volume ficou estável em 94 manchetes, então o tema não cresceu de fato. As manchetes são majoritariamente anúncios regionais de vagas (agro com o plantio da soja, portos na Bahia, Sergipe, MT), além de uma vaga de mecânicos e motoristas em empresa de mobilidade e da demanda por profissionais de FP&A com familiaridade em IA. Não há um fato macro dominante, apenas a menção de que dados de desemprego saem nesta semana.",
+   "observar": "Vale observar a divulgação da taxa de desemprego da semana e se ela confirma o aquecimento sugerido pelos anúncios pontuais de vagas.",
+   "ultimos7": 94,
+   "anteriores7": 94
+  },
+  {
+   "tema": "Pobreza e desigualdade",
+   "por_que": "O volume está estável em 12 manchetes, portanto não há crescimento real, e a amostra é pequena e heterogênea. Os destaques incluem dados do IBGE sobre redução, ainda parcial, da desigualdade educacional, uma nova pesquisa do IBGE ligada ao combate à pobreza, a previsão do PAM de apoiar 91 milhões de pessoas em 2027 e vários textos sobre desigualdade racial. Há uma notícia do Maranhão: indígenas Awá-Guajá isolados se aproximaram de uma comunidade, com a dúvida, ainda sem confirmação, de que isso se deva à fome.",
+   "observar": "Vale acompanhar os detalhes da nova pesquisa do IBGE e eventuais esclarecimentos oficiais sobre a situação dos Awá-Guajá no Maranhão.",
+   "ultimos7": 12,
+   "anteriores7": 12
   }
  ],
- "tendencias_date": "2026-11-22"
+ "tendencias_date": "2026-11-23"
 }

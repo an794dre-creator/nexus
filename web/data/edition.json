@@ -1,34 +1,33 @@
 {
- "manchete": "Ajuste fiscal vai à Câmara nesta segunda enquanto dólar passa de R$ 5,89 e estudo da EPE mostra ICMS do diesel muito acima da inflação",
+ "manchete": "Dólar toca R$ 6 pela primeira vez desde abril de 2025, juros do Tesouro renovam máximas e Focus piora inflação e PIB no dia da votação do pacote fiscal na Câmara",
  "resumo": [
-  "Câmara deve votar na segunda (23) o ajuste fiscal do governo; segundo o Imirante, a economia prevista é de R$ 50 bilhões em 2027, e o relator Mauro Benevides manteve o texto do Senado (G1). Importa porque a credibilidade fiscal pesa sobre juros e câmbio.",
-  "A gestora Ashmore, segundo o Valor, estima em um de seus cenários que a saída bruta de recursos do Brasil pode chegar a US$ 420 bilhões em 18 meses (cerca de 16% do PIB) se o ajuste for apenas pontual. Isso mostra o canal entre fiscal, fluxo de capital e dólar.",
-  "O dólar segue acima de R$ 5,90 mesmo após venda de reservas pelo BC, segundo o boca.com.br; no painel, fecha em R$ 5,89 (+1,35%). Câmbio mais alto pressiona diesel importado e inflação.",
-  "Estudo da EPE citado por Canal Rural, Estadão e UOL aponta que o ICMS sobre o diesel subiu 735,7% desde 2002, acima da inflação acumulada, e prevê novo reajuste a partir de fevereiro de 2027. Para uma empresa de ônibus, isso entra direto no custo por km e no pedido de reajuste tarifário.",
-  "No Fed, cresce a pressão por alta de 0,50 p.p. na próxima reunião, embora o consenso ainda seja de 0,25 p.p., segundo o Valor. Juros americanos mais altos tendem a reforçar a saída de capital de emergentes como o Brasil.",
-  "Maranhão zera multas e juros do IPVA 2026 para pagamento à vista até 18 de dezembro, segundo G1 Maranhão e Imirante; há mais de 200 mil veículos em atraso. É um caso de recuperação de receita estadual via anistia, com chance de regularizar débitos de frota."
+  "Câmbio: segundo o G1, o dólar chegou a R$ 6,0055 na máxima do dia, maior nível desde 9 de abril de 2025; Folha e Valor atribuem a alta à preocupação com a política fiscal do governo Lula e à aversão global ao risco, e a Exame fala em 16 altas desde a reeleição. Importa porque câmbio mais caro tende a pressionar preços de importados e insumos dolarizados, como o diesel.",
+  "Focus: de acordo com o boletim do Banco Central, noticiado pela Agência Brasil, o mercado elevou de R$ 5,40 para R$ 5,55 a projeção do dólar no fim de 2026; a Folha informa inflação projetada de 5,15% para este ano, e vários veículos citam Selic a 13% em 2027 e PIB menor. Importa porque expectativas piores reduzem o espaço para cortes de juros.",
+  "Juros: segundo InfoMoney e Estadão, as taxas dos prefixados renovaram máximas do ano e o IPCA+ 2032 chegou a 7,93%, num dia de votação do pacote fiscal na Câmara. Prêmio maior na dívida pública encarece o financiamento do governo e o crédito em geral.",
+  "Banco Central: segundo G1 e Canal Rural, Galípolo disse que a prioridade é o controle da inflação e que o cenário atual é mais desafiador que o do biênio 2025-2026; o Valor relata que os juros futuros passaram a cair após as falas. Mostra o peso da comunicação do BC na ancoragem de expectativas.",
+  "Leitura para a empresa de ônibus: dólar perto de R$ 6 e inflação maior podem pressionar diesel, peças e chassis, enquanto juros altos encarecem o financiamento de frota; é um cenário que reforça a importância de cláusulas de reajuste bem calibradas nos contratos."
  ],
  "acompanhar_hoje": [
-  "Votação do ajuste fiscal na Câmara na segunda (23) e se o texto do Senado é mantido sem alterações",
-  "Nova atuação do BC no câmbio e se o dólar se mantém acima de R$ 5,90",
-  "Detalhes do estudo da EPE: valor e data do reajuste do ICMS do diesel previsto para fevereiro de 2027",
-  "Sinais de dirigentes do Fed sobre alta de 0,25 ou 0,50 p.p."
+  "Resultado da votação do pacote fiscal na Câmara e eventuais mudanças no texto",
+  "Fechamento do dólar: se fica acima ou abaixo de R$ 6",
+  "Curva de juros futuros e taxas do Tesouro (IPCA+ 2032) após as falas de Galípolo",
+  "Reação da Petrobras ao câmbio: qualquer sinal sobre o preço do diesel"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: o ICMS sobre o diesel é um tributo indireto cobrado na cadeia; considerando a baixa elasticidade-preço da demanda por diesel no transporte, quem arca de fato com a alta do imposto — distribuidoras, empresas de ônibus ou passageiros — e como contratos com reajuste tarifário mudam essa incidência?",
- "conceito": "tributacao",
+ "pergunta_estudo": "Em Economia do Setor Público: por que a percepção de risco fiscal eleva ao mesmo tempo o prêmio dos títulos do Tesouro e a taxa de câmbio, e de que forma esse movimento pode piorar a própria dinâmica da dívida pública, considerando a relação entre juros reais, crescimento do PIB e superávit primário?",
+ "conceito": "divida",
  "itens": [
-  "93640836281e62d3",
-  "9101cc2fae2eb572",
-  "2fa344c02fbc2263",
-  "8b45d5da40fb2faf",
-  "916596fd86a10016",
-  "fa7db8b90963260f",
-  "37d4dd5683f417c3",
-  "fea61b3e92319648",
-  "d2ce5ae63975a0fe",
-  "856b261e55d4f578"
+  "38a81467fda7bf3c",
+  "7bd1c14dde0a4e4a",
+  "d175f35d9cd8de4d",
+  "3157e4d6c66fa21f",
+  "7889dd23d1590f18",
+  "f784188a99c07fc5",
+  "60a2e395fc89a953",
+  "b571fb69f7ef5972",
+  "217b5433bbf7148a",
+  "91f5d32051bdcf01"
  ],
- "date": "2026-11-22",
- "created": "2026-11-22T16:26:41.436000+00:00",
+ "date": "2026-11-23",
+ "created": "2026-11-23T14:56:02.457660+00:00",
  "model": "claude-opus-5-5"
 }
