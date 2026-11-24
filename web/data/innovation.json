@@ -1,82 +1,5 @@
 {
  "history": {
-  "2026-11-10": [
-   {
-    "ref": "p:2611.12117v1",
-    "titulo": "Formato de comunicação da tarifa muda horário de viagem",
-    "tipo": "descoberta",
-    "o_que_e_novo": "Segundo o resumo, é o primeiro estudo a testar, com experimento aleatorizado, se o formato de apresentação do preço da passagem avulsa (com desconto fora do pico) altera o horário de partida dos passageiros. A pergunta é de economia comportamental aplicada ao transporte público.",
-    "como_funciona": "Grupos de usuários sorteados recebem a mesma tarifa fora do pico comunicada de formas diferentes (por exemplo, valor absoluto versus percentual de desconto, inferência nossa). Compara-se a proporção de viagens deslocadas do pico entre os grupos. Como a atribuição é aleatória, a diferença estima o efeito causal do formato. Os resultados e os formatos exatos testados precisam ser lidos no artigo original.",
-    "calculo": "Efeito = (% viagens fora do pico no grupo formato B) − (% no grupo formato A); ex.: 18% − 14% = 4 p.p. de demanda deslocada sem mudar o preço.",
-    "por_que_importa": "Achatar o pico reduz a frota necessária, que é o maior custo fixo do operador. Se só a forma de comunicar já desloca demanda, é uma alavanca quase gratuita.",
-    "como_aplicar": "Testar na empresa, em uma linha piloto, mensagens diferentes para horários de vale e medir o embarque por faixa horária via bilhetagem. Também serve de modelo de desenho experimental para o TCC.",
-    "conceito": "elast",
-    "fonte": "econ.GN",
-    "link": "http://arxiv.org/abs/2611.12117v1",
-    "titulo_original": "Does fare communication format matter? Evidence from a randomised experiment in public transport",
-    "publicado": "2026-11-09T09:30:30Z"
-   },
-   {
-    "ref": "p:2611.12565v1",
-    "titulo": "Por que reajustes salariais públicos são raros e grandes",
-    "tipo": "método",
-    "o_que_e_novo": "O artigo modela cada revisão do salário público como decisão de um governo que olha para frente, já que o salário é fixado por lei em valor nominal e a inflação o corrói entre uma lei e outra. A frequência e o tamanho dos reajustes surgem do equilíbrio entre dois custos.",
-    "como_funciona": "Há um custo fixo de agir, que favorece reajustes grandes e raros, à maneira de um modelo de custos de menu. Há também um custo convexo de financiar o aumento de uma vez, que favorece reajustes pequenos e frequentes. A política ótima é uma regra de banda: só se revisa quando a perda real passa de um limite. Os efeitos agregados que o autor estima não aparecem no resumo.",
-    "calculo": "Salário real = W/P. Com inflação de 5% ao ano e W fixo, após 3 anos W/P ≈ 1/1,05³ ≈ 0,864, ou seja, perda de 13,6% antes da revisão.",
-    "por_que_importa": "Ajuda a explicar a dinâmica da folha e as pressões fiscais concentradas em certos anos. A mesma lógica vale para reajustes contratuais de tarifa.",
-    "como_aplicar": "Use a lógica de custo fixo contra custo convexo para argumentar, na empresa, a favor de gatilhos de reajuste tarifário mais frequentes e menores. Também é útil em Economia do Setor Público.",
-    "conceito": "reajuste",
-    "fonte": "econ.GN",
-    "link": "http://arxiv.org/abs/2611.12565v1",
-    "titulo_original": "That Time of the Year Again: Government Pay Revisions in the Aggregate Economy",
-    "publicado": "2026-11-09T15:28:51Z"
-   },
-   {
-    "ref": "p:2611.12347v1",
-    "titulo": "Cenário probabilístico de choque de petróleo sobre inflação",
-    "tipo": "método",
-    "o_que_e_novo": "Propõe um modelo não linear que transforma um cenário narrativo de escassez de petróleo em distribuições de probabilidade para os preços de petróleo e gasolina e para a inflação. Isso supera os cenários lineares que os bancos centrais costumam usar, que não capturam a chance de eventos extremos.",
-    "como_funciona": "Em vez de um único caminho, o modelo gera distribuições completas, condicionadas ao cenário. A não linearidade permite que choques grandes tenham efeitos desproporcionais. Detalhes da especificação e dos dados exigem leitura do original.",
-    "calculo": "Impacto no custo/km ≈ participação do diesel no custo × variação do diesel; ex.: 30% × 20% = 6% de alta no custo por km.",
-    "por_que_importa": "O diesel é um dos principais itens do custo do ônibus, e as caudas de risco importam mais que a média. Pensar em percentis melhora o planejamento de caixa e de reajuste.",
-    "como_aplicar": "Monte faixas de cenário (percentis 10, 50 e 90) para o diesel no orçamento anual da empresa e calcule o custo por km em cada uma.",
-    "conceito": "custo_km",
-    "fonte": "econ.GN",
-    "link": "http://arxiv.org/abs/2611.12347v1",
-    "titulo_original": "Fueling Inflation Risks: An Oil Shortage Scenario",
-    "publicado": "2026-11-09T13:01:51Z"
-   },
-   {
-    "ref": "p:2611.12459v1",
-    "titulo": "Filantropia complementa ou substitui gasto público?",
-    "tipo": "método",
-    "o_que_e_novo": "O artigo distingue dois conceitos: a adicionalidade de base, que preserva o financiamento público anterior à doação, e a preservação de portfólio, que preserva a posição do serviço dentro do orçamento compartilhado. Doadores com propósitos diferentes interagem com uma autoridade que aloca o gasto.",
-    "como_funciona": "O governo redistribui o orçamento entre serviços. Uma doação a um serviço pode liberar verba pública para outros, gerando efeito crowding-out. O compromisso fiscal determina se a doação realmente se soma ao gasto. Os resultados formais precisam ser lidos no original.",
-    "calculo": "Adicionalidade = (gasto total no serviço após a doação − gasto antes) / doação; valor 1 indica adição plena, valor 0 indica substituição total.",
-    "por_que_importa": "Vale para emendas, convênios e fundos vinculados no Brasil, inclusive subsídios ao transporte. Mostra que recurso carimbado nem sempre aumenta o total do setor.",
-    "como_aplicar": "Em Economia do Setor Público, analise se repasses ao transporte no Maranhão aumentaram o gasto ou só substituíram verba municipal, comparando LOAs.",
-    "conceito": "orcamento",
-    "fonte": "econ.GN",
-    "link": "http://arxiv.org/abs/2611.12459v1",
-    "titulo_original": "Fiscal Commitment and the Additionality of Philanthropy: Heterogeneous Donor Purposes in a Shared Public Budget",
-    "publicado": "2026-11-09T14:11:04Z"
-   },
-   {
-    "ref": "de7e5382feb0fd56",
-    "titulo": "A política monetária dos EUA melhorou mesmo em 150 anos?",
-    "tipo": "descoberta",
-    "o_que_e_novo": "Pesquisadores do Fed de Nova York apresentam um arcabouço para comparar a política monetária entre ambientes econômicos diferentes. O objetivo é separar o mérito da política da sorte, ou seja, de choques mais favoráveis.",
-    "como_funciona": "A ideia inferida é avaliar o desempenho condicionado aos choques enfrentados, por exemplo, como cada regime teria reagido aos mesmos distúrbios. Assim, distingue-se boa política de ambiente benigno. O resumo não traz a conclusão nem o método detalhado, por isso é preciso ler o paper.",
-    "calculo": "Regra de Taylor: i = r* + π + 0,5(π − π*) + 0,5(hiato do produto).",
-    "por_que_importa": "Ajuda a avaliar com rigor a credibilidade de bancos centrais, inclusive o BC brasileiro no tripé. É uma boa referência metodológica para o TCC.",
-    "como_aplicar": "Use a ideia de contrafactual (política ou sorte) para estruturar uma análise do regime de metas no Brasil em Economia Brasileira Contemporânea I.",
-    "conceito": "taylor",
-    "fonte": "Liberty Street Economics (Fed NY)",
-    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/has-u-s-monetary-policy-really-improved-a-150-year-perspective/",
-    "titulo_original": "Has U.S. Monetary Policy Really Improved? A 150‑Year Perspective",
-    "publicado": "2026-11-09T12:00:00Z"
-   }
-  ],
   "2026-11-11": [
    {
     "ref": "01285507aa928ef4",
@@ -1077,40 +1000,117 @@
     "titulo_original": "Export controls are broader than you think, but they buy more security with coordination",
     "publicado": "2026-11-21T00:00:00Z"
    }
+  ],
+  "2026-11-24": [
+   {
+    "ref": "p:w36037#fromrss",
+    "titulo": "Como desenhar Zonas de Baixa Emissão",
+    "tipo": "método",
+    "o_que_e_novo": "Barahona, Fabra, Imelda e Montero (NBER) modelam o desenho de Zonas de Baixa Emissão (ZBE), que proíbem veículos poluentes em partes da cidade. Segundo o resumo, o bem-estar é quase-convexo no desenho da zona, e as ZBE racionam o acesso de forma ineficiente quando comparadas a instrumentos de preço.",
+    "como_funciona": "Um pedágio de poluição cobra cada motorista pelo dano que ele causa. Já a ZBE simplesmente exclui veículos, e com isso impõe custo também a quem tem muito valor em entrar com o carro restrito (os motoristas inframarginais). A quase-convexidade indica que existe um tamanho ou rigor intermediário que maximiza o bem-estar. O resumo não detalha a estimação empírica, então é preciso ler o paper.",
+    "calculo": "Bem-estar(ZBE) = redução do dano ambiental − perda dos motoristas excluídos. Exemplo: se a zona evita R$ 10 mi de dano e gera R$ 6 mi de perda aos excluídos, o ganho líquido é de R$ 4 mi.",
+    "por_que_importa": "É um caso concreto de externalidade, com a comparação entre regulação por quantidade e regulação por preço (Pigou). Para ônibus, restrições urbanas a veículos poluentes podem favorecer o transporte coletivo e também pressionar pela renovação para frota limpa.",
+    "como_aplicar": "Em Economia do Setor Público, use o modelo para comparar uma restrição ao diesel antigo no centro de São Luís com um imposto pigouviano. Na empresa, simule o custo de antecipar a troca de frota caso uma regra desse tipo seja adotada.",
+    "conceito": "bens",
+    "fonte": "NBER",
+    "link": "https://www.nber.org/papers/w36037#fromrss",
+    "titulo_original": "Designing Low Emission Zones: Theory and Evidence -- by Nano Barahona, Natalia Fabra, Imelda, Juan-Pablo Montero",
+    "publicado": ""
+   },
+   {
+    "ref": "p:w36044#fromrss",
+    "titulo": "Resultados que somem na economia",
+    "tipo": "descoberta",
+    "o_que_e_novo": "O estudo mede a sub-reportagem no nível de cada hipótese, e não só o viés de publicação. A base são 5.057 hipóteses pré-registradas de 317 estudos no registro de RCTs da AEA.",
+    "como_funciona": "Os autores comparam o que foi pré-registrado com o que aparece nos artigos publicados. Hipóteses que não foram reportadas contam como resultados ausentes. O resumo não traz as taxas encontradas nem os seus determinantes, então é preciso ler o original.",
+    "calculo": "Taxa de ausência = hipóteses não reportadas / hipóteses pré-registradas.",
+    "por_que_importa": "Mostra que a literatura pode exagerar efeitos ao omitir os resultados nulos. Isso afeta a forma como você deve ler as evidências citadas no seu TCC.",
+    "como_aplicar": "No Projeto de Pesquisa, registre as hipóteses antes de olhar os dados e reporte todas, inclusive as nulas.",
+    "conceito": "pesquisa",
+    "fonte": "NBER",
+    "link": "https://www.nber.org/papers/w36044#fromrss",
+    "titulo_original": "Beyond Publication Bias: Characterizing and Understanding Missing Results in Economics -- by Fernando Hoces de la Guardia, Edward Miguel, Gufran Pathan, Akash Shaji, Viviane Helena Silva da Rocha, Erik Ø. Sørensen,…",
+    "publicado": ""
+   },
+   {
+    "ref": "p:w36050#fromrss",
+    "titulo": "Automação, IA e elos fracos",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Jones e Tonetti fazem uma contabilidade do crescimento por tarefas. Segundo o resumo, a produtividade do capital nas tarefas cresceu cerca de 5 pontos percentuais ao ano a mais que a do trabalho nos EUA.",
+    "como_funciona": "A produção é vista como um conjunto de tarefas complementares. Automatizar uma tarefa permite usar capital, que melhora rápido. Pelo título, as tarefas não automatizadas funcionam como elos fracos que limitam o crescimento total, o que freia uma explosão de crescimento puxada pela IA.",
+    "calculo": "Com tarefas complementares, tipo Leontief: Y ≈ mínimo das tarefas. Se 90% delas crescem 10% ao ano e 10% crescem 1%, o crescimento total tende a ficar próximo de 1%.",
+    "por_que_importa": "Oferece uma ferramenta para avaliar promessas de ganho de produtividade com IA. A ideia dialoga com Schumpeter e com a mudança técnica estudada em Inovação e Desenvolvimento.",
+    "como_aplicar": "Na empresa, mapeie as tarefas da operação (escala, manutenção, bilhetagem) e identifique os gargalos não automatizáveis antes de investir em IA.",
+    "conceito": "schumpeter",
+    "fonte": "NBER",
+    "link": "https://www.nber.org/papers/w36050#fromrss",
+    "titulo_original": "Past Automation and Future AI: How Weak Links Tame the Growth Explosion -- by Charles I. Jones, Christopher Tonetti",
+    "publicado": ""
+   },
+   {
+    "ref": "p:w36043#fromrss",
+    "titulo": "Como as pessoas imaginam o ajuste fiscal",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Uma pesquisa com mais de 27 mil respondentes em 13 países levanta crenças sobre a situação fiscal e expectativas de alta de impostos e de corte de gastos. Ela também coleta explicações abertas, que os autores classificam em modelos mentais.",
+    "como_funciona": "As respostas quantitativas são combinadas com as justificativas em texto livre, classificadas por tipo de raciocínio. Isso permite ver se as expectativas seguem uma lógica de sustentabilidade da dívida ou outras narrativas. O resumo não informa os resultados, então é preciso ler o paper.",
+    "calculo": "Dinâmica da dívida: Δb = (r − g)·b − superávit primário. A pesquisa testa se as pessoas raciocinam de forma parecida com isso.",
+    "por_que_importa": "As expectativas fiscais influenciam consumo, juros e o apoio a reformas. Junta economia do setor público com economia comportamental.",
+    "como_aplicar": "Em Economia do Setor Público, compare essa abordagem com as narrativas sobre o arcabouço fiscal brasileiro. Uma survey parecida também pode virar ideia de TCC.",
+    "conceito": "divida",
+    "fonte": "NBER",
+    "link": "https://www.nber.org/papers/w36043#fromrss",
+    "titulo_original": "Mental Models of Fiscal Policy -- by Francesco Bianchi, Era Dabla-Norris, Radhika Goyal, Victoria Haver, Salma Khalid",
+    "publicado": ""
+   },
+   {
+    "ref": "bbe21d14c365b87f",
+    "titulo": "Preço total obrigatório elevou preços",
+    "tipo": "política",
+    "o_que_e_novo": "Segundo a coluna do VoxEU, a lei da Califórnia de 2024 passou a exigir que aluguéis de curta temporada anunciem o preço com todas as taxas incluídas. Os hóspedes ficaram mais sensíveis a preço, mas os preços subiram cerca de 5%. Mesmo assim, de acordo com o resumo, os consumidores ainda tiveram ganhos.",
+    "como_funciona": "Taxas escondidas permitiam cobrar mais sem que o hóspede percebesse. Com a transparência, os anfitriões aparentemente reorganizaram a forma de precificar. O mecanismo exato da alta não está no resumo, então é preciso ler a coluna.",
+    "calculo": "Elasticidade-preço = %ΔQ / %ΔP. Uma demanda mais elástica após a lei convive com preço médio +5%.",
+    "por_que_importa": "Mostra que regulação de transparência pode ter efeitos contraintuitivos. Ajuda a pensar como se comunica a tarifa no transporte.",
+    "como_aplicar": "Na empresa, ao discutir tarifa técnica versus tarifa cobrada com o poder concedente, explicite subsídios e gratuidades e avalie como a demanda reage a um preço mais transparente.",
+    "conceito": "elast",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/when-transparency-raises-prices-lessons-californias-all-pricing-law-short-term",
+    "titulo_original": "When transparency raises prices: Lessons from California’s all-in pricing law for short-term rentals",
+    "publicado": "2026-11-24T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-23",
- "created": "2026-11-23T14:56:02.457660+00:00",
+ "date": "2026-11-24",
+ "created": "2026-11-24T13:58:28.006250+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "IA e agentes",
-   "por_que": "O volume saltou de 329 para 486 manchetes, puxado por notícias de investimento e adoção: a Sierra teria dobrado sua avaliação para US$ 30 bilhões com a demanda por IA no atendimento ao cliente, e startups como a chilena Ainwater captaram recursos mirando o Brasil. Também aparecem casos de uso setoriais (hospitais, pedágio), agentes de IA fazendo pagamentos com cartão e uma simulação do Fed sobre efeitos da IA no emprego e na bolsa dos EUA. As manchetes são dispersas e não apontam um único evento gatilho; parecem refletir um fluxo amplo de anúncios corporativos.",
-   "observar": "Vale acompanhar se a adoção desigual de agentes de IA pelas PMEs brasileiras ganha dados concretos e se o estudo do Fed sobre emprego tem desdobramentos.",
+   "por_que": "O volume saltou de 330 para 486 manchetes, puxado sobretudo pela estreia da Anthropic na bolsa: as manchetes dizem que as ações caíram abaixo do preço do IPO cinco dias depois, enquanto outra afirma que o uso do Claude por empresas japonesas cresceu dez vezes em um ano. Também aparecem debates sobre produtividade, cobrança por hora na advocacia, valor do trabalho e o aumento da demanda por energia a gás para a IA, além de a IA ser citada como fator de risco para o Bitcoin.",
+   "observar": "Se as ações da Anthropic se recuperam ou seguem abaixo do preço do IPO, como termômetro de quanto o mercado está disposto a pagar pela promessa de lucro da IA.",
    "ultimos7": 486,
-   "anteriores7": 329
-  },
-  {
-   "tema": "Fiscal e dívida pública",
-   "por_que": "O tema subiu de 301 para 342 manchetes porque o pacote de ajuste fiscal do governo Lula entrou em votação no Congresso, com resistências no Senado e análise iniciada na Câmara. Segundo as manchetes, o mercado reagiu com o dólar superando R$ 6 pela primeira vez desde abril de 2025 e queda do Ibovespa. Críticos, como Braga, dizem que o pacote é insuficiente e que seria preciso uma nova PEC, e Galípolo defendeu equilíbrio entre política fiscal e monetária.",
-   "observar": "O ponto central é o resultado da votação na Câmara e se o dólar se mantém acima de R$ 6, o que pesaria no diesel e nos custos de frota da empresa.",
-   "ultimos7": 342,
-   "anteriores7": 301
+   "anteriores7": 330
   },
   {
    "tema": "Mercado de trabalho",
-   "por_que": "O volume ficou estável em 94 manchetes, então o tema não cresceu de fato. As manchetes são majoritariamente anúncios regionais de vagas (agro com o plantio da soja, portos na Bahia, Sergipe, MT), além de uma vaga de mecânicos e motoristas em empresa de mobilidade e da demanda por profissionais de FP&A com familiaridade em IA. Não há um fato macro dominante, apenas a menção de que dados de desemprego saem nesta semana.",
-   "observar": "Vale observar a divulgação da taxa de desemprego da semana e se ela confirma o aquecimento sugerido pelos anúncios pontuais de vagas.",
-   "ultimos7": 94,
-   "anteriores7": 94
+   "por_que": "O aumento é pequeno (de 83 para 96) e as manchetes são dispersas: vagas pontuais, saldos municipais de emprego formal e concursos, sem um fato central que explique a alta. Dois destaques úteis para você são a Mobi-Rio, que já prevê redução progressiva da jornada diante do possível fim da escala 6×1 e abre vagas para motoristas, e a articulação de Braide com a Alcoa por investimentos e empregos no Maranhão.",
+   "observar": "Como avança a discussão do fim da escala 6×1, que pode mexer no custo de pessoal por km rodado da sua empresa de ônibus.",
+   "ultimos7": 96,
+   "anteriores7": 83
   },
   {
-   "tema": "Pobreza e desigualdade",
-   "por_que": "O volume está estável em 12 manchetes, portanto não há crescimento real, e a amostra é pequena e heterogênea. Os destaques incluem dados do IBGE sobre redução, ainda parcial, da desigualdade educacional, uma nova pesquisa do IBGE ligada ao combate à pobreza, a previsão do PAM de apoiar 91 milhões de pessoas em 2027 e vários textos sobre desigualdade racial. Há uma notícia do Maranhão: indígenas Awá-Guajá isolados se aproximaram de uma comunidade, com a dúvida, ainda sem confirmação, de que isso se deva à fome.",
-   "observar": "Vale acompanhar os detalhes da nova pesquisa do IBGE e eventuais esclarecimentos oficiais sobre a situação dos Awá-Guajá no Maranhão.",
-   "ultimos7": 12,
-   "anteriores7": 12
+   "tema": "Política industrial e inovação",
+   "por_que": "A variação é mínima (de 62 para 65) e boa parte das manchetes repete a mesma notícia: BNDES e Finep escolheram a Bossanova (Bossa Invest) para gerir um FIP de cerca de R$ 250 milhões para startups. Também aparecem crédito recorde do BNDES para fertilizantes, estimado em R$ 4 bilhões, e um prêmio do banco para integração ferroviária no Porto de Santos.",
+   "observar": "Quais startups e setores o FIP vai efetivamente financiar, um bom caso para discutir sistemas nacionais de inovação em Inovação e Desenvolvimento.",
+   "ultimos7": 65,
+   "anteriores7": 62
+  },
+  {
+   "tema": "Bitcoin e cripto",
+   "por_que": "O volume ficou quase estável (de 325 para 338), mas o tom é de queda: as manchetes falam em Bitcoin recuando para a faixa de US$ 60 mil a 62 mil, saídas recordes de ETFs à vista em novembro (US$ 4,71 bilhões) e descolamento em relação à alta das bolsas e da tecnologia. Também há notícias de regulação e crime, como a proposta sul-coreana de stablecoins emitidas por bancos e as operações da PF contra lavagem acima de R$ 4,3 bilhões.",
+   "observar": "Se as saídas dos ETFs continuam ou se revertem, pois isso indicaria se a queda é passageira ou uma mudança de humor mais duradoura.",
+   "ultimos7": 338,
+   "anteriores7": 325
   }
  ],
- "tendencias_date": "2026-11-23"
+ "tendencias_date": "2026-11-24"
 }

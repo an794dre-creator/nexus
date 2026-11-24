@@ -1,33 +1,32 @@
 {
- "manchete": "Dólar toca R$ 6 pela primeira vez desde abril de 2025, juros do Tesouro renovam máximas e Focus piora inflação e PIB no dia da votação do pacote fiscal na Câmara",
+ "manchete": "Câmara aprova o ajuste fiscal do plano Moretti, possível PEC das despesas obrigatórias derruba dólar e juros futuros, enquanto EUA travam o pedido brasileiro na OMC",
  "resumo": [
-  "Câmbio: segundo o G1, o dólar chegou a R$ 6,0055 na máxima do dia, maior nível desde 9 de abril de 2025; Folha e Valor atribuem a alta à preocupação com a política fiscal do governo Lula e à aversão global ao risco, e a Exame fala em 16 altas desde a reeleição. Importa porque câmbio mais caro tende a pressionar preços de importados e insumos dolarizados, como o diesel.",
-  "Focus: de acordo com o boletim do Banco Central, noticiado pela Agência Brasil, o mercado elevou de R$ 5,40 para R$ 5,55 a projeção do dólar no fim de 2026; a Folha informa inflação projetada de 5,15% para este ano, e vários veículos citam Selic a 13% em 2027 e PIB menor. Importa porque expectativas piores reduzem o espaço para cortes de juros.",
-  "Juros: segundo InfoMoney e Estadão, as taxas dos prefixados renovaram máximas do ano e o IPCA+ 2032 chegou a 7,93%, num dia de votação do pacote fiscal na Câmara. Prêmio maior na dívida pública encarece o financiamento do governo e o crédito em geral.",
-  "Banco Central: segundo G1 e Canal Rural, Galípolo disse que a prioridade é o controle da inflação e que o cenário atual é mais desafiador que o do biênio 2025-2026; o Valor relata que os juros futuros passaram a cair após as falas. Mostra o peso da comunicação do BC na ancoragem de expectativas.",
-  "Leitura para a empresa de ônibus: dólar perto de R$ 6 e inflação maior podem pressionar diesel, peças e chassis, enquanto juros altos encarecem o financiamento de frota; é um cenário que reforça a importância de cláusulas de reajuste bem calibradas nos contratos."
+  "Segundo G1 e Folha, a Câmara aprovou na segunda (23/11) o plano Moretti (PLP 299/26), pacote de ajuste fiscal do governo que já havia passado pelo Senado e segue para sanção. Importa porque é a principal resposta do governo à piora das expectativas fiscais.",
+  "De acordo com o Valor, o dólar passou a cair e os juros futuros aprofundaram a queda após notícias de que Lula teria autorizado o envio de uma PEC sobre despesas obrigatórias. O G1 registrou o dólar perto de R$ 5,82 por volta das 10h20, depois de ter tocado R$ 6 na véspera. Isso mostra como o prêmio de risco fiscal pesa no câmbio e na curva de juros.",
+  "Segundo o G1, o dólar ficou quase 19% mais caro em pouco mais de um mês. A Folha cita dados da IFI: a dívida bruta passou de 71,7% do PIB no fim de 2022 para 82,9% em 2026 e pode chegar a 95,7% ao fim do próximo mandato se não houver mudança de rumo. É o pano de fundo da tensão no mercado.",
+  "A Fazenda, no Boletim Macrofiscal de novembro, reduziu a previsão de crescimento do PIB para 2027 e elevou a de inflação, segundo a Agência Brasil. Na prática, o próprio governo projeta um cenário de menos atividade e preços mais altos.",
+  "Segundo o G1, os EUA bloquearam a primeira tentativa do Brasil de abrir um painel na OMC sobre as tarifas adicionais impostas a produtos brasileiros. Isso sinaliza que a via multilateral contra o tarifaço deve demorar.",
+  "O Diário do Transporte identificou dezenas de empresas e grupos de ônibus em recuperação judicial em quatro anos. As transportadoras apontam como causas endividamento, juros elevados, custos operacionais e desequilíbrios contratuais. É um alerta direto para quem opera frota com crédito caro."
  ],
  "acompanhar_hoje": [
-  "Resultado da votação do pacote fiscal na Câmara e eventuais mudanças no texto",
-  "Fechamento do dólar: se fica acima ou abaixo de R$ 6",
-  "Curva de juros futuros e taxas do Tesouro (IPCA+ 2032) após as falas de Galípolo",
-  "Reação da Petrobras ao câmbio: qualquer sinal sobre o preço do diesel"
+  "Texto e envio formal da PEC das despesas obrigatórias ao Congresso: se confirmado, tende a consolidar a queda do dólar e dos juros futuros",
+  "Fechamento do dólar frente a R$ 5,81–5,93 e retomada da venda de prefixados e IPCA+ no Tesouro Direto",
+  "Sanção do PLP 299/26 por Lula e eventuais vetos",
+  "Próximos passos do Brasil na OMC após o bloqueio americano"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: por que a percepção de risco fiscal eleva ao mesmo tempo o prêmio dos títulos do Tesouro e a taxa de câmbio, e de que forma esse movimento pode piorar a própria dinâmica da dívida pública, considerando a relação entre juros reais, crescimento do PIB e superávit primário?",
+ "pergunta_estudo": "Em Economia do Setor Público: usando a condição de sustentabilidade da dívida (relação entre juros reais, crescimento do PIB e resultado primário), explique por que um ajuste em despesas obrigatórias via PEC pode reduzir o prêmio de risco mais do que medidas pontuais. Discuta também o que uma previsão de PIB menor para 2027 faz com essa dinâmica.",
  "conceito": "divida",
  "itens": [
-  "38a81467fda7bf3c",
-  "7bd1c14dde0a4e4a",
-  "d175f35d9cd8de4d",
-  "3157e4d6c66fa21f",
-  "7889dd23d1590f18",
-  "f784188a99c07fc5",
-  "60a2e395fc89a953",
-  "b571fb69f7ef5972",
-  "217b5433bbf7148a",
-  "91f5d32051bdcf01"
+  "f52185c8452eadce",
+  "67d74e7fbabb8768",
+  "3361c14ffa0eaedd",
+  "2ed76e1a9dc0a701",
+  "5231d3d043f33c57",
+  "b3c88d6fd380d907",
+  "9150cbbf134e768d",
+  "2dfd19fd4e9ffe66"
  ],
- "date": "2026-11-23",
- "created": "2026-11-23T14:56:02.457660+00:00",
+ "date": "2026-11-24",
+ "created": "2026-11-24T13:58:28.006250+00:00",
  "model": "claude-opus-5-5"
 }
