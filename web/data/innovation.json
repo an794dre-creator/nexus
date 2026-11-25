@@ -1,82 +1,5 @@
 {
  "history": {
-  "2026-11-11": [
-   {
-    "ref": "01285507aa928ef4",
-    "titulo": "RCTs em economia do desenvolvimento podem ter pouco poder estatístico",
-    "tipo": "descoberta",
-    "o_que_e_novo": "Segundo o resumo, um estudo analisou 745 testes de hipótese principal em 190 artigos de grandes periódicos e concluiu que as estatísticas t observadas ficam bem abaixo do que seria esperado teoricamente. O trabalho também discute como alocar recursos de forma ótima em replicações.",
-    "como_funciona": "O poder de um teste é a chance de detectar um efeito que realmente existe. Quando amostras são pequenas ou efeitos são modestos, a estatística t tende a ser baixa, e os resultados 'significativos' que chegam a ser publicados podem exagerar o tamanho do efeito. Pela descrição, os autores comparam a distribuição das estatísticas t publicadas com a que se esperaria com poder adequado. Os detalhes do método de replicação ótima não estão no resumo, e é preciso ler o original.",
-    "calculo": "Poder aproximado ≈ P(|t| > 1,96) com t ~ N(efeito/erro-padrão, 1). Se efeito/EP = 1,5, poder ≈ 32%; se for 2,8, poder ≈ 80%.",
-    "por_que_importa": "O resultado indica que parte das evidências 'consagradas' em desenvolvimento pode ser frágil. Para quem está escrevendo o TCC, isso reforça que é preciso justificar o tamanho da amostra e não confiar só no p-valor.",
-    "como_aplicar": "No Projeto de Pesquisa, inclua um cálculo de poder ou de efeito mínimo detectável antes de coletar dados. Ao citar estudos, observe o tamanho da amostra e se o resultado foi replicado.",
-    "conceito": "regressao",
-    "fonte": "Marginal Revolution",
-    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/are-rcts-underpowered.html?utm_source=rss&utm_medium=rss&utm_campaign=are-rcts-underpowered",
-    "titulo_original": "Are RCTs underpowered?",
-    "publicado": "2026-11-10T20:05:26Z"
-   },
-   {
-    "ref": "954c0db73f298b45",
-    "titulo": "Inadimplência no cartão nos EUA cresce mais em bairros de baixa renda",
-    "tipo": "dado novo",
-    "o_que_e_novo": "Segundo o Fed de Nova York, a inadimplência no cartão de crédito subiu fortemente entre 2022 e 2024, com aumento maior entre tomadores de bairros de renda mais baixa. Os autores também rastreiam quando os devedores que hoje enfrentam dificuldade receberam seus cartões.",
-    "como_funciona": "O método é uma análise de safras (coortes): a inadimplência é acompanhada pela data de concessão do crédito e pela renda do bairro. Isso permite ver se cartões emitidos num período de crédito frouxo concentram os atrasos. O resumo é cortado antes da conclusão sobre o período de emissão, então é preciso ler o texto original.",
-    "calculo": "Taxa de inadimplência da safra t = saldos com mais de 90 dias de atraso da safra t / saldo total da safra t. A comparação é feita entre os quartis de renda.",
-    "por_que_importa": "O estudo mostra como a expansão do crédito pode gerar fragilidade concentrada nos mais pobres, um tema que dialoga com a ideia de capital fictício. A análise por safra é uma técnica útil de gestão de risco.",
-    "como_aplicar": "Na empresa, aplique a lógica de safras a recebíveis, como vendas de vale-transporte a prazo para empresas clientes, medindo atrasos por mês de contratação. Em Economia Marxista II, use o caso para discutir crédito e consumo dos trabalhadores.",
-    "conceito": "capficticio",
-    "fonte": "Liberty Street Economics (Fed NY)",
-    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/a-look-at-the-wider-divide-in-credit-card-delinquency-by-income/",
-    "titulo_original": "A Look at the Wider Divide in Credit Card Delinquency by Income",
-    "publicado": "2026-11-10T16:00:00Z"
-   },
-   {
-    "ref": "aa6b08f0da9e5a42",
-    "titulo": "Similaridade de pauta não mede exposição ao desvio chinês",
-    "tipo": "método",
-    "o_que_e_novo": "Segundo a coluna, medir a exposição de um país ao redirecionamento das exportações chinesas pela semelhança de pauta com a China pode enganar. Os autores propõem quatro índices consistentes com a teoria: competição nas exportações, competição nas importações, ganhos do consumidor e um quarto índice que o resumo corta.",
-    "como_funciona": "A exposição depende de onde os produtos chineses desviados efetivamente chegam e de quanto pesam no mercado do país, não só de semelhança entre as pautas. Um país com pauta parecida pode ganhar como importador (bens mais baratos) ou perder como concorrente em terceiros mercados. A fórmula exata dos índices não aparece no resumo, e é preciso ler o original.",
-    "calculo": "Ilustrativo: competição de importação_i ≈ Σ_k (Δimportações da China no produto k / consumo doméstico de k) × participação de k na produção do país i.",
-    "por_que_importa": "O Brasil pode ser afetado pelo desvio de comércio tanto na indústria quanto no consumo. Os índices separam quem perde de quem ganha, algo que a leitura cepalina de centro-periferia também discute.",
-    "como_aplicar": "Use os índices como inspiração de método para um TCC sobre a exposição da indústria brasileira ou nordestina a importações chinesas, a partir de dados do Comex Stat.",
-    "conceito": "cepal",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/similarity-not-exposure-measuring-spillovers-us-china-trade-frictions",
-    "titulo_original": "Similarity is not exposure: Measuring spillovers from US–China trade frictions",
-    "publicado": "2026-11-09T00:00:00Z"
-   },
-   {
-    "ref": "p:2611.14146v1",
-    "titulo": "Pobreza multidimensional local mesmo sem dados ligados por domicílio",
-    "tipo": "método",
-    "o_que_e_novo": "O artigo mostra como estimar Índices de Pobreza Multidimensional em nível local quando as fontes não podem ser cruzadas por domicílio, com aplicação na Macedônia do Norte. Segundo o resumo, os índices costumam existir só em nível nacional ou regional.",
-    "como_funciona": "O índice exige saber como as privações se sobrepõem dentro de cada domicílio. Censos e dados geoespaciais cobrem todas as localidades, mas não se ligam domicílio a domicílio. Pelo que dá para inferir, os autores modelam essa sobreposição a partir de uma pesquisa amostral e a transferem para as localidades. O método exato precisa ser conferido no original.",
-    "calculo": "Método Alkire-Foster: MPI = H × A, em que H é a proporção de pobres (privados em pelo menos k indicadores ponderados) e A é a intensidade média das privações. Exemplo: H = 0,30 e A = 0,45 → MPI = 0,135.",
-    "por_que_importa": "A técnica permite mapear a pobreza municipal, algo valioso para o Maranhão, onde as médias estaduais escondem disparidades internas. Também se liga à abordagem das capacitações.",
-    "como_aplicar": "Pode servir de base a um TCC que estime a pobreza multidimensional por município maranhense, combinando o Censo do IBGE e a PNAD Contínua.",
-    "conceito": "idh",
-    "fonte": "econ.GN",
-    "link": "http://arxiv.org/abs/2611.14146v1",
-    "titulo_original": "Estimating multidimensional poverty under incomplete data in North Macedonia",
-    "publicado": "2026-11-10T14:34:02Z"
-   },
-   {
-    "ref": "0e39b9f32bbf6c48",
-    "titulo": "Planejamento contínuo com previsões e agentes de IA",
-    "tipo": "técnica de gestão",
-    "o_que_e_novo": "Segundo a McKinsey, combinar previsões melhores com agentes de IA transformaria o planejamento empresarial num sistema contínuo e responsivo. A promessa é reduzir o trabalho manual de transformar previsões em ação.",
-    "como_funciona": "Em vez de um orçamento anual fixo, as previsões são atualizadas com frequência (rolling forecast), e agentes automatizam etapas como consolidação de dados, cenários e alertas de desvio. O resumo não detalha a arquitetura nem traz evidências de resultado. Trata-se de uma proposta de consultoria, não de um estudo empírico.",
-    "calculo": "Rolling forecast: a cada mês, Custo previsto(m+1..m+12) = km programado × custo/km projetado, com o diesel atualizado pelo último preço. Desvio = realizado − previsto.",
-    "por_que_importa": "Para um controller, o orçamento contínuo reage mais rápido a choques de diesel e de demanda. Também dialoga com a matéria Administração Financeira e Orçamentária I.",
-    "como_aplicar": "Implante uma previsão móvel de 12 meses do custo por km e do IPK, atualizada mensalmente, com alertas automáticos (mesmo em planilha) quando o desvio passar de 5%.",
-    "conceito": "custo_km",
-    "fonte": "McKinsey Insights",
-    "link": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/reinventing-business-planning-with-agentic-ai",
-    "titulo_original": "Reinventing business planning with agentic AI",
-    "publicado": "2026-11-11T17:56:05Z"
-   }
-  ],
   "2026-11-12": [
    {
     "ref": "2dac69db60aafc0d",
@@ -1077,40 +1000,117 @@
     "titulo_original": "When transparency raises prices: Lessons from California’s all-in pricing law for short-term rentals",
     "publicado": "2026-11-24T00:00:00Z"
    }
+  ],
+  "2026-11-25": [
+   {
+    "ref": "ff15ea3d3ab0b817",
+    "titulo": "Imigração: efeito conjunto via salários e impostos",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a coluna do VoxEU, um modelo calibrado para 17 países de alta renda junta os efeitos de mercado de trabalho e fiscais da imigração, que costumam ser analisados separadamente. Um fluxo de 1% da força de trabalho, com o perfil educacional dos imigrantes recentes, eleva o bem-estar dos nativos em 14 dos países.",
+    "como_funciona": "Pelo que dá para inferir do resumo, o modelo combina o canal salarial (complementaridade ou substituição entre trabalhadores de níveis educacionais diferentes) com o canal fiscal (impostos pagos menos benefícios recebidos pelos imigrantes). O saldo líquido define o ganho ou a perda de bem-estar do nativo. Os detalhes da calibração precisam ser conferidos no original.",
+    "calculo": "ΔBem-estar nativo ≈ Δsalário líquido (efeito mercado de trabalho) + (impostos pagos pelo imigrante − transferências recebidas) / população nativa",
+    "por_que_importa": "Mostra que a incidência de uma política depende de somar canais que a literatura costuma separar. É um bom exemplo de análise de equilíbrio geral com componente fiscal, útil em Economia do Setor Público.",
+    "como_aplicar": "Em Economia do Setor Público, use essa lógica para discutir incidência e efeito fiscal líquido de migração interna para São Luís. No TCC, serve de modelo para combinar canais de efeito.",
+    "conceito": "tributacao",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/immigration-and-native-welfare-effect-through-wages-and-taxes",
+    "titulo_original": "Immigration and native welfare: The effect through wages and taxes",
+    "publicado": "2026-11-25T00:00:00Z"
+   },
+   {
+    "ref": "36dc06fbb0ac96b4",
+    "titulo": "Como os EUA viraram uma sociedade de advogados",
+    "tipo": "descoberta",
+    "o_que_e_novo": "O artigo documenta que, entre 1970 e 1990, a participação do setor jurídico no emprego dos EUA mais que dobrou e o salário relativo dos advogados subiu 60%, com estabilidade antes e depois desse período. Os autores atribuem a mudança a alterações no ambiente legal, entre elas uma onda de novas leis.",
+    "como_funciona": "A ideia central é um choque de demanda: mudanças regulatórias aumentaram a necessidade de serviços jurídicos, o que elevou ao mesmo tempo quantidade e preço do trabalho. Quando emprego e salário relativo sobem juntos, o diagnóstico típico é deslocamento da demanda, e não da oferta. O resumo está truncado e não mostra todas as mudanças; é preciso ler o original.",
+    "calculo": "Se emprego e salário relativo sobem juntos (ΔL>0 e Δw>0), predomina choque de demanda; se L sobe e w cai, predomina choque de oferta.",
+    "por_que_importa": "Mostra como regulação e Estado criam setores inteiros e mudam a distribuição de renda. Também ensina um método simples de identificar choques a partir de preço e quantidade.",
+    "como_aplicar": "Aplique o mesmo teste de preço e quantidade para analisar a demanda por serviços de compliance e contabilidade tributária após a reforma tributária brasileira, inclusive na empresa.",
+    "conceito": "capital_humano",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/how-did-the-united-states-become-a-lawyerly-society.html?utm_source=rss&utm_medium=rss&utm_campaign=how-did-the-united-states-become-a-lawyerly-society",
+    "titulo_original": "How did the United States become a lawyerly society?",
+    "publicado": "2026-11-25T10:18:10Z"
+   },
+   {
+    "ref": "p:2611.31829v1",
+    "titulo": "Concursos vs contratos na compra de inovação",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo introduz os 'contratos interdependentes', em que a recompensa de cada abordagem tecnológica e a decisão de continuar financiá-la dependem dos resultados dos rivais. Eles ficam entre os contratos independentes e os concursos puros.",
+    "como_funciona": "Um designer, como um governo, financia várias rotas tecnológicas cuja viabilidade é descoberta pela experimentação. Um contrato independente paga cada rota isoladamente. Um concurso premia só o vencedor. O contrato interdependente usa a informação sobre o desempenho dos concorrentes para decidir quem segue, o que dosa a competição; os resultados formais exigem ler o original.",
+    "calculo": "",
+    "por_que_importa": "Serve para desenhar encomendas tecnológicas estatais, tema central de sistemas nacionais de inovação e de Estado desenvolvimentista. Também ajuda a pensar licitações de novas tecnologias, como ônibus elétricos.",
+    "como_aplicar": "Use em Inovação e Desenvolvimento para comparar instrumentos de compra pública de inovação, como os da Finep e da Lei de Inovação, com modelos de concurso.",
+    "conceito": "sni",
+    "fonte": "econ.TH",
+    "link": "http://arxiv.org/abs/2611.31829v1",
+    "titulo_original": "Contests versus Contracts in Innovation Procurement",
+    "publicado": "2026-11-24T02:26:40Z"
+   },
+   {
+    "ref": "9c621582544231ee",
+    "titulo": "Apostar para alcançar metas de vida",
+    "tipo": "descoberta",
+    "o_que_e_novo": "O trabalho liga o pessimismo econômico dos jovens ao aumento de atividades financeiras parecidas com apostas. A explicação proposta é um motivo de Friedman-Savage (1948): quando metas como casa própria ou casamento parecem inalcançáveis, apostar passa a ser racional.",
+    "como_funciona": "Se a utilidade tem um salto ou trecho convexo perto de um limiar de riqueza, como a entrada de um imóvel, uma aposta com valor esperado negativo pode aumentar a utilidade esperada. Quem está longe do limiar prefere a chance pequena de alcançá-lo a poupar devagar. Os dados empíricos usados não aparecem no resumo.",
+    "calculo": "Aposta de R$100 com 1% de chance de ganhar R$9.000: valor esperado = 0,01×9.000 − 100 = −R$10, mas, se R$9.000 cruzar o limiar de uma meta, U esperada pode subir.",
+    "por_que_importa": "Ajuda a explicar o avanço das bets no Brasil, com efeitos sobre endividamento e consumo das famílias. Liga desigualdade de oportunidades a comportamento financeiro de risco.",
+    "como_aplicar": "Pode virar recorte de TCC: relacionar gastos com apostas e indicadores de renda ou endividamento no Maranhão, usando regressão.",
+    "conceito": "pesquisa",
+    "fonte": "Marginal Revolution",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/gambling-for-goals.html?utm_source=rss&utm_medium=rss&utm_campaign=gambling-for-goals",
+    "titulo_original": "Gambling for Goals",
+    "publicado": "2026-11-24T19:33:13Z"
+   },
+   {
+    "ref": "p:2611.33069v1",
+    "titulo": "DML com correção de viés de segunda ordem",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo propõe reduzir o viés de segunda ordem que ainda resta no Debiased Machine Learning quando os erros da regressão e os erros dos pesos se alinham. Para isso, treina um modelo forte para prever esses erros do primeiro estágio.",
+    "como_funciona": "O DML estima efeitos de tratamento combinando uma regressão de resultado ajustada por machine learning com resíduos ponderados, o que elimina o viés de primeira ordem da regularização. O termo de segunda ordem depende do produto dos dois erros. O novo método estima e corrige esse produto; a implementação exige ler o original.",
+    "calculo": "θ̂ = média[ĝ(X) + α̂(X)·(Y − ĝ(X))]; viés residual ≈ E[(g − ĝ)(α − α̂)]",
+    "por_que_importa": "É uma fronteira da inferência causal com muitas variáveis de controle. Ajuda a entender os limites de métodos de ML usados em avaliação de políticas.",
+    "como_aplicar": "Se o TCC avaliar o efeito de uma política, como gratuidades sobre a demanda, comece com regressão e conheça o DML (pacote DoubleML) como extensão.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.33069v1",
+    "titulo_original": "Pragmatic Deeply Debiased ML",
+    "publicado": "2026-11-24T18:07:07Z"
+   }
   ]
  },
- "date": "2026-11-24",
- "created": "2026-11-24T13:58:28.006250+00:00",
+ "date": "2026-11-25",
+ "created": "2026-11-25T19:28:12.877449+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
-   "tema": "IA e agentes",
-   "por_que": "O volume saltou de 330 para 486 manchetes, puxado sobretudo pela estreia da Anthropic na bolsa: as manchetes dizem que as ações caíram abaixo do preço do IPO cinco dias depois, enquanto outra afirma que o uso do Claude por empresas japonesas cresceu dez vezes em um ano. Também aparecem debates sobre produtividade, cobrança por hora na advocacia, valor do trabalho e o aumento da demanda por energia a gás para a IA, além de a IA ser citada como fator de risco para o Bitcoin.",
-   "observar": "Se as ações da Anthropic se recuperam ou seguem abaixo do preço do IPO, como termômetro de quanto o mercado está disposto a pagar pela promessa de lucro da IA.",
-   "ultimos7": 486,
-   "anteriores7": 330
+   "tema": "Orçamento e gasto público",
+   "por_que": "As manchetes mostram uma semana de ajustes no Orçamento: o governo reduziu a contenção de gastos de R$ 16,1 bi para R$ 12,6 bi e liberou cerca de R$ 3,4 bi, depois de excluir mais R$ 10,5 bi da meta fiscal de 2026, segundo uma das manchetes. Ao mesmo tempo, a Comissão de Orçamento aprovou relatório que eleva em R$ 37,1 bi a previsão de receita para 2027, o TCU questionou receitas estimadas pelo governo, e há menção a um novo pacote mirando emendas, gastos tributários e supersalários. Parte do volume vem de várias manchetes repetindo a mesma notícia da redução da contenção.",
+   "observar": "Vale acompanhar se o TCU e o próximo relatório bimestral confirmam as receitas estimadas e como o Congresso trata o pacote sobre emendas e gastos tributários na votação da LOA 2027, tema direto de Administração Financeira e Orçamentária I e de Economia do Setor Público.",
+   "ultimos7": 37,
+   "anteriores7": 28
   },
   {
-   "tema": "Mercado de trabalho",
-   "por_que": "O aumento é pequeno (de 83 para 96) e as manchetes são dispersas: vagas pontuais, saldos municipais de emprego formal e concursos, sem um fato central que explique a alta. Dois destaques úteis para você são a Mobi-Rio, que já prevê redução progressiva da jornada diante do possível fim da escala 6×1 e abre vagas para motoristas, e a articulação de Braide com a Alcoa por investimentos e empregos no Maranhão.",
-   "observar": "Como avança a discussão do fim da escala 6×1, que pode mexer no custo de pessoal por km rodado da sua empresa de ônibus.",
-   "ultimos7": 96,
-   "anteriores7": 83
+   "tema": "IA e agentes",
+   "por_que": "O tema tem de longe o maior volume, mas as manchetes são dispersas: vão de fundo de US$ 650 milhões da Kaszek para startups latino-americanas a IA desenvolvida por universidade brasileira e usos setoriais. Um fio comum aparece no mercado financeiro, com manchetes sobre a estreia da Anthropic na bolsa, dúvidas sobre o entusiasmo com IA e queda de ações de fabricantes de memória numa 'correção da IA'. As manchetes não permitem dizer qual fator puxa o crescimento.",
+   "observar": "Vale observar se a correção nas ações ligadas à IA se aprofunda ou se reverte, e se isso reduz o financiamento a startups, o que se conecta a Schumpeter e a capital fictício (Economia Marxista II).",
+   "ultimos7": 474,
+   "anteriores7": 360
+  },
+  {
+   "tema": "Petróleo e energia",
+   "por_que": "Segundo as manchetes, a alta do petróleo levou o governo a prorrogar por mais 30 dias a subvenção ao diesel. A Petrobras também concentra notícias: redefinição de foco, planos em minerais críticos e baterias, primeira exportação do pré-sal ao Japão e análises de bancos sobre produção e dividendos. Há um sinal ambíguo, porque uma manchete fala em alta do petróleo e outra em risco de queda do Brent.",
+   "observar": "O ponto a acompanhar é se a subvenção ao diesel será renovada de novo ao fim dos 30 dias e como fica o preço do diesel nas distribuidoras, que pesa diretamente no custo por km da empresa e pode pressionar pedidos de reajuste tarifário.",
+   "ultimos7": 88,
+   "anteriores7": 73
   },
   {
    "tema": "Política industrial e inovação",
-   "por_que": "A variação é mínima (de 62 para 65) e boa parte das manchetes repete a mesma notícia: BNDES e Finep escolheram a Bossanova (Bossa Invest) para gerir um FIP de cerca de R$ 250 milhões para startups. Também aparecem crédito recorde do BNDES para fertilizantes, estimado em R$ 4 bilhões, e um prêmio do banco para integração ferroviária no Porto de Santos.",
-   "observar": "Quais startups e setores o FIP vai efetivamente financiar, um bom caso para discutir sistemas nacionais de inovação em Inovação e Desenvolvimento.",
-   "ultimos7": 65,
-   "anteriores7": 62
-  },
-  {
-   "tema": "Bitcoin e cripto",
-   "por_que": "O volume ficou quase estável (de 325 para 338), mas o tom é de queda: as manchetes falam em Bitcoin recuando para a faixa de US$ 60 mil a 62 mil, saídas recordes de ETFs à vista em novembro (US$ 4,71 bilhões) e descolamento em relação à alta das bolsas e da tecnologia. Também há notícias de regulação e crime, como a proposta sul-coreana de stablecoins emitidas por bancos e as operações da PF contra lavagem acima de R$ 4,3 bilhões.",
-   "observar": "Se as saídas dos ETFs continuam ou se revertem, pois isso indicaria se a queda é passageira ou uma mudança de humor mais duradoura.",
-   "ultimos7": 338,
-   "anteriores7": 325
+   "por_que": "O crescimento é pequeno, de 59 para 63 manchetes. Ele é puxado pelo BNDES, com R$ 93,6 milhões para IA (Sankhya), o fundo de R$ 250 milhões com a Finep para startups gerido pela Bossa Invest e lucro 18% maior no trimestre. Para o Maranhão, o destaque é a manchete de que o estado ficou em último lugar no Índice Brasil de Inovação e Desenvolvimento.",
+   "observar": "Vale observar se o novo governo estadual anuncia medidas concretas de inovação e se os recursos de BNDES e Finep chegam ao Nordeste, ponto útil para Inovação e Desenvolvimento e para a discussão sobre sistemas nacionais de inovação e desigualdade regional.",
+   "ultimos7": 63,
+   "anteriores7": 59
   }
  ],
- "tendencias_date": "2026-11-24"
+ "tendencias_date": "2026-11-25"
 }

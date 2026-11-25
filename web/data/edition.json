@@ -1,32 +1,39 @@
 {
- "manchete": "Câmara aprova o ajuste fiscal do plano Moretti, possível PEC das despesas obrigatórias derruba dólar e juros futuros, enquanto EUA travam o pedido brasileiro na OMC",
+ "manchete": "EUA propõem novo tarifaço contra 14 economias e miram aviões e açúcar do Brasil, enquanto o mercado doméstico reage bem a sinais do governo e o debate sobre a Selic esquenta",
  "resumo": [
-  "Segundo G1 e Folha, a Câmara aprovou na segunda (23/11) o plano Moretti (PLP 299/26), pacote de ajuste fiscal do governo que já havia passado pelo Senado e segue para sanção. Importa porque é a principal resposta do governo à piora das expectativas fiscais.",
-  "De acordo com o Valor, o dólar passou a cair e os juros futuros aprofundaram a queda após notícias de que Lula teria autorizado o envio de uma PEC sobre despesas obrigatórias. O G1 registrou o dólar perto de R$ 5,82 por volta das 10h20, depois de ter tocado R$ 6 na véspera. Isso mostra como o prêmio de risco fiscal pesa no câmbio e na curva de juros.",
-  "Segundo o G1, o dólar ficou quase 19% mais caro em pouco mais de um mês. A Folha cita dados da IFI: a dívida bruta passou de 71,7% do PIB no fim de 2022 para 82,9% em 2026 e pode chegar a 95,7% ao fim do próximo mandato se não houver mudança de rumo. É o pano de fundo da tensão no mercado.",
-  "A Fazenda, no Boletim Macrofiscal de novembro, reduziu a previsão de crescimento do PIB para 2027 e elevou a de inflação, segundo a Agência Brasil. Na prática, o próprio governo projeta um cenário de menos atividade e preços mais altos.",
-  "Segundo o G1, os EUA bloquearam a primeira tentativa do Brasil de abrir um painel na OMC sobre as tarifas adicionais impostas a produtos brasileiros. Isso sinaliza que a via multilateral contra o tarifaço deve demorar.",
-  "O Diário do Transporte identificou dezenas de empresas e grupos de ônibus em recuperação judicial em quatro anos. As transportadoras apontam como causas endividamento, juros elevados, custos operacionais e desequilíbrios contratuais. É um alerta direto para quem opera frota com crédito caro."
+  "Segundo o G1, o governo dos EUA propôs tarifa adicional de 10% sobre aeronaves brasileiras e aumento da tributação sobre o açúcar importado do Brasil. De acordo com a Folha, Washington alega que o governo Lula não corrigiu o que classifica como 'atos' prejudiciais. Importa porque atinge um setor de alta tecnologia e uma commodity relevante da pauta exportadora.",
+  "Conforme a Globo Rural, a nova tarifa sobre o açúcar vale para o volume importado fora da cota e busca impedir a entrada do produto via terceiros países. O G1 informa audiência pública marcada para 14 de janeiro de 2027, o que indica que a medida ainda é proposta e pode mudar.",
+  "As ações da Embraer chegaram a cair mais de 9%, segundo a Folha. Em nota, a empresa defendeu a manutenção do regime de tarifa zero para o setor aeroespacial, que, segundo o G1, está 'vigente desde a década de 1980'. Mostra como a proteção comercial afeta diretamente uma das poucas multinacionais industriais brasileiras.",
+  "Segundo G1 e Folha, os EUA também propuseram tarifas de até 20% sobre 14 parceiros, entre eles China, União Europeia, Japão e Índia, para combater o que chamam de 'excesso estrutural de capacidade industrial'. A China classificou o plano como 'manipulação política', e a Noruega comemorou ter ficado de fora, segundo o Valor. As bolsas de Nova York caíram, pressionadas também pela venda de ações de IA.",
+  "No Brasil, segundo o G1 e o Valor, o dólar inverteu a alta e passou a cair, chegando perto de R$ 5,81 a R$ 5,85, com juros futuros em queda e Ibovespa em alta, com expectativas sobre a política econômica do novo governo Lula no foco. Importa porque o câmbio pesa no preço do diesel e de peças importadas.",
+  "Em artigos de opinião na Folha, um autor defende que o Copom, que pausou os cortes com a Selic em 13,75%, sinalize possível alta em dezembro, e outro alerta que forçar juros para baixo sem ajuste fiscal pode levar a recessão com inflação. No Senado, segundo a Agência Senado, Zenaide Maia defendeu PEC que limita juros bancários a três vezes a Selic. O debate afeta o custo de financiar frota."
  ],
  "acompanhar_hoje": [
-  "Texto e envio formal da PEC das despesas obrigatórias ao Congresso: se confirmado, tende a consolidar a queda do dólar e dos juros futuros",
-  "Fechamento do dólar frente a R$ 5,81–5,93 e retomada da venda de prefixados e IPCA+ no Tesouro Direto",
-  "Sanção do PLP 299/26 por Lula e eventuais vetos",
-  "Próximos passos do Brasil na OMC após o bloqueio americano"
+  "Fechamento do dólar e da curva de juros futuros após a virada do pregão e anúncios de medidas econômicas do governo",
+  "Reação oficial do governo brasileiro (Itamaraty/MDIC) à proposta de tarifas sobre aviões e açúcar",
+  "Divulgação do PCE nos EUA e sinais do Fed sobre juros, que influenciam câmbio e o Brent",
+  "Comunicações de membros do Copom antes da reunião de dezembro"
  ],
- "pergunta_estudo": "Em Economia do Setor Público: usando a condição de sustentabilidade da dívida (relação entre juros reais, crescimento do PIB e resultado primário), explique por que um ajuste em despesas obrigatórias via PEC pode reduzir o prêmio de risco mais do que medidas pontuais. Discuta também o que uma previsão de PIB menor para 2027 faz com essa dinâmica.",
- "conceito": "divida",
+ "pergunta_estudo": "Em Estratégias de Desenvolvimento Comparadas: a justificativa dos EUA de combater o 'excesso de capacidade industrial' de parceiros usa instrumentos clássicos de política industrial protecionista. Compare essa postura com a defesa do livre comércio pelos países centrais e com a leitura cepalina centro-periferia: o que o caso da Embraer revela sobre os limites de um país periférico que conseguiu desenvolver um setor de alta tecnologia?",
+ "conceito": "cepal",
  "itens": [
-  "f52185c8452eadce",
-  "67d74e7fbabb8768",
-  "3361c14ffa0eaedd",
-  "2ed76e1a9dc0a701",
-  "5231d3d043f33c57",
-  "b3c88d6fd380d907",
-  "9150cbbf134e768d",
-  "2dfd19fd4e9ffe66"
+  "8c1a06b4391a329a",
+  "f90722fd16f20053",
+  "5bca1b6e351f5f9b",
+  "02505201278c7525",
+  "de608d105fb8a885",
+  "9bcc7c8051d11b30",
+  "93b2982e31866647",
+  "513dc3350e82047c",
+  "2255e7c6d3be7b94",
+  "0fc0e3421dbc2674",
+  "d91787ab76befffd",
+  "26d039e9147e792d",
+  "528dd26f6d428586",
+  "a384c30a158cbd58",
+  "f0006f68a64f0c21"
  ],
- "date": "2026-11-24",
- "created": "2026-11-24T13:58:28.006250+00:00",
+ "date": "2026-11-25",
+ "created": "2026-11-25T19:28:12.877449+00:00",
  "model": "claude-opus-5-5"
 }
