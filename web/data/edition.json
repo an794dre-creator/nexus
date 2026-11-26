@@ -1,39 +1,35 @@
 {
- "manchete": "EUA propõem novo tarifaço contra 14 economias e miram aviões e açúcar do Brasil, enquanto o mercado doméstico reage bem a sinais do governo e o debate sobre a Selic esquenta",
+ "manchete": "Novo tarifaço dos EUA mira açúcar e aviões brasileiros, enquanto IPCA-15 abaixo do previsto e sinais fiscais derrubam dólar e juros futuros",
  "resumo": [
-  "Segundo o G1, o governo dos EUA propôs tarifa adicional de 10% sobre aeronaves brasileiras e aumento da tributação sobre o açúcar importado do Brasil. De acordo com a Folha, Washington alega que o governo Lula não corrigiu o que classifica como 'atos' prejudiciais. Importa porque atinge um setor de alta tecnologia e uma commodity relevante da pauta exportadora.",
-  "Conforme a Globo Rural, a nova tarifa sobre o açúcar vale para o volume importado fora da cota e busca impedir a entrada do produto via terceiros países. O G1 informa audiência pública marcada para 14 de janeiro de 2027, o que indica que a medida ainda é proposta e pode mudar.",
-  "As ações da Embraer chegaram a cair mais de 9%, segundo a Folha. Em nota, a empresa defendeu a manutenção do regime de tarifa zero para o setor aeroespacial, que, segundo o G1, está 'vigente desde a década de 1980'. Mostra como a proteção comercial afeta diretamente uma das poucas multinacionais industriais brasileiras.",
-  "Segundo G1 e Folha, os EUA também propuseram tarifas de até 20% sobre 14 parceiros, entre eles China, União Europeia, Japão e Índia, para combater o que chamam de 'excesso estrutural de capacidade industrial'. A China classificou o plano como 'manipulação política', e a Noruega comemorou ter ficado de fora, segundo o Valor. As bolsas de Nova York caíram, pressionadas também pela venda de ações de IA.",
-  "No Brasil, segundo o G1 e o Valor, o dólar inverteu a alta e passou a cair, chegando perto de R$ 5,81 a R$ 5,85, com juros futuros em queda e Ibovespa em alta, com expectativas sobre a política econômica do novo governo Lula no foco. Importa porque o câmbio pesa no preço do diesel e de peças importadas.",
-  "Em artigos de opinião na Folha, um autor defende que o Copom, que pausou os cortes com a Selic em 13,75%, sinalize possível alta em dezembro, e outro alerta que forçar juros para baixo sem ajuste fiscal pode levar a recessão com inflação. No Senado, segundo a Agência Senado, Zenaide Maia defendeu PEC que limita juros bancários a três vezes a Selic. O debate afeta o custo de financiar frota."
+  "Tarifas dos EUA: segundo o G1, o governo Trump propôs na quarta (25) tarifa adicional de 10% sobre aeronaves brasileiras e aumento da tributação sobre o açúcar do Brasil, além de taxar produtos de 14 economias. Importa porque reabre a frente comercial com o principal destino de manufaturados brasileiros, como os jatos da Embraer.",
+  "Reação do governo: de acordo com a Agência Brasil, o governo brasileiro expressou 'indignação' em nota da Secom e disse que não cederá. A Amcham Brasil informou que participará da consulta pública do USTR. Importa porque a proposta ainda está em consulta e pode mudar.",
+  "Açúcar do Nordeste: segundo o Globo Rural, o impacto sobre o açúcar nordestino deve ser limitado, porque afeta embarques fora da cota com tarifa reduzida. Um analista ouvido pelo G1 fala em efeito 'praticamente nulo'. Importa para a leitura regional: o choque é concentrado em aviação, não no açúcar.",
+  "China e outros países: segundo a Folha, o USTR sugeriu taxas de 10% a 20% para 13 países e a União Europeia, alegando excesso estrutural de capacidade industrial. Segundo o Valor, a China ameaça retaliar. Importa porque uma escalada entre EUA e China pode afetar commodities e câmbio.",
+  "Inflação: segundo o IBGE, citado pelo Valor e pela Agência Brasil, o IPCA-15 subiu 0,22% em novembro, abaixo dos 0,32% de outubro, e acumula 4,64% em 12 meses. Alimentação subiu 1,51% e transportes recuou 0,71%. Importa porque reforça a expectativa de alívio para a Selic, hoje em 13,75%.",
+  "Mercado doméstico: segundo o Valor, dólar e juros futuros despencam com a chance de Trabuco na Fazenda, novas medidas fiscais e o IPCA-15. O G1 registrou o dólar abaixo de R$ 5,80 na abertura. Importa porque a queda dos prêmios de risco barateia o crédito de longo prazo."
  ],
  "acompanhar_hoje": [
-  "Fechamento do dólar e da curva de juros futuros após a virada do pregão e anúncios de medidas econômicas do governo",
-  "Reação oficial do governo brasileiro (Itamaraty/MDIC) à proposta de tarifas sobre aviões e açúcar",
-  "Divulgação do PCE nos EUA e sinais do Fed sobre juros, que influenciam câmbio e o Brent",
-  "Comunicações de membros do Copom antes da reunião de dezembro"
+  "Abertura do IPCA-15 por grupos: quanto do recuo de transportes veio de combustíveis (diesel e gasolina)",
+  "Confirmação ou não do nome para o Ministério da Fazenda e detalhamento das medidas fiscais anunciadas",
+  "Prazos e resposta formal do Brasil e da China à consulta pública do USTR",
+  "Curva de juros futuros (DI) e dólar no fechamento, com Brent em queda de 3,7%"
  ],
- "pergunta_estudo": "Em Estratégias de Desenvolvimento Comparadas: a justificativa dos EUA de combater o 'excesso de capacidade industrial' de parceiros usa instrumentos clássicos de política industrial protecionista. Compare essa postura com a defesa do livre comércio pelos países centrais e com a leitura cepalina centro-periferia: o que o caso da Embraer revela sobre os limites de um país periférico que conseguiu desenvolver um setor de alta tecnologia?",
- "conceito": "cepal",
+ "pergunta_estudo": "Em Estratégias de Desenvolvimento Comparadas: o argumento dos EUA de 'excesso estrutural de capacidade industrial' para tarifar parceiros se aproxima ou se distancia da defesa de proteção feita pela CEPAL para a industrialização periférica? Como o caso da Embraer, fruto de política industrial do Estado brasileiro, ilustra essa tensão?",
+ "conceito": "estado_desenv",
  "itens": [
-  "8c1a06b4391a329a",
-  "f90722fd16f20053",
-  "5bca1b6e351f5f9b",
-  "02505201278c7525",
-  "de608d105fb8a885",
-  "9bcc7c8051d11b30",
-  "93b2982e31866647",
-  "513dc3350e82047c",
-  "2255e7c6d3be7b94",
-  "0fc0e3421dbc2674",
-  "d91787ab76befffd",
+  "8d13adece131e8fd",
+  "cc5dc7d3034e933d",
+  "c6e761d981facc12",
+  "b8820ff4457d186c",
+  "d1b6dddb364b9600",
+  "d064719e940ac88f",
+  "07a4f354b0a9ac5b",
+  "2535b5a53a617211",
+  "34c62dc063d3fd70",
   "26d039e9147e792d",
-  "528dd26f6d428586",
-  "a384c30a158cbd58",
-  "f0006f68a64f0c21"
+  "d35dc2140198bcd4"
  ],
- "date": "2026-11-25",
- "created": "2026-11-25T19:28:12.877449+00:00",
+ "date": "2026-11-26",
+ "created": "2026-11-26T12:52:53.225813+00:00",
  "model": "claude-opus-5-5"
 }
