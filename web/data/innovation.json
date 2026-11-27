@@ -1,82 +1,5 @@
 {
  "history": {
-  "2026-11-13": [
-   {
-    "ref": "a746e4413d01ff87",
-    "titulo": "Gargalos de transporte amplificam choques agregados",
-    "tipo": "descoberta",
-    "o_que_e_novo": "A coluna compara o Superciclo de Commodities dos anos 2000 com a Grande Disrupção das Cadeias de Suprimento pós-pandemia para examinar como gargalos de transporte interagem com choques agregados. Destaca o salto nos fretes de granéis secos como canal central.",
-    "como_funciona": "Quando a capacidade de transporte é quase fixa no curto prazo, um aumento de demanda não se traduz em mais viagens, e sim em preço de frete mais alto. Esse frete entra como custo em toda a cadeia e vira inflação e perda de produto. O resumo não detalha o modelo; é preciso ler o original para saber se é estimação estrutural ou empírica.",
-    "calculo": "Ilustrativo: se a oferta de frete tem elasticidade-preço 0,1 no curto prazo, um aumento de 10% na demanda eleva o frete em cerca de 10%/0,1 = 100%.",
-    "por_que_importa": "Mostra que infraestrutura logística com capacidade rígida transforma choques de demanda em choques de custo. Isso ajuda a entender a inflação de diesel, peças e chassis enfrentada pelo setor de ônibus depois de 2021.",
-    "como_aplicar": "Na empresa, monitore o prazo e o preço de entrega de chassis e peças como indicador antecedente do custo por km. No TCC, pode servir de referência para estudar o frete no Corredor Carajás/Itaqui.",
-    "conceito": "elast",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/transportation-bottlenecks-and-aggregate-shocks",
-    "titulo_original": "Transportation bottlenecks and aggregate shocks",
-    "publicado": "2026-11-13T00:00:00Z"
-   },
-   {
-    "ref": "p:2611.16584v1",
-    "titulo": "Inferência uniforme com clusters em duas dimensões",
-    "tipo": "método",
-    "o_que_e_novo": "Os autores estabelecem inferência assintoticamente exata e uniforme para a média de dados agrupados em duas dimensões (por exemplo, firma × tempo), permitindo que o processo gerador mude com o tamanho da amostra. Afirmam que isso não contradiz o resultado de impossibilidade de Menzel (2021).",
-    "como_funciona": "Em painéis com dependência em duas dimensões, como municípios e anos, os erros-padrão comuns subestimam a incerteza. O artigo estima uma quantidade diferente da média normalizada do arranjo completo, contornando o limite de Menzel. Os detalhes do estimador exigem a leitura do original.",
-    "calculo": "Variância com cluster duplo (Cameron-Gelbach-Miller): V = V_cluster(i) + V_cluster(t) − V_cluster(i,t).",
-    "por_que_importa": "Regressões com painéis de municípios do Maranhão ao longo dos anos sofrem exatamente com esse tipo de dependência. Erros-padrão mal calculados geram significância falsa no TCC.",
-    "como_aplicar": "No Projeto de Pesquisa, se usar painel município-ano, reporte erros-padrão com cluster duplo e cite esta literatura como cuidado metodológico.",
-    "conceito": "regressao",
-    "fonte": "econ.EM",
-    "link": "http://arxiv.org/abs/2611.16584v1",
-    "titulo_original": "Uniform Inference for Two-Way Clustered Data",
-    "publicado": "2026-11-12T10:16:59Z"
-   },
-   {
-    "ref": "p:2611.16406v1",
-    "titulo": "Qual lado randomizar em experimentos de plataformas",
-    "tipo": "método",
-    "o_que_e_novo": "O artigo discute se plataformas de dois lados devem randomizar clientes ou anúncios. Randomizar o lado menor reduz o viés de interferência, e randomizar o lado maior aumenta a amostra nominal, o que pode reduzir a variância.",
-    "como_funciona": "Quando unidades tratadas e de controle competem pelos mesmos recursos, o tratamento contamina o controle (interferência). O lado mais escasso sofre menos competição entre unidades, então há menos viés. O resumo é cortado antes da conclusão final, por isso é preciso ler o original.",
-    "calculo": "Erro quadrático médio = viés² + variância; escolha o lado que minimiza a soma.",
-    "por_que_importa": "É um princípio útil para testar mudanças em linhas e horários, em que passageiros e veículos interagem. Ajuda a desenhar pilotos sem conclusões enviesadas.",
-    "como_aplicar": "Ao testar um novo horário, compare linhas (o lado da oferta) em vez de passageiros, e tome cuidado com linhas que compartilham corredores, porque a demanda migra de uma para outra.",
-    "conceito": "pesquisa",
-    "fonte": "stat.ME",
-    "link": "http://arxiv.org/abs/2611.16406v1",
-    "titulo_original": "One-Sided Randomization in Two-Sided Platform Experiments: Which Side Should be Randomized?",
-    "publicado": "2026-11-12T07:15:30Z"
-   },
-   {
-    "ref": "3c807c29e5d143e2",
-    "titulo": "Alíquota de participação e incentivo ao trabalho",
-    "tipo": "política",
-    "o_que_e_novo": "Segundo a coluna, muitas mães casadas de baixa renda nos EUA enfrentam taxas de participação acima de 25%, que chegam a 60% quando se contam os custos de creche. A proposta é elevar os tetos do crédito para creche e mudar a base de cálculo do crédito.",
-    "como_funciona": "A taxa de participação mede quanto da renda bruta de um novo emprego se perde com impostos, benefícios retirados e custos de trabalhar. Se essa taxa for alta, entrar no mercado de trabalho quase não compensa. O resumo é cortado antes de explicar a segunda correção proposta.",
-    "calculo": "PTR = (impostos adicionais + benefícios perdidos + creche) / salário bruto. Exemplo: (300 + 200 + 700) / 2.000 = 60%.",
-    "por_que_importa": "É a ferramenta de incidência tributária aplicada ao desenho de benefícios sociais. Pode ser transposta para a análise do Bolsa Família e da regra de proteção.",
-    "como_aplicar": "Em Economia do Setor Público, calcule a PTR de uma família maranhense que sai do Bolsa Família ao aceitar um emprego formal, incluindo o custo da passagem de ônibus.",
-    "conceito": "tributacao",
-    "fonte": "VoxEU / CEPR",
-    "link": "https://cepr.org/voxeu/columns/making-work-pay-married-mothers-two-simple-fixes-us-tax-credits",
-    "titulo_original": "Making work pay for married mothers: Two simple fixes to US tax credits",
-    "publicado": "2026-11-10T00:00:00Z"
-   },
-   {
-    "ref": "e23a8dd05761efd8",
-    "titulo": "Vulnerabilidade bancária nos EUA: atualização de 2026",
-    "tipo": "dado novo",
-    "o_que_e_novo": "O Fed de Nova York atualiza quatro modelos de vulnerabilidade do sistema bancário americano com dados até o segundo trimestre de 2026. O resumo não informa a direção das mudanças.",
-    "como_funciona": "Os modelos medem, cada um, um aspecto diferente da vulnerabilidade, como vendas forçadas de ativos, perdas de capital e corridas de liquidez. O resumo não detalha esses modelos; é preciso ler o post.",
-    "calculo": "Ilustrativo de alavancagem: perda de 2% nos ativos com capital de 8% consome 25% do capital.",
-    "por_que_importa": "O estresse bancário americano se transmite ao custo do crédito global e ao câmbio. Isso afeta os juros dos financiamentos de frota no Brasil.",
-    "como_aplicar": "Use o post como referência de painel de risco e acompanhe-o ao revisar o WACC da empresa.",
-    "conceito": "capficticio",
-    "fonte": "Liberty Street Economics (Fed NY)",
-    "link": "https://libertystreeteconomics.newyorkfed.org/2026/11/banking-system-vulnerability-2026-update/",
-    "titulo_original": "Banking System Vulnerability: 2026 Update",
-    "publicado": "2026-11-12T13:25:00Z"
-   }
-  ],
   "2026-11-14": [
    {
     "ref": "048f055fdee172d8",
@@ -1077,40 +1000,117 @@
     "titulo_original": "How Large are Monetary Policy Effects? dentifying the Shocks in a VAR also Identifies the Constants",
     "publicado": "2026-11-25T17:10:02Z"
    }
+  ],
+  "2026-11-27": [
+   {
+    "ref": "9647eeb47d9c28ba",
+    "titulo": "Nobel 2026: Hall e Woodford e o modelo novo-keynesiano",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Segundo a coluna do VoxEU, o Nobel de Economia de 2026 foi para Robert Hall e Michael Woodford por darem fundamentos microeconômicos à política de estabilização macroeconômica. A coluna destaca o papel de Woodford no modelo novo-keynesiano, que introduz rigidez nominal.",
+    "como_funciona": "No modelo novo-keynesiano, empresas não ajustam preços a todo momento (rigidez nominal), então a política monetária afeta produto e emprego no curto prazo. O banco central atua por uma regra de juros que reage à inflação e ao hiato do produto, e as expectativas futuras pesam muito nas decisões de hoje. O resumo não detalha as contribuições de Hall; é preciso ler o original.",
+    "calculo": "Regra de Taylor ilustrativa: i = r* + π + 0,5(π − π*) + 0,5(hiato). Com r*=4%, π=5%, π*=3%, hiato=−1%: i = 4 + 5 + 1 − 0,5 = 9,5%.",
+    "por_que_importa": "É a base teórica do regime de metas de inflação usado pelo Banco Central do Brasil desde 1999, parte do tripé do Plano Real. Entender essa lógica ajuda a ler cada decisão do Copom e seu efeito sobre crédito e demanda.",
+    "como_aplicar": "Use a regra de Taylor para estimar se a Selic está acima ou abaixo do 'neutro' e projetar o custo de financiamento de frota da empresa nos próximos trimestres.",
+    "conceito": "taylor",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/michael-woodford-2026-nobel-laureate-economic-sciences",
+    "titulo_original": "Michael Woodford, 2026 Nobel laureate in Economic Sciences",
+    "publicado": "2026-11-27T00:00:00Z"
+   },
+   {
+    "ref": "p:2611.34423v1",
+    "titulo": "IA lendo atas do Fed melhora previsão de risco de crescimento",
+    "tipo": "método",
+    "o_que_e_novo": "O artigo adiciona dimensões da deliberação do comitê do Fed, extraídas das atas do FOMC com IA, a um modelo de quantis de crescimento (Growth-at-Risk) com as 123 séries do FRED-MD. Segundo os autores, só a divergência presente na discussão mas ausente do voto reduz a perda fora da amostra em 4 a 6%.",
+    "como_funciona": "Modelos Growth-at-Risk estimam não a média, mas a distribuição do crescimento futuro, por regressão quantílica. Os autores usam linguagem natural das atas para medir desacordo interno e incluem isso como variável explicativa. A ideia é que dissenso 'escondido' sinaliza incerteza que os dados públicos não capturam; o resumo não detalha como o texto é quantificado.",
+    "calculo": "Regressão quantílica: Q_τ(crescimento_{t+h}) = α_τ + β_τ·X_t + γ_τ·Desacordo_t; compara-se a perda pinball fora da amostra com e sem γ.",
+    "por_que_importa": "Mostra um método replicável que combina texto e econometria, aplicável a atas do Copom. É um desenho de TCC viável e atual.",
+    "como_aplicar": "Para o Projeto de Pesquisa, teste se o tom ou o dissenso nas atas do Copom ajuda a prever a cauda do PIB ou da inflação no Brasil.",
+    "conceito": "regressao",
+    "fonte": "econ.EM",
+    "link": "http://arxiv.org/abs/2611.34423v1",
+    "titulo_original": "Reading the Room with AI: FOMC Deliberation and Growth-at-Risk",
+    "publicado": "2026-11-25T14:12:25Z"
+   },
+   {
+    "ref": "ed5144b58fa82b05",
+    "titulo": "Envelhecimento freia adoção de tecnologia e produtividade",
+    "tipo": "descoberta",
+    "o_que_e_novo": "A coluna argumenta que trabalhadores jovens adotam novas tecnologias muito mais que os velhos, ligando envelhecimento e produtividade. Usa evidência de mercados de trabalho locais dos EUA; os números exatos não aparecem no resumo.",
+    "como_funciona": "Se a difusão de tecnologia depende da composição etária da força de trabalho, regiões mais velhas absorvem inovações mais devagar. Isso reduz o ganho de produtividade esperado da IA justamente quando ele seria mais necessário. A identificação provavelmente compara mercados locais com perfis etários diferentes; é preciso ler o original.",
+    "calculo": "",
+    "por_que_importa": "Conecta inovação à demografia, tema central em Inovação e Desenvolvimento e no debate sobre o Nordeste. Também sugere que capacitação de pessoal pesa na adoção de tecnologia nas empresas.",
+    "como_aplicar": "Na empresa, ao implantar bilhetagem digital ou telemetria, planeje treinamento diferente por faixa etária de motoristas e fiscais.",
+    "conceito": "capital_humano",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/demographics-technology-adoption-and-productivity-growth",
+    "titulo_original": "The demographics of technology adoption and productivity growth",
+    "publicado": "2026-11-26T00:00:00Z"
+   },
+   {
+    "ref": "ddcb6d01cd249887",
+    "titulo": "45% das industriais europeias em estresse financeiro",
+    "tipo": "dado novo",
+    "o_que_e_novo": "Segundo a McKinsey, 45% das empresas industriais europeias mostram estresse ou até dificuldade financeira elevada. O texto propõe seis abordagens de reestruturação já testadas, não detalhadas no resumo.",
+    "como_funciona": "Estresse financeiro costuma ser medido por indicadores como alavancagem, cobertura de juros e geração de caixa. Choques de energia e juros altos comprimem margens e elevam o custo da dívida. As seis abordagens de turnaround exigem leitura do original.",
+    "calculo": "Cobertura de juros = EBITDA / despesa financeira. Ex.: EBITDA 12 mi e juros 8 mi → 1,5x, faixa de atenção (abaixo de ~2x).",
+    "por_que_importa": "Mostra como choque de energia e juros afeta capital intensivo, cenário parecido ao de operadores de ônibus com diesel caro e Selic alta. Também ilustra a pressão sobre lucratividade discutida em Economia Marxista II.",
+    "como_aplicar": "Calcule mensalmente cobertura de juros e dívida líquida/EBITDA da empresa como alerta precoce de estresse.",
+    "conceito": "giro",
+    "fonte": "McKinsey Insights",
+    "link": "https://www.mckinsey.com/industries/industrials/our-insights/regaining-the-competitiveness-of-europes-industrials-the-european-way",
+    "titulo_original": "Regaining the competitiveness of Europe’s industrials the European way",
+    "publicado": "2026-11-27T15:13:50Z"
+   },
+   {
+    "ref": "7f8d89ae3dd92110",
+    "titulo": "Depósitos de varejo em bancos centrais: lições históricas para CBDC",
+    "tipo": "descoberta",
+    "o_que_e_novo": "Com nova evidência de arquivo de nove bancos centrais europeus, a coluna mostra que até meados do século XX muitos ofereciam contas ao público não bancário. Isso serve de precedente para o debate sobre moeda digital de banco central.",
+    "como_funciona": "Se famílias podem depositar direto no banco central, parte dos depósitos pode sair dos bancos comerciais, reduzindo funding e crédito. A experiência histórica permite ver se isso ocorreu e em que condições. As conclusões exatas não estão no resumo.",
+    "calculo": "",
+    "por_que_importa": "Ajuda a entender o Drex e a relação entre moeda pública e crédito bancário. Dialoga com capital fictício e crédito em Economia Marxista II.",
+    "como_aplicar": "Use o caso como referência histórica em trabalhos sobre Drex ou Pix e intermediação financeira.",
+    "conceito": "capficticio",
+    "fonte": "VoxEU / CEPR",
+    "link": "https://cepr.org/voxeu/columns/central-bank-retail-deposits-past-lessons-central-bank-digital-currency-debate",
+    "titulo_original": "Central bank retail deposits in the past: Lessons for the central bank digital currency debate",
+    "publicado": "2026-11-25T00:00:00Z"
+   }
   ]
  },
- "date": "2026-11-26",
- "created": "2026-11-26T12:52:53.225813+00:00",
+ "date": "2026-11-27",
+ "created": "2026-11-27T15:17:31.614919+00:00",
  "model": "claude-opus-5-5",
  "tendencias": [
   {
    "tema": "Orçamento e gasto público",
-   "por_que": "As manchetes mostram três frentes: a Comissão de Orçamento aprovou relatório que eleva em R$ 37,1 bilhões a previsão de receita para 2027; o governo reduziu a contenção de R$ 16,1 bi para R$ 12,6 bi e liberou R$ 3,43 bi; e o tema das emendas voltou com o caso da ex-assessora de Lira no STF e com um anunciado pacote de Lula mirando emendas, gastos tributários e supersalários. Também aparece a frente de prefeitos rejeitando o uso de emendas para bancar tarifa zero nos fins de semana, o que liga o orçamento ao transporte.",
-   "observar": "Se o pacote anunciado sobre emendas e gastos tributários vira proposta concreta e se a receita elevada se mantém na votação final do Orçamento de 2027.",
-   "ultimos7": 40,
+   "por_que": "O tema dobrou (de 25 para 50 manchetes) puxado pelo ciclo orçamentário de 2027: a CMO aprovou o relatório preliminar, a LDO recebeu 1.504 emendas, o relatório prevê R$ 12,8 bi para emendas de comissão e corte de R$ 2 bi do governo, e o relator defende novo ajuste fiscal para baixar juros. No plano local, a Câmara de São Luís aprovou a LDO 2027 com orçamento previsto de R$ 6,92 bilhões, e entidades questionam o uso de emendas parlamentares para bancar tarifa zero no transporte.",
+   "observar": "A votação final da LOA 2027 e o volume de emendas, para ver se o corte ao Executivo e a fonte de recursos da tarifa zero se mantêm, ponto que mexe direto com o financiamento do transporte e com o conteúdo de Administração Financeira e Orçamentária I.",
+   "ultimos7": 50,
    "anteriores7": 25
   },
   {
-   "tema": "Petróleo e energia",
-   "por_que": "O motor principal nas manchetes é a alta do petróleo, que levou o governo a prorrogar por mais 30 dias o subsídio ao diesel, além da previsão da Petrobras de retirar 27 plataformas até 2031, com custo de US$ 11,2 bi. Parte do volume, porém, vem de manchetes pouco relacionadas (prêmios do agronegócio, falha de energia em granja), então o crescimento do tema está inflado por ruído.",
-   "observar": "Se o subsídio ao diesel será renovado de novo ao fim dos 30 dias e como isso se reflete no preço do diesel na bomba, item central do custo por km da empresa.",
-   "ultimos7": 94,
-   "anteriores7": 70
-  },
-  {
    "tema": "Tarifas e comércio",
-   "por_que": "A alta vem de uma nova rodada de tarifas proposta pelos EUA, que segundo as manchetes busca reduzir a influência da China no comércio global e pressiona parceiros a fechar acordos. China ameaçou retaliar e alertou para risco à trégua comercial, e Brasil, União Europeia e Japão criticaram a medida. Há ruído de classificação: a manchete da tarifa zero em SP entrou por causa da palavra 'tarifa'.",
-   "observar": "Se a China efetivamente retalia e se as tarifas atingem produtos brasileiros, inclusive do Nordeste, já que uma manchete aponta impacto limitado sobre o açúcar da região.",
-   "ultimos7": 186,
-   "anteriores7": 149
+   "por_que": "O tema junta dois sentidos de \"tarifa\". Um é o comercial: tarifas dos EUA sobre o açúcar brasileiro, a ameaça à Embraer e o tarifaço citado como motor de lobby. O outro é o de serviços públicos: revisão tarifária da Sabesp, com bancos projetando até 20%, reajuste de 4,63% da Corsan e o debate sobre tarifa zero de ônibus, que inclui a nova aliança de 13 entidades em Brasília buscando financiamento permanente. A alta de 130 para 215 manchetes parece vir mais da soma desses assuntos do que de um único evento.",
+   "observar": "Se a tarifa dos EUA sobre o açúcar e a Embraer se confirma e se a aliança pelo transporte consegue propor uma fonte de financiamento estável para a tarifa zero além das emendas.",
+   "ultimos7": 215,
+   "anteriores7": 130
   },
   {
-   "tema": "Transporte coletivo e tarifas",
-   "por_que": "As manchetes são vagas e muito contaminadas: várias são sobre tarifas comerciais de Trump, classificadas aqui por erro de palavra-chave. O conteúdo de transporte de fato é disperso, como obras do BRT Radial Leste em SP, arquivamento no TCE-RJ de contrato de locação de ônibus da Mobi-Rio, consulta pública do Plano de Mobilidade de Brumado e pedidos de tarifa zero estadual no Orçamento de SP. Não dá para afirmar uma causa única para o crescimento.",
-   "observar": "Se o debate sobre tarifa zero e sua fonte de financiamento (emendas, orçamento estadual) avança, porque isso mexe com subsídio e tarifa técnica de operadores como a sua empresa.",
-   "ultimos7": 406,
-   "anteriores7": 344
+   "tema": "Pobreza e desigualdade",
+   "por_que": "O crescimento é pequeno (de 11 para 14) e as manchetes são dispersas: alertas da ONU e do PAM sobre agravamento da fome mundial, com o PAM prevendo apoiar 91 milhões de pessoas em 2027, o calendário antecipado do Bolsa Família em dezembro e a crítica de um CEO ao programa por dificultar contratações. Há também manchetes que entram por classificação frouxa, como a captação da Kaszek, repetida três vezes. O sinal, portanto, é fraco.",
+   "observar": "Se o debate sobre Bolsa Família e mercado de trabalho ganha dados concretos, como emprego formal e taxa de participação, ou se continua só no plano da opinião.",
+   "ultimos7": 14,
+   "anteriores7": 11
+  },
+  {
+   "tema": "Inflação",
+   "por_que": "O volume subiu de 183 para 228 manchetes com a divulgação do IPCA-15 de novembro: alta de 0,22%, abaixo do esperado, mas com alimentos subindo 1,51% e tomate disparando 38,92%. Isso, somado à expectativa de Trabuco na Fazenda, derrubou os juros futuros. Pesam ainda o pedido do BC por projeções do impacto da reforma tributária na inflação antes do Copom e os dados de outros países, como Espanha a 4,1% e Tóquio a 2,9%.",
+   "observar": "O IPCA cheio de novembro e a decisão do próximo Copom, para ver se o alívio é temporário, como sugere uma das manchetes, e se a queda dos juros futuros se sustenta, o que afeta o custo de financiamento de frota.",
+   "ultimos7": 228,
+   "anteriores7": 183
   }
  ],
- "tendencias_date": "2026-11-26"
+ "tendencias_date": "2026-11-27"
 }

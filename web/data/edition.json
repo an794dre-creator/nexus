@@ -1,35 +1,32 @@
 {
- "manchete": "Novo tarifaço dos EUA mira açúcar e aviões brasileiros, enquanto IPCA-15 abaixo do previsto e sinais fiscais derrubam dólar e juros futuros",
+ "manchete": "Confirmação de Trabuco na Fazenda derruba dólar e juros futuros, enquanto Congresso avança no Orçamento de 2027 com discurso de novo ajuste fiscal",
  "resumo": [
-  "Tarifas dos EUA: segundo o G1, o governo Trump propôs na quarta (25) tarifa adicional de 10% sobre aeronaves brasileiras e aumento da tributação sobre o açúcar do Brasil, além de taxar produtos de 14 economias. Importa porque reabre a frente comercial com o principal destino de manufaturados brasileiros, como os jatos da Embraer.",
-  "Reação do governo: de acordo com a Agência Brasil, o governo brasileiro expressou 'indignação' em nota da Secom e disse que não cederá. A Amcham Brasil informou que participará da consulta pública do USTR. Importa porque a proposta ainda está em consulta e pode mudar.",
-  "Açúcar do Nordeste: segundo o Globo Rural, o impacto sobre o açúcar nordestino deve ser limitado, porque afeta embarques fora da cota com tarifa reduzida. Um analista ouvido pelo G1 fala em efeito 'praticamente nulo'. Importa para a leitura regional: o choque é concentrado em aviação, não no açúcar.",
-  "China e outros países: segundo a Folha, o USTR sugeriu taxas de 10% a 20% para 13 países e a União Europeia, alegando excesso estrutural de capacidade industrial. Segundo o Valor, a China ameaça retaliar. Importa porque uma escalada entre EUA e China pode afetar commodities e câmbio.",
-  "Inflação: segundo o IBGE, citado pelo Valor e pela Agência Brasil, o IPCA-15 subiu 0,22% em novembro, abaixo dos 0,32% de outubro, e acumula 4,64% em 12 meses. Alimentação subiu 1,51% e transportes recuou 0,71%. Importa porque reforça a expectativa de alívio para a Selic, hoje em 13,75%.",
-  "Mercado doméstico: segundo o Valor, dólar e juros futuros despencam com a chance de Trabuco na Fazenda, novas medidas fiscais e o IPCA-15. O G1 registrou o dólar abaixo de R$ 5,80 na abertura. Importa porque a queda dos prêmios de risco barateia o crédito de longo prazo."
+  "Segundo Valor, Folha e G1, o dólar chegou a cair mais de 3% (mínima perto de R$ 5,48) e o Ibovespa subiu após a confirmação de Luiz Carlos Trabuco no Ministério da Fazenda. Importa porque o mercado leu a escolha como sinal de maior compromisso fiscal, o que pode baratear crédito e reduzir pressão de custos dolarizados, como o diesel.",
+  "De acordo com o Livecoins, Trabuco terá como desafios o controle de gastos, a previsibilidade econômica e o combate ao superendividamento das famílias. Importa porque a combinação entre ajuste fiscal e crédito às famílias define o espaço para a queda da Selic, hoje em 13,75%.",
+  "Segundo a Agência Senado, a CMO aprovou o relatório preliminar do Orçamento de 2027 (PLN 24/2026), que prevê crescimento de 2,46%, inflação de 3,6%, salário mínimo de R$ 1.741 e superávit primário de R$ 14,2 bilhões. O relator, Eduardo Braga, defendeu novo ajuste para permitir juros menores. Importa porque o salário mínimo e a meta fiscal afetam folha de pagamento, gratuidades e transferências.",
+  "Segundo o Valor, o Banco Central perguntou ao mercado, no Questionário Pré-Copom, qual o impacto da reforma tributária e do fim da escala 6x1 sobre a inflação. Importa porque o BC passa a tratar essas mudanças estruturais como possíveis choques de preços na decisão de juros.",
+  "A Agência Senado informa que a IFI publicou simulações para a alíquota de referência da CBS, que entra em vigor em 2027, e que os senadores têm prazo até 15 de dezembro. Importa porque isenções ampliam a alíquota paga pelos demais setores, e isso pesa no custo de serviços como o transporte.",
+  "Segundo o Diário do Transporte, uma aliança de 13 entidades foi lançada em Brasília para buscar financiamento permanente ao transporte público, e alerta que a tarifa zero baseada só em emendas parlamentares pode virar problema crônico para os prefeitos. Importa porque, sem uma fonte estável, o equilíbrio dos contratos de ônibus fica vulnerável."
  ],
  "acompanhar_hoje": [
-  "Abertura do IPCA-15 por grupos: quanto do recuo de transportes veio de combustíveis (diesel e gasolina)",
-  "Confirmação ou não do nome para o Ministério da Fazenda e detalhamento das medidas fiscais anunciadas",
-  "Prazos e resposta formal do Brasil e da China à consulta pública do USTR",
-  "Curva de juros futuros (DI) e dólar no fechamento, com Brent em queda de 3,7%"
+  "Fechamento do dólar e da curva de juros futuros (DI): há divergência entre as fontes sobre a cotação, de R$ 5,48 a R$ 5,91, e o painel marca R$ 5,74.",
+  "Primeiras declarações de Trabuco sobre meta fiscal, arcabouço e crédito às famílias.",
+  "Andamento do Orçamento 2027 na CMO e da regulamentação da CBS no Senado até o prazo de 15/12.",
+  "Preço do diesel nas distribuidoras após a queda do Brent (-3,9%) e do dólar."
  ],
- "pergunta_estudo": "Em Estratégias de Desenvolvimento Comparadas: o argumento dos EUA de 'excesso estrutural de capacidade industrial' para tarifar parceiros se aproxima ou se distancia da defesa de proteção feita pela CEPAL para a industrialização periférica? Como o caso da Embraer, fruto de política industrial do Estado brasileiro, ilustra essa tensão?",
- "conceito": "estado_desenv",
+ "pergunta_estudo": "Em Economia do Setor Público: usando a teoria da incidência tributária, explique por que mais isenções na CBS elevam a alíquota de referência e quem tende a arcar com esse custo num serviço de demanda pouco elástica, como o transporte coletivo urbano.",
+ "conceito": "divida",
  "itens": [
-  "8d13adece131e8fd",
-  "cc5dc7d3034e933d",
-  "c6e761d981facc12",
-  "b8820ff4457d186c",
-  "d1b6dddb364b9600",
-  "d064719e940ac88f",
-  "07a4f354b0a9ac5b",
-  "2535b5a53a617211",
-  "34c62dc063d3fd70",
   "26d039e9147e792d",
-  "d35dc2140198bcd4"
+  "885641fa62aa20c9",
+  "fa45cf17542db9f7",
+  "1c767007f5d4e397",
+  "091e41c205a1502e",
+  "35c95b50a3f9d04c",
+  "0d07567d9298dd90",
+  "0f7cf54546ef09f0"
  ],
- "date": "2026-11-26",
- "created": "2026-11-26T12:52:53.225813+00:00",
+ "date": "2026-11-27",
+ "created": "2026-11-27T15:17:31.614919+00:00",
  "model": "claude-opus-5-5"
 }
